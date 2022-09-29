@@ -1,0 +1,26 @@
+.card-container {
+  background-color: black;
+  width: 85%;
+  // height: 10em;
+  margin: 1em 0 ;
+  padding: 0.5em;
+  display: flex;
+  place-content: space-between;
+
+}
+
+.item-img {
+  background-color: green;
+  width: 20%;
+  // height: 100%;
+}
+.description-part {
+  background-color: blue;
+  width: 75%;
+  height: 100%;
+}
+.item-name {
+  background-color: green;
+  margin: 0;
+  ;
+}
