@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { CardItemComponent } from './card-item/card-item.component';
 import { ListItemsComponent } from './list-items/list-items.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -14,12 +15,14 @@ import { ListItemsComponent } from './list-items/list-items.component';
     NavigationComponent,
     CardItemComponent,
     ListItemsComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot([
-      { path: '', component: ListItemsComponent },
+      { path: '', component: HomeComponent },
+      { path: 'liste', component: ListItemsComponent },
     ])
   ],
   providers: [],
