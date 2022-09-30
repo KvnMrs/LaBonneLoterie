@@ -1,6 +1,6 @@
 .card-container {
   background-color: black;
-  width: 85%;
+  width: 90%;
   margin: 1em 0 ;
   padding: 0.5em;
   display: flex;
@@ -19,4 +19,8 @@
   background-color: green;
   margin: 0;
   ;
+}
+.price-part {
+  align-self: center;
+  color: white;
 }

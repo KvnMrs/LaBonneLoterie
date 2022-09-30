@@ -1,17 +1,12 @@
 <div class="card-container">
   <img class="item-img" />
   <div class="description-part">
-    <h2 class="item-name">My Title Name</h2>
+    <h2 class="item-name">{{ name }}</h2>
     <p class="item-description">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-      pharetra ipsum imperdiet erat pharetra, et molestie nunc laoreet. Etiam
-      bibendum luctus velit et suscipit. Maecenas nec lacus malesuada sem mollis
-      elementum. Etiam venenatis vestibulum elementum. Suspendisse molestie elit
-      mauris, sed vehicula lacus porttitor eget. Praesent porta tincidunt
-      pretium. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-      posuere cubilia curae; Donec quam nisl, eleifend eget rhoncus quis,
-      aliquam ac nunc. Proin mollis odio mauris. In bibendum commodo dolor, sed
-      lobortis nisl vulputate in. Maecenas finibus ac velit vel hendrerit.
+      {{ description }}
     </p>
+  </div>
+  <div class="price-part">
+    <p>{{ price }}$</p>
   </div>
 </div>
