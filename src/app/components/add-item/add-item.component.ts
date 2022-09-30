@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-// Services
-import { AnouncesService } from '../../services/anounces.service';
-import { annouceModel } from '../../models/annouce/annouce.model'
 import { Router } from '@angular/router';
 
+// Services
+import { AnnouncesService } from '../../services/announces/announces.service';
+// Models
+import { annouceModel } from '../../models/annouce/annouce.model'
 
 @Component({
   selector: 'app-add-item',
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class AddItemComponent implements OnInit {
 
-  constructor(private anouceService : AnouncesService, router : Router) { }
+  constructor(private annoucesService : AnnouncesService, router : Router) { }
 
   ngOnInit(): void {
   }
@@ -29,7 +30,7 @@ export class AddItemComponent implements OnInit {
       description: descriptionAnounce,
       price: priceAnounce,
     }
-    this.anouceService.addItem(myNewAnnounce)
+    this.annoucesService.addItem(myNewAnnounce)
 
   }
 

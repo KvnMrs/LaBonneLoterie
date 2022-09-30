@@ -1,0 +1,49 @@
+<div class="home-container">
+  <div class="home-left-part">
+    <header class="home-header">
+      <h1>LeBonLot</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+        pharetra ipsum imperdiet erat pharetra, et molestie nunc laoreet. Etiam
+        bibendum luctus velit et suscipit. Maecenas nec lacus malesuada sem
+        mollis elementum. Etiam venenatis vestibulum elementum. Suspendisse
+        molestie elit mauris, sed vehicula lacus porttitor eget. Praesent porta
+        tincidunt pretium. Vestibulum ante ipsum primis in faucibus orci luctus
+        et ultrices posuere cubilia curae; Donec quam nisl, eleifend eget
+        rhoncus quis, aliquam ac nunc. Proin mollis odio mauris. In bibendum
+        commodo dolor, sed lobortis nisl vulputate in. Maecenas finibus ac velit
+        vel hendrerit.
+      </p>
+    </header>
+  </div>
+  <div class="home-right-part">
+    <form class="home-form">
+      <div class="fields">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" />
+      </div>
+      <div class="fields">
+        <label for="password">Mot de passe:</label>
+        <input type="password" id="password" name="password" />
+      </div>
+      <div class="buttons">
+        <button
+          *ngIf="!authStatus"
+          class="signIn"
+          type="button"
+          (click)="onSignIn()"
+        >
+          Se connecter
+        </button>
+        <button
+          *ngIf="authStatus"
+          class="signOut"
+          type="button"
+          (click)="onSignOut()"
+        >
+          Se deconnecter
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
