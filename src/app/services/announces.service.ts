@@ -4,7 +4,7 @@ import { annouceModel } from '../models/annouce/annouce.model'
 @Injectable({
   providedIn: 'root'
 })
-export class AnouncesService {
+export class AnnouncesService {
   myAnnouces : annouceModel[] = [
     {
       // id:1,

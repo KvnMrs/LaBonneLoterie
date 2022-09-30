@@ -14,7 +14,7 @@ import { AuthComponent } from './components/auth/auth.component';
 import { AddItemComponent } from './components/add-item/add-item.component';
 
 // services
-import { AnouncesService } from './services/anounces.service'
+import { AnnouncesService } from './services/announces.service'
 
 const appRoutes : Routes = [
   { path: '', component: AuthComponent },
@@ -37,7 +37,7 @@ const appRoutes : Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [NgForm, AnouncesService],
+  providers: [NgForm, AnnouncesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

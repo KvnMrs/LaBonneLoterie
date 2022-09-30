@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 // Services
-import { AnouncesService } from '../../services/anounces.service';
+import { AnnouncesService } from '../../services/announces.service';
 import { annouceModel } from '../../models/annouce/annouce.model'
 import { Router } from '@angular/router';
 
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class AddItemComponent implements OnInit {
 
-  constructor(private anouceService : AnouncesService, router : Router) { }
+  constructor(private anouceService : AnnouncesService, router : Router) { }
 
   ngOnInit(): void {
   }

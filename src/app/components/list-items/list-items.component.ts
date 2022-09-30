@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AnouncesService } from '../../services/anounces.service';
+import { AnnouncesService } from '../../services/announces.service';
 import {annouceModel} from '../../models/annouce/annouce.model'
 
 @Component({
@@ -10,7 +10,7 @@ import {annouceModel} from '../../models/annouce/annouce.model'
 export class ListItemsComponent implements OnInit {
 
   public items: annouceModel[] = [];
-  constructor(private announesService : AnouncesService) { }
+  constructor(private announesService : AnnouncesService) { }
 
   ngOnInit(): void {
     this.items = this.announesService.myAnnouces
