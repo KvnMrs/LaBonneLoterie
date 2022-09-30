@@ -1,4 +1,8 @@
-<app-card-item></app-card-item>
-<app-card-item></app-card-item>
-<app-card-item></app-card-item>
-<app-card-item></app-card-item>
+<div *ngFor="let item of items; let i = index">
+  <app-card-item
+    name="{{ item.name }}"
+    category="{{ item.category }}"
+    description="{{ item.description }}"
+    price="{{ item.price }}"
+  ></app-card-item>
+</div>
