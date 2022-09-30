@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { FormsModule }   from '@angular/forms';
 
@@ -16,6 +16,11 @@ import { AddItemComponent } from './components/add-item/add-item.component';
 // services
 import { AnouncesService } from './services/anounces.service'
 
+const appRoutes : Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'liste', component: ListItemsComponent },
+  { path: 'ajout-annonce', component: AddItemComponent },
+]
 @NgModule({
   declarations: [
     // Components
@@ -30,11 +35,7 @@ import { AnouncesService } from './services/anounces.service'
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent },
-      { path: 'liste', component: ListItemsComponent },
-      { path: 'ajout-annonce', component: AddItemComponent },
-    ])
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [NgForm, AnouncesService],
   bootstrap: [AppComponent]
