@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 // Services
-import { AnouncesService } from '../services/anounces.service';
-import { annouceModel } from '../models/annouce/annouce.model'
+import { AnouncesService } from '../../services/anounces.service';
+import { annouceModel } from '../../models/annouce/annouce.model'
 import { Router } from '@angular/router';
 
 

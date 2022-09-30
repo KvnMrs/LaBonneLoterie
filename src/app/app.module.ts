@@ -7,11 +7,11 @@ import { FormsModule }   from '@angular/forms';
 // Components
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavigationComponent } from './navigation/navigation.component';
-import { CardItemComponent } from './card-item/card-item.component';
-import { ListItemsComponent } from './list-items/list-items.component';
-import { HomeComponent } from './home/home.component';
-import { AddItemComponent } from './add-item/add-item.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { CardItemComponent } from './components/card-item/card-item.component';
+import { ListItemsComponent } from './components/list-items/list-items.component';
+import { HomeComponent } from './components/home/home.component';
+import { AddItemComponent } from './components/add-item/add-item.component';
 
 // services
 import { AnouncesService } from './services/anounces.service'

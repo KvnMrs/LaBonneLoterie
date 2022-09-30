@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AnouncesService } from '../services/anounces.service';
-import {annouceModel} from '../models/annouce/annouce.model'
+import { AnouncesService } from '../../services/anounces.service';
+import {annouceModel} from '../../models/annouce/annouce.model'
 
 @Component({
   selector: 'app-list-items',
