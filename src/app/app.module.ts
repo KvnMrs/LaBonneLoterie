@@ -10,14 +10,14 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { CardItemComponent } from './components/card-item/card-item.component';
 import { ListItemsComponent } from './components/list-items/list-items.component';
-import { HomeComponent } from './components/home/home.component';
+import { AuthComponent } from './components/auth/auth.component';
 import { AddItemComponent } from './components/add-item/add-item.component';
 
 // services
 import { AnouncesService } from './services/anounces.service'
 
 const appRoutes : Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: AuthComponent },
   { path: 'liste', component: ListItemsComponent },
   { path: 'ajout-annonce', component: AddItemComponent },
 ]
@@ -28,7 +28,7 @@ const appRoutes : Routes = [
     NavigationComponent,
     CardItemComponent,
     ListItemsComponent,
-    HomeComponent,
+    AuthComponent,
     AddItemComponent,
   ],
   imports: [
