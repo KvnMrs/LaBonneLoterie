@@ -14,7 +14,7 @@ import { AuthComponent } from './components/auth/auth.component';
 import { AddItemComponent } from './components/add-item/add-item.component';
 
 // services
-import { AnnouncesService } from './services/announces.service'
+import { AnnouncesService } from './services/announces/announces.service'
 
 const appRoutes : Routes = [
   { path: '', component: AuthComponent },

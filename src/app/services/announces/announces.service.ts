@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { annouceModel } from '../models/annouce/annouce.model'
+import { annouceModel } from '../../models/annouce/annouce.model'
 
 @Injectable({
   providedIn: 'root'
