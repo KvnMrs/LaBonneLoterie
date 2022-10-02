@@ -8,7 +8,7 @@ export class AuthService {
   constructor() { }
 
   signIn(){
-    return new Promise((resolve, rejects) => {setTimeout(() => {this.isAuth = true; resolve(true) }, 2000)})
+    return new Promise((resolve, rejects) => {setTimeout(() => {this.isAuth = true; resolve(true) }, 200)})
   }
 
   signOut(){
