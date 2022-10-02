@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-item',
@@ -7,13 +8,18 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CardItemComponent implements OnInit {
 
+  @Input() id : number | string | undefined
   @Input() name : string | undefined
   @Input() category : string | undefined
   @Input() description : string | undefined
   @Input() price : number | string | undefined
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  seeDetails() {
+    this.router.navigate([`/liste/${this.id}`])
   }
 
 }
