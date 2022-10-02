@@ -16,11 +16,12 @@ import { AddItemComponent } from './components/add-item/add-item.component';
 // Services
 import { AnnouncesService } from './services/announces/announces.service'
 import { AuthService } from './services/auth/auth.service';
+import { AuthGuardService } from './services/auth/auth-guard.service';
 
 const appRoutes : Routes = [
-  { path: '', component: AuthComponent },
-  { path: 'liste', component: ListItemsComponent },
-  { path: 'ajout-annonce', component: AddItemComponent },
+  { path: 'auth', component: AuthComponent },
+  { path: 'liste', canActivate: [AuthGuardService],  component: ListItemsComponent },
+  { path: 'ajout-annonce', canActivate: [AuthGuardService],  component: AddItemComponent },
 ]
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ const appRoutes : Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [NgForm, AnnouncesService, AuthService],
+  providers: [NgForm, AnnouncesService, AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
