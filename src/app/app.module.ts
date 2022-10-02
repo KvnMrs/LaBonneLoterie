@@ -17,6 +17,7 @@ import { AddItemComponent } from './components/add-item/add-item.component';
 import { AnnouncesService } from './services/announces/announces.service'
 import { AuthService } from './services/auth/auth.service';
 import { AuthGuardService } from './services/auth/auth-guard.service';
+import { ItemDetailsComponent } from './components/item-details/item-details.component';
 
 const appRoutes : Routes = [
   { path: 'auth', component: AuthComponent },
@@ -32,6 +33,7 @@ const appRoutes : Routes = [
     ListItemsComponent,
     AuthComponent,
     AddItemComponent,
+    ItemDetailsComponent,
   ],
   imports: [
     BrowserModule,
