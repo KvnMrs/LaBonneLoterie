@@ -3,6 +3,7 @@ export interface annouceModel {
   name : string,
   category: string,
   description: string,
+  img?: string,
   minTickets?: number
   currentTickets?: number
 }
