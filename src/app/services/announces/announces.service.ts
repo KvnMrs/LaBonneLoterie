@@ -35,4 +35,8 @@ export class AnnouncesService {
   addItem(item: annouceModel ) {
    return this.myAnnouces.push(item)
   }
+
+  findItemByID( id: number) {
+   return this.myAnnouces[id - 1]
+  }
 }
