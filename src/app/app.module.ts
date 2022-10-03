@@ -21,9 +21,9 @@ import { ItemDetailsComponent } from './components/item-details/item-details.com
 
 const appRoutes : Routes = [
   { path: 'auth', component: AuthComponent },
-  { path: 'liste', canActivate: [AuthGuardService],  component: ListItemsComponent },
-  { path: 'liste/:id', canActivate: [AuthGuardService],  component: ItemDetailsComponent },
-  { path: 'ajout-annonce', canActivate: [AuthGuardService],  component: AddItemComponent },
+  { path: 'liste', /* canActivate: [AuthGuardService], */  component: ListItemsComponent },
+  { path: 'liste/:id', /* canActivate: [AuthGuardService], */ component: ItemDetailsComponent },
+  { path: 'ajout-annonce', /* canActivate: [AuthGuardService], */ component: AddItemComponent },
 ]
 @NgModule({
   declarations: [
