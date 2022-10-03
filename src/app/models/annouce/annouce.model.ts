@@ -3,5 +3,6 @@ export interface annouceModel {
   name : string,
   category: string,
   description: string,
-  price: number
+  minTickets?: number
+  currentTickets?: number
 }

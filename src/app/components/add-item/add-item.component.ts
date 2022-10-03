@@ -23,13 +23,13 @@ export class AddItemComponent implements OnInit {
     const nameAnounce = form.value["anounce-name"];
     const categoryAnounce = form.value["announce-category"];
     const descriptionAnounce = form.value["announce-description"];
-    const priceAnounce = form.value["announce-price"];
+    const minTicketsAnnounce = form.value["announce-minTickets"];
     const myNewAnnounce : annouceModel  = {
       id : this.annoucesService.myAnnouces.length + 1,
       name: nameAnounce,
       category: categoryAnounce,
       description: descriptionAnounce,
-      price: priceAnounce,
+      minTickets: minTicketsAnnounce,
     }
     this.annoucesService.addItem(myNewAnnounce)
 
