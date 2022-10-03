@@ -1,12 +1,14 @@
 <div class="card-container">
-  <img class="item-img" />
-  <div class="description-part">
-    <h2 class="item-name">{{ name }}</h2>
-    <p class="item-description">
-      {{ description }}
-    </p>
-  </div>
-  <div class="price-part">
-    <p>{{ price }}$</p>
-  </div>
+  <button class="btn-see-details" type="button" (click)="seeDetails()">
+    <img class="item-img" />
+    <div class="description-part">
+      <h2 class="item-name">{{ name }}</h2>
+      <p class="item-description">
+        {{ description }}
+      </p>
+    </div>
+    <div class="price-part">
+      <p>{{ price }}$</p>
+    </div>
+  </button>
 </div>

@@ -7,7 +7,7 @@ import { annouceModel } from '../../models/annouce/annouce.model'
 export class AnnouncesService {
   myAnnouces : annouceModel[] = [
     {
-      // id:1,
+      id:1,
       name: "test1",
       category: "category1",
       description:"description1",
@@ -15,14 +15,14 @@ export class AnnouncesService {
 
     },
     {
-      // id:2,
+      id:2,
       name: "test2",
       category: "category2",
       description:"description2",
       price: 2,
 
     }, {
-      // id:3,
+      id:3,
       name: "test3",
       category: "category3",
       description:"description3",
@@ -34,5 +34,9 @@ export class AnnouncesService {
 
   addItem(item: annouceModel ) {
    return this.myAnnouces.push(item)
+  }
+
+  findItemByID( id: number) {
+   return this.myAnnouces[id - 1]
   }
 }

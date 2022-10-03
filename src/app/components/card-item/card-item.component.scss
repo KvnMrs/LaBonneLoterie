@@ -1,14 +1,23 @@
 .card-container {
   background-color: black;
   width: 90%;
+  min-height: 10em;
   margin: 1em 0 ;
   padding: 0.5em;
   display: flex;
   place-content: space-around;
 }
-.item-img {
+.btn-see-details {
   background-color: green;
+  width: 100%;
+  display: flex;
+  text-align: start;
+  cursor: pointer;
+}
+.item-img {
+  background-color: red;
   width: 20%;
+  height: 100%;
 }
 .description-part {
   background-color: blue;
@@ -16,11 +25,11 @@
   height: 100%;
 }
 .item-name {
-  background-color: green;
+  background-color: purple;
   margin: 0;
   ;
 }
 .price-part {
-  align-self: center;
+  margin: auto;
   color: white;
 }
