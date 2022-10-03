@@ -1,8 +1,8 @@
 .card-container {
   background-color: black;
-  width: 90%;
+  width: 95%;
   min-height: 10em;
-  margin: 1em 0 ;
+  margin: 1em auto ;
   padding: 0.5em;
   display: flex;
   place-content: space-around;
@@ -21,7 +21,7 @@
 }
 .description-part {
   background-color: blue;
-  width: 75%;
+  width: 65%;
   height: 100%;
 }
 .item-name {
@@ -29,7 +29,14 @@
   margin: 0;
   ;
 }
-.price-part {
+.tickets-part {
   margin: auto;
+  text-align-last: center;
   color: white;
+}
+.btn-ticket {
+  margin: auto;
+  background-color: #059669;
+  cursor: pointer;
+
 }

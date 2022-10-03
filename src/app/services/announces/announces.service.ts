@@ -11,23 +11,23 @@ export class AnnouncesService {
       name: "test1",
       category: "category1",
       description:"description1",
-      price: 1,
-
+      minTickets: 10,
+      currentTickets: 0
     },
     {
       id:2,
       name: "test2",
       category: "category2",
       description:"description2",
-      price: 2,
-
+      minTickets: 40,
+      currentTickets: 3
     }, {
       id:3,
       name: "test3",
       category: "category3",
       description:"description3",
-      price: 3,
-
+      minTickets: 24,
+      currentTickets: 10
     },
   ]
   constructor() { }
