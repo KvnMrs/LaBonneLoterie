@@ -11,6 +11,7 @@ export class AnnouncesService {
       name: "test1",
       category: "category1",
       description:"description1",
+      img:"https://www.backmarket.fr/cdn-cgi/image/format=auto,quality=75,width=750/https://d1eh9yux7w8iql.cloudfront.net/product_images/1557727435.46.jpg",
       minTickets: 10,
       currentTickets: 0
     },
@@ -19,6 +20,7 @@ export class AnnouncesService {
       name: "test2",
       category: "category2",
       description:"description2",
+      img:"https://www.backmarket.fr/cdn-cgi/image/format=auto,quality=75,width=750/https://d1eh9yux7w8iql.cloudfront.net/product_images/1557727435.46.jpg",
       minTickets: 40,
       currentTickets: 3
     }, {
@@ -26,6 +28,7 @@ export class AnnouncesService {
       name: "test3",
       category: "category3",
       description:"description3",
+      img:"https://www.backmarket.fr/cdn-cgi/image/format=auto,quality=75,width=750/https://d1eh9yux7w8iql.cloudfront.net/product_images/1557727435.46.jpg",
       minTickets: 24,
       currentTickets: 10
     },
