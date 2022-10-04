@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { DocumentData } from 'firebase/firestore';
 // Models
-import { annouceModel } from 'src/app/models/annouce/annouce.model';
+import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 // Service
 import { AnnouncesService } from 'src/app/services/announces/announces.service';
 
@@ -12,13 +13,15 @@ import { AnnouncesService } from 'src/app/services/announces/announces.service';
 })
 export class ItemDetailsComponent implements OnInit {
 
-  public currentItem!: annouceModel;
   constructor(private route: ActivatedRoute, private announesService : AnnouncesService) { }
 
-  ngOnInit(): void {
-      const id: number = this.route.snapshot.params['id'];
-      this.currentItem = this.announesService.findItemByID(id);
-      console.log(this.currentItem)
-  }
+  // retrieve id announce from URL
+  paramId: string = this.route.snapshot.params['id'];
+
+  // using SERVICE for retrieve informations of the announce by his ID
+  announce: Promise<DocumentData | undefined> =
+  this.announesService.getAnnounceByID(this.paramId);
+
+  ngOnInit(): void { }
 
 }

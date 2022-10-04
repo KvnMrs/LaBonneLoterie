@@ -1,9 +1,9 @@
-export interface annouceModel {
-  id: number
+export interface IAnnounce {
+  id: string,
   name : string,
   category: string,
   description: string,
-  img?: string,
+  img_url?: string,
   minTickets?: number
   currentTickets?: number
 }

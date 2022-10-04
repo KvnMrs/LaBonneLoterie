@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AnnouncesService } from '../../services/announces/announces.service';
-import {annouceModel} from '../../models/annouce/annouce.model'
+import {IAnnounce} from '../../models/annouce/annouce.model'
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-list-items',
@@ -9,11 +10,14 @@ import {annouceModel} from '../../models/annouce/annouce.model'
 })
 export class ListItemsComponent implements OnInit {
 
-  public items: annouceModel[] = [];
+  public items: IAnnounce[] = [];
   constructor(private announesService : AnnouncesService) { }
 
   ngOnInit(): void {
-    this.items = this.announesService.myAnnouces
+    // using SERVICE for retrieve informations of all announces
+    this.announesService.getAnnounces().subscribe((res: IAnnounce[]) => {
+      this.items = res;
+    })
   }
 
 }
