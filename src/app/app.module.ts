@@ -4,6 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { FormsModule }   from '@angular/forms';
 
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+
 // Components
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +21,9 @@ import { AnnouncesService } from './services/announces/announces.service'
 import { AuthService } from './services/auth/auth.service';
 import { AuthGuardService } from './services/auth/auth-guard.service';
 import { ItemDetailsComponent } from './components/item-details/item-details.component';
+// import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+// import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 const appRoutes : Routes = [
   { path: 'auth', component: AuthComponent },
@@ -40,7 +46,9 @@ const appRoutes : Routes = [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [NgForm, AnnouncesService, AuthService, AuthGuardService],
   bootstrap: [AppComponent]
