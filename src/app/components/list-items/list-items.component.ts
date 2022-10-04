@@ -14,7 +14,7 @@ export class ListItemsComponent implements OnInit {
   constructor(private announesService : AnnouncesService) { }
 
   ngOnInit(): void {
-    // using SERVICE for retrieve informations of all games
+    // using SERVICE for retrieve informations of all announces
     this.announesService.getAnnounces().subscribe((res: IAnnounce[]) => {
       this.items = res;
     })

@@ -35,7 +35,7 @@ export class AddItemComponent implements OnInit {
        this.showErrorMessage = true
        return
     }
-    // ELSE validate the new game & show submit message
+    // ELSE validate the new announce & show submit message
     else
     this.annoucesService.addAnnounce(data)
     .then(res => {

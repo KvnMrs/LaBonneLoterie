@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { addDoc, collection, collectionData, doc, DocumentData, DocumentSnapshot, Firestore, getDoc } from '@angular/fire/firestore';
+import { addDoc, collection, collectionData, deleteDoc, doc, DocumentData, DocumentSnapshot, Firestore, getDoc } from '@angular/fire/firestore';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { IAnnounce } from '../../models/annouce/annouce.model'
@@ -39,4 +39,10 @@ export class AnnouncesService {
       const announceRef = collection(this.firestore, 'Announces');
       return addDoc(announceRef, announce);
     }
+
+      // deleteAnnounceById
+  deleteAnnounce(announce: IAnnounce) {
+    const announceDocRef = doc(this.firestore, `Announces/${announce.id}`);
+    return deleteDoc(announceDocRef);
+  }
 }
