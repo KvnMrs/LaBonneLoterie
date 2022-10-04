@@ -44,5 +44,8 @@
     <div class="fields">
       <button type="submit" class="btn-submit">Ajouter</button>
     </div>
+    <ng-template [ngIf]="showErrorMessage">
+      <div>Veuillez remplir tous les champs</div>
+    </ng-template>
   </form>
 </div>
