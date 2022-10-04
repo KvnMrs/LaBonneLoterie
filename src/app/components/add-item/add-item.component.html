@@ -1,13 +1,13 @@
 <div class="form-container">
   <h1 class="anounce-title">Créer une annonce</h1>
-  <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form">
+  <form [formGroup]="formAnnounce" (ngSubmit)="onSubmit()" class="form">
     <div class="fields">
       <label for="announce-name">Titre de l'annonce:</label>
       <input
         type="text"
         id="announce-name"
         name="announce-name"
-        ngModel
+        formControlName="name"
         required
       />
     </div>
@@ -17,7 +17,7 @@
         type="text"
         id="announce-category"
         name="announce-category"
-        ngModel
+        formControlName="category"
         required
       />
     </div>
@@ -27,7 +27,7 @@
         type="text"
         id="announce-description"
         name="announce-description"
-        ngModel
+        formControlName="description"
         required
       ></textarea>
     </div>
@@ -37,14 +37,12 @@
         type="number"
         id="announce-minTickets"
         name="announce-minTickets"
-        ngModel
+        formControlName="minTickets"
         required
       />
     </div>
     <div class="fields">
-      <button type="submit" class="btn-submit" [disabled]="f.invalid">
-        Ajouter
-      </button>
+      <button type="submit" class="btn-submit">Ajouter</button>
     </div>
   </form>
 </div>

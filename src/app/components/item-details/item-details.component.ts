@@ -15,7 +15,6 @@ export class ItemDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private announesService : AnnouncesService) { }
 
-
   // retrieve id announce from URL
   paramId: string = this.route.snapshot.params['id'];
 
