@@ -4,7 +4,7 @@ import { UploadImgService } from '../../services/uploads/upload-img.service';
 @Component({
     selector: 'app-upload-img',
     templateUrl: './upload-img.component.html',
-    styleUrls: ['./upload-img.component.css']
+    styleUrls: ['./upload-img.component.scss']
 })
 export class UploadImgComponent implements OnInit {
 
