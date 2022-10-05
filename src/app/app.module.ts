@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
-import { NgForm, FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { NgForm, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { getStorage, provideStorage } from '@angular/fire/storage';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
@@ -19,17 +20,26 @@ import { UploadImgComponent } from './components/upload-img/upload-img.component
 import { ItemDetailsComponent } from './components/item-details/item-details.component';
 
 // Services
-import { AnnouncesService } from './services/announces/announces.service'
+import { AnnouncesService } from './services/announces/announces.service';
 import { AuthService } from './services/auth/auth.service';
 import { AuthGuardService } from './services/auth/auth-guard.service';
 import { UploadImgService } from './services/uploads/upload-img.service';
 
-const appRoutes : Routes = [
+const appRoutes: Routes = [
   { path: 'auth', component: AuthComponent },
-  { path: 'liste', /* canActivate: [AuthGuardService], */  component: ListItemsComponent },
-  { path: 'liste/:id', /* canActivate: [AuthGuardService], */ component: ItemDetailsComponent },
-  { path: 'ajout-annonce', /* canActivate: [AuthGuardService], */ component: AddItemComponent },
-]
+  {
+    path: 'liste',
+    /* canActivate: [AuthGuardService], */ component: ListItemsComponent,
+  },
+  {
+    path: 'liste/:id',
+    /* canActivate: [AuthGuardService], */ component: ItemDetailsComponent,
+  },
+  {
+    path: 'ajout-annonce',
+    /* canActivate: [AuthGuardService], */ component: AddItemComponent,
+  },
+];
 @NgModule({
   declarations: [
     // Components
@@ -51,6 +61,7 @@ const appRoutes : Routes = [
     RouterModule.forRoot(appRoutes),
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
   ],
   providers: [
     NgForm,
@@ -58,7 +69,7 @@ const appRoutes : Routes = [
     AuthService,
     AuthGuardService,
     UploadImgService,
-    ],
-  bootstrap: [AppComponent]
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
