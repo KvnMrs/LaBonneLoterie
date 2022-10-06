@@ -12,7 +12,7 @@ import {
   providedIn: 'root',
 })
 export class UploadImgService {
-  constructor(private http: HttpClient, public storage: Storage) {}
+  constructor(public storage: Storage) {}
 
   upload(file: any) {
     const imgRef = ref(this.storage, `announesImg/${file.name}`);

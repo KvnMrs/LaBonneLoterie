@@ -8,7 +8,6 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
-
 // Components
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
@@ -16,9 +15,7 @@ import { CardItemComponent } from './components/card-item/card-item.component';
 import { ListItemsComponent } from './components/list-items/list-items.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { AddItemComponent } from './components/add-item/add-item.component';
-import { UploadImgComponent } from './components/upload-img/upload-img.component';
 import { ItemDetailsComponent } from './components/item-details/item-details.component';
-
 // Services
 import { AnnouncesService } from './services/announces/announces.service';
 import { AuthService } from './services/auth/auth.service';
@@ -50,7 +47,6 @@ const appRoutes: Routes = [
     AuthComponent,
     AddItemComponent,
     ItemDetailsComponent,
-    UploadImgComponent,
   ],
   imports: [
     BrowserModule,
