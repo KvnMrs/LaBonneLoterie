@@ -1,15 +1,24 @@
 import { Injectable } from '@angular/core';
-import { addDoc, collection, collectionData, deleteDoc, doc, DocumentData, DocumentSnapshot, Firestore, getDoc } from '@angular/fire/firestore';
+import {
+  addDoc,
+  collection,
+  collectionData,
+  deleteDoc,
+  doc,
+  DocumentData,
+  DocumentSnapshot,
+  Firestore,
+  getDoc,
+} from '@angular/fire/firestore';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { IAnnounce } from '../../models/annouce/annouce.model'
+import { IAnnounce } from '../../models/annouce/annouce.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AnnouncesService {
- 
-  constructor(private firestore : Firestore) { }
+  constructor(private firestore: Firestore) {}
 
   form = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -18,31 +27,33 @@ export class AnnouncesService {
     img_url: new FormControl('', Validators.required),
     minTickets: new FormControl(0),
     currentTickets: new FormControl(0),
-  })
+  });
 
-    // getAllAnnounce
-    public getAnnounces(): Observable<IAnnounce[]> {
-      const announceRef = collection(this.firestore, 'Announces');
-      return collectionData(announceRef, { idField: 'id' }) as Observable<IAnnounce[]>;
-    }
-
-    // getAnnounceById
-    public async getAnnounceByID(id: string ){
-      const announceRef = doc(this.firestore, `Announces`, id);
-      const DOC_SNAP: DocumentSnapshot<DocumentData> = await getDoc(announceRef);
-      return DOC_SNAP.data();
+  // getAllAnnounce
+  public getAnnounces(): Observable<IAnnounce[]> {
+    const announceRef = collection(this.firestore, 'Announces');
+    return collectionData(announceRef, { idField: 'id' }) as Observable<
+      IAnnounce[]
+    >;
   }
 
-    // addAnnounce
-    public addAnnounce(announce: IAnnounce) {
-      console.log("annnounce ---> ", announce)
-      const announceRef = collection(this.firestore, 'Announces');
-      return addDoc(announceRef, announce);
-    }
+  // getAnnounceById
+  public async getAnnounceByID(id: string) {
+    const announceRef = doc(this.firestore, `Announces`, id);
+    const DOC_SNAP: DocumentSnapshot<DocumentData> = await getDoc(announceRef);
+    return DOC_SNAP.data();
+  }
 
-      // deleteAnnounceById
-  deleteAnnounce(announce: IAnnounce) {
-    const announceDocRef = doc(this.firestore, `Announces/${announce.id}`);
+  // addAnnounce
+  public addAnnounce(announce: IAnnounce) {
+    console.log('annnounce ---> ', announce);
+    const announceRef = collection(this.firestore, 'Announces');
+    return addDoc(announceRef, announce);
+  }
+
+  // deleteAnnounceById
+  deleteAnnounce(id: string) {
+    const announceDocRef = doc(this.firestore, `Announces/${id}`);
     return deleteDoc(announceDocRef);
   }
 }

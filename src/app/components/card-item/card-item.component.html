@@ -7,10 +7,12 @@
         {{ description }}
       </p>
     </div>
-    <div class="tickets-part">
-      <p>le vendeur demande: {{ minTickets }} tickets</p>
-      <p>Actuellement: {{ currentTickets }} tickets</p>
-      <button class="btn-ticket">Acheter ticket(s)</button>
-    </div>
   </button>
+
+  <div class="tickets-part">
+    <button type="button" (click)="deleteAnnouce(id)">X</button>
+    <p>le vendeur demande: {{ minTickets }} tickets</p>
+    <p>Actuellement: {{ currentTickets }} tickets</p>
+    <button class="btn-ticket">Acheter ticket(s)</button>
+  </div>
 </div>
