@@ -9,12 +9,12 @@ import { AnnouncesService } from 'src/app/services/announces/announces.service';
 })
 export class CardItemComponent implements OnInit {
   @Input() id!: string;
-  @Input() name: string | undefined;
-  @Input() category: string | undefined;
-  @Input() description: string | undefined;
-  @Input() img: string | undefined;
-  @Input() minTickets: number | string | undefined;
-  @Input() currentTickets: number | string | undefined;
+  @Input() name!: string;
+  @Input() category!: string;
+  @Input() description!: string;
+  @Input() img?: string;
+  @Input() minTickets?: number | string | undefined;
+  @Input() currentTickets?: number | string | undefined;
 
   constructor(
     private router: Router,

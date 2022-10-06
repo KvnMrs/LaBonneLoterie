@@ -17,7 +17,7 @@ export class AddItemComponent implements OnInit {
   showErrorMessage!: boolean;
   shortLink: string = '';
   loading: boolean = false; // Flag variable
-  file: File | undefined; // Variable to store file
+  file!: File; // Variable to store file
   public formAnnounce!: FormGroup;
 
   constructor(
@@ -36,16 +36,15 @@ export class AddItemComponent implements OnInit {
   }
 
   // OnClick of button Upload
-  onUpload() {
+  async onUpload() {
     this.loading = !this.loading;
     console.log(this.file);
-    this.uploadImgService.upload(this.file);
+    return this.uploadImgService.upload(this.file);
   }
 
-  onSubmit() {
+  async onSubmit() {
     // checking form value(s)
     const data = this.formAnnounce.value;
-    console.log('data ---> ', data);
 
     // IF a value missing, show error message
     if (data.name == '' || data.description == '') {
@@ -54,7 +53,8 @@ export class AddItemComponent implements OnInit {
     }
     // ELSE validate the new announce & show submit message
     else {
-      this.onUpload();
+      const urlImg = await this.onUpload();
+      data.img_url = urlImg;
       this.annoucesService.addAnnounce(data).then((res) => {
         this.showErrorMessage = false;
         this.showSubmitMessage = true;
