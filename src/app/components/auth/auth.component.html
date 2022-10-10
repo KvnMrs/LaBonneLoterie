@@ -19,6 +19,28 @@
   <div class="home-right-part">
     <form class="home-form" [formGroup]="formAuth">
       <div class="fields">
+        <label for="firstname">Prénom:</label>
+        <input
+          type="text"
+          id="firstname"
+          name="firstname"
+          formControlName="firstname"
+          autocomplete="username"
+          required
+        />
+      </div>
+      <div class="fields">
+        <label for="lastname">Nom:</label>
+        <input
+          type="text"
+          id="lastname"
+          name="lastname"
+          formControlName="lastname"
+          autocomplete="username"
+          required
+        />
+      </div>
+      <div class="fields">
         <label for="email">E-mail:</label>
         <input
           type="email"
@@ -41,20 +63,10 @@
         />
       </div>
       <div class="buttons">
-        <button
-          *ngIf="!authStatus"
-          class="signIn"
-          type="button"
-          (click)="onCreateAccount()"
-        >
+        <button class="signIn" type="button" (click)="onCreateUser()">
           Création du compte
         </button>
-        <button
-          *ngIf="authStatus"
-          class="signOut"
-          type="button"
-          (click)="onSignOut()"
-        >
+        <button class="signOut" type="button" (click)="onSignOut()">
           Se deconnecter
         </button>
       </div>

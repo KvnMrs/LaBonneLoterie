@@ -11,23 +11,19 @@ import { AuthService } from '../../services/auth/auth.service';
 export class AuthComponent implements OnInit {
   public formAuth!: FormGroup;
 
-  authStatus!: boolean;
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.authStatus = this.authService.isAuth;
     this.formAuth = this.authService.form;
   }
 
-  public onCreateAccount() {
+  public onCreateUser() {
     const dataUser = this.formAuth.value;
-    this.authService.createAccount(dataUser.email, dataUser.password);
-    // this.authStatus = this.authService.isAuth;
+    this.authService.createUser(dataUser);
     this.router.navigate(['/liste']);
   }
 
   public onSignOut() {
     this.authService.signOut();
-    this.authStatus = this.authService.isAuth;
   }
 }

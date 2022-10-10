@@ -6,8 +6,13 @@ import {
   Router,
   RouterStateSnapshot,
 } from '@angular/router';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  updateProfile,
+} from 'firebase/auth';
 import { Observable } from 'rxjs';
+import { IUser } from 'src/app/models/annouce/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -17,17 +22,39 @@ export class AuthService {
   constructor(private router: Router, private auth: Auth) {}
 
   form = new FormGroup({
+    firstname: new FormControl('', Validators.required),
+    lastname: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
 
-  createAccount(email: string, password: string) {
-    createUserWithEmailAndPassword(this.auth, email, password)
+  createUser(data: IUser) {
+    createUserWithEmailAndPassword(this.auth, data.email, data.password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log('user --->', user);
-        // ...
+        updateProfile(user, {
+          displayName: `${data.firstname}`,
+          photoURL: 'https://example.com/jane-q-user/profile.jpg',
+        })
+          .then(() => {
+            console.log('registration successfull');
+            console.log('user -->', user);
+          })
+          .catch((error) => {
+            console.error(error.code);
+          });
+        onAuthStateChanged(this.auth, (user) => {
+          if (user) {
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/firebase.User
+            const uid = user.uid;
+            // ...
+          } else {
+            // User is signed out
+            // ...
+          }
+        });
       })
       .catch((error) => {
         // const errorCode = error.code;
