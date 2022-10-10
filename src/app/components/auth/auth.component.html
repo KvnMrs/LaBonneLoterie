@@ -17,23 +17,37 @@
     </header>
   </div>
   <div class="home-right-part">
-    <form class="home-form">
+    <form class="home-form" [formGroup]="formAuth">
       <div class="fields">
-        <label for="email">Email:</label>
-        <input type="text" id="email" name="email" />
+        <label for="email">E-mail:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          formControlName="email"
+          autocomplete="username"
+          required
+        />
       </div>
       <div class="fields">
         <label for="password">Mot de passe:</label>
-        <input type="password" id="password" name="password" />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          formControlName="password"
+          autocomplete="current-password"
+          required
+        />
       </div>
       <div class="buttons">
         <button
           *ngIf="!authStatus"
           class="signIn"
           type="button"
-          (click)="onSignIn()"
+          (click)="onCreateAccount()"
         >
-          Se connecter
+          Création du compte
         </button>
         <button
           *ngIf="authStatus"
