@@ -22,7 +22,7 @@ export class AddItemComponent implements OnInit {
 
   constructor(
     public annoucesService: AnnouncesService,
-    router: Router,
+    public router: Router,
     private uploadImgService: UploadImgService
   ) {}
 
@@ -35,7 +35,6 @@ export class AddItemComponent implements OnInit {
     this.file = event.target.files[0];
   }
 
-  // OnClick of button Upload
   async onUpload() {
     this.loading = !this.loading;
     console.log(this.file);
@@ -43,9 +42,7 @@ export class AddItemComponent implements OnInit {
   }
 
   async onSubmit() {
-    // checking form value(s)
     const data = this.formAnnounce.value;
-
     // IF a value missing, show error message
     if (data.name == '' || data.description == '') {
       this.showErrorMessage = true;
@@ -56,6 +53,8 @@ export class AddItemComponent implements OnInit {
       const urlImg = await this.onUpload();
       data.img_url = urlImg;
       this.annoucesService.addAnnounce(data).then((res) => {
+        this.formAnnounce.reset();
+        this.router.navigate(['/liste']);
         this.showErrorMessage = false;
         this.showSubmitMessage = true;
       });
