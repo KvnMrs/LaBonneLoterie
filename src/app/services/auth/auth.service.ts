@@ -1,17 +1,78 @@
 import { Injectable } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  ActivatedRouteSnapshot,
+  Router,
+  RouterStateSnapshot,
+} from '@angular/router';
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  updateProfile,
+} from 'firebase/auth';
+import { Observable } from 'rxjs';
+import { IUser } from 'src/app/models/annouce/user.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  isAuth = false
-  constructor() { }
+  isAuth = false;
+  constructor(private router: Router, private auth: Auth) {}
 
-  signIn(){
-    return new Promise((resolve, rejects) => {setTimeout(() => {this.isAuth = true; resolve(true) }, 200)})
+  form = new FormGroup({
+    firstname: new FormControl('', Validators.required),
+    lastname: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
+  });
+
+  createUser(data: IUser) {
+    createUserWithEmailAndPassword(this.auth, data.email, data.password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        updateProfile(user, {
+          displayName: `${data.firstname}`,
+          photoURL: 'https://example.com/jane-q-user/profile.jpg',
+        })
+          .then(() => {
+            console.log('registration successfull');
+            console.log('user -->', user);
+          })
+          .catch((error) => {
+            console.error(error.code);
+          });
+        onAuthStateChanged(this.auth, (user) => {
+          if (user) {
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/firebase.User
+            const uid = user.uid;
+            // ...
+          } else {
+            // User is signed out
+            // ...
+          }
+        });
+      })
+      .catch((error) => {
+        // const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(errorMessage);
+        // ..
+      });
   }
 
-  signOut(){
-    return this.isAuth = false
+  signOut() {
+    return (this.isAuth = false);
+  }
+
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> | Promise<boolean> | boolean {
+    if (this.isAuth) return true;
+    else return this.router.navigate(['auth']);
   }
 }

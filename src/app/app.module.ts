@@ -5,6 +5,7 @@ import { NgForm, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
+import { getAuth, provideAuth } from '@angular/fire/auth';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
@@ -19,7 +20,6 @@ import { ItemDetailsComponent } from './components/item-details/item-details.com
 // Services
 import { AnnouncesService } from './services/announces/announces.service';
 import { AuthService } from './services/auth/auth.service';
-import { AuthGuardService } from './services/auth/auth-guard.service';
 import { UploadImgService } from './services/uploads/upload-img.service';
 
 const appRoutes: Routes = [
@@ -58,14 +58,9 @@ const appRoutes: Routes = [
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
+    provideAuth(() => getAuth()),
   ],
-  providers: [
-    NgForm,
-    AnnouncesService,
-    AuthService,
-    AuthGuardService,
-    UploadImgService,
-  ],
+  providers: [NgForm, AnnouncesService, AuthService, UploadImgService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
