@@ -10,7 +10,7 @@
     <div class="buy-ticket">
       <input id="numberTicket" type="number" (change)="selectTicket()" />
       <button type="button" (click)="selectTicket()">Valider</button>
-      {{ numberTicket }}
+      <p *ngIf="numberTicket">Total: {{ totalPrice }}$</p>
     </div>
     <button type="button" (click)="buyTicket()">Acheter</button>
   </div>

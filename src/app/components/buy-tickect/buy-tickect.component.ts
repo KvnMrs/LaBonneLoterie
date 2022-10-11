@@ -14,6 +14,7 @@ export class BuyTickectComponent implements OnInit {
   id!: string;
   public formTicket!: FormGroup;
   public numberTicket: number = 0;
+  public totalPrice: number = 0;
   public currentAnnounce: DocumentData | undefined;
   constructor(
     private route: ActivatedRoute,
@@ -35,6 +36,8 @@ export class BuyTickectComponent implements OnInit {
   selectTicket() {
     var input = document.querySelector('#numberTicket') as HTMLInputElement;
     this.numberTicket = parseInt(input.value);
+    this.totalPrice =
+      this.numberTicket * this.currentAnnounce?.['oneTicketPrice'];
   }
   buyTicket() {
     if (this.numberTicket < 1) return;
