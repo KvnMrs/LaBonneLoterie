@@ -14,7 +14,10 @@ export class UploadImgService {
 
   async upload(file: File) {
     const imgRef = ref(this.storage, `announesImg/${file.name}`);
-    const uploadTask = uploadBytesResumable(imgRef, file);
-    return getDownloadURL(uploadTask.snapshot.ref);
+    await uploadBytesResumable(imgRef, file);
+    const imgUrl = getDownloadURL(
+      ref(this.storage, `announesImg/${file.name}`)
+    );
+    return imgUrl;
   }
 }
