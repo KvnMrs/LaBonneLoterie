@@ -28,6 +28,7 @@ export class AnnouncesService {
     img_url: new FormControl('', Validators.required),
     minTickets: new FormControl(0),
     currentTickets: new FormControl(0),
+    oneTicketPrice: new FormControl(0),
   });
 
   // getAllAnnounce
