@@ -17,6 +17,7 @@ import { ListItemsComponent } from './components/list-items/list-items.component
 import { AuthComponent } from './components/auth/auth.component';
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { ItemDetailsComponent } from './components/item-details/item-details.component';
+import { BuyTickectComponent } from './components/buy-tickect/buy-tickect.component';
 // Services
 import { AnnouncesService } from './services/announces/announces.service';
 import { AuthService } from './services/auth/auth.service';
@@ -36,6 +37,10 @@ const appRoutes: Routes = [
     path: 'ajout-annonce',
     /* canActivate: [AuthGuardService], */ component: AddItemComponent,
   },
+  {
+    path: 'achat-ticket/:id',
+    /* canActivate: [AuthGuardService], */ component: BuyTickectComponent,
+  },
 ];
 @NgModule({
   declarations: [
@@ -47,6 +52,7 @@ const appRoutes: Routes = [
     AuthComponent,
     AddItemComponent,
     ItemDetailsComponent,
+    BuyTickectComponent,
   ],
   imports: [
     BrowserModule,

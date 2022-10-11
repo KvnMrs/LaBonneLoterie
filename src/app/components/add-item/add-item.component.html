@@ -41,6 +41,16 @@
         required
       />
     </div>
+    <div class="fields">
+      <label for="announce-oneTicketPrice">Prix ticket a l'unité:</label>
+      <input
+        type="number"
+        id="announce-oneTicketPrice"
+        name="announce-oneTicketPrice"
+        formControlName="oneTicketPrice"
+        required
+      />
+    </div>
     <div>
       <input type="file" (change)="onChange($event)" />
       <!-- <button (click)="onUpload()">Upload</button> -->

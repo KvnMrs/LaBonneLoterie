@@ -14,7 +14,7 @@ export class CardItemComponent implements OnInit {
   @Input() description!: string;
   @Input() img?: string;
   @Input() minTickets?: number | string | undefined;
-  @Input() currentTickets?: number | string | undefined;
+  @Input() currentTickets: number | string | undefined;
 
   constructor(
     private router: Router,
@@ -29,5 +29,9 @@ export class CardItemComponent implements OnInit {
 
   deleteAnnouce(id: string) {
     this.annoucesService.deleteAnnounce(id);
+  }
+
+  buyTicket(id: string) {
+    this.router.navigate([`/achat-ticket/${this.id}`]);
   }
 }
