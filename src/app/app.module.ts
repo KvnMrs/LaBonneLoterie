@@ -21,6 +21,7 @@ import { ItemDetailsComponent } from './components/item-details/item-details.com
 import { AnnouncesService } from './services/announces/announces.service';
 import { AuthService } from './services/auth/auth.service';
 import { UploadImgService } from './services/uploads/upload-img.service';
+import { BuyTickectComponent } from './components/buy-tickect/buy-tickect.component';
 
 const appRoutes: Routes = [
   { path: 'auth', component: AuthComponent },
@@ -47,6 +48,7 @@ const appRoutes: Routes = [
     AuthComponent,
     AddItemComponent,
     ItemDetailsComponent,
+    BuyTickectComponent,
   ],
   imports: [
     BrowserModule,
