@@ -30,4 +30,8 @@ export class CardItemComponent implements OnInit {
   deleteAnnouce(id: string) {
     this.annoucesService.deleteAnnounce(id);
   }
+
+  buyTicket(id: string) {
+    this.router.navigate([`/achat-ticket/${this.id}`]);
+  }
 }

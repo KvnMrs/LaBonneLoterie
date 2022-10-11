@@ -13,6 +13,8 @@
     <button type="button" (click)="deleteAnnouce(id)">X</button>
     <p>le vendeur demande: {{ minTickets }} tickets</p>
     <p>Actuellement: {{ currentTickets }} tickets</p>
-    <button class="btn-ticket">Acheter ticket(s)</button>
+    <button type="button" class="btn-ticket" (click)="buyTicket(id)">
+      Acheter ticket(s)
+    </button>
   </div>
 </div>
