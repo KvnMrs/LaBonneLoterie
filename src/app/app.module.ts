@@ -14,7 +14,7 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { CardItemComponent } from './components/card-item/card-item.component';
 import { ListItemsComponent } from './components/list-items/list-items.component';
-import { AuthComponent } from './components/auth/auth.component';
+import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { ItemDetailsComponent } from './components/item-details/item-details.component';
 import { BuyTickectComponent } from './components/buy-tickect/buy-tickect.component';
@@ -25,7 +25,7 @@ import { AuthService } from './services/auth/auth.service';
 import { UploadImgService } from './services/uploads/upload-img.service';
 
 const appRoutes: Routes = [
-  { path: 'auth', component: AuthComponent },
+  { path: '', component: SignUpComponent },
   {
     path: 'liste',
     /* canActivate: [AuthGuardService], */ component: ListItemsComponent,
@@ -54,7 +54,7 @@ const appRoutes: Routes = [
     NavigationComponent,
     CardItemComponent,
     ListItemsComponent,
-    AuthComponent,
+    SignUpComponent,
     AddItemComponent,
     ItemDetailsComponent,
     BuyTickectComponent,
