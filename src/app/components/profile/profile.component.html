@@ -1,1 +1,18 @@
-<p>profile works!</p>
+<div class="container">
+  <div class="profile-part">
+    <!-- <div class="img-part"> -->
+    <img src="assets/svg/profile.svg" class="profile-img" />
+    <!-- </div> -->
+    <div>
+      <div class="stars-container">
+        <img
+          *ngFor="let star of stars"
+          class="star"
+          src="assets/svg/star.svg"
+        />
+      </div>
+      <p>Kévin Marais</p>
+      <p>Nantes</p>
+    </div>
+  </div>
+</div>
