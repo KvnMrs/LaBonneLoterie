@@ -48,7 +48,6 @@ export class AnnouncesService {
 
   // addAnnounce
   public addAnnounce(announce: IAnnounce) {
-    console.log('annnounce ---> ', announce);
     const announceRef = collection(this.firestore, 'Announces');
     return addDoc(announceRef, announce);
   }
