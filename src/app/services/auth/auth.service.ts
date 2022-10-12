@@ -12,7 +12,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import { Observable } from 'rxjs';
-import { IUser } from 'src/app/models/annouce/user.model';
+import { IUser } from 'src/app/models/user/user.model';
 
 @Injectable({
   providedIn: 'root',
