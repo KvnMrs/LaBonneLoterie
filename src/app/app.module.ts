@@ -18,17 +18,21 @@ import { AuthComponent } from './components/auth/auth.component';
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { ItemDetailsComponent } from './components/item-details/item-details.component';
 import { BuyTickectComponent } from './components/buy-tickect/buy-tickect.component';
+import { ProfileComponent } from './components/profile/profile.component';
 // Services
 import { AnnouncesService } from './services/announces/announces.service';
 import { AuthService } from './services/auth/auth.service';
 import { UploadImgService } from './services/uploads/upload-img.service';
-import { ProfileComponent } from './components/profile/profile.component';
 
 const appRoutes: Routes = [
   { path: 'auth', component: AuthComponent },
   {
     path: 'liste',
     /* canActivate: [AuthGuardService], */ component: ListItemsComponent,
+  },
+  {
+    path: 'profil',
+    /* canActivate: [AuthGuardService], */ component: ProfileComponent,
   },
   {
     path: 'liste/:id',
