@@ -23,6 +23,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AnnouncesService } from './services/announces/announces.service';
 import { AuthService } from './services/auth/auth.service';
 import { UploadImgService } from './services/uploads/upload-img.service';
+import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 
 const appRoutes: Routes = [
   { path: '', component: SignUpComponent },
@@ -59,6 +60,7 @@ const appRoutes: Routes = [
     ItemDetailsComponent,
     BuyTickectComponent,
     ProfileComponent,
+    SignInComponent,
   ],
   imports: [
     BrowserModule,
