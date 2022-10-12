@@ -25,6 +25,7 @@ import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 import { AnnouncesService } from './services/announces/announces.service';
 import { AuthService } from './services/auth/auth.service';
 import { UploadImgService } from './services/uploads/upload-img.service';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 const appRoutes: Routes = [
   { path: '', component: SignUpComponent },
@@ -66,6 +67,7 @@ const appRoutes: Routes = [
     BuyTickectComponent,
     ProfileComponent,
     SignInComponent,
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,
