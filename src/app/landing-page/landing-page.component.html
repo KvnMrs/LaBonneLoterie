@@ -16,5 +16,15 @@
       </p>
     </header>
   </div>
-  <app-sign-up></app-sign-up>
+  {{ log(haveAccount) }}
+  <app-sign-up
+    *ngIf="!haveAccount"
+    [haveAccount]="haveAccount"
+    (onAccount)="haveAccount = !haveAccount"
+  ></app-sign-up>
+  <app-sign-in
+    *ngIf="haveAccount"
+    [haveAccount]="haveAccount"
+    (notHaveAccount)="haveAccount = !haveAccount"
+  ></app-sign-in>
 </div>

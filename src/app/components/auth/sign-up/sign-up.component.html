@@ -1,5 +1,6 @@
 <div class="container">
   <form class="signup-form" [formGroup]="formSignUp">
+    <h1 class="title">S'inscrire</h1>
     <div class="fields">
       <label for="firstname">Prénom:</label>
       <input
@@ -45,13 +46,10 @@
       />
     </div>
     <div class="buttons">
-      <button class="signIn" type="button" (click)="onCreateUser()">
+      <button class="signup-btn" type="button" (click)="onCreateUser()">
         S'inscrire
       </button>
-      <a [routerLink]="['/auth']">j'ai déjà un compte</a>
-      <!-- <button class="signOut" type="button" (click)="onSignOut()">
-          Se deconnecter
-        </button> -->
+      <button (click)="onHaveAccount()">j'ai déjà un compte</button>
     </div>
   </form>
 </div>

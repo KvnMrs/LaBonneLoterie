@@ -19,7 +19,6 @@
   color: white;
 }
 .fields {
-  width: 90%;
   display: flex;
   flex-direction: column;
   margin: 1em auto;
@@ -34,13 +33,8 @@
  flex-direction: column;
  margin: auto;
 }
-.signOut {
-  padding: 0.5em 1em;
-  border: none;
-  background-color: rgb(238, 88, 88);
-  cursor: pointer;
-}
-.signIn{
+
+.signup-btn {
   padding: 0.5em 1em;
   border: none;
   background-color: #059669;

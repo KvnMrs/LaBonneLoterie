@@ -1,27 +1,6 @@
 <div class="container">
-  <form class="signup-form" [formGroup]="formSignUp">
-    <div class="fields">
-      <label for="firstname">Prénom:</label>
-      <input
-        type="text"
-        id="firstname"
-        name="firstname"
-        formControlName="firstname"
-        autocomplete="username"
-        required
-      />
-    </div>
-    <div class="fields">
-      <label for="lastname">Nom:</label>
-      <input
-        type="text"
-        id="lastname"
-        name="lastname"
-        formControlName="lastname"
-        autocomplete="username"
-        required
-      />
-    </div>
+  <form class="signin-form" [formGroup]="formLogIn">
+    <h1>Se connecter</h1>
     <div class="fields">
       <label for="email">E-mail:</label>
       <input
@@ -45,13 +24,10 @@
       />
     </div>
     <div class="buttons">
-      <button class="signIn" type="button" (click)="onCreateUser()">
-        S'inscrire
+      <button class="signin-btn" type="button" (click)="onLogIn()">
+        Se connecter
       </button>
-      <a [routerLink]="['/auth']">j'ai déjà un compte</a>
-      <!-- <button class="signOut" type="button" (click)="onSignOut()">
-          Se deconnecter
-        </button> -->
+      <button (click)="onNotHaveAccount()">Je n'ai pas de compte</button>
     </div>
   </form>
 </div>

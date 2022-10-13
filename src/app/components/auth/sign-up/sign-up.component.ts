@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth/auth.service';
@@ -10,6 +10,8 @@ import { AuthService } from '../../../services/auth/auth.service';
 })
 export class SignUpComponent implements OnInit {
   public formSignUp!: FormGroup;
+  @Input() haveAccount!: boolean;
+  @Output() onAccount = new EventEmitter<boolean>();
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -25,5 +27,10 @@ export class SignUpComponent implements OnInit {
 
   public onSignOut() {
     this.authService.signOut();
+  }
+
+  onHaveAccount() {
+    // this.haveAccount = false;
+    this.onAccount.emit(this.haveAccount);
   }
 }
