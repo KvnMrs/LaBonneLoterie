@@ -9,6 +9,7 @@ import {
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   updateProfile,
 } from 'firebase/auth';
 import { Observable } from 'rxjs';
@@ -62,6 +63,12 @@ export class AuthService {
         console.error(errorMessage);
         // ..
       });
+  }
+
+  signIn(data: IUser) {
+    signInWithEmailAndPassword(this.auth, data.email, data.password).then(
+      (cred) => console.log('cred -->', cred)
+    );
   }
 
   signOut() {
