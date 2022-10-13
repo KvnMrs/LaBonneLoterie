@@ -11,6 +11,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   updateProfile,
+  signOut,
 } from 'firebase/auth';
 import { Observable } from 'rxjs';
 import { IUser } from 'src/app/models/user/user.model';
@@ -71,8 +72,8 @@ export class AuthService {
     );
   }
 
-  signOut() {
-    return (this.isAuth = false);
+  disconnect() {
+    signOut(this.auth);
   }
 
   canActivate(

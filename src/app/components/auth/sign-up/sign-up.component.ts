@@ -25,12 +25,7 @@ export class SignUpComponent implements OnInit {
     this.router.navigate(['/liste']);
   }
 
-  public onSignOut() {
-    this.authService.signOut();
-  }
-
   onHaveAccount() {
-    // this.haveAccount = false;
     this.onAccount.emit(this.haveAccount);
   }
 }
