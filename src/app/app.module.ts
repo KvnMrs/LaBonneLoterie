@@ -20,7 +20,7 @@ import { ItemDetailsComponent } from './components/item-details/item-details.com
 import { BuyTickectComponent } from './components/buy-tickect/buy-tickect.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SignInComponent } from './components/auth/sign-in/sign-in.component';
-import { LandingPageComponent } from './landing-page/landing-page.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 // Services
 import { AnnouncesService } from './services/announces/announces.service';
 import { AuthService } from './services/auth/auth.service';
