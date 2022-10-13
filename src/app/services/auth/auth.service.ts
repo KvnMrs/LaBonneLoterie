@@ -39,10 +39,7 @@ export class AuthService {
           displayName: `${data.firstname}`,
           photoURL: 'https://example.com/jane-q-user/profile.jpg',
         })
-          .then(() => {
-            console.log('registration successfull');
-            console.log('user -->', user);
-          })
+          // .then(() => {})
           .catch((error) => {
             console.error(error.code);
           });
@@ -67,9 +64,7 @@ export class AuthService {
   }
 
   signIn(data: IUser) {
-    signInWithEmailAndPassword(this.auth, data.email, data.password).then(
-      (cred) => console.log('cred -->', cred)
-    );
+    signInWithEmailAndPassword(this.auth, data.email, data.password).then();
   }
 
   disconnect() {

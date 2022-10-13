@@ -25,12 +25,10 @@ export class BuyTickectComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(async (params) => {
       this.id = params['id'];
-      console.log(this.id);
       await this.announcesService
         .getAnnounceByID(this.id)
         .then((data) => (this.currentAnnounce = data));
     });
-    console.log(this.currentAnnounce);
   }
 
   selectTicket() {

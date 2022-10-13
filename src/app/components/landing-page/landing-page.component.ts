@@ -10,8 +10,4 @@ export class LandingPageComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-
-  log(any: any) {
-    console.log('landing -->', any);
-  }
 }
