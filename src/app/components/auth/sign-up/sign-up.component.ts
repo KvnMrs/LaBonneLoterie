@@ -9,16 +9,16 @@ import { AuthService } from '../../../services/auth/auth.service';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
-  public formAuth!: FormGroup;
+  public formSignUp!: FormGroup;
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.formAuth = this.authService.form;
+    this.formSignUp = this.authService.form;
   }
 
   public onCreateUser() {
-    const dataUser = this.formAuth.value;
+    const dataUser = this.formSignUp.value;
     this.authService.createUser(dataUser);
     this.router.navigate(['/liste']);
   }
