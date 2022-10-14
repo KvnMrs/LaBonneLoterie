@@ -43,12 +43,6 @@ export class AuthService {
         // Signed in
         const user = userCredential.user;
         this.userService.createProfileUser(user.uid, data);
-        // updateProfile(user, {
-        //   displayName: `${data.firstname}`,
-        //   photoURL: 'https://example.com/jane-q-user/profile.jpg',
-        // }).catch((error) => {
-        //   console.error(error.code);
-        // });
       })
       .catch((error) => {
         // const errorCode = error.code;
