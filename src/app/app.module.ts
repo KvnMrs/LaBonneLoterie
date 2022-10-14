@@ -25,6 +25,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { AnnouncesService } from './services/announces/announces.service';
 import { AuthService } from './services/auth/auth.service';
 import { UploadImgService } from './services/uploads/upload-img.service';
+import { ModalProfileComponent } from './components/modals/modal-profile/modal-profile.component';
 
 const appRoutes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -68,6 +69,7 @@ const appRoutes: Routes = [
     ProfileComponent,
     SignInComponent,
     LandingPageComponent,
+    ModalProfileComponent,
   ],
   imports: [
     BrowserModule,
