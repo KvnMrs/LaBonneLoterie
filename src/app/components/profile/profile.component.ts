@@ -7,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
   public stars = [1, 2, 3, 4, 5];
+  modalUpdateProfile = false;
   constructor() {}
 
   ngOnInit(): void {}
+
+  updateProfile() {
+    this.modalUpdateProfile = true;
+  }
 }
