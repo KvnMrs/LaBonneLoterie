@@ -21,11 +21,12 @@ import { BuyTickectComponent } from './components/buy-tickect/buy-tickect.compon
 import { ProfileComponent } from './components/profile/profile.component';
 import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { ModalProfileComponent } from './components/modals/modal-profile/modal-profile.component';
+
 // Services
 import { AnnouncesService } from './services/announces/announces.service';
 import { AuthService } from './services/auth/auth.service';
 import { UploadImgService } from './services/uploads/upload-img.service';
-import { ModalProfileComponent } from './components/modals/modal-profile/modal-profile.component';
 
 const appRoutes: Routes = [
   { path: '', component: LandingPageComponent },

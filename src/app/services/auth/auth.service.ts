@@ -13,15 +13,20 @@ import {
   updateProfile,
   signOut,
 } from 'firebase/auth';
+import { addDoc, collection, Firestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { IUser } from 'src/app/models/user/user.model';
+import { IUser, IUserProfile } from 'src/app/models/user/user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   isAuth = false;
-  constructor(private router: Router, private auth: Auth) {}
+  constructor(
+    private router: Router,
+    private auth: Auth,
+    private firestore: Firestore
+  ) {}
 
   form = new FormGroup({
     firstname: new FormControl('', Validators.required),
@@ -35,25 +40,13 @@ export class AuthService {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        updateProfile(user, {
-          displayName: `${data.firstname}`,
-          photoURL: 'https://example.com/jane-q-user/profile.jpg',
-        })
-          // .then(() => {})
-          .catch((error) => {
-            console.error(error.code);
-          });
-        onAuthStateChanged(this.auth, (user) => {
-          if (user) {
-            // User is signed in, see docs for a list of available properties
-            // https://firebase.google.com/docs/reference/js/firebase.User
-            const uid = user.uid;
-            // ...
-          } else {
-            // User is signed out
-            // ...
-          }
-        });
+        this.createProfileUser(user.uid, data);
+        // updateProfile(user, {
+        //   displayName: `${data.firstname}`,
+        //   photoURL: 'https://example.com/jane-q-user/profile.jpg',
+        // }).catch((error) => {
+        //   console.error(error.code);
+        // });
       })
       .catch((error) => {
         // const errorCode = error.code;
@@ -77,5 +70,11 @@ export class AuthService {
   ): Observable<boolean> | Promise<boolean> | boolean {
     if (this.isAuth) return true;
     else return this.router.navigate(['auth']);
+  }
+
+  createProfileUser(uid: string, user: IUserProfile) {
+    user.uid = uid;
+    const userProfileRef = collection(this.firestore, 'UserProfiles');
+    return addDoc(userProfileRef, user);
   }
 }

@@ -12,8 +12,8 @@ export interface IUserProfile {
   lastname: string;
   email: string;
   password: string;
-  announcesUser: Array<string>;
-  imgUrl: string;
-  phoneNumber: string;
-  rate: number;
+  announcesUser?: Array<string>;
+  imgUrl?: string;
+  phoneNumber?: string;
+  rate?: number;
 }
