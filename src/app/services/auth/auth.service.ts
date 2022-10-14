@@ -16,6 +16,7 @@ import {
 import { addDoc, collection, Firestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { IUser, IUserProfile } from 'src/app/models/user/user.model';
+import { UserService } from '../users/user.service';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +26,8 @@ export class AuthService {
   constructor(
     private router: Router,
     private auth: Auth,
-    private firestore: Firestore
+    private firestore: Firestore,
+    private userService: UserService
   ) {}
 
   form = new FormGroup({
@@ -40,7 +42,7 @@ export class AuthService {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        this.createProfileUser(user.uid, data);
+        this.userService.createProfileUser(user.uid, data);
         // updateProfile(user, {
         //   displayName: `${data.firstname}`,
         //   photoURL: 'https://example.com/jane-q-user/profile.jpg',
@@ -72,9 +74,9 @@ export class AuthService {
     else return this.router.navigate(['auth']);
   }
 
-  createProfileUser(uid: string, user: IUserProfile) {
-    user.uid = uid;
-    const userProfileRef = collection(this.firestore, 'UserProfiles');
-    return addDoc(userProfileRef, user);
-  }
+  // createProfileUser(uid: string, user: IUserProfile) {
+  //   user.uid = uid;
+  //   const userProfileRef = collection(this.firestore, 'UserProfiles');
+  //   return addDoc(userProfileRef, user);
+  // }
 }
