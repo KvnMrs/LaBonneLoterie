@@ -11,8 +11,8 @@
           src="assets/svg/star.svg"
         />
       </div>
-      <p>Kévin Marais</p>
-      <p>Nantes</p>
+      <p>{{profileData?.['firstname']}} {{profileData?.['lastname']}}</p>
+      <p>{{profileData?.['ville']}}</p>
       <button type="button" (click)="updateProfile()">Modifier profil</button>
     </div>
   </div>

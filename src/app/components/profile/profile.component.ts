@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DocumentData } from 'firebase/firestore';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
   public stars = [1, 2, 3, 4, 5];
+  public profileData: DocumentData | undefined;
   modalUpdateProfile = false;
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.profileData = this.authService.userData;
+  }
 
   updateProfile() {
     this.modalUpdateProfile = true;

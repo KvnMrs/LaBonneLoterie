@@ -21,7 +21,7 @@ export class SignInComponent implements OnInit {
 
   public onLogIn() {
     const dataUser = this.formLogIn.value;
-    this.authService.createUser(dataUser);
+    this.authService.signIn(dataUser);
     this.router.navigate(['/liste']);
   }
 

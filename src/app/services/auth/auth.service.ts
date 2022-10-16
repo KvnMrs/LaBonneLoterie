@@ -13,7 +13,12 @@ import {
   updateProfile,
   signOut,
 } from 'firebase/auth';
-import { addDoc, collection, Firestore } from '@angular/fire/firestore';
+import {
+  addDoc,
+  collection,
+  DocumentData,
+  Firestore,
+} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { IUser, IUserProfile } from 'src/app/models/user/user.model';
 import { UserService } from '../users/user.service';
@@ -23,6 +28,7 @@ import { UserService } from '../users/user.service';
 })
 export class AuthService {
   isAuth = false;
+  userData: DocumentData | undefined;
   constructor(
     private router: Router,
     private auth: Auth,
@@ -53,7 +59,16 @@ export class AuthService {
   }
 
   signIn(data: IUser) {
-    signInWithEmailAndPassword(this.auth, data.email, data.password).then();
+    signInWithEmailAndPassword(this.auth, data.email, data.password);
+    onAuthStateChanged(this.auth, (user) => {
+      if (user) {
+        this.userService
+          .getUserByID(user.uid)
+          .then((data) => (this.userData = data));
+      } else {
+        console.log('User is signed out');
+      }
+    });
   }
 
   disconnect() {
@@ -67,10 +82,4 @@ export class AuthService {
     if (this.isAuth) return true;
     else return this.router.navigate(['auth']);
   }
-
-  // createProfileUser(uid: string, user: IUserProfile) {
-  //   user.uid = uid;
-  //   const userProfileRef = collection(this.firestore, 'UserProfiles');
-  //   return addDoc(userProfileRef, user);
-  // }
 }
