@@ -39,6 +39,8 @@ export class AuthService {
   form = new FormGroup({
     firstname: new FormControl('', Validators.required),
     lastname: new FormControl('', Validators.required),
+    city: new FormControl('', Validators.required),
+    phoneNumber: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
