@@ -1,8 +1,9 @@
 <div class="container">
   <div class="profile-part">
-    <!-- <div class="img-part"> -->
-    <img src="assets/svg/profile.svg" class="profile-img" />
-    <!-- </div> -->
+    <div class="img-part">
+      <img src="assets/svg/profile.svg" class="profile-img" />
+      <button type="button" (click)="updateProfile()">Modifier profil</button>
+    </div>
     <div>
       <div class="stars-container">
         <img
@@ -14,7 +15,7 @@
       <p>{{profileData?.['firstname']}} {{profileData?.['lastname']}}</p>
       <p>{{profileData?.['city']}}</p>
       <p>{{profileData?.['phoneNumber']}}</p>
-      <button type="button" (click)="updateProfile()">Modifier profil</button>
     </div>
   </div>
+  <app-modal-profile *ngIf="modalUpdateProfile"></app-modal-profile>
 </div>
