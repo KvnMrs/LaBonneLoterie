@@ -37,6 +37,7 @@ export class AuthService {
   ) {}
 
   form = new FormGroup({
+    uid: new FormControl('', Validators.required),
     firstname: new FormControl('', Validators.required),
     lastname: new FormControl('', Validators.required),
     city: new FormControl('', Validators.required),
@@ -50,6 +51,7 @@ export class AuthService {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+        data.uid = user.uid;
         this.userService.createProfileUser(user.uid, data);
       })
       .catch((error) => {
@@ -68,7 +70,7 @@ export class AuthService {
           .getUserByID(user.uid)
           .then((data) => (this.userData = data));
       } else {
-        console.log('User is signed out');
+        console.log('User is signed in');
       }
     });
   }

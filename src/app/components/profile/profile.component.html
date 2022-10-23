@@ -1,7 +1,11 @@
 <div class="container">
   <div class="profile-part">
     <div class="img-part">
-      <img src="assets/svg/profile.svg" class="profile-img" />
+      <img
+        [src]=" profileData?.['imgProfile'] ? profileData?.['imgProfile'] :
+      'assets/svg/profile.svg' "
+        class="profile-img"
+      />
       <button type="button" (click)="updateProfile()">Modifier profil</button>
     </div>
     <div>
@@ -17,5 +21,10 @@
       <p>{{profileData?.['phoneNumber']}}</p>
     </div>
   </div>
-  <app-modal-profile *ngIf="modalUpdateProfile"></app-modal-profile>
+  <app-modal-profile
+    *ngIf="modalUpdateProfile"
+    [profileData]="profileData"
+    [modalUpdateProfile]="modalUpdateProfile"
+    (modalUpdateEvent)="modalUpdateProfile = !modalUpdateProfile"
+  ></app-modal-profile>
 </div>

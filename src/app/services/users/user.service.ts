@@ -27,4 +27,9 @@ export class UserService {
     const DOC_SNAP: DocumentSnapshot<DocumentData> = await getDoc(userRef);
     return DOC_SNAP.data();
   }
+
+  upadteUserProfile(imgUrl: string, userData: IUserProfile) {
+    const userRef = doc(this.firestore, `UserProfiles`, userData.uid);
+    setDoc(userRef, { ...userData, imgProfile: imgUrl });
+  }
 }
