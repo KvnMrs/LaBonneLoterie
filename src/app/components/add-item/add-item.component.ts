@@ -36,9 +36,11 @@ export class AddItemComponent implements OnInit {
   }
 
   async onUpload() {
-    this.loading = !this.loading;
-    console.log(this.file);
-    return this.uploadImgService.upload(this.file);
+    if (!this.file) return;
+    else {
+      this.loading = !this.loading;
+      return this.uploadImgService.uploadAnnounceImg(this.file);
+    }
   }
 
   async onSubmit() {
