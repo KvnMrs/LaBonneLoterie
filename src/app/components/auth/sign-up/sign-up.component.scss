@@ -1,0 +1,42 @@
+:host {
+  width: 50%;
+  height: 95vh;
+}
+
+.container {
+  background-color: gray;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-form {
+  width: 50%;
+  margin: auto;
+  padding: 2em;
+  border: solid white;
+  color: white;
+}
+.fields {
+  display: flex;
+  flex-direction: column;
+  margin: 1em auto;
+}
+.buttons {
+ width: 70%;
+ height: 6em;
+ display: flex;
+ place-content: center;
+ justify-content: space-evenly;
+ text-align: center;
+ flex-direction: column;
+ margin: auto;
+}
+
+.signup-btn {
+  padding: 0.5em 1em;
+  border: none;
+  background-color: #059669;
+  cursor: pointer;
+}

@@ -9,21 +9,39 @@ import {
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   updateProfile,
+  signOut,
 } from 'firebase/auth';
+import {
+  addDoc,
+  collection,
+  DocumentData,
+  Firestore,
+} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { IUser } from 'src/app/models/annouce/user.model';
+import { IUser, IUserProfile } from 'src/app/models/user/user.model';
+import { UserService } from '../users/user.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   isAuth = false;
-  constructor(private router: Router, private auth: Auth) {}
+  userData: DocumentData | undefined;
+  constructor(
+    private router: Router,
+    private auth: Auth,
+    private firestore: Firestore,
+    private userService: UserService
+  ) {}
 
   form = new FormGroup({
+    uid: new FormControl('', Validators.required),
     firstname: new FormControl('', Validators.required),
     lastname: new FormControl('', Validators.required),
+    city: new FormControl('', Validators.required),
+    phoneNumber: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
@@ -33,28 +51,8 @@ export class AuthService {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        updateProfile(user, {
-          displayName: `${data.firstname}`,
-          photoURL: 'https://example.com/jane-q-user/profile.jpg',
-        })
-          .then(() => {
-            console.log('registration successfull');
-            console.log('user -->', user);
-          })
-          .catch((error) => {
-            console.error(error.code);
-          });
-        onAuthStateChanged(this.auth, (user) => {
-          if (user) {
-            // User is signed in, see docs for a list of available properties
-            // https://firebase.google.com/docs/reference/js/firebase.User
-            const uid = user.uid;
-            // ...
-          } else {
-            // User is signed out
-            // ...
-          }
-        });
+        data.uid = user.uid;
+        this.userService.createProfileUser(user.uid, data);
       })
       .catch((error) => {
         // const errorCode = error.code;
@@ -64,8 +62,21 @@ export class AuthService {
       });
   }
 
-  signOut() {
-    return (this.isAuth = false);
+  signIn(data: IUser) {
+    signInWithEmailAndPassword(this.auth, data.email, data.password);
+    onAuthStateChanged(this.auth, (user) => {
+      if (user) {
+        this.userService
+          .getUserByID(user.uid)
+          .then((data) => (this.userData = data));
+      } else {
+        console.log('User is signed in');
+      }
+    });
+  }
+
+  disconnect() {
+    signOut(this.auth);
   }
 
   canActivate(

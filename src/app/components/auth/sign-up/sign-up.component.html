@@ -1,0 +1,77 @@
+<div class="container">
+  <form class="signup-form" [formGroup]="formSignUp">
+    <h1 class="title">S'inscrire</h1>
+    <div class="fields">
+      <label for="firstname">Prénom:</label>
+      <input
+        type="text"
+        id="firstname"
+        name="firstname"
+        formControlName="firstname"
+        autocomplete="username"
+        required
+      />
+    </div>
+    <div class="fields">
+      <label for="lastname">Nom:</label>
+      <input
+        type="text"
+        id="lastname"
+        name="lastname"
+        formControlName="lastname"
+        autocomplete="username"
+        required
+      />
+    </div>
+    <div class="fields">
+      <label for="city">Ville:</label>
+      <input
+        type="text"
+        id="city"
+        name="city"
+        formControlName="city"
+        autocomplete="username"
+        required
+      />
+    </div>
+    <div class="fields">
+      <label for="phoneNumber">Téléphone:</label>
+      <input
+        type="number"
+        id="phoneNumber"
+        name="phoneNumber"
+        formControlName="phoneNumber"
+        autocomplete="username"
+        required
+      />
+    </div>
+    <div class="fields">
+      <label for="email">E-mail:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        formControlName="email"
+        autocomplete="username"
+        required
+      />
+    </div>
+    <div class="fields">
+      <label for="password">Mot de passe:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        formControlName="password"
+        autocomplete="current-password"
+        required
+      />
+    </div>
+    <div class="buttons">
+      <button class="signup-btn" type="button" (click)="onCreateUser()">
+        S'inscrire
+      </button>
+      <button (click)="onHaveAccount()">j'ai déjà un compte</button>
+    </div>
+  </form>
+</div>

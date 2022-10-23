@@ -6,7 +6,8 @@
       <li class="links">
         <a [routerLink]="['/ajout-annonce']">Ajouter une annonce </a>
       </li>
-      <!-- <li class="links"><a href="#">Profil</a></li> -->
+      <li class="links"><a [routerLink]="['/profil']">Profil</a></li>
     </ul>
+    <button type="button" (click)="onDisconnect()">Se déconnecter</button>
   </nav>
 </div>

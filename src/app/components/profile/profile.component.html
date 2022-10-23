@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="profile-part">
+    <div class="img-part">
+      <img
+        [src]=" profileData?.['imgProfile'] ? profileData?.['imgProfile'] :
+      'assets/svg/profile.svg' "
+        class="profile-img"
+      />
+      <button type="button" (click)="updateProfile()">Modifier profil</button>
+    </div>
+    <div>
+      <div class="stars-container">
+        <img
+          *ngFor="let star of stars"
+          class="star"
+          src="assets/svg/star.svg"
+        />
+      </div>
+      <p>{{profileData?.['firstname']}} {{profileData?.['lastname']}}</p>
+      <p>{{profileData?.['city']}}</p>
+      <p>{{profileData?.['phoneNumber']}}</p>
+    </div>
+  </div>
+  <app-modal-profile
+    *ngIf="modalUpdateProfile"
+    [profileData]="profileData"
+    [modalUpdateProfile]="modalUpdateProfile"
+    (modalUpdateEvent)="modalUpdateProfile = !modalUpdateProfile"
+  ></app-modal-profile>
+</div>

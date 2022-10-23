@@ -1,0 +1,33 @@
+<div class="container">
+  <form class="signin-form" [formGroup]="formLogIn">
+    <h1>Se connecter</h1>
+    <div class="fields">
+      <label for="email">E-mail:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        formControlName="email"
+        autocomplete="username"
+        required
+      />
+    </div>
+    <div class="fields">
+      <label for="password">Mot de passe:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        formControlName="password"
+        autocomplete="current-password"
+        required
+      />
+    </div>
+    <div class="buttons">
+      <button class="signin-btn" type="button" (click)="onLogIn()">
+        Se connecter
+      </button>
+      <button (click)="onNotHaveAccount()">Je n'ai pas de compte</button>
+    </div>
+  </form>
+</div>

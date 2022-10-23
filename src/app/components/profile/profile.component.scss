@@ -1,0 +1,33 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+}
+.profile-part {
+  width: 40%;
+  min-height: 40%;
+  padding: 5rem;
+  display: flex;
+  justify-content: space-around;
+  align-self: center;
+  background-color: red;
+}
+.img-part {
+  display: flex;
+  flex-direction: column;
+}
+.profile-img {
+  width: 8rem;
+  height: 8rem;
+}
+
+.stars-container {
+  display: flex;
+}
+.star {
+  width: 1rem;
+  height: 1rem;
+  margin: 0 0.1rem;
+}
