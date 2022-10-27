@@ -32,10 +32,6 @@ const appRoutes: Routes = [
   { path: '', component: LandingPageComponent },
   // { path: '', component: SignUpComponent },
   {
-    path: 'auth',
-    component: SignInComponent,
-  },
-  {
     path: 'liste',
     /* canActivate: [AuthGuardService], */ component: ListItemsComponent,
   },
