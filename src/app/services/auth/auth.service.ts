@@ -10,17 +10,11 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
-  updateProfile,
   signOut,
 } from 'firebase/auth';
-import {
-  addDoc,
-  collection,
-  DocumentData,
-  Firestore,
-} from '@angular/fire/firestore';
+import { DocumentData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { IUser, IUserProfile } from 'src/app/models/user/user.model';
+import { IUser } from 'src/app/models/user/user.model';
 import { UserService } from '../users/user.service';
 
 @Injectable({
@@ -32,7 +26,6 @@ export class AuthService {
   constructor(
     private router: Router,
     private auth: Auth,
-    private firestore: Firestore,
     private userService: UserService
   ) {}
 
