@@ -27,6 +27,7 @@ import { ModalProfileComponent } from './components/modals/modal-profile/modal-p
 import { AnnouncesService } from './services/announces/announces.service';
 import { AuthService } from './services/auth/auth.service';
 import { UploadImgService } from './services/uploads/upload-img.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -79,6 +80,7 @@ const appRoutes: Routes = [
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
     provideAuth(() => getAuth()),
+    NgbModule,
   ],
   providers: [NgForm, AnnouncesService, AuthService, UploadImgService],
   bootstrap: [AppComponent],

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DocumentData } from 'firebase/firestore';
 import { IAnnounce } from 'src/app/models/annouce/annouce.model';
@@ -12,7 +12,7 @@ import { AnnouncesService } from 'src/app/services/announces/announces.service';
 })
 export class BuyTickectComponent implements OnInit {
   id!: string;
-  public formTicket!: FormGroup;
+  public formTicket!: UntypedFormGroup;
   public numberTicket: number = 0;
   public totalPrice: number = 0;
   public currentAnnounce: DocumentData | undefined;

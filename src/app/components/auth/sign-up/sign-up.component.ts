@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth/auth.service';
 
@@ -9,7 +9,7 @@ import { AuthService } from '../../../services/auth/auth.service';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
-  public formSignUp!: FormGroup;
+  public formSignUp!: UntypedFormGroup;
   @Input() haveAccount!: boolean;
   @Output() onAccount = new EventEmitter<boolean>();
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 // Services
 import { AnnouncesService } from '../../services/announces/announces.service';
@@ -18,7 +18,7 @@ export class AddItemComponent implements OnInit {
   shortLink: string = '';
   loading: boolean = false; // Flag variable
   file!: File; // Variable to store file
-  public formAnnounce!: FormGroup;
+  public formAnnounce!: UntypedFormGroup;
 
   constructor(
     public annoucesService: AnnouncesService,
