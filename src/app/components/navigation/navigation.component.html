@@ -1,22 +1,30 @@
 <nav class="navbar bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img
-        src="/docs/5.2/assets/brand/bootstrap-logo.svg"
-        alt="Logo"
-        width="30"
-        height="24"
-        class="d-inline-block align-text-top"
-      />
-      Bootstrap
-    </a>
-    <ul class="d-flex m-0">
-      <li class="links"><a [routerLink]="['/auth']">Accueil </a></li>
-      <li class="links"><a [routerLink]="['/liste']">Liste</a></li>
-      <li class="links">
-        <a [routerLink]="['/ajout-annonce']">Ajouter une annonce </a>
+    <a class="navbar-brand" href="#">LeBonLot</a>
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" [routerLink]="['/']"
+          >Accueil
+        </a>
       </li>
-      <li class="links"><a [routerLink]="['/profil']">Profil</a></li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" [routerLink]="['/liste']"
+          >Liste</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          data-bs-toggle="tab"
+          [routerLink]="['/ajout-annonce']"
+          >Ajouter une annonce
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" [routerLink]="['/profil']"
+          >Profil</a
+        >
+      </li>
     </ul>
   </div>
 </nav>
