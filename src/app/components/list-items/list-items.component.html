@@ -1,11 +1,23 @@
-<div *ngFor="let item of items; let i = index">
-  <app-card-item
-    id="{{ item.id }}"
-    name="{{ item.name }}"
-    category="{{ item.category }}"
-    description="{{ item.description }}"
-    img="{{ item.img_url }}"
-    minTickets="{{ item.minTickets }}"
-    currentTickets="{{ item.currentTickets }}"
-  ></app-card-item>
+<div class="container py-5">
+  <div class="row text-center mb-5">
+    <div class="col-lg-7 mx-auto">
+      <h1 class="display-4">Product List</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <ul class="list-group shadow">
+        <app-card-item
+          *ngFor="let item of items; let i = index"
+          id="{{ item.id }}"
+          name="{{ item.name }}"
+          category="{{ item.category }}"
+          description="{{ item.description }}"
+          img="{{ item.img_url }}"
+          minTickets="{{ item.minTickets }}"
+          currentTickets="{{ item.currentTickets }}"
+        ></app-card-item>
+      </ul>
+    </div>
+  </div>
 </div>

@@ -1,4 +1,4 @@
-<div class="card-container">
+<!-- <div class="card-container">
   <button class="btn-see-details" type="button" (click)="seeDetails()">
     <img class="item-img" src="{{ img }}" />
     <div class="description-part">
@@ -17,4 +17,43 @@
       Acheter ticket(s)
     </button>
   </div>
-</div>
+</div> -->
+
+<li class="list-group-item" (click)="seeDetails()">
+  <!-- Custom content-->
+  <div class="media d-flex align-items-lg-center flex-column flex-lg-row p-3">
+    <div class="w-75 media-body order-2 order-lg-1">
+      <h5 class="mt-0 font-weight-bold mb-2">{{ name }}</h5>
+      <p class="font-italic text-muted mb-0 small">
+        {{ description }}
+      </p>
+      <div class="d-flex align-items-center justify-content-between mt-1">
+        <h6 class="font-weight-bold my-2">₹64,999</h6>
+        <ul class="list-inline small">
+          <li class="list-inline-item m-0">
+            <i class="fa fa-star text-success"></i>
+          </li>
+          <li class="list-inline-item m-0">
+            <i class="fa fa-star text-success"></i>
+          </li>
+          <li class="list-inline-item m-0">
+            <i class="fa fa-star text-success"></i>
+          </li>
+          <li class="list-inline-item m-0">
+            <i class="fa fa-star text-success"></i>
+          </li>
+          <li class="list-inline-item m-0">
+            <i class="fa fa-star-o text-gray"></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <img
+      src="{{ img }}"
+      alt="Generic placeholder image"
+      width="200"
+      class="ml-lg-5 order-1 order-lg-2"
+    />
+  </div>
+  <!-- End -->
+</li>
