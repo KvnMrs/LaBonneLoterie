@@ -1,5 +1,5 @@
 <div class="card-body px-lg-5 text-black">
-  <form>
+  <form [formGroup]="formSignUp">
     <div class="d-flex align-items-center mb-3 pb-1">
       <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219"></i>
     </div>
@@ -56,11 +56,13 @@
     </div>
 
     <div class="form-outline mb-4">
-      <label class="form-label" for="form2Example27">Mot de passe:</label>
+      <label class="form-label" for="password">Mot de passe:</label>
       <input
         type="password"
         id="form2Example27"
         class="form-control form-control-lg"
+        formControlName="password"
+        autocomplete="current-password"
       />
     </div>
 
