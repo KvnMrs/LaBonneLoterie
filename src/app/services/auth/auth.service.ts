@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   ActivatedRouteSnapshot,
   Router,
@@ -29,14 +29,14 @@ export class AuthService {
     private userService: UserService
   ) {}
 
-  form = new UntypedFormGroup({
-    uid: new UntypedFormControl('', Validators.required),
-    firstname: new UntypedFormControl('', Validators.required),
-    lastname: new UntypedFormControl('', Validators.required),
-    city: new UntypedFormControl('', Validators.required),
-    phoneNumber: new UntypedFormControl('', Validators.required),
-    email: new UntypedFormControl('', Validators.required),
-    password: new UntypedFormControl('', Validators.required),
+  form = new FormGroup({
+    uid: new FormControl('', Validators.required),
+    firstname: new FormControl('', Validators.required),
+    lastname: new FormControl('', Validators.required),
+    city: new FormControl('', Validators.required),
+    phoneNumber: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
   });
 
   createUser(data: IUser) {
