@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <form class="signin-form" [formGroup]="formLogIn">
     <h1>Se connecter</h1>
     <div class="fields">
@@ -29,5 +29,61 @@
       </button>
       <button (click)="onNotHaveAccount()">Je n'ai pas de compte</button>
     </div>
+  </form>
+</div> -->
+
+<div class="card-body p-lg-5 text-black">
+  <form>
+    <div class="d-flex align-items-center mb-3 pb-1">
+      <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219"></i>
+    </div>
+
+    <h1 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px">Connexion</h1>
+
+    <div class="form-outline mb-4">
+      <label class="form-label" for="email">E-mail:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        formControlName="email"
+        autocomplete="username"
+        required
+        class="form-control form-control-lg"
+      />
+    </div>
+
+    <div class="form-outline mb-4">
+      <label class="form-label" for="password">Mot de passe:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        formControlName="password"
+        autocomplete="current-password"
+        required
+        class="form-control form-control-lg"
+      />
+    </div>
+
+    <div class="pt-1 mb-4">
+      <button
+        (click)="onLogIn()"
+        class="btn btn-success btn-lg btn-block"
+        type="button"
+      >
+        Se connecter
+      </button>
+    </div>
+
+    <a class="small text-muted" href="#!">Mot de passe oublier?</a>
+    <p class="mb-5 pb-lg-2" style="color: #393f81">
+      je n'ai pas de compte,
+      <a href="/#!" (click)="onNotHaveAccount()" style="color: #393f81"
+        >Créer mon compte</a
+      >
+    </p>
+    <a href="#!" class="small text-muted">Terms of use.</a>
+    <a href="#!" class="small text-muted">Privacy policy</a>
   </form>
 </div>

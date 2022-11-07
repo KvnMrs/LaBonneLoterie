@@ -1,34 +1,11 @@
-.form-container {
-  width: 100%;
-  min-height: 100vh;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+.h-textArea {
+  height: 100px;
 }
-.anounce-title {
-  align-self: center;
-  margin-top: 3em;
+
+.upload-button {
+  height: fit-content;
 }
-.form {
-  background-color: white;
-  width: 40%;
-  height: 30em;
-  margin: 0 auto;
-  border: solid;;
-}
-.fields {
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  margin: 1em auto;
-}
-.fields textarea {
-  height: 5em;
-}
-.btn-submit {
-  padding: 0.5em 1em;
-  margin: auto;
-  background-color: #059669;
-  border: none;
-  cursor: pointer;
+
+.bg-purp {
+  background-color: #712cf9;
 }

@@ -1,13 +1,30 @@
-<div class="navigation-container">
-  <nav class="nav">
-    <ul class="links-list">
-      <li class="links"><a [routerLink]="['/auth']">Accueil </a></li>
-      <li class="links"><a [routerLink]="['/liste']">Liste</a></li>
-      <li class="links">
-        <a [routerLink]="['/ajout-annonce']">Ajouter une annonce </a>
+<nav class="navbar bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">LeBonLot</a>
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" [routerLink]="['/']"
+          >Accueil
+        </a>
       </li>
-      <li class="links"><a [routerLink]="['/profil']">Profil</a></li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" [routerLink]="['/liste']"
+          >Liste</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          data-bs-toggle="tab"
+          [routerLink]="['/ajout-annonce']"
+          >Ajouter une annonce
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" [routerLink]="['/profil']"
+          >Profil</a
+        >
+      </li>
     </ul>
-    <button type="button" (click)="onDisconnect()">Se déconnecter</button>
-  </nav>
-</div>
+  </div>
+</nav>
