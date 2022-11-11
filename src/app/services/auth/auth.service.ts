@@ -30,11 +30,11 @@ export class AuthService {
   ) {}
 
   form = new FormGroup({
-    uid: new FormControl('', Validators.required),
+    uid: new FormControl(''),
     firstname: new FormControl('', Validators.required),
     lastname: new FormControl('', Validators.required),
     city: new FormControl('', Validators.required),
-    phoneNumber: new FormControl('', Validators.required),
+    phoneNumber: new FormControl(''),
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
@@ -46,6 +46,7 @@ export class AuthService {
         const user = userCredential.user;
         data.uid = user.uid;
         this.userService.createProfileUser(user.uid, data);
+        this.router.navigate(['/liste']);
       })
       .catch((error) => {
         // const errorCode = error.code;
@@ -56,12 +57,15 @@ export class AuthService {
   }
 
   signIn(data: IUser) {
-    signInWithEmailAndPassword(this.auth, data.email, data.password);
+    signInWithEmailAndPassword(this.auth, data.email, data.password).catch(
+      (err) => err.message
+    );
     onAuthStateChanged(this.auth, (user) => {
       if (user) {
         this.userService
           .getUserByID(user.uid)
           .then((data) => (this.userData = data));
+        this.router.navigate(['/liste']);
       } else {
         console.log('User is signed in');
       }

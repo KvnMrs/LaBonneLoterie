@@ -71,6 +71,7 @@
         (click)="onCreateUser()"
         class="btn btn-success btn-lg btn-block"
         type="button"
+        [disabled]="!formSignUp.valid"
       >
         S'incrire
       </button>

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UntypedFormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { IUser } from 'src/app/models/user/user.model';
 import { AuthService } from '../../../services/auth/auth.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { AuthService } from '../../../services/auth/auth.service';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
-  public formSignUp!: UntypedFormGroup;
+  public formSignUp!: FormGroup;
   @Input() haveAccount!: boolean;
   @Output() onAccount = new EventEmitter<boolean>();
 
@@ -20,9 +21,8 @@ export class SignUpComponent implements OnInit {
   }
 
   public onCreateUser() {
-    const dataUser = this.formSignUp.value;
+    const dataUser: IUser = this.formSignUp.value;
     this.authService.createUser(dataUser);
-    this.router.navigate(['/liste']);
   }
 
   onHaveAccount() {
