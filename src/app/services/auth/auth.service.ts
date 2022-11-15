@@ -27,7 +27,18 @@ export class AuthService {
     private router: Router,
     private auth: Auth,
     private userService: UserService
-  ) {}
+  ) {
+    this.auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.userService
+          .getUserByID(user.uid)
+          .then((data) => (this.userData = data));
+        this.router.navigate(['/liste']);
+      } else {
+        this.router.navigate(['']);
+      }
+    });
+  }
 
   form = new FormGroup({
     uid: new FormControl(''),
@@ -60,16 +71,6 @@ export class AuthService {
     signInWithEmailAndPassword(this.auth, data.email, data.password).catch(
       (err) => err.message
     );
-    onAuthStateChanged(this.auth, (user) => {
-      if (user) {
-        this.userService
-          .getUserByID(user.uid)
-          .then((data) => (this.userData = data));
-        this.router.navigate(['/liste']);
-      } else {
-        console.log('User is signed in');
-      }
-    });
   }
 
   disconnect() {
