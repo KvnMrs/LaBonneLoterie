@@ -33,7 +33,14 @@
       <p>Mot-clef1 | Mot-clef2 | Mot-clef3</p>
       <p>12$ / ticket</p>
       <p>Actuellement 220 tickets</p>
-      <button type="button" class="btn bg-purp text-white">
+
+      <button
+        type="button"
+        class="btn bg-purp text-white"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+        (click)="onBuyTicketModal()"
+      >
         Acheter ticket(s)
       </button>
     </div>
@@ -54,4 +61,5 @@
       Morbi non consectetur nibh, nec viverra neque.
     </p>
   </div>
+  <app-buy-ticket *ngIf="buyTicketModal"></app-buy-ticket>
 </div>

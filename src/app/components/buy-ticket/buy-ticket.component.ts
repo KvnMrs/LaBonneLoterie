@@ -6,9 +6,9 @@ import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 import { AnnouncesService } from 'src/app/services/announces/announces.service';
 
 @Component({
-  selector: 'app-buy-tickect',
-  templateUrl: './buy-tickect.component.html',
-  styleUrls: ['./buy-tickect.component.scss'],
+  selector: 'app-buy-ticket',
+  templateUrl: './buy-ticket.component.html',
+  styleUrls: ['./buy-ticket.component.scss'],
 })
 export class BuyTickectComponent implements OnInit {
   id!: string;

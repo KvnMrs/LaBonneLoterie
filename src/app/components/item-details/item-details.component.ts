@@ -9,19 +9,27 @@ import { AnnouncesService } from 'src/app/services/announces/announces.service';
 @Component({
   selector: 'app-item-details',
   templateUrl: './item-details.component.html',
-  styleUrls: ['./item-details.component.scss']
+  styleUrls: ['./item-details.component.scss'],
 })
 export class ItemDetailsComponent implements OnInit {
+  public buyTicketModal = false;
 
-  constructor(private route: ActivatedRoute, private announesService : AnnouncesService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private announesService: AnnouncesService
+  ) {}
 
   // retrieve id announce from URL
   paramId: string = this.route.snapshot.params['id'];
 
   // using SERVICE for retrieve informations of the announce by his ID
   announce: Promise<DocumentData | undefined> =
-  this.announesService.getAnnounceByID(this.paramId);
+    this.announesService.getAnnounceByID(this.paramId);
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
+  onBuyTicketModal() {
+    this.buyTicketModal = true;
+    console.log(this.buyTicketModal);
+  }
 }
