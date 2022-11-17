@@ -12,8 +12,6 @@ import { AnnouncesService } from 'src/app/services/announces/announces.service';
   styleUrls: ['./item-details.component.scss'],
 })
 export class ItemDetailsComponent implements OnInit {
-  public buyTicketModal = false;
-
   constructor(
     private route: ActivatedRoute,
     private announesService: AnnouncesService
@@ -27,9 +25,4 @@ export class ItemDetailsComponent implements OnInit {
     this.announesService.getAnnounceByID(this.paramId);
 
   ngOnInit(): void {}
-
-  onBuyTicketModal() {
-    this.buyTicketModal = true;
-    console.log(this.buyTicketModal);
-  }
 }
