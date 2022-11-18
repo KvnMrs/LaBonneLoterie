@@ -1,0 +1,69 @@
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog top-20">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+          Achat ticket(s)
+        </h1>
+        <!-- <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button> -->
+      </div>
+      <div class="modal-body w-75-lg m-auto">
+        <div class="input-group mb-3">
+          <span class="input-group-text">$</span>
+          <input
+            id="numberTicket"
+            type="number"
+            class="form-control"
+            aria-label="Amount (to the nearest dollar)"
+            (change)="selectTicket()"
+          />
+          <button type="button" class="btn btn-outline-success">Valider</button>
+        </div>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th colspan="3" scope="row">Nombre de tickets sélectionnés:</th>
+              <td>{{ numberTicket }}</td>
+            </tr>
+            <tr>
+              <th colspan="3" scope="row">Nombre de chances</th>
+              <td>1/5</td>
+            </tr>
+            <tr>
+              <th colspan="3" scope="row">Prix total:</th>
+              <td>{{ this.totalPrice }} $</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Annuler
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          [disabled]="this.totalPrice < 1"
+          (click)="buyTickets()"
+          data-bs-dismiss="modal"
+        >
+          Acheter
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

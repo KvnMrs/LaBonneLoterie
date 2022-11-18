@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BuyTickectComponent } from './buy-tickect.component';
+import { BuyTickectComponent } from './buy-ticket.component';
 
 describe('BuyTickectComponent', () => {
   let component: BuyTickectComponent;
@@ -8,9 +8,8 @@ describe('BuyTickectComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BuyTickectComponent ]
-    })
-    .compileComponents();
+      declarations: [BuyTickectComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

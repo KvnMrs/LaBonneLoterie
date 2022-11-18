@@ -17,7 +17,7 @@ import { ListItemsComponent } from './components/list-items/list-items.component
 import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { ItemDetailsComponent } from './components/item-details/item-details.component';
-import { BuyTickectComponent } from './components/buy-tickect/buy-tickect.component';
+import { BuyTickectComponent } from './components/buy-ticket/buy-ticket.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';

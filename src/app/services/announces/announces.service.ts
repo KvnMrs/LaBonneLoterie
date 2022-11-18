@@ -10,7 +10,11 @@ import {
   Firestore,
   getDoc,
 } from '@angular/fire/firestore';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormControl,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { setDoc } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { IAnnounce } from '../../models/annouce/annouce.model';
@@ -58,7 +62,7 @@ export class AnnouncesService {
     return deleteDoc(announceDocRef);
   }
 
-  async buyTicket(id: string, numberTicketsBuyed: number) {
+  async updateAnnouceTickets(id: string, numberTicketsBuyed: number) {
     let actualisationTickets: number;
     const announceRef = doc(this.firestore, `Announces`, id);
     const announce = await this.getAnnounceByID(id).then((res) => res);
