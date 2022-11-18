@@ -37,11 +37,8 @@ export class BuyTickectComponent implements OnInit {
     this.totalPrice =
       this.numberTicket * this.currentAnnounce?.['oneTicketPrice'];
   }
-  buyTicket() {
-    if (this.numberTicket < 1) return;
-    else {
-      this.announcesService.buyTicket(this.id, this.numberTicket);
-      this.router.navigate(['/liste']);
-    }
+  buyTickets() {
+    this.announcesService.updateAnnouceTickets(this.id, this.numberTicket);
+    this.router.navigate(['/liste']);
   }
 }
