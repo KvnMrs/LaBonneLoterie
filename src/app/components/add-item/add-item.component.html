@@ -135,20 +135,26 @@
                   </div>
                 </div>
                 <div class="d-flex mb-4">
-                  <div class="row">
+                  <!-- <div class="row">
                     <label for="files" class="form-label"
                       >Sélectionner une image</label
                     >
                     <input type="file" (change)="onChange($event)" />
+                  </div> -->
+                  <div class="input-group mb-3">
+                    <input
+                      type="file"
+                      class="form-control"
+                      (change)="onChange($event)"
+                    />
+                    <button
+                      class="btn btn-success m-auto upload-button"
+                      type="button"
+                      (click)="onUpload()"
+                    >
+                      Télécharger
+                    </button>
                   </div>
-
-                  <button
-                    class="btn btn-success m-auto upload-button"
-                    type="button"
-                    (click)="onUpload()"
-                  >
-                    Télécharger
-                  </button>
                 </div>
 
                 <div *ngIf="loading">
