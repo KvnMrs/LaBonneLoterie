@@ -1,1 +1,139 @@
-<mxfile host="app.diagrams.net" modified="2023-02-28T14:07:54.367Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" version="20.8.23" etag="25i1CjxfYkBG90ja9QNb" type="github"><diagram name="Page-1" id="b0jSZKEunZGKtJBesZp8">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2023-02-28T20:29:52.637Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="Scw9xeFxexSlBL2l1WJ4" version="20.8.23" type="github">
+  <diagram name="Page-1" id="b0jSZKEunZGKtJBesZp8">
+    <mxGraphModel dx="3320" dy="1831" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-4" value="&lt;h1&gt;&lt;font color=&quot;#712cf9&quot; style=&quot;font-size: 24px;&quot;&gt;LeBonLot&lt;/font&gt;&lt;/h1&gt;&lt;font color=&quot;#712cf9&quot; style=&quot;font-size: 15px;&quot;&gt;LBL&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=18;verticalAlign=top;horizontal=1;align=center;fontColor=#dcf6ff;labelBorderColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-180" y="-270" width="320" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-75" value="Users" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=25;labelBackgroundColor=none;labelBorderColor=none;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="-1040" y="350" width="480" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-98" value="user_id                                     Varchar(256)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-75">
+          <mxGeometry y="50" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-93" value="email                                        Varchar(256)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-75">
+          <mxGeometry y="80" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-143" value="password                                Varchar(1000)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-75">
+          <mxGeometry y="110" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-102" value="Announces" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=25;labelBackgroundColor=none;labelBorderColor=none;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="-300" y="20" width="480" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-103" value="announce_Id                          Varchar(256)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-102">
+          <mxGeometry y="50" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-113" value="created_at                              Datetime" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-102">
+          <mxGeometry y="80" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-114" value="timer                                       Datetime" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-102">
+          <mxGeometry y="110" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-157" value="status                                      Varchar(50)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-102">
+          <mxGeometry y="140" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-104" value="title                                         Varchar(50)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-102">
+          <mxGeometry y="170" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-105" value="category                                 Varchar(50)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-102">
+          <mxGeometry y="200" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-112" value="description                             Varchar(500)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-102">
+          <mxGeometry y="230" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-109" value="estimate                                 INT" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-102">
+          <mxGeometry y="260" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-106" value="ticket_max                              INT" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-102">
+          <mxGeometry y="290" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-107" value="ticket_min                               INT" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-102">
+          <mxGeometry y="320" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-108" value="ticket_price                             INT" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-102">
+          <mxGeometry y="350" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-110" value="announce_picture                  Varchar(500)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-102">
+          <mxGeometry y="380" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-139" value="FK_user_id                            Varchar&#xa;                                  " style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-102">
+          <mxGeometry y="410" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-123" value="Orders" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=25;labelBackgroundColor=none;labelBorderColor=none;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="-310" y="570" width="480" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-124" value="order_id                                  INT" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-123">
+          <mxGeometry y="50" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-126" value="FK_announce_id                    INT" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-123">
+          <mxGeometry y="80" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-133" value="FK_user_id                             Varchar(256)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-123">
+          <mxGeometry y="110" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-134" value="created_at                              Varchar(256)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-123">
+          <mxGeometry y="140" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-135" value="status                                      Varchar(50)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-123">
+          <mxGeometry y="170" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-136" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;rounded=0;fontColor=#000000;exitX=1.002;exitY=0.826;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="ob5WIRrlHEzOrrlclKuL-98" target="ob5WIRrlHEzOrrlclKuL-133">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="260" y="480" as="sourcePoint" />
+            <mxPoint x="360" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-138" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;rounded=0;fontColor=#000000;entryX=1.009;entryY=0.707;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="ob5WIRrlHEzOrrlclKuL-103" target="ob5WIRrlHEzOrrlclKuL-126">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="950" y="420" as="sourcePoint" />
+            <mxPoint x="1050" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-141" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;rounded=0;fontColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="ob5WIRrlHEzOrrlclKuL-98" target="ob5WIRrlHEzOrrlclKuL-139">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="610" y="630" as="sourcePoint" />
+            <mxPoint x="710" y="530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-144" value="Users profile" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=25;labelBackgroundColor=none;labelBorderColor=none;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="-1030" y="730" width="480" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-145" value="FK_user_id                              Varchar" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-144">
+          <mxGeometry y="50" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-146" value="firstname                                  Varchar(256)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-144">
+          <mxGeometry y="80" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-147" value="lastname                                  Varchar(256)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-144">
+          <mxGeometry y="110" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-148" value="email                                        Varchar(256)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-144">
+          <mxGeometry y="140" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-149" value="password                                Varchar(1000)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-144">
+          <mxGeometry y="170" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-150" value="department                              Varchar(256)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-144">
+          <mxGeometry y="200" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-151" value="city                                           Varchar(256)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-144">
+          <mxGeometry y="230" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-152" value="rate                                          INT" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-144">
+          <mxGeometry y="260" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-153" value="profile_picture                         Varchar(1000)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;fontColor=#000000;" vertex="1" parent="ob5WIRrlHEzOrrlclKuL-144">
+          <mxGeometry y="290" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ob5WIRrlHEzOrrlclKuL-156" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERone;endFill=1;rounded=0;fontColor=#000000;" edge="1" parent="1" source="ob5WIRrlHEzOrrlclKuL-145" target="ob5WIRrlHEzOrrlclKuL-98">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="-540" y="800" as="sourcePoint" />
+            <mxPoint x="-650" y="540" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
