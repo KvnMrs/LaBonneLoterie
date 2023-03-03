@@ -1,15 +1,13 @@
-<div class="card-body px-lg-5 text-black">
+<div class="">
   <form [formGroup]="formSignUp">
-    <div class="d-flex align-items-center mb-3 pb-1">
-      <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219"></i>
-    </div>
+    <div class=""></div>
 
-    <h1 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px">Inscription</h1>
+    <h1 class="">Inscription</h1>
 
-    <div class="form-outline mb-1">
-      <label class="form-label" for="firstname">Prénom:</label>
+    <div class="">
+      <label class="" for="firstname">Prénom:</label>
       <input
-        class="form-control form-control-lg"
+        class=""
         type="text"
         id="firstname"
         name="firstname"
@@ -18,10 +16,10 @@
         required
       />
     </div>
-    <div class="form-outline mb-1">
-      <label class="form-label" for="lastname">Nom:</label>
+    <div class="">
+      <label class="" for="lastname">Nom:</label>
       <input
-        class="form-control form-control-lg"
+        class=""
         type="text"
         id="lastname"
         name="lastname"
@@ -30,10 +28,10 @@
         required
       />
     </div>
-    <div class="form-outline mb-1">
-      <label class="form-label" for="city">Ville:</label>
+    <div class="">
+      <label class="" for="city">Ville:</label>
       <input
-        class="form-control form-control-lg"
+        class=""
         type="text"
         id="city"
         name="city"
@@ -42,10 +40,10 @@
         required
       />
     </div>
-    <div class="form-outline mb-1">
-      <label class="form-label" for="email">E-mail:</label>
+    <div class="">
+      <label class="" for="email">E-mail:</label>
       <input
-        class="form-control form-control-lg"
+        class=""
         type="email"
         id="email"
         name="email"
@@ -55,21 +53,21 @@
       />
     </div>
 
-    <div class="form-outline mb-4">
-      <label class="form-label" for="password">Mot de passe:</label>
+    <div class="">
+      <label class="" for="password">Mot de passe:</label>
       <input
         type="password"
         id="form2Example27"
-        class="form-control form-control-lg"
+        class=""
         formControlName="password"
         autocomplete="current-password"
       />
     </div>
 
-    <div class="pt-1 mb-4">
+    <div class="">
       <button
         (click)="onCreateUser()"
-        class="btn btn-success btn-lg btn-block"
+        class=""
         type="button"
         [disabled]="!formSignUp.valid"
       >
@@ -77,13 +75,11 @@
       </button>
     </div>
 
-    <p class="mb-5 pb-lg-2" style="color: #393f81">
+    <p class="">
       j'ai déjà un compte,
-      <a href="#!" style="color: #393f81" (click)="onHaveAccount()">
-        me connecter
-      </a>
+      <a href="#!" (click)="onHaveAccount()"> me connecter </a>
     </p>
-    <a href="#!" class="small text-muted">Terms of use.</a>
-    <a href="#!" class="small text-muted">Privacy policy</a>
+    <a href="#!" class="">Terms of use.</a>
+    <a href="#!" class="">Privacy policy</a>
   </form>
 </div>
