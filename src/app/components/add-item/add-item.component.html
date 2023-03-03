@@ -1,112 +1,34 @@
-<!-- <div class="form-container">
-  <h1 class="anounce-title">Créer une annonce</h1>
-  <form [formGroup]="formAnnounce" (ngSubmit)="onSubmit()" class="form">
-    <div class="fields">
-      <label for="announce-name">Titre de l'annonce:</label>
-      <input
-        type="text"
-        id="announce-name"
-        name="announce-name"
-        formControlName="name"
-        required
-      />
-    </div>
-    <div class="fields">
-      <label for="announce-category">Catégorie de l'annonce:</label>
-      <input
-        type="text"
-        id="announce-category"
-        name="announce-category"
-        formControlName="category"
-        required
-      />
-    </div>
-    <div class="fields">
-      <label for="announce-description">Description de l'annonce:</label>
-      <textarea
-        type="text"
-        id="announce-description"
-        name="announce-description"
-        formControlName="description"
-        required
-      ></textarea>
-    </div>
-    <div class="fields">
-      <label for="announce-minTickets">Nombre minimum de tickets:</label>
-      <input
-        type="number"
-        id="announce-minTickets"
-        name="announce-minTickets"
-        formControlName="minTickets"
-        required
-      />
-    </div>
-    <div class="fields">
-      <label for="announce-oneTicketPrice">Prix ticket a l'unité:</label>
-      <input
-        type="number"
-        id="announce-oneTicketPrice"
-        name="announce-oneTicketPrice"
-        formControlName="oneTicketPrice"
-        required
-      />
-    </div>
-    <div>
-      <input type="file" (change)="onChange($event)" />
-      <button (click)="onUpload()">Upload</button>
-    </div>
-
-    <div *ngIf="shortLink">
-      <h2>Visit Here</h2>
-      <a href="{{ shortLink }}">{{ shortLink }}</a>
-    </div>
-
-    <div *ngIf="loading">
-      <h3>Loading ...</h3>
-    </div>
-    <div class="fields">
-      <button type="submit" class="btn-submit">Ajouter</button>
-    </div>
-    <ng-template [ngIf]="showErrorMessage">
-      <div>Veuillez remplir tous les champs</div>
-    </ng-template>
-  </form>
-</div> -->
-
-<section class="vh-100 gradient-custom">
-  <div class="container py-5 h-100">
-    <div class="row justify-content-center align-items-center h-100">
-      <div class="col-12 col-lg-9 col-xl-7">
-        <div
-          class="card shadow-2-strong card-registration"
-          style="border-radius: 15px"
-        >
-          <div class="card-body p-4 p-md-5">
-            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Créer une annonce</h3>
+<section class="">
+  <div class="">
+    <div class="">
+      <div class="">
+        <div class="">
+          <div class="">
+            <h3 class="">Créer une annonce</h3>
             <form [formGroup]="formAnnounce" (ngSubmit)="onSubmit()">
-              <div class="row">
-                <div class="col-md-6 mb-4">
-                  <div class="form-outline">
-                    <label class="form-label" for="firstName">Titre:</label>
+              <div class="">
+                <div class="">
+                  <div class="">
+                    <label class="" for="firstName">Titre:</label>
                     <input
                       type="text"
                       id="announce-name"
                       name="announce-name"
                       formControlName="name"
-                      class="form-control form-control-lg"
+                      class=""
                       required
                     />
                   </div>
                 </div>
-                <div class="col-md-6 mb-4">
-                  <label class="form-label select-label">Catégorie:</label>
+                <div class="">
+                  <label class="">Catégorie:</label>
                   <select
                     type="text"
                     id="announce-category"
                     name="announce-category"
                     formControlName="category"
                     required
-                    class="select form-control-lg"
+                    class=""
                   >
                     <option value="1" disabled>
                       Selectionnez une catégorie
@@ -118,10 +40,10 @@
                 </div>
               </div>
 
-              <div class="row">
-                <div class="col-md-12 mb-4 d-flex align-items-center">
-                  <div class="form-outline datepicker w-100">
-                    <label for="announce-description" class="form-label"
+              <div class="">
+                <div class="">
+                  <div class="">
+                    <label for="announce-description" class=""
                       >Description:</label
                     >
                     <textarea
@@ -129,29 +51,15 @@
                       id="announce-description"
                       name="announce-description"
                       formControlName="description"
-                      class="form-control form-control-lg h-textArea"
+                      class=""
                       required
                     ></textarea>
                   </div>
                 </div>
-                <div class="d-flex mb-4">
-                  <!-- <div class="row">
-                    <label for="files" class="form-label"
-                      >Sélectionner une image</label
-                    >
-                    <input type="file" (change)="onChange($event)" />
-                  </div> -->
-                  <div class="input-group mb-3">
-                    <input
-                      type="file"
-                      class="form-control"
-                      (change)="onChange($event)"
-                    />
-                    <button
-                      class="btn btn-success m-auto upload-button"
-                      type="button"
-                      (click)="onUpload()"
-                    >
+                <div class="">
+                  <div class="">
+                    <input type="file" class="" (change)="onChange($event)" />
+                    <button class="" type="button" (click)="onUpload()">
                       Télécharger
                     </button>
                   </div>
@@ -165,10 +73,10 @@
                 </ng-template>
               </div>
 
-              <div class="row">
-                <div class="col-md-6 mb-4 pb-2">
-                  <div class="form-outline">
-                    <label class="form-label" for="emailAddress"
+              <div class="">
+                <div class="">
+                  <div class="">
+                    <label class="" for="emailAddress"
                       >Prix ticket unitaire</label
                     >
                     <input
@@ -176,17 +84,15 @@
                       id="announce-oneTicketPrice"
                       name="announce-oneTicketPrice"
                       formControlName="oneTicketPrice"
-                      class="form-control form-control-lg"
+                      class=""
                       required
                     />
                   </div>
                 </div>
               </div>
 
-              <div class="mt-4 pt-2">
-                <button class="btn bg-purp text-white btn-lg" type="submit">
-                  Publier
-                </button>
+              <div class="">
+                <button class="" type="submit">Publier</button>
               </div>
             </form>
           </div>
