@@ -81,5 +81,6 @@ const appRoutes: Routes = [
     provideAuth(() => getAuth()),
   ],
   providers: [NgForm, AnnouncesService, AuthService, UploadImgService],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
