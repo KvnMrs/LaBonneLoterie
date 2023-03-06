@@ -9,3 +9,35 @@
 .bg-lbl {
   background-color: #712CF9;
 }
+
+// NavBar ///////////////////////////////////////////////////////////////////////
+
+nav {
+  @apply h-16 flex border-b shadow-md border-slate-400 bg-gray-300
+}
+.menu-container {
+  @apply w-1/6 flex
+}
+.menu-lines-container {
+  @apply m-auto space-y-2
+}
+.menu-line {
+  @apply w-8 h-0.5 bg-gray-600
+}
+.logo-letters-container {
+  @apply m-auto flex-col items-center space-y-1
+}
+.logo-letters {
+  @apply text-3xl font-bold text-lbl
+}
+.logo-letters-underline {
+  @apply w-16 h-0.5 mx-auto bg-lbl
+}
+.logo-png-container {
+  @apply w-1/6 flex
+}
+.logo-png {
+  @apply h-3/4 m-auto border border-white rounded-lg
+}
+
+
