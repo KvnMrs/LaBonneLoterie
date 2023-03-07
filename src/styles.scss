@@ -9,23 +9,44 @@
 .bg-lbl {
   background-color: #712CF9;
 }
+.text-nav:hover {
+  color: #0D6EFD;
+}
 
 // NavBar ///////////////////////////////////////////////////////////////////////
-
 nav {
-  @apply h-16 flex border-b shadow-md border-slate-400 bg-gray-300
+  @apply h-16 flex border-b shadow-md border-slate-400 bg-gray-200
 }
-.menu-container {
+.nav-container {
   @apply w-1/6 flex
+/* MD */ md:w-20
 }
-.menu-lines-container {
-  @apply m-auto space-y-2
+.btn-burger-container {
+  @apply m-auto
 }
-.menu-line {
-  @apply w-8 h-0.5 bg-gray-600
+.btn-burger {
+  @apply text-3xl font-semibold
+}
+.menu{
+  @apply h-full w-3/4 absolute top-16 left-0 bg-gray-300
+/* MD */ md:w-1/4
+}
+.links {
+  @apply relative top-4 left-6
+/* MD */ md:left-10
+}
+.link-container {
+  @apply flex my-2
+/* HOVER */ hover:my-3 hover:scale-105 transition-all duration-500 ease-in-out
+}
+.link {
+  @apply ml-4 text-lg font-sans text-nav
+/* HOVER */ hover:text-xl hover:font-medium hover:border-b-2 border-blue-500 hover:shadow-lg transition-all duration-200 ease-in-out
+
 }
 .logo-letters-container {
   @apply m-auto flex-col items-center space-y-1
+/* MD */ md:space-y-3
 }
 .logo-letters {
   @apply text-3xl font-bold text-lbl
@@ -35,6 +56,7 @@ nav {
 }
 .logo-png-container {
   @apply w-1/6 flex
+/* MD */ md:w-1/12
 }
 .logo-png {
   @apply h-3/4 m-auto border border-white rounded-lg
