@@ -29,10 +29,10 @@ import { AuthService } from './services/auth/auth.service';
 import { UploadImgService } from './services/uploads/upload-img.service';
 
 const appRoutes: Routes = [
-  { path: '', component: LandingPageComponent },
+  { path: '', component: ListItemsComponent },
   // { path: '', component: SignUpComponent },
   {
-    path: 'liste',
+    path: 'recherche',
     /* canActivate: [AuthGuardService], */ component: ListItemsComponent,
   },
   {

@@ -1,30 +1,32 @@
-<nav class="">
-  <div class="">
-    <a class="" href="#">LeBonLot</a>
-    <ul class="">
-      <li class="">
-        <a class="" data-bs-toggle="tab" [routerLink]="['/']">Accueil </a>
-      </li>
-      <li class="">
-        <a class="" data-bs-toggle="tab" [routerLink]="['/liste']">Liste</a>
-      </li>
-      <li class="">
-        <a class="" data-bs-toggle="tab" [routerLink]="['/ajout-annonce']"
-          >Ajouter une annonce
-        </a>
-      </li>
-      <li class="">
-        <a class="" data-bs-toggle="tab" [routerLink]="['/profil']">Profil</a>
-      </li>
-      <li class="">
-        <button
-          type="button"
-          class="btn btn-outline-danger mx-1"
-          (click)="onDisconnect()"
-        >
-          Se déconnecter
-        </button>
-      </li>
-    </ul>
+<nav role="navigation" aria-label="Menu principal">
+  <div class="nav-container">
+    <div class="btn-burger-container">
+      <button class="btn-burger" (click)="toggleDropdown()">☰</button>
+      <div *ngIf="isDropdownVisible" class="menu">
+        <ul class="links">
+          <li class="link-container">
+            <img src="/assets/svg/search.svg" width="20" height="20" />
+            <a class="link" [routerLink]="['/recherche']">Mes recherches</a>
+          </li>
+          <li class="link-container">
+            <img src="/assets/svg/cross.svg" width="20" height="20" />
+            <a [routerLink]="['/ajout-annonce']" class="link"
+              >Ajouter une annonce</a
+            >
+          </li>
+          <li class="link-container">
+            <img src="/assets/svg/profile.svg" width="20" height="20" />
+            <a [routerLink]="['/profil']" class="link">Mon Profil</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="logo-letters-container">
+    <h1 class="logo-letters">LeBonLot</h1>
+    <div class="logo-letters-underline"></div>
+  </div>
+  <div class="logo-png-container">
+    <img class="logo-png" src="/assets/png/Logo.png" />
   </div>
 </nav>
