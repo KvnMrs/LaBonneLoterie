@@ -36,6 +36,14 @@ const appRoutes: Routes = [
     /* canActivate: [AuthGuardService], */ component: ListItemsComponent,
   },
   {
+    path: 'inscription',
+    /* canActivate: [AuthGuardService], */ component: SignUpComponent,
+  },
+  {
+    path: 'connexion',
+    /* canActivate: [AuthGuardService], */ component: SignInComponent,
+  },
+  {
     path: 'profil',
     /* canActivate: [AuthGuardService], */ component: ProfileComponent,
   },
