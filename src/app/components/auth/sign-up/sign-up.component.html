@@ -1,87 +1,107 @@
-<lbl-header>Rejoignez-nous !</lbl-header>
+<div class="main-container">
+  <lbl-header>Rejoignez-nous !</lbl-header>
+  <form [formGroup]="formSignUp" class="sign-up-form">
+    <h1 class="sign-up-title">Inscription</h1>
 
-<!-- <div class=""> -->
-<!--  <form [formGroup]="formSignUp">
-    <div class=""></div>
+    <div class="py-5">
+      <div class="sign-up-input-container">
+        <label class="mb-1" for="firstname">Prénom:</label>
+        <input
+          class="sign-up-input-container"
+          type="text"
+          id="firstname"
+          name="firstname"
+          formControlName="firstname"
+          autocomplete="username"
+          placeholder="Alexandre"
+          required
+        />
+      </div>
+      <div class="sign-up-input-container">
+        <label class="mb-1" for="lastname">Nom:</label>
+        <input
+          class="sign-up-input-container"
+          type="text"
+          id="lastname"
+          name="lastname"
+          formControlName="lastname"
+          autocomplete="username"
+          placeholder="Durand"
+          required
+        />
+      </div>
+      <div class="sign-up-input-container">
+        <label class="mb-1" for="birthday">Date de naissance:</label>
+        <input
+          class="sign-up-input-container"
+          type="date"
+          id="birthday"
+          name="birthday"
+          formControlName="birthday"
+          autocomplete="username"
+          placeholder="JJ/MM/AAAA"
+          required
+        />
+      </div>
+      <div class="sign-up-input-container">
+        <label class="mb-1" for="city">Ville:</label>
+        <input
+          class="sign-up-input-container"
+          type="text"
+          id="city"
+          name="city"
+          formControlName="city"
+          autocomplete="username"
+          placeholder="Paris"
+          required
+        />
+      </div>
+      <div class="sign-up-input-container">
+        <label class="mb-1" for="email">E-mail:</label>
+        <input
+          class="sign-up-input-container"
+          type="text"
+          id="email"
+          name="email"
+          formControlName="email"
+          autocomplete="username"
+          placeholder="exemple@gmail.com"
+          required
+        />
+      </div>
+      <div class="sign-up-input-container">
+        <label class="mb-1" for="password">Mot de passe:</label>
+        <input
+          class="sign-up-input-container"
+          type="text"
+          id="password"
+          name="password"
+          formControlName="password"
+          autocomplete="current-password"
+          required
+        />
+      </div>
+    </div>
 
-    <h1 class="">Inscription</h1>
-
-    <div class="">
-      <label class="" for="firstname">Prénom:</label>
-      <input
-        class=""
-        type="text"
-        id="firstname"
-        name="firstname"
-        formControlName="firstname"
-        autocomplete="username"
-        required
-      />
-    </div>
-    <div class="">
-      <label class="" for="lastname">Nom:</label>
-      <input
-        class=""
-        type="text"
-        id="lastname"
-        name="lastname"
-        formControlName="lastname"
-        autocomplete="username"
-        required
-      />
-    </div>
-    <div class="">
-      <label class="" for="city">Ville:</label>
-      <input
-        class=""
-        type="text"
-        id="city"
-        name="city"
-        formControlName="city"
-        autocomplete="username"
-        required
-      />
-    </div>
-    <div class="">
-      <label class="" for="email">E-mail:</label>
-      <input
-        class=""
-        type="email"
-        id="email"
-        name="email"
-        formControlName="email"
-        autocomplete="username"
-        required
-      />
-    </div>
-
-    <div class="">
-      <label class="" for="password">Mot de passe:</label>
-      <input
-        type="password"
-        id="form2Example27"
-        class=""
-        formControlName="password"
-        autocomplete="current-password"
-      />
-    </div>
-
-    <div class="">
+    <div class="h-24 flex flex-col items-center place-content-around">
       <button
         (click)="onCreateUser()"
-        class=""
+        class="w-fit py-2 px-4 rounded-lg font-semibold text-white shadow-md bg-lbl"
         type="button"
         [disabled]="!formSignUp.valid"
       >
         S'incrire
       </button>
+      <p class="">
+        j'ai déjà un compte,
+        <a
+          class="text-blue-600 hover:text-blue-400 underline"
+          [routerLink]="['/connexion']"
+          (click)="onHaveAccount()"
+        >
+          me connecter
+        </a>
+      </p>
     </div>
-
-    <p class="">
-      j'ai déjà un compte,
-      <a href="#!" (click)="onHaveAccount()"> me connecter </a>
-    </p>
-    <a href="#!" class="">Terms of use.</a>
-    <a href="#!" class="">Privacy policy</a>
-  </form>-->
-<!-- </div> -->
+  </form>
+</div>

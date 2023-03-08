@@ -13,6 +13,10 @@
   color: #0D6EFD;
 }
 
+.main-container {
+  @apply flex-col p-2
+}
+
 // NavBar ///////////////////////////////////////////////////////////////////////
 nav {
   @apply h-16 mb-3 flex border-b shadow-md border-slate-400 bg-gray-200
@@ -62,4 +66,20 @@ nav {
   @apply h-3/4 m-auto border border-white rounded-lg
 }
 
+// Sign-up & Log-in ///////////////////////////////////////////////////////////////////////
+
+// Sign-up *****
+
+.sign-up-form {
+  @apply h-full w-11/12 mx-auto p-4 flex-col border shadow-lg rounded-xl bg-slate-300
+}
+.sign-up-title {
+  @apply text-2xl font-medium
+}
+.sign-up-input-container {
+  @apply m-4 flex flex-col
+}
+.sign-up-input-container {
+  @apply p-2 rounded-md
+}
 
