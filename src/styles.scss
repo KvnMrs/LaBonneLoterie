@@ -75,19 +75,19 @@ nav {
   @apply w-11/12 mx-auto p-4 flex-col border shadow-lg rounded-xl bg-slate-300
   /* SM */ sm:w-2/3
   /* MD */ md:w-3/4
-  /* LG */ lg:w-2/3
+  /* LG */ lg:max-w-4xl
 }
 .sign-up-title {
-  @apply text-2xl font-medium
+  @apply mb-5 text-2xl font-medium
 }
 .sign-up-form-container {
   @apply mx-auto py-3 items-center
 /* MD */ md:w-11/12 md:flex
-/* LG */ lg:w-10/12
+/* LG */
 }
 .sign-up-form-sub-container {
-  @apply mb-auto
-/* MD */ md:w-1/2
+  @apply mb-10
+/* MD */ md:w-full
 }
 .sign-up-input-container {
   @apply m-4 flex flex-col
