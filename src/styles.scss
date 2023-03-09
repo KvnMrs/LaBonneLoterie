@@ -91,6 +91,7 @@ nav {
 }
 .sign-up-input-container {
   @apply m-4 flex flex-col
+/* SM */ sm:w-10/12 sm:mx-auto
 }
 .sign-up-input {
   @apply p-2 rounded-md
