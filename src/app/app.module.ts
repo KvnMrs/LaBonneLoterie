@@ -22,15 +22,18 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { ModalProfileComponent } from './components/modals/modal-profile/modal-profile.component';
-
+// Libs
+import { HeaderComponent } from './shared/libs/ux-ui/header/header.component';
+import { InputComponent } from './shared/libs/ux-ui/forms/input/input.component';
+import { BtnCtaFullComponent } from './shared/libs/ux-ui/buttons/btn-cta-full/btn-cta-full.component';
 // Services
 import { AnnouncesService } from './services/announces/announces.service';
 import { AuthService } from './services/auth/auth.service';
 import { UploadImgService } from './services/uploads/upload-img.service';
 
 const appRoutes: Routes = [
-  { path: '', component: ListItemsComponent },
-  // { path: '', component: SignUpComponent },
+  // { path: '', component: ListItemsComponent },
+  { path: '', component: SignUpComponent },
   {
     path: 'recherche',
     /* canActivate: [AuthGuardService], */ component: ListItemsComponent,
@@ -75,6 +78,9 @@ const appRoutes: Routes = [
     SignInComponent,
     LandingPageComponent,
     ModalProfileComponent,
+    HeaderComponent,
+    InputComponent,
+    BtnCtaFullComponent,
   ],
   imports: [
     BrowserModule,
