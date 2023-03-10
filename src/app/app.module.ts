@@ -33,7 +33,7 @@ import { UploadImgService } from './services/uploads/upload-img.service';
 
 const appRoutes: Routes = [
   // { path: '', component: ListItemsComponent },
-  { path: '', component: SignUpComponent },
+  { path: '', component: SignInComponent },
   {
     path: 'recherche',
     /* canActivate: [AuthGuardService], */ component: ListItemsComponent,
