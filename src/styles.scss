@@ -71,29 +71,34 @@ nav {
 // Sign-up & Log-in ///////////////////////////////////////////////////////////////////////
 
 // Sign-up *****
-.sign-up-form {
+.auth-form {
   @apply w-11/12 mx-auto p-4 flex-col border shadow-lg rounded-xl bg-slate-300
   /* SM */ sm:w-2/3
   /* MD */ md:w-3/4
   /* LG */ lg:max-w-4xl
 }
-.sign-up-title {
+.auth-form-title {
   @apply mb-5 text-2xl font-medium
 }
-.sign-up-form-container {
+.auth-form-container {
   @apply mx-auto py-3 items-center
 /* MD */ md:w-11/12 md:flex
-/* LG */
 }
-.sign-up-form-sub-container {
-  @apply mb-10
+.auth-form-sub-container {
+  @apply mb-8
 /* MD */ md:w-full
 }
-.sign-up-input-container {
+.signup-col-input-btn {
+  @apply w-full flex flex-col
+}
+.auth-input-container {
   @apply m-4 flex flex-col
 /* SM */ sm:w-10/12 sm:mx-auto
 }
-.sign-up-input {
+.auth-input {
   @apply p-2 rounded-md
+}
+.auth-cta-container {
+  @apply h-24 flex flex-col items-center place-content-around
 }
 
