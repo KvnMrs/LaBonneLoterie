@@ -1,31 +1,28 @@
-<li class="" (click)="seeDetails()">
-  <div class="">
-    <div class="">
-      <h5 class="">{{ name }}</h5>
-      <p class="">
-        {{ description }}
-      </p>
-      <div class="">
-        <h6 class="">₹64,999</h6>
-        <ul class="">
-          <li class="">
-            <i class=""></i>
-          </li>
-          <li class="">
-            <i class=""></i>
-          </li>
-          <li class="">
-            <i class=""></i>
-          </li>
-          <li class="">
-            <i class=""></i>
-          </li>
-          <li class="">
-            <i class=""></i>
-          </li>
-        </ul>
+<div class="card glass w-11/12 md:max-w-xs mx-auto mb-3">
+  <figure>
+    <img src="{{ img }}" alt="car!" />
+  </figure>
+  <div class="card-body">
+    <div class="flex flex-col mb-5">
+      <div class="w-full mb-2 flex justify-between">
+        <h3 class="card-title text-3xl">Catégorie</h3>
+        <h3 class="card-title text-3xl">10 $</h3>
+      </div>
+      <div class="mb-4">
+        <h4 class="card-title text-2xl">{{ name }}</h4>
+      </div>
+      <div class="flex mb-2">
+        <div class="badge p-3 mr-1">tag 1</div>
+        <div class="badge p-3 mr-1">tag 2</div>
+        <div class="badge p-3 mr-1">tag 3</div>
       </div>
     </div>
-    <img src="{{ img }}" alt="Generic placeholder image" class="" />
+
+    <div class="card-actions justify-end">
+      <button class="btn btn-outline btn-info" (click)="seeDetails()">
+        Détails
+      </button>
+      <button class="btn btn-primary">Acheter</button>
+    </div>
   </div>
-</li>
+</div>
