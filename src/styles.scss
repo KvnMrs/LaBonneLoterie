@@ -19,6 +19,10 @@
   @apply flex-col p-2
 }
 
+.inline-size-lbl {
+ inline-size: auto;
+}
+
 // NavBar ///////////////////////////////////////////////////////////////////////
 nav {
   @apply h-16 mb-3 flex border-b shadow-md border-slate-400 bg-gray-200
