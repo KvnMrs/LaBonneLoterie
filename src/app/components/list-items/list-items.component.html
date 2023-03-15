@@ -1,23 +1,68 @@
-<div class="">
-  <div class="">
-    <div class="">
-      <h1 class="">Liste article</h1>
+<div class="main-container">
+  <lbl-header>Découvrez les nouvelles offres !</lbl-header>
+  <div class="filters-bar">
+    <div class="filters-container">
+      <input
+        type="text"
+        placeholder="Que recherchez-vous?"
+        class="w-11/12 md:w-auto input input-bordered max-w-xs"
+      />
+      <select class="w-11/12 md:w-auto select select-bordered max-w-xs">
+        <option disabled selected>Dans quel catégorie?</option>
+        <option>Multimédia</option>
+        <option>Vêtements</option>
+        <option>Divers</option>
+        <option>Musique</option>
+      </select>
+      <input
+        type="number"
+        placeholder="Prix min?"
+        class="w-11/12 md:w-auto input input-bordered max-w-xs cursor-pointer"
+      />
+      <input
+        type="number"
+        placeholder="Prix max?"
+        class="w-11/12 md:w-auto input input-bordered max-w-xs cursor-pointer"
+      />
     </div>
+    <button class="btn btn-outline btn-info ml-auto gap-2">
+      Recherchez
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+        />
+      </svg>
+    </button>
   </div>
-  <div class="">
-    <div class="">
-      <ul class="">
-        <app-card-item
-          *ngFor="let item of items; let i = index"
-          id="{{ item.id }}"
-          name="{{ item.name }}"
-          category="{{ item.category }}"
-          description="{{ item.description }}"
-          img="{{ item.img_url }}"
-          minTickets="{{ item.minTickets }}"
-          currentTickets="{{ item.currentTickets }}"
-        ></app-card-item>
-      </ul>
-    </div>
+  <div class="cards-container">
+    <app-card-item
+      *ngFor="let item of items; let i = index"
+      id="{{ item.id }}"
+      name="{{ item.name }}"
+      category="{{ item.category }}"
+      description="{{ item.description }}"
+      img="{{ item.img_url }}"
+      minTickets="{{ item.minTickets }}"
+      currentTickets="{{ item.currentTickets }}"
+    ></app-card-item>
+    <app-card-item
+      *ngFor="let item of items; let i = index"
+      id="{{ item.id }}"
+      name="{{ item.name }}"
+      category="{{ item.category }}"
+      description="{{ item.description }}"
+      img="{{ item.img_url }}"
+      minTickets="{{ item.minTickets }}"
+      currentTickets="{{ item.currentTickets }}"
+    ></app-card-item>
   </div>
 </div>

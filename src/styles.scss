@@ -19,6 +19,10 @@
   @apply flex-col p-2
 }
 
+.inline-size-lbl {
+ inline-size: auto;
+}
+
 // NavBar ///////////////////////////////////////////////////////////////////////
 nav {
   @apply h-16 mb-3 flex border-b shadow-md border-slate-400 bg-gray-200
@@ -70,7 +74,6 @@ nav {
 
 // Sign-up & Log-in ///////////////////////////////////////////////////////////////////////
 
-// Sign-up *****
 .auth-form {
   @apply w-11/12 mx-auto p-4 flex-col border shadow-lg rounded-xl bg-slate-300
   /* SM */ sm:w-2/3
@@ -102,3 +105,14 @@ nav {
   @apply h-24 flex flex-col items-center place-content-around
 }
 
+// Announces page ///////////////////////////////////////////////////////////////////////
+
+.filters-bar {
+  @apply lg:w-11/12 flex flex-wrap mb-5 md:mb-10 md:mx-auto py-2 px-3 gap-4 md:gap-0 border border-base-300 rounded-box bg-gray-200 shadow-xl
+}
+.filters-container {
+  @apply inline-flex inline-size-lbl flex-wrap gap-2
+}
+.cards-container {
+  @apply flex flex-col gap-2
+}

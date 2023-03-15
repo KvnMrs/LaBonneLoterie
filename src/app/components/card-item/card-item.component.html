@@ -1,31 +1,30 @@
-<li class="" (click)="seeDetails()">
-  <div class="">
-    <div class="">
-      <h5 class="">{{ name }}</h5>
-      <p class="">
-        {{ description }}
-      </p>
-      <div class="">
-        <h6 class="">₹64,999</h6>
-        <ul class="">
-          <li class="">
-            <i class=""></i>
-          </li>
-          <li class="">
-            <i class=""></i>
-          </li>
-          <li class="">
-            <i class=""></i>
-          </li>
-          <li class="">
-            <i class=""></i>
-          </li>
-          <li class="">
-            <i class=""></i>
-          </li>
-        </ul>
+<div
+  class="card md:card-side glass w-11/12 md:w-8/12 mx-auto bg-slate-500 hover:bg-slate-500 shadow-xl"
+>
+  <figure class="md:w-4/12">
+    <img class="md:w-full h-full" src="{{ img }}" alt="car!" />
+  </figure>
+  <div class="card-body">
+    <div class="mb-auto flex flex-col">
+      <div class="mb-2 flex justify-between">
+        <h3 class="card-title text-3xl text-white">Catégorie</h3>
+        <h3 class="card-title text-3xl text-white">10 $</h3>
+      </div>
+      <div class="mb-4">
+        <h4 class="card-title text-2xl text-slate-200">{{ name }}</h4>
+      </div>
+      <div class="flex mb-2">
+        <div class="badge p-3 mr-1 text-slate-300">tag 1</div>
+        <div class="badge p-3 mr-1 text-slate-300">tag 2</div>
+        <div class="badge p-3 mr-1 text-slate-300">tag 3</div>
       </div>
     </div>
-    <img src="{{ img }}" alt="Generic placeholder image" class="" />
+
+    <div class="card-actions justify-end">
+      <button class="btn btn-outline btn-info" (click)="seeDetails()">
+        Détails
+      </button>
+      <button class="btn btn-primary">Acheter</button>
+    </div>
   </div>
-</li>
+</div>
