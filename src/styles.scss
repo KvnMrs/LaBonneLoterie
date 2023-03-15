@@ -108,11 +108,11 @@ nav {
 // Announces page ///////////////////////////////////////////////////////////////////////
 
 .filters-bar {
-  @apply lg:w-11/12 flex flex-wrap mb-5 md:mx-auto py-2 px-3 gap-4 md:gap-0 border border-base-300 rounded-box bg-gray-200 shadow-xl
+  @apply lg:w-11/12 flex flex-wrap mb-5 md:mb-10 md:mx-auto py-2 px-3 gap-4 md:gap-0 border border-base-300 rounded-box bg-gray-200 shadow-xl
 }
 .filters-container {
   @apply inline-flex inline-size-lbl flex-wrap gap-2
 }
 .cards-container {
-  @apply flex flex-col
+  @apply flex flex-col gap-2
 }
