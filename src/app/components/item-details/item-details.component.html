@@ -112,7 +112,7 @@
         <button class="btn py-1 px-3 bg-blue-500">Contacter</button>
       </div>
       <!-- Statistics -->
-      <div class="bg-slate-100 p-2 rounded-md shadow-lg">
+      <div class="p-2 rounded-lg shadow-lg">
         <div class="w-full flex">
           <div class="divider h-0.5 w-9/12 mr-4 bg-slate-600"></div>
           <h3 class="text-2xl font-medium text-gray-800 mb-4 font-mono">
@@ -143,6 +143,35 @@
           <p class="font-mono">Durant la dernière heure</p>
           <p class="font-mono">500</p>
         </div>
+      </div>
+    </div>
+    <!-- Timer -->
+    <div
+      class="mx-auto mb-4 py-3 grid grid-flow-col gap-1 items-center justify-between text-center bg-white shadow-lg"
+    >
+      <div class="flex flex-col p-2 rounded-box text-neutral-content">
+        <span class="countdown bg-neutral p-2 font-mono text-5xl rounded-xl">
+          <span style="--value: 15"></span>
+        </span>
+        <p class="text-neutral">days</p>
+      </div>
+      <div class="flex flex-col p-2 rounded-box text-neutral-content">
+        <span class="countdown font-mono text-5xl bg-neutral p-2 rounded-xl">
+          <span style="--value: 10"></span>
+        </span>
+        <p class="text-neutral">hours</p>
+      </div>
+      <div class="flex flex-col p-2 rounded-box text-neutral-content">
+        <span class="countdown font-mono text-5xl bg-neutral p-2 rounded-xl">
+          <span style="--value: 24"></span>
+        </span>
+        <p class="text-neutral">min</p>
+      </div>
+      <div class="flex flex-col p-2 rounded-box text-neutral-content">
+        <span class="countdown font-mono text-5xl bg-neutral p-2 rounded-xl">
+          <span style="--value: 49"></span>
+        </span>
+        <p class="text-neutral">sec</p>
       </div>
     </div>
     <!-- CTA's Group -->
