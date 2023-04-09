@@ -79,11 +79,43 @@
           class="h-20 w-20 rounded-full mr-4"
           src="https://via.placeholder.com/150"
         />
-        <div>
-          <p class="text-gray-800 font-bold text-xl">Kévin Marais</p>
+        <div class="flex flex-col justify-between">
+          <p class="text-gray-800 font-bold text-base">Kévin Marais</p>
           <p class="text-gray-600">Loire-Atlantique, Nantes</p>
           <p class="text-gray-600 text-sm">Membre depuis le 20/02/2023</p>
+          <div class="pt-1 rating rating-md">
+            <input
+              type="radio"
+              name="rating-9"
+              class="mx-0.5 mask mask-star-2 bg-yellow-300"
+            />
+            <input
+              type="radio"
+              name="rating-9"
+              class="mx-0.5 mask mask-star-2 bg-yellow-300"
+              checked
+            />
+            <input
+              type="radio"
+              name="rating-9"
+              class="mx-0.5 mask mask-star-2 bg-primary"
+            />
+            <input
+              type="radio"
+              name="rating-9"
+              class="mx-0.5 mask mask-star-2 bg-primary"
+            />
+            <input
+              type="radio"
+              name="rating-9"
+              class="mx-0.5 mask mask-star-2 bg-primary"
+            />
+          </div>
         </div>
+      </div>
+      <div class="w-full mb-3 flex items-center justify-between">
+        <a class="link text-blue-500">Voir les 29 annonces</a>
+        <button class="btn py-1 px-3 bg-blue-500">Contacter</button>
       </div>
       <h3 class="text-2xl font-bold text-gray-800 mb-4">Titre de l'annonce</h3>
       <p class="text-gray-700 mb-4">Description de l'annonce</p>
@@ -105,8 +137,8 @@
   </div>
 
   <div class="btn-group ml-auto justify-around">
-    <button class="btn btn-outline btn-info mr-1">Détails</button>
-    <button class="btn btn-primary">Acheter</button>
+    <button class="btn btn-outline btn-info mr-1 shadow-md">Détails</button>
+    <button class="btn btn-primary shadow-md">Acheter</button>
   </div>
 </div>
 
