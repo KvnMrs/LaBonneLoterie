@@ -138,13 +138,21 @@ nav {
   @apply card glass p-6 mb-4 bg-white shadow-md rounded
 }
 .announce-user-profile {
-  @apply h-32 mb-4 flex items-center
+  @apply h-1/4 mb-4 flex items-center
 }
 .announce-user-picture {
-  @apply w-4/12 rounded-full mr-4
+  @apply w-3/12 mx-auto rounded-full
+/* SM */ sm:w-4/12
+/* MD */ md:max-w-xs
 }
 .announce-user-info {
-  @apply ml-auto flex flex-col justify-between rounded-lg
+  @apply mx-auto gap-1 flex flex-col justify-between rounded-lg
+/* MD */ md:gap-2
+}
+.announce-user-info-texts {
+  @apply text-gray-600
+/* SM */ sm:text-lg
+/* MD */ md:text-xl
 }
 .announce-user-links {
   @apply w-full mx-auto mb-4 flex items-center justify-between
