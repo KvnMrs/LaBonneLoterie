@@ -125,6 +125,10 @@ nav {
 /* MD */ md:mb-8 md:py-8 md:px-8
 /* LG */ lg:px-0
 }
+.details-sub-container {
+  @apply flex justify-start
+/* LG */ lg:gap-20
+}
 .carrousel-container {
   @apply carousel carousel-center h-96 max-w-md p-4 self-center space-x-4 rounded-box
 }
