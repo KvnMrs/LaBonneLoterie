@@ -133,10 +133,10 @@ nav {
   @apply carousel carousel-center h-96 max-w-md p-4 self-center space-x-4 rounded-box
 }
 .announce-info-container {
-  @apply mb-4 py-4 px-2
-/* SM */ sm:mb-6 sm:py-6 sm:px-4
-/* MD */ md:mb-8 md:py-8 md:px-8
-/* LG */ lg:w-3/4 lg:mb-0 lg:pb-0
+  @apply py-4 px-2
+/* SM */ sm:py-6 sm:px-4
+/* MD */ md:py-8 md:px-8
+/* LG */ lg:w-3/4 lg:pb-0
 }
 .category-price-line {
   @apply w-full mb-2 flex justify-between
@@ -145,16 +145,16 @@ nav {
   @apply p-3 badge badge-outline
 }
 .announce-description-container {
-  @apply mb-4 py-4 px-2
-/* SM */ sm:mb-6 sm:py-6 sm:px-4
-/* MD */ md:mb-8 md:py-8 md:p-8
+  @apply mb-4 pb-4 px-2
+/* SM */ sm:mb-6 sm:pb-6 sm:px-4
+/* MD */ md:mb-8 md:pb-8 md:p-8
 /* LG */ lg:w-5/12
 
 }
 .announce-others-info-container {
-  @apply py-4 px-2 mb-4 shadow-lg rounded bg-white
-/* SM */ sm:mb-6 sm:py-6 sm:px-4
-/* MD */ md:mb-8 md:py-8 md:px-8
+  @apply pb-4 px-2 mb-6 shadow-lg rounded bg-white
+/* SM */ sm:mb-6 sm:py-8 sm:px-4
+/* MD */ md:mb-8 md:py-10 md:px-8
 /* LG */ lg:flex lg:flex-col lg:gap-8 lg:justify-center lg:pb-0 lg:px-4
 }
 .announce-user-profile {
