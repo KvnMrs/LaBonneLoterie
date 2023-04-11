@@ -16,7 +16,7 @@
 }
 
 .main-container {
-  @apply flex-col p-2
+  @apply flex-col p-2 bg-slate-50 to-slate-100
 }
 
 .inline-size-lbl {
@@ -49,7 +49,7 @@ nav {
   @apply flex my-2
 /* HOVER */ hover:my-3 hover:scale-105 transition-all duration-500 ease-in-out
 }
-.link {
+.link-nav {
   @apply ml-4 text-lg font-sans text-nav
 /* HOVER */ hover:text-xl hover:font-medium hover:border-b-2 border-blue-500 hover:shadow-lg transition-all duration-200 ease-in-out
 
@@ -115,4 +115,107 @@ nav {
 }
 .cards-container {
   @apply flex flex-col gap-2
+}
+
+// Announce-details page ///////////////////////////////////////////////////////////////////////
+
+.details-container {
+  @apply w-11/12 mx-auto py-4 px-2 flex flex-col bg-slate-50 to-slate-100
+/* SM */ sm:w-10/12 sm:mb-6 sm:py-6 sm:px-4
+/* MD */ md:mb-8 md:py-8 md:px-8
+/* LG */ lg:px-0
+}
+.details-sub-container {
+  @apply flex justify-start
+/* LG */ lg:gap-20
+}
+.carrousel-container {
+  @apply carousel carousel-center h-96 max-w-md p-4 self-center space-x-4 rounded-box
+}
+.announce-info-container {
+  @apply py-4 px-2
+/* SM */ sm:py-6 sm:px-4
+/* MD */ md:py-8 md:px-8
+/* LG */ lg:w-3/4 lg:pb-0
+}
+.category-price-line {
+  @apply w-full mb-2 flex justify-between
+}
+.announce-badges {
+  @apply p-3 badge badge-outline
+}
+.announce-description-container {
+  @apply mb-4 pb-4 px-2
+/* SM */ sm:mb-6 sm:pb-6 sm:px-4
+/* MD */ md:mb-8 md:pb-8 md:p-8
+/* LG */ lg:w-5/12
+
+}
+.announce-others-info-container {
+  @apply pb-4 px-2 mb-6 shadow-lg rounded bg-white
+/* SM */ sm:mb-6 sm:py-8 sm:px-4
+/* MD */ md:mb-8 md:py-10 md:px-8
+/* LG */ lg:flex lg:flex-col lg:gap-8 lg:justify-center lg:pb-0 lg:px-4
+}
+.announce-user-profile {
+  @apply h-1/4 mb-4 flex items-center
+/* SM */ sm:mb-6
+/* MD */ md:mb-8 md:gap-16 md:px-4
+/* LG */ lg:px-0 lg:gap-8
+}
+.announce-user-picture {
+  @apply w-3/12 mx-auto rounded-full
+/* SM */ sm:w-4/12
+/* MD */ md:w-3/12
+}
+.announce-user-info {
+  @apply mx-auto gap-1 flex flex-col justify-between rounded-lg
+/* MD */ md:gap-2 md:w-3/4
+/* LG */ lg:w-8/12
+}
+.announce-user-info-texts {
+  @apply text-gray-600
+}
+.announce-user-links {
+  @apply mb-4 px-2 flex justify-start items-center gap-4
+/* MD */ md:hidden
+}
+.MD-announce-user-links {
+  @apply hidden
+/* MD */ md:flex md:items-center md:gap-6
+}
+.announce-user-contact {
+  @apply bg-blue-500
+/* MD */ md:py-0
+}
+.announce-statistics-info {
+  @apply p-2 flex flex-col gap-1 rounded-lg
+/* SM */ sm:gap-2
+/* MD */ md:gap-3
+/* LG */ lg:px-0
+}
+.announce-titles-divider {
+  @apply divider divide-black w-full mt-0
+}
+.announce-titles {
+  @apply text-2xl font-mono font-medium text-gray-800
+}
+.announce-statistics-lines {
+  @apply w-full flex justify-between
+}
+.announce-timer-container {
+  @apply mx-auto mb-4 py-3 flex flex-col  gap-1 items-center justify-around text-center bg-white shadow-lg
+/* SM */ sm:mx-0 sm:mb-6 sm:place-content-center sm:gap-3 sm:rounded-lg
+/* MD */ md:mb-8
+/* LG */ lg:mb-0 lg:py-0 lg:shadow-none
+}
+.announce-timer-boxes {
+  @apply flex flex-col p-2 rounded-box text-neutral-content
+/* LG */ lg:pb-0
+}
+.announce-timer-times {
+  @apply countdown p-2 text-3xl font-mono bg-neutral rounded-xl
+}
+.announce-CTA-group {
+  @apply btn-group flex justify-end
 }

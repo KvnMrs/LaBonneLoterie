@@ -16,7 +16,7 @@ import { CardItemComponent } from './components/card-item/card-item.component';
 import { ListItemsComponent } from './components/list-items/list-items.component';
 import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { AddItemComponent } from './components/add-item/add-item.component';
-import { ItemDetailsComponent } from './components/item-details/item-details.component';
+import { AnnounceDetailsComponent } from './components/announce-details/announce-details.component';
 import { BuyTickectComponent } from './components/buy-ticket/buy-ticket.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SignInComponent } from './components/auth/sign-in/sign-in.component';
@@ -33,7 +33,7 @@ import { UploadImgService } from './services/uploads/upload-img.service';
 
 const appRoutes: Routes = [
   // { path: '', component: ListItemsComponent },
-  { path: '', component: SignInComponent },
+  { path: '', component: AnnounceDetailsComponent },
   {
     path: 'recherche',
     /* canActivate: [AuthGuardService], */ component: ListItemsComponent,
@@ -52,7 +52,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'liste/:id',
-    /* canActivate: [AuthGuardService], */ component: ItemDetailsComponent,
+    /* canActivate: [AuthGuardService], */ component: AnnounceDetailsComponent,
   },
   {
     path: 'ajout-annonce',
@@ -72,7 +72,7 @@ const appRoutes: Routes = [
     ListItemsComponent,
     SignUpComponent,
     AddItemComponent,
-    ItemDetailsComponent,
+    AnnounceDetailsComponent,
     BuyTickectComponent,
     ProfileComponent,
     SignInComponent,
