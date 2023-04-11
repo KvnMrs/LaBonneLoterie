@@ -126,12 +126,13 @@ nav {
 /* LG */ lg:px-0
 }
 .carrousel-container {
-  @apply carousel carousel-center h-96 max-w-md p-4 space-x-4 rounded-box
+  @apply carousel carousel-center h-96 max-w-md p-4 self-center space-x-4 rounded-box
 }
 .announce-info-container {
-  @apply mb-4 py-4 px-2 
+  @apply mb-4 py-4 px-2
 /* SM */ sm:mb-6 sm:py-6 sm:px-4
 /* MD */ md:mb-8 md:py-8 md:px-8
+/* LG */ lg:w-3/4 lg:mb-0 lg:pb-0
 }
 .category-price-line {
   @apply w-full mb-2 flex justify-between
@@ -143,17 +144,20 @@ nav {
   @apply mb-4 py-4 px-2
 /* SM */ sm:mb-6 sm:py-6 sm:px-4
 /* MD */ md:mb-8 md:py-8 md:p-8
+/* LG */ lg:w-5/12
+
 }
 .announce-others-info-container {
   @apply py-4 px-2 mb-4 shadow-lg rounded bg-white
 /* SM */ sm:mb-6 sm:py-6 sm:px-4
 /* MD */ md:mb-8 md:py-8 md:px-8
+/* LG */ lg:flex lg:flex-col lg:gap-8 lg:justify-center lg:pb-0 lg:px-4
 }
 .announce-user-profile {
   @apply h-1/4 mb-4 flex items-center
 /* SM */ sm:mb-6
 /* MD */ md:mb-8 md:gap-16 md:px-4
-/* LG */ lg:px-0
+/* LG */ lg:px-0 lg:gap-8
 }
 .announce-user-picture {
   @apply w-3/12 mx-auto rounded-full
@@ -163,11 +167,10 @@ nav {
 .announce-user-info {
   @apply mx-auto gap-1 flex flex-col justify-between rounded-lg
 /* MD */ md:gap-2 md:w-3/4
+/* LG */ lg:w-8/12
 }
 .announce-user-info-texts {
   @apply text-gray-600
-/* SM */ sm:text-lg
-/* MD */ md:text-xl
 }
 .announce-user-links {
   @apply mb-4 px-2 flex justify-start items-center gap-4
@@ -178,17 +181,17 @@ nav {
 /* MD */ md:flex md:items-center md:gap-6
 }
 .announce-user-contact {
-  @apply py-2 px-3 bg-blue-500
+  @apply bg-blue-500
 /* MD */ md:py-0
 }
 .announce-statistics-info {
-  @apply p-2 flex flex-col gap-1 rounded-lg shadow-md
+  @apply p-2 flex flex-col gap-1 rounded-lg
 /* SM */ sm:gap-2
 /* MD */ md:gap-3
-/* LG */ lg:px-4
+/* LG */ lg:px-0
 }
 .announce-titles-divider {
-  @apply divider divide-black w-full
+  @apply divider divide-black w-full mt-0
 }
 .announce-titles {
   @apply text-2xl font-mono font-medium text-gray-800
@@ -200,11 +203,11 @@ nav {
   @apply mx-auto mb-4 py-3 flex flex-col  gap-1 items-center justify-around text-center bg-white shadow-lg
 /* SM */ sm:mx-0 sm:mb-6 sm:place-content-center sm:gap-3 sm:rounded-lg
 /* MD */ md:mb-8
-/* LG */ lg:mb-0
-
+/* LG */ lg:mb-0 lg:py-0 lg:shadow-none
 }
 .announce-timer-boxes {
   @apply flex flex-col p-2 rounded-box text-neutral-content
+/* LG */ lg:pb-0
 }
 .announce-timer-times {
   @apply countdown p-2 text-3xl font-mono bg-neutral rounded-xl

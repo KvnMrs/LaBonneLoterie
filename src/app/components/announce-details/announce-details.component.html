@@ -1,7 +1,8 @@
 <div class="main-container">
   <lbl-header>Détails de l'annonce</lbl-header>
+  <!-- MAIN CONTAINER -->
   <div class="details-container">
-    <div class="flex justify-between">
+    <div class="flex justify-start lg:gap-20">
       <!-- CARROUSEL -->
       <div class="carrousel-container">
         <div class="carousel-item w-11/12">
@@ -37,11 +38,171 @@
         </div>
       </div>
       <!-- Others info -->
-      <div
-        class="hidden w-1/2 lg:h-fit lg:flex lg:flex-col announce-others-info-container"
-      >
+      <div class="hidden lg:flex lg:flex-col">
+        <div class="hidden announce-others-info-container">
+          <!-- User -->
+          <div class="announce-user-profile">
+            <img
+              class="announce-user-picture"
+              src="https://via.placeholder.com/150"
+            />
+            <div class="announce-user-info">
+              <p class="text-gray-800 font-bold text-xl sm:text-2xl lg:text-lg">
+                Kévin Marais
+              </p>
+              <p class="announce-user-info-texts">Loire-Atlantique, Nantes</p>
+              <p class="announce-user-info-texts">
+                Membre depuis le 20/02/2023
+              </p>
+              <div class="rating rating-md mb-4 pt-1 lg:mb-0">
+                <input
+                  type="radio"
+                  name="rating-9"
+                  class="mx-0.5 mask mask-star-2 bg-yellow-300"
+                />
+                <input
+                  type="radio"
+                  name="rating-9"
+                  class="mx-0.5 mask mask-star-2 bg-yellow-300"
+                  checked
+                />
+                <input
+                  type="radio"
+                  name="rating-9"
+                  class="mx-0.5 mask mask-star-2 bg-primary"
+                />
+                <input
+                  type="radio"
+                  name="rating-9"
+                  class="mx-0.5 mask mask-star-2 bg-primary"
+                />
+                <input
+                  type="radio"
+                  name="rating-9"
+                  class="mx-0.5 mask mask-star-2 bg-primary"
+                />
+              </div>
+              <!-- MD Link's Group -->
+              <div class="MD-announce-user-links">
+                <a class="link text-blue-500">Voir les 29 annonces</a>
+                <button class="btn btn-sm announce-user-contact">
+                  Contacter
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Link's Group -->
+          <div class="announce-user-links">
+            <a class="link text-blue-500">Voir les 29 annonces</a>
+            <button class="btn btn-sm announce-user-contact">Contacter</button>
+          </div>
+
+          <!-- Timer -->
+          <div class="announce-timer-container">
+            <div class="w-full flex">
+              <div class="announce-titles-divider">
+                <h3 class="announce-titles">Temps restant</h3>
+              </div>
+            </div>
+            <div class="grid grid-flow-col">
+              <div class="announce-timer-boxes">
+                <span class="announce-timer-times">
+                  <span style="--value: 15"></span>
+                </span>
+                <p class="text-neutral">days</p>
+              </div>
+              <div class="announce-timer-boxes">
+                <span class="announce-timer-times">
+                  <span style="--value: 10"></span>
+                </span>
+                <p class="text-neutral">hours</p>
+              </div>
+              <div class="announce-timer-boxes">
+                <span class="announce-timer-times">
+                  <span style="--value: 24"></span>
+                </span>
+                <p class="text-neutral">min</p>
+              </div>
+              <div class="announce-timer-boxes">
+                <span class="announce-timer-times">
+                  <span style="--value: 49"></span>
+                </span>
+                <p class="text-neutral">sec</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- CONTENT CARD -->
+    <div class="mb-5 py-2 lg:py-0">
+      <div class="announce-info-container">
+        <div class="category-price-line lg:w-1/2">
+          <h2 class="text-2xl">Categorie</h2>
+          <span class="text-2xl font-semibold">10 $</span>
+        </div>
+        <div class="mb-3">
+          <h3 class="text-xl mb-2">Mon super titre</h3>
+          <p>Posté le 9 avril 2023</p>
+        </div>
+        <!-- Badges -->
+        <div class="flex mb-3">
+          <div class="announce-badges mr-1">neutral</div>
+          <div class="announce-badges mx-1">neutral</div>
+          <div class="announce-badges mx-1">neutral</div>
+          <div class="announce-badges ml-1">neutral</div>
+        </div>
+        <div class="divider lg:mb-8"></div>
+      </div>
+      <div class="w-full flex justify-start gap-12 mb-6">
+        <!-- Description -->
+        <div class="announce-description-container">
+          <h3 class="card-title mb-2">Description:</h3>
+          <p class="text-gray-800 leading-normal">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
+            risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing
+            nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas
+            ligula massa, varius a, semper congue, euismod non, mi. Proin
+            porttitor, orci nec nonummy molestie, enim est eleifend mi, non
+            fermentum diam nisl sit amet erat. Duis semper.
+          </p>
+        </div>
+        <div class="hidden announce-others-info-container lg:w-5/12 lg:pb-4">
+          <div class="announce-statistics-info">
+            <div class="announce-titles-divider">
+              <h3 class="announce-titles">Statistiques</h3>
+            </div>
+            <div class="announce-statistics-lines">
+              <p class="font-mono">Estimation</p>
+              <p class="font-mono">5000 $</p>
+            </div>
+            <div class="announce-statistics-lines">
+              <p class="font-mono">Prix pour 1 ticket</p>
+              <p class="font-mono">10 $</p>
+            </div>
+            <div class="announce-statistics-lines">
+              <p class="font-mono">Nb Ticket maximum</p>
+              <p class="font-mono">600</p>
+            </div>
+            <div class="announce-statistics-lines">
+              <p class="font-mono">Nb Ticket en cours</p>
+              <p class="font-mono">45</p>
+            </div>
+            <div class="announce-statistics-lines">
+              <p class="font-mono">Nombre d'acheteurs</p>
+              <p class="font-mono">32</p>
+            </div>
+            <div class="announce-statistics-lines">
+              <p class="font-mono">Durant la dernière heure</p>
+              <p class="font-mono">500</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Others info -->
+      <div class="lg:hidden announce-others-info-container">
         <!-- User -->
-        <div class="announce-user-profile">
+        <div class="lg:hidden announce-user-profile">
           <img
             class="announce-user-picture"
             src="https://via.placeholder.com/150"
@@ -98,9 +259,9 @@
         </div>
         <!-- Statistics -->
         <div class="announce-statistics-info">
-          <div class="w-full flex">
+          <div class="w-full flex items-center">
             <div class="announce-titles-divider">
-              <h3 class="announce-titles">Statistiquess</h3>
+              <h3 class="announce-titles">Statistiques</h3>
             </div>
           </div>
           <div class="announce-statistics-lines">
@@ -129,7 +290,7 @@
           </div>
         </div>
         <!-- Timer -->
-        <div class="announce-timer-container">
+        <div class="lg:hidden announce-timer-container">
           <div class="w-full flex">
             <div class="announce-titles-divider">
               <h3 class="announce-titles">Temps restant</h3>
@@ -160,154 +321,6 @@
               </span>
               <p class="text-neutral">sec</p>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- CONTENT CARD -->
-    <div class="mb-5 py-2">
-      <div class="announce-info-container">
-        <div class="category-price-line">
-          <h2 class="text-2xl">Categorie</h2>
-          <span class="text-2xl font-semibold">10 $</span>
-        </div>
-        <div class="mb-3">
-          <h3 class="text-xl mb-2">Mon super titre</h3>
-          <p>Posté le 9 avril 2023</p>
-        </div>
-        <!-- Badges -->
-        <div class="flex mb-3">
-          <div class="announce-badges mr-1">neutral</div>
-          <div class="announce-badges mx-1">neutral</div>
-          <div class="announce-badges mx-1">neutral</div>
-          <div class="announce-badges ml-1">neutral</div>
-        </div>
-      </div>
-      <!-- Description -->
-      <div class="announce-description-container">
-        <h3 class="card-title mb-2">Description:</h3>
-        <p class="text-gray-800 leading-normal">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
-          risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,
-          ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula
-          massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci
-          nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl
-          sit amet erat. Duis semper.
-        </p>
-      </div>
-      <!-- Others info -->
-      <div class="hidden announce-others-info-container">
-        <!-- User -->
-        <div class="announce-user-profile">
-          <img
-            class="announce-user-picture"
-            src="https://via.placeholder.com/150"
-          />
-          <div class="announce-user-info">
-            <p class="text-gray-800 font-bold text-xl sm:text-2xl">
-              Kévin Marais
-            </p>
-            <p class="announce-user-info-texts">Loire-Atlantique, Nantes</p>
-            <p class="announce-user-info-texts text-sm">
-              Membre depuis le 20/02/2023
-            </p>
-            <div class="mb-4 pt-1 rating rating-md">
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-yellow-300"
-              />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-yellow-300"
-                checked
-              />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-primary"
-              />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-primary"
-              />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-primary"
-              />
-            </div>
-            <div class="MD-announce-user-links">
-              <a class="link text-blue-500">Voir les 29 annonces</a>
-              <button class="btn btn-md announce-user-contact">
-                Contacter
-              </button>
-            </div>
-          </div>
-        </div>
-        <!-- Link's Group -->
-        <div class="announce-user-links">
-          <a class="link text-blue-500">Voir les 29 annonces</a>
-          <button class="btn btn-sm announce-user-contact">Contacter</button>
-        </div>
-        <!-- Statistics -->
-        <div class="announce-statistics-info">
-          <div class="w-full flex">
-            <div class="announce-statistics-divider"></div>
-            <h3 class="announce-titles">Statistiques</h3>
-          </div>
-          <div class="announce-statistics-lines">
-            <p class="font-mono">Estimation</p>
-            <p class="font-mono">5000 $</p>
-          </div>
-          <div class="announce-statistics-lines">
-            <p class="font-mono">Prix pour 1 ticket</p>
-            <p class="font-mono">10 $</p>
-          </div>
-          <div class="announce-statistics-lines">
-            <p class="font-mono">Nb Ticket maximum</p>
-            <p class="font-mono">600</p>
-          </div>
-          <div class="announce-statistics-lines">
-            <p class="font-mono">Nb Ticket en cours</p>
-            <p class="font-mono">45</p>
-          </div>
-          <div class="announce-statistics-lines">
-            <p class="font-mono">Nombre d'acheteurs</p>
-            <p class="font-mono">32</p>
-          </div>
-          <div class="announce-statistics-lines">
-            <p class="font-mono">Durant la dernière heure</p>
-            <p class="font-mono">500</p>
-          </div>
-        </div>
-        <!-- Timer -->
-        <div class="announce-timer-container">
-          <div class="announce-timer-boxes">
-            <span class="announce-timer-times">
-              <span style="--value: 15"></span>
-            </span>
-            <p class="text-neutral">days</p>
-          </div>
-          <div class="announce-timer-boxes">
-            <span class="announce-timer-times">
-              <span style="--value: 10"></span>
-            </span>
-            <p class="text-neutral">hours</p>
-          </div>
-          <div class="announce-timer-boxes">
-            <span class="announce-timer-times">
-              <span style="--value: 24"></span>
-            </span>
-            <p class="text-neutral">min</p>
-          </div>
-          <div class="announce-timer-boxes">
-            <span class="announce-timer-times">
-              <span style="--value: 49"></span>
-            </span>
-            <p class="text-neutral">sec</p>
           </div>
         </div>
       </div>
