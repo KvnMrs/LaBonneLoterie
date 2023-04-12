@@ -88,11 +88,12 @@ nav {
 /* MD */ md:w-11/12 md:flex
 }
 .auth-form-sub-container {
-  @apply mb-8
-/* MD */ md:w-full
+  @apply
+/* MD */ md:w-full 
 }
 .signup-col-input-btn {
-  @apply w-full flex flex-col
+  @apply
+/* MD */ md:w-full md:mb-auto md:flex md:flex-col
 }
 .auth-input-container {
   @apply m-4 flex flex-col
