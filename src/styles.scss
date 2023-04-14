@@ -16,7 +16,7 @@
 }
 
 .main-container {
-  @apply flex-col p-2 bg-slate-50 to-slate-100
+  @apply flex-col p-2 bg-slate-50 to-slate-100 min-h-screen
 }
 
 .inline-size-lbl {
@@ -25,7 +25,7 @@
 
 // NavBar ///////////////////////////////////////////////////////////////////////
 nav {
-  @apply h-16 mb-3 flex border-b shadow-md border-slate-400 bg-gray-200
+  @apply h-16 flex border-b shadow-md border-slate-400 bg-gray-200
 }
 .nav-container {
   @apply w-1/6 flex
@@ -89,7 +89,7 @@ nav {
 }
 .auth-form-sub-container {
   @apply
-/* MD */ md:w-full 
+/* MD */ md:w-full
 }
 .signup-col-input-btn {
   @apply
