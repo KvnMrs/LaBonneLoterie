@@ -1,8 +1,10 @@
 <section class="main-container">
-  <lbl-header>Récapitulatif de votre annonce:</lbl-header>
-  <article>
-    <!-- SM CARROUSEL -->
-    <aside class="carrousel-container mx-auto md:hidden">
+  <lbl-header>Récapitulatif de votre annonce :</lbl-header>
+  <article
+    class="py-3 flex flex-col gap-4 items-center md:w-11/12 md:mx-auto md:py-6 md:flex-row md:gap-4 lg:gap-12"
+  >
+    <!-- CARROUSEL -->
+    <aside class="carrousel-container">
       <div class="carousel-item w-11/12">
         <img
           src="https://img.leboncoin.fr/api/v1/lbcpb1/images/f8/a7/b5/f8a7b51e7108f8c32f587748fb7ae33bd8d9186b.jpg?rule=classified-1200x800-webp"
@@ -34,48 +36,27 @@
         />
       </div>
     </aside>
-    <!-- MD GALLERY'S PICTURE -->
-    <aside class="hidden md:pt-5 md:flex lg:flex-row md:w-11/12 lg:8/12">
-      <div class="w-8/12 mx-auto flex flex-col gap-1 items-center">
-        <div class="flex gap-1">
-          <img
-            src="https://img.leboncoin.fr/api/v1/lbcpb1/images/f8/a7/b5/f8a7b51e7108f8c32f587748fb7ae33bd8d9186b.jpg?rule=classified-1200x800-webp"
-            class="w-40 h-40 lg:w-60 lg:h-60"
-          />
-          <img
-            src="https://img.leboncoin.fr/api/v1/lbcpb1/images/f8/a7/b5/f8a7b51e7108f8c32f587748fb7ae33bd8d9186b.jpg?rule=classified-1200x800-webp"
-            class="w-40 h-40 lg:w-60 lg:h-60"
-          />
-        </div>
-        <div class="flex gap-1">
-          <img
-            src="https://img.leboncoin.fr/api/v1/lbcpb1/images/f8/a7/b5/f8a7b51e7108f8c32f587748fb7ae33bd8d9186b.jpg?rule=classified-1200x800-webp"
-            class="w-40 h-40 lg:w-60 lg:h-60"
-          />
-          <img
-            src="https://img.leboncoin.fr/api/v1/lbcpb1/images/f8/a7/b5/f8a7b51e7108f8c32f587748fb7ae33bd8d9186b.jpg?rule=classified-1200x800-webp"
-            class="w-40 h-40 lg:w-60 lg:h-60"
-          />
-        </div>
-      </div>
-      <div class="w-8/12 flex-col">
-        <div class="flex gap-1 items-center mb-3">
-          <h2 class="text-2xl">Categorie |</h2>
-          <h3 class="text-xl">Mon super titre |</h3>
-          <span class="text-xl">10 $</span>
-        </div>
 
-        <!-- Badges -->
-        <div class="flex mb-3">
-          <div class="announce-badges mr-1">neutral</div>
-          <div class="announce-badges mx-1">neutral</div>
-          <div class="announce-badges mx-1">neutral</div>
-          <div class="announce-badges ml-1">neutral</div>
-        </div>
-        <div class="divider mb-0 lg:mb-8"></div>
-        <!-- Description -->
-        <h3 class="card-title mb-2">Description:</h3>
-        <p class="w-3/4 text-gray-800 leading-normal">
+    <div class="w-11/12 md:w-1/2 flex flex-col gap-4">
+      <div class="flex gap-2 items-center">
+        <h2 class="text-xl sm:text-2xl">Categorie |</h2>
+        <h3 class="text-lg sm:text-xl">Mon super titre |</h3>
+        <span class="text-lg sm:text-xl">10 $</span>
+      </div>
+
+      <!-- Badges -->
+      <div class="flex">
+        <div class="announce-badges mr-1">neutral</div>
+        <div class="announce-badges mx-1">neutral</div>
+        <div class="announce-badges mx-1">neutral</div>
+        <div class="announce-badges ml-1">neutral</div>
+      </div>
+      <div class="divider my-0"></div>
+
+      <!-- Description -->
+      <div class="flex flex-col gap-2">
+        <h3 class="card-title">Description:</h3>
+        <p class="sm:w-3/4 text-gray-800 leading-normal">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
           risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,
           ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula
@@ -84,6 +65,14 @@
           sit amet erat. Duis semper.
         </p>
       </div>
-    </aside>
+      <!-- CTA's Group -->
+      <div class="btn-group flex justify-end mt-auto">
+        <button class="btn btn-outline btn-info mr-1 shadow-md">
+          Modifier
+        </button>
+        <button class="btn btn-primary shadow-md">Publier</button>
+      </div>
+    </div>
+    <!-- </aside> -->
   </article>
 </section>
