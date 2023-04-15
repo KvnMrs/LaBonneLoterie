@@ -30,6 +30,7 @@ import { BtnCtaFullComponent } from './shared/libs/ux-ui/buttons/btn-cta-full/bt
 import { AnnouncesService } from './services/announces/announces.service';
 import { AuthService } from './services/auth/auth.service';
 import { UploadImgService } from './services/uploads/upload-img.service';
+import { SummaryAnnounceComponent } from './components/summary-announce/summary-announce.component';
 
 const appRoutes: Routes = [
   // { path: '', component: ListItemsComponent },
@@ -81,6 +82,7 @@ const appRoutes: Routes = [
     HeaderComponent,
     InputComponent,
     BtnCtaFullComponent,
+    SummaryAnnounceComponent,
   ],
   imports: [
     BrowserModule,
