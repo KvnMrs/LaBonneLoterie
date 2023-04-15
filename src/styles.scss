@@ -218,3 +218,17 @@ nav {
 .announce-CTA-group {
   @apply btn-group flex justify-end
 }
+
+// Summary-Announce page ///////////////////////////////////////////////////////////////////////
+
+.summary-container {
+  @apply py-3 flex flex-col gap-4 items-center
+/* MD */ md:w-11/12 md:mx-auto md:py-6 md:flex-row md:gap-4
+/* LG */ lg:gap-12
+}
+.summary-main-info {
+  @apply flex gap-2 items-center
+}
+.summary-description {
+  @apply flex flex-col gap-2
+}

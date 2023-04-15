@@ -22,6 +22,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { ModalProfileComponent } from './components/modals/modal-profile/modal-profile.component';
+import { SummaryAnnounceComponent } from './components/summary-announce/summary-announce.component';
+
 // Libs
 import { HeaderComponent } from './shared/libs/ux-ui/header/header.component';
 import { InputComponent } from './shared/libs/ux-ui/forms/input/input.component';
@@ -30,11 +32,10 @@ import { BtnCtaFullComponent } from './shared/libs/ux-ui/buttons/btn-cta-full/bt
 import { AnnouncesService } from './services/announces/announces.service';
 import { AuthService } from './services/auth/auth.service';
 import { UploadImgService } from './services/uploads/upload-img.service';
-import { SummaryAnnounceComponent } from './components/summary-announce/summary-announce.component';
 
 const appRoutes: Routes = [
   // { path: '', component: ListItemsComponent },
-  { path: '', component: AddAnnounceComponent },
+  { path: '', component: SummaryAnnounceComponent },
   {
     path: 'recherche',
     /* canActivate: [AuthGuardService], */ component: ListItemsComponent,
