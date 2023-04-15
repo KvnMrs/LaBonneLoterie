@@ -1,4 +1,89 @@
-<section class="">
+<div class="main-container">
+  <lbl-header>Publier votre annonce !</lbl-header>
+  <form [formGroup]="formAnnounce" class="form-container">
+    <h1 class="form-title">Informations</h1>
+    <div class="form-sub-container">
+      <div class="md:w-full">
+        <div class="form-input-container">
+          <label class="mb-1" for="firstname">Titre:</label>
+          <input
+            class="input input-lbl"
+            type="text"
+            id="firstname"
+            name="firstname"
+            formControlName="firstname"
+            autocomplete="username"
+            placeholder="Alexandre"
+            required
+          />
+        </div>
+        <div class="form-input-container">
+          <label class="mb-1">Catégorie:</label>
+          <select class="select select-bordered p-2">
+            <option>Bricolage</option>
+            <option>Divers</option>
+            <option>Multimédia</option>
+            <option>Véhicule</option>
+            <option>Vêtement</option>
+          </select>
+        </div>
+        <div class="form-input-container">
+          <label class="mb-1" for="birthday">Estimation:</label>
+          <input
+            class="input input-lbl"
+            type="number"
+            id="birthday"
+            name="birthday"
+            formControlName="birthday"
+            autocomplete="username"
+            placeholder="0 $"
+            required
+          />
+        </div>
+        <div class="form-input-container">
+          <label class="mb-1" for="birthday">Prix ticket:</label>
+          <input
+            class="input input-lbl"
+            type="number"
+            id="birthday"
+            name="birthday"
+            formControlName="birthday"
+            autocomplete="username"
+            placeholder="0 $"
+            required
+          />
+        </div>
+      </div>
+      <div class="col-upload-descript-buttons">
+        <div class="md:w-full mt-0">
+          <div class="form-input-container">
+            <label class="mb-1" for="birthday">Télécharger un fichier:</label>
+
+            <input
+              type="file"
+              class="file-input file-input-bordered file-input-success file-input-md mt-4 md:mt-0 w-full max-w-xs"
+            />
+          </div>
+          <div class="form-input-container">
+            <label class="label">Description:</label>
+            <textarea
+              class="textarea input-lbl h-24 mb-3"
+              placeholder="250 charatères maximum..."
+            ></textarea>
+          </div>
+        </div>
+        <div
+          class="btn-group btn-group-horizontal lg:btn-group-horizontal flex justify-end md:mt-3 md:mr-6"
+        >
+          <button class="btn btn-outline btn-info bg-slate-50">Retour</button>
+          <button class="btn btn-stroke btn-primary">Publier</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- <section class="">
   <div class="">
     <div class="">
       <div class="">
@@ -100,4 +185,4 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->

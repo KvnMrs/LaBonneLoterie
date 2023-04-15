@@ -8,10 +8,10 @@ import { UploadImgService } from '../../services/uploads/upload-img.service';
 
 @Component({
   selector: 'app-add-item',
-  templateUrl: './add-item.component.html',
-  styleUrls: ['./add-item.component.scss'],
+  templateUrl: './add-announce.component.html',
+  styleUrls: ['./add-announce.component.scss'],
 })
-export class AddItemComponent implements OnInit {
+export class AddAnnounceComponent implements OnInit {
   // variable triggers message, submit or error
   showSubmitMessage!: boolean;
   showErrorMessage!: boolean;

@@ -1,57 +1,55 @@
 <div class="main-container">
   <lbl-header>Heureux de vous revoir, bonne chance à vous !</lbl-header>
-  <div class="auth-form-container">
-    <form [formGroup]="formLogIn" class="auth-form lg:w-2/5">
-      <h1 class="auth-form-title">Connexion</h1>
-      <div class="auth-form-container md:flex-col">
-        <div class="auth-form-sub-container">
-          <div class="auth-input-container">
-            <label class="mb-1" for="email">E-mail:</label>
-            <input
-              class="auth-input"
-              type="email"
-              id="email"
-              name="email"
-              formControlName="email"
-              autocomplete="username"
-              placeholder="Alexandre"
-              required
-            />
-          </div>
-          <div class="auth-input-container">
-            <label class="mb-1" for="password">Mot de passe:</label>
-            <input
-              class="auth-input"
-              type="password"
-              id="password"
-              name="password"
-              formControlName="password"
-              autocomplete="current-password"
-              placeholder="Alexandre"
-              required
-            />
-          </div>
+  <form [formGroup]="formLogIn" class="form-container lg:w-2/5">
+    <h1 class="form-title">Connexion</h1>
+    <div class="form-sub-container md:flex-col">
+      <div class="md:w-full">
+        <div class="form-input-container">
+          <label class="mb-1" for="email">E-mail:</label>
+          <input
+            class="input-lbl"
+            type="email"
+            id="email"
+            name="email"
+            formControlName="email"
+            autocomplete="username"
+            placeholder="Alexandre"
+            required
+          />
         </div>
-        <div class="auth-cta-container">
-          <button
-            (click)="onLogIn()"
-            class="w-fit py-2 px-4 rounded-lg font-semibold text-white shadow-md bg-lbl"
-            type="button"
-            [disabled]="!formLogIn.valid"
-          >
-            Se connecter
-          </button>
-          <p>
-            je ne suis pas inscris,
-            <a
-              class="text-blue-600 hover:text-blue-400 underline"
-              [routerLink]="['/inscription']"
-            >
-              m'inscrire.
-            </a>
-          </p>
+        <div class="form-input-container">
+          <label class="mb-1" for="password">Mot de passe:</label>
+          <input
+            class="input-lbl"
+            type="password"
+            id="password"
+            name="password"
+            formControlName="password"
+            autocomplete="current-password"
+            placeholder="Alexandre"
+            required
+          />
         </div>
       </div>
-    </form>
-  </div>
+      <div class="auth-cta-container">
+        <button
+          (click)="onLogIn()"
+          class="w-fit py-2 px-4 rounded-lg font-semibold text-white shadow-md bg-lbl"
+          type="button"
+          [disabled]="!formLogIn.valid"
+        >
+          Se connecter
+        </button>
+        <p>
+          je ne suis pas inscris,
+          <a
+            class="text-blue-600 hover:text-blue-400 underline"
+            [routerLink]="['/inscription']"
+          >
+            m'inscrire.
+          </a>
+        </p>
+      </div>
+    </div>
+  </form>
 </div>
