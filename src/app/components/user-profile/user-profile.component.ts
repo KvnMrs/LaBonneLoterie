@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss'],
 })
-export class UserUserProfileComponent implements OnInit {
+export class UserProfileComponent implements OnInit {
   public stars = [1, 2, 3, 4, 5];
   public profileData: DocumentData | undefined;
   modalUpdateProfile = false;
