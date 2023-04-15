@@ -4,10 +4,10 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss'],
+  templateUrl: './user-profile.component.html',
+  styleUrls: ['./user-profile.component.scss'],
 })
-export class ProfileComponent implements OnInit {
+export class UserUserProfileComponent implements OnInit {
   public stars = [1, 2, 3, 4, 5];
   public profileData: DocumentData | undefined;
   modalUpdateProfile = false;
