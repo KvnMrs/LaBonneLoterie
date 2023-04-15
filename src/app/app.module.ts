@@ -32,11 +32,10 @@ import { BtnCtaFullComponent } from './shared/libs/ux-ui/buttons/btn-cta-full/bt
 import { AnnouncesService } from './services/announces/announces.service';
 import { AuthService } from './services/auth/auth.service';
 import { UploadImgService } from './services/uploads/upload-img.service';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 const appRoutes: Routes = [
   // { path: '', component: ListItemsComponent },
-  { path: '', component: UserProfileComponent },
+  { path: '', component: ProfileComponent },
   {
     path: 'recherche',
     /* canActivate: [AuthGuardService], */ component: ListItemsComponent,
@@ -85,7 +84,6 @@ const appRoutes: Routes = [
     InputComponent,
     BtnCtaFullComponent,
     SummaryAnnounceComponent,
-    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
