@@ -1,25 +1,29 @@
 <nav role="navigation" aria-label="Menu principal">
-  <div class="nav-container">
-    <div class="btn-burger-container">
-      <button class="btn-burger" (click)="toggleDropdown()">☰</button>
-      <div *ngIf="isDropdownVisible" class="menu">
-        <ul class="links">
-          <li class="link-container">
-            <img src="/assets/svg/search.svg" width="20" height="20" />
-            <a class="link-nav" [routerLink]="['/recherche']">Mes recherches</a>
-          </li>
-          <li class="link-container">
-            <img src="/assets/svg/cross.svg" width="20" height="20" />
-            <a [routerLink]="['/ajout-annonce']" class="link-nav"
-              >Ajouter une annonce</a
-            >
-          </li>
-          <li class="link-container">
-            <img src="/assets/svg/profile.svg" width="20" height="20" />
-            <a [routerLink]="['/inscription']" class="link-nav">Se connecter</a>
-          </li>
-        </ul>
-      </div>
+  <div class="drawer w-28 z-10">
+    <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+    <div class="drawer-content">
+      <!-- Page content here -->
+      <label for="my-drawer" class="btn btn-primary drawer-button my-2 mx-3"
+        >Menu</label
+      >
+    </div>
+    <div class="drawer-side">
+      <label for="my-drawer" class="drawer-overlay"></label>
+      <ul class="menu p-4 w-80 bg-base-100 text-base-content">
+        <!-- Sidebar content here -->
+        <li>
+          <img src="/assets/svg/search.svg" width="20" height="20" />
+          <a [routerLink]="['/recherche']">Mes recherches</a>
+        </li>
+        <li>
+          <img src="/assets/svg/cross.svg" width="20" height="20" />
+          <a [routerLink]="['/ajout-annonce']">Ajouter une annonce</a>
+        </li>
+        <li>
+          <img src="/assets/svg/profile.svg" width="20" height="20" />
+          <a [routerLink]="['/inscription']">Se connecter</a>
+        </li>
+      </ul>
     </div>
   </div>
   <div class="logo-letters-container">
