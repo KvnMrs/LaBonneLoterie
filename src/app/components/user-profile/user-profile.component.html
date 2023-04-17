@@ -1,12 +1,12 @@
 <section class="main-container">
   <lbl-header>Retrouvez vos informations:</lbl-header>
-  <div class="flex flex-col gap-4">
-    <div class="px-2 py-4 bg-slate-100 rounded-md shadow-md">
+  <div class="lg:w-11/12 mx-auto md:px-4 flex flex-col md:flex-row gap-4">
+    <div class="md:w-5/12 md:h-fit p-4 bg-slate-100 rounded-md shadow-md">
       <article
-        class="mx-auto py-4 px-2 flex flex-col gap-4 md:flex-row bg-slate-200 rounded-lg shadow-lg"
+        class="mx-auto py-4 px-2 flex flex-col gap-4 bg-slate-200 rounded-lg shadow-lg"
       >
-        <aside class="flex flex-col gap-4">
-          <div class="flex gap-4 items-center justify-center">
+        <aside class="flex flex-col gap-4 md:gap-6">
+          <div class="flex gap-4 items-center justify-center md:justify-around">
             <div>
               <img
                 src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
@@ -50,10 +50,10 @@
               </div>
             </div>
           </div>
-          <div class="">
+          <div class="w-full md:w-11/12 flex">
             <button
               type="button"
-              class="btn btn-sm announce-user-contact ml-2 rounded-lg shadow-lg"
+              class="btn btn-sm announce-user-contact ml-auto rounded-lg shadow-lg"
               (click)="updateProfile()"
             >
               Modifier profil
@@ -76,59 +76,65 @@
         </div>
       </article>
     </div>
-    <article class="w-11/12 mx-auto py-4 flex flex-col gap-4 items-center">
-      <aside class="w-11/12 h-48 p-4 bg-slate-100 rounded-md shadow-md">
-        <div
-          class="flex flex-col gap-8 text-center items-center justify-center px-2 py-4 bg-slate-200 rounded-md shadow-md"
-        >
-          <div class="gap-2">
-            <h2 class="text-xl font-medium">Mes annonces</h2>
-            <p>Description du menu</p>
+    <article
+      class="w-11/12 md:w-1/2 mx-auto py-4 flex flex-col gap-4 items-center"
+    >
+      <div class="w-full flex flex-col md:flex-row gap-4">
+        <aside class="w-full md:h-60 p-4 bg-slate-100 rounded-md shadow-md">
+          <div
+            class="h-full flex flex-col gap-8 text-center items-center justify-center px-2 py-4 bg-slate-200 rounded-md shadow-md"
+          >
+            <div class="gap-2">
+              <h2 class="text-xl font-medium">Menu 1</h2>
+              <p>Description du menu</p>
+            </div>
+            <div>
+              <img src="/assets/svg/profile.svg" class="w-12 h-12" />
+            </div>
           </div>
-          <div>
-            <img src="/assets/svg/profile.svg" class="w-12 h-12" />
+        </aside>
+        <aside class="w-full md:h-60 p-4 bg-slate-100 rounded-md shadow-md">
+          <div
+            class="h-full flex flex-col gap-8 text-center items-center justify-center px-2 py-4 bg-slate-200 rounded-md shadow-md"
+          >
+            <div class="gap-2">
+              <h2 class="text-xl font-medium">Menu 1</h2>
+              <p>Description du menu</p>
+            </div>
+            <div>
+              <img src="/assets/svg/profile.svg" class="w-12 h-12" />
+            </div>
           </div>
-        </div>
-      </aside>
-      <aside class="w-11/12 h-48 p-4 bg-slate-100 rounded-md shadow-md">
-        <div
-          class="h-full flex flex-col gap-8 text-center items-center justify-center px-2 py-4 bg-slate-200 rounded-md shadow-md"
-        >
-          <div class="gap-2">
-            <h2 class="text-xl font-medium">Menu 1</h2>
-            <p>Description du menu</p>
+        </aside>
+      </div>
+      <div class="w-full flex flex-col md:flex-row gap-4">
+        <aside class="w-full md:h-60 p-4 bg-slate-100 rounded-md shadow-md">
+          <div
+            class="h-full flex flex-col gap-8 text-center items-center justify-center px-2 py-4 bg-slate-200 rounded-md shadow-md"
+          >
+            <div class="gap-2">
+              <h2 class="text-xl font-medium">Menu 1</h2>
+              <p>Description du menu</p>
+            </div>
+            <div>
+              <img src="/assets/svg/profile.svg" class="w-12 h-12" />
+            </div>
           </div>
-          <div>
-            <img src="/assets/svg/profile.svg" class="w-12 h-12" />
+        </aside>
+        <aside class="w-full md:h-60 p-4 bg-slate-100 rounded-md shadow-md">
+          <div
+            class="h-full flex flex-col gap-8 text-center items-center justify-center px-2 py-4 bg-slate-200 rounded-md shadow-md"
+          >
+            <div class="gap-2">
+              <h2 class="text-xl font-medium">Menu 1</h2>
+              <p>Description du menu</p>
+            </div>
+            <div>
+              <img src="/assets/svg/profile.svg" class="w-12 h-12" />
+            </div>
           </div>
-        </div>
-      </aside>
-      <aside class="w-11/12 h-48 p-4 bg-slate-100 rounded-md shadow-md">
-        <div
-          class="h-full flex flex-col gap-8 text-center items-center justify-center px-2 py-4 bg-slate-200 rounded-md shadow-md"
-        >
-          <div class="gap-2">
-            <h2 class="text-xl font-medium">Menu 1</h2>
-            <p>Description du menu</p>
-          </div>
-          <div>
-            <img src="/assets/svg/profile.svg" class="w-12 h-12" />
-          </div>
-        </div>
-      </aside>
-      <aside class="w-11/12 h-48 p-4 bg-slate-100 rounded-md shadow-md">
-        <div
-          class="h-full flex flex-col gap-8 text-center items-center justify-center px-2 py-4 bg-slate-200 rounded-md shadow-md"
-        >
-          <div class="gap-2">
-            <h2 class="text-xl font-medium">Menu 1</h2>
-            <p>Description du menu</p>
-          </div>
-          <div>
-            <img src="/assets/svg/profile.svg" class="w-12 h-12" />
-          </div>
-        </div>
-      </aside>
+        </aside>
+      </div>
     </article>
   </div>
 </section>
