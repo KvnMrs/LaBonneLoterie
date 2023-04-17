@@ -28,18 +28,7 @@ nav {
   @apply h-16 flex border-b shadow-md border-slate-400 bg-gray-200
 }
 .nav-container {
-  @apply w-28 flex 
-/* MD */
-}
-.btn-burger-container {
-  @apply m-auto
-}
-.btn-burger {
-  @apply text-3xl font-semibold
-}
-.menu{
-  @apply h-full w-3/4 absolute top-16 left-0 bg-gray-300
-/* MD */ md:w-1/4
+  @apply w-28 flex
 }
 .links {
   @apply relative top-4 left-6
