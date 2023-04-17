@@ -1,4 +1,74 @@
-<section class="">
+<section class="main-container">
+  <lbl-header>Retrouvez vos informations:</lbl-header>
+  <article class="py-4 px-2 flex flex-col md:flex-row">
+    <aside class="flex flex-col gap-4">
+      <div class="flex gap-4 items-center justify-center">
+        <div>
+          <img
+            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+            alt="Generic placeholder image"
+            class="w-28 h-w-28 rounded-full"
+          />
+        </div>
+        <div class="p-2 bg-slate-100 rounded-lg shadow-md">
+          <!-- <h5>{{profileData?.['firstname']}} {{profileData?.['lastname']}}</h5> -->
+          <p class="font-semibold text-lg">Alexandre Durand</p>
+          <!-- <p>{{profileData?.['city']}}</p> -->
+          <p>Loire Atlantique, Nantes</p>
+          <p>Membre depuis le 20/02/2023</p>
+          <div class="rating rating-md mb-4 pt-1 lg:mb-0">
+            <input
+              type="radio"
+              name="rating-9"
+              class="mx-0.5 mask mask-star-2 bg-yellow-300"
+            />
+            <input
+              type="radio"
+              name="rating-9"
+              class="mx-0.5 mask mask-star-2 bg-yellow-300"
+              checked
+            />
+            <input
+              type="radio"
+              name="rating-9"
+              class="mx-0.5 mask mask-star-2 bg-primary"
+            />
+            <input
+              type="radio"
+              name="rating-9"
+              class="mx-0.5 mask mask-star-2 bg-primary"
+            />
+            <input
+              type="radio"
+              name="rating-9"
+              class="mx-0.5 mask mask-star-2 bg-primary"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="">
+        <button
+          class="btn btn-sm announce-user-contact ml-2 rounded-lg shadow-lg"
+        >
+          Modifier profil
+        </button>
+      </div>
+    </aside>
+    <aside class="flex flex-col items-center gap-6">
+      <div class="divider text-xl">Soldes</div>
+      <div class="w-20 h-20 flex rounded-full bg-slate-200">
+        <p class="m-auto text-center text-5xl rounded-full">$</p>
+      </div>
+      <p>500 $</p>
+      <!-- CTA's Group -->
+      <div class="btn-group flex justify-center gap-2">
+        <button class="btn btn-outline btn-info mr-1 shadow-md">Retirer</button>
+        <button class="btn btn-primary shadow-md">Créditer</button>
+      </div>
+    </aside>
+  </article>
+</section>
+<!-- <section class="">
   <div class="">
     <div class="">
       <div class="">
@@ -99,4 +169,4 @@
     [modalUpdateProfile]="modalUpdateProfile"
     (modalUpdateEvent)="modalUpdateProfile = !modalUpdateProfile"
   ></app-modal-profile>
-</section>
+</section> -->
