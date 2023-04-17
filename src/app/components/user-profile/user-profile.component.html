@@ -1,12 +1,10 @@
 <section class="main-container">
   <lbl-header>Retrouvez vos informations:</lbl-header>
-  <div class="lg:w-11/12 mx-auto md:px-4 flex flex-col md:flex-row gap-4">
-    <div class="md:w-5/12 md:h-fit p-4 bg-slate-100 rounded-md shadow-md">
-      <article
-        class="mx-auto py-4 px-2 flex flex-col gap-4 bg-slate-200 rounded-lg shadow-lg"
-      >
-        <aside class="flex flex-col gap-4 md:gap-6">
-          <div class="flex gap-4 items-center justify-center md:justify-around">
+  <div class="user-profile-container">
+    <div class="profile-card-container">
+      <article class="profile-card">
+        <aside class="user-info-container">
+          <div class="user-picture-infos">
             <div>
               <img
                 src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
@@ -14,7 +12,7 @@
                 class="w-28 h-w-28 rounded-full"
               />
             </div>
-            <div class="p-2 bg-slate-50 rounded-lg shadow-md">
+            <div class="user-infos">
               <!-- <h5>{{profileData?.['firstname']}} {{profileData?.['lastname']}}</h5> -->
               <p class="font-semibold text-lg">Alexandre Durand</p>
               <!-- <p>{{profileData?.['city']}}</p> -->
@@ -76,14 +74,10 @@
         </div>
       </article>
     </div>
-    <article
-      class="w-11/12 md:w-1/2 mx-auto py-4 flex flex-col gap-4 items-center"
-    >
-      <div class="w-full flex flex-col md:flex-row gap-4">
+    <article class="user-profile-menu-container">
+      <div class="pair-menu-container">
         <aside class="w-full md:h-60 p-4 bg-slate-100 rounded-md shadow-md">
-          <div
-            class="h-full flex flex-col gap-8 text-center items-center justify-center px-2 py-4 bg-slate-200 rounded-md shadow-md"
-          >
+          <div class="card-menu">
             <div class="gap-2">
               <h2 class="text-xl font-medium">Menu 1</h2>
               <p>Description du menu</p>
@@ -94,9 +88,7 @@
           </div>
         </aside>
         <aside class="w-full md:h-60 p-4 bg-slate-100 rounded-md shadow-md">
-          <div
-            class="h-full flex flex-col gap-8 text-center items-center justify-center px-2 py-4 bg-slate-200 rounded-md shadow-md"
-          >
+          <div class="card-menu">
             <div class="gap-2">
               <h2 class="text-xl font-medium">Menu 1</h2>
               <p>Description du menu</p>
@@ -107,11 +99,9 @@
           </div>
         </aside>
       </div>
-      <div class="w-full flex flex-col md:flex-row gap-4">
+      <div class="pair-menu-container">
         <aside class="w-full md:h-60 p-4 bg-slate-100 rounded-md shadow-md">
-          <div
-            class="h-full flex flex-col gap-8 text-center items-center justify-center px-2 py-4 bg-slate-200 rounded-md shadow-md"
-          >
+          <div class="card-menu">
             <div class="gap-2">
               <h2 class="text-xl font-medium">Menu 1</h2>
               <p>Description du menu</p>
@@ -122,9 +112,7 @@
           </div>
         </aside>
         <aside class="w-full md:h-60 p-4 bg-slate-100 rounded-md shadow-md">
-          <div
-            class="h-full flex flex-col gap-8 text-center items-center justify-center px-2 py-4 bg-slate-200 rounded-md shadow-md"
-          >
+          <div class="card-menu">
             <div class="gap-2">
               <h2 class="text-xl font-medium">Menu 1</h2>
               <p>Description du menu</p>
@@ -138,105 +126,9 @@
     </article>
   </div>
 </section>
-<!-- <section class="">
-  <div class="">
-    <div class="">
-      <div class="">
-        <div class="">
-          <div class="">
-            <div class="">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
-                alt="Generic placeholder image"
-                class=""
-                style="width: 150px; z-index: 1"
-              />
-              <button
-                type="button"
-                class=""
-                data-mdb-ripple-color="success"
-                (click)="updateProfile()"
-              >
-                Modifier profil
-              </button>
-            </div>
-            <div class="">
-              <h5>
-                {{profileData?.['firstname']}} {{profileData?.['lastname']}}
-              </h5>
-              <p>{{profileData?.['city']}}</p>
-            </div>
-          </div>
-          <div class="">
-            <div class="">
-              <div>
-                <p class="">253</p>
-                <p class="">Annonces</p>
-              </div>
-              <div class="">
-                <p class="">1026</p>
-                <p class="">Followers</p>
-              </div>
-              <div>
-                <p class="">478</p>
-                <p class="">Following</p>
-              </div>
-            </div>
-          </div>
-          <div class="">
-            <div class="">
-              <p class="">Commentaire(s)</p>
-              <div class="">
-                <p class="">Web Developer</p>
-                <p class="">Lives in New York</p>
-                <p class="">Photographer</p>
-              </div>
-            </div>
-            <div class="">
-              <p class="">Annonces en cours</p>
-              <p class=""><a href="#!">voir tout</a></p>
-            </div>
-            <div class="">
-              <div class="">
-                <img
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
-                  alt="image 1"
-                  class=""
-                />
-              </div>
-              <div class="">
-                <img
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
-                  alt="image 1"
-                  class=""
-                />
-              </div>
-            </div>
-            <div class="">
-              <div class="">
-                <img
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp"
-                  alt="image 1"
-                  class=""
-                />
-              </div>
-              <div class="col">
-                <img
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp"
-                  alt="image 1"
-                  class=""
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <app-modal-profile
-    *ngIf="modalUpdateProfile"
-    [profileData]="profileData"
-    [modalUpdateProfile]="modalUpdateProfile"
-    (modalUpdateEvent)="modalUpdateProfile = !modalUpdateProfile"
-  ></app-modal-profile>
-</section> -->
+<app-modal-profile
+  *ngIf="modalUpdateProfile"
+  [profileData]="profileData"
+  [modalUpdateProfile]="modalUpdateProfile"
+  (modalUpdateEvent)="modalUpdateProfile = !modalUpdateProfile"
+></app-modal-profile>
