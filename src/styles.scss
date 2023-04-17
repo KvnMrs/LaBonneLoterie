@@ -28,8 +28,8 @@ nav {
   @apply h-16 flex border-b shadow-md border-slate-400 bg-gray-200
 }
 .nav-container {
-  @apply w-1/6 flex
-/* MD */ md:w-20
+  @apply w-28 flex 
+/* MD */
 }
 .btn-burger-container {
   @apply m-auto
