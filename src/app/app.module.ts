@@ -18,7 +18,7 @@ import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { AddAnnounceComponent } from './components/add-announce/add-announce.component';
 import { AnnounceDetailsComponent } from './components/announce-details/announce-details.component';
 import { BuyTickectComponent } from './components/buy-ticket/buy-ticket.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { ModalProfileComponent } from './components/modals/modal-profile/modal-profile.component';
@@ -35,7 +35,7 @@ import { UploadImgService } from './services/uploads/upload-img.service';
 
 const appRoutes: Routes = [
   // { path: '', component: ListItemsComponent },
-  { path: '', component: SummaryAnnounceComponent },
+  { path: '', component: UserProfileComponent },
   {
     path: 'recherche',
     /* canActivate: [AuthGuardService], */ component: ListItemsComponent,
@@ -50,7 +50,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'profil',
-    /* canActivate: [AuthGuardService], */ component: ProfileComponent,
+    /* canActivate: [AuthGuardService], */ component: UserProfileComponent,
   },
   {
     path: 'liste/:id',
@@ -76,7 +76,7 @@ const appRoutes: Routes = [
     AddAnnounceComponent,
     AnnounceDetailsComponent,
     BuyTickectComponent,
-    ProfileComponent,
+    UserProfileComponent,
     SignInComponent,
     LandingPageComponent,
     ModalProfileComponent,
