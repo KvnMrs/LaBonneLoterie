@@ -7,11 +7,11 @@ import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 import { AnnouncesService } from 'src/app/services/announces/announces.service';
 
 @Component({
-  selector: 'app-item-details',
-  templateUrl: './item-details.component.html',
-  styleUrls: ['./item-details.component.scss'],
+  selector: 'app-announce-details',
+  templateUrl: './announce-details.component.html',
+  styleUrls: ['./announce-details.component.scss'],
 })
-export class ItemDetailsComponent implements OnInit {
+export class AnnounceDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private announesService: AnnouncesService

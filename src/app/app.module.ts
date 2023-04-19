@@ -15,37 +15,50 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { CardItemComponent } from './components/card-item/card-item.component';
 import { ListItemsComponent } from './components/list-items/list-items.component';
 import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
-import { AddItemComponent } from './components/add-item/add-item.component';
-import { ItemDetailsComponent } from './components/item-details/item-details.component';
+import { AddAnnounceComponent } from './components/add-announce/add-announce.component';
+import { AnnounceDetailsComponent } from './components/announce-details/announce-details.component';
 import { BuyTickectComponent } from './components/buy-ticket/buy-ticket.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { ModalProfileComponent } from './components/modals/modal-profile/modal-profile.component';
+import { SummaryAnnounceComponent } from './components/summary-announce/summary-announce.component';
 
+// Libs
+import { HeaderComponent } from './shared/libs/ux-ui/header/header.component';
+import { InputComponent } from './shared/libs/ux-ui/forms/input/input.component';
+import { BtnCtaFullComponent } from './shared/libs/ux-ui/buttons/btn-cta-full/btn-cta-full.component';
 // Services
 import { AnnouncesService } from './services/announces/announces.service';
 import { AuthService } from './services/auth/auth.service';
 import { UploadImgService } from './services/uploads/upload-img.service';
 
 const appRoutes: Routes = [
-  { path: '', component: LandingPageComponent },
-  // { path: '', component: SignUpComponent },
+  // { path: '', component: ListItemsComponent },
+  { path: '', component: UserProfileComponent },
   {
-    path: 'liste',
+    path: 'recherche',
     /* canActivate: [AuthGuardService], */ component: ListItemsComponent,
   },
   {
+    path: 'inscription',
+    /* canActivate: [AuthGuardService], */ component: SignUpComponent,
+  },
+  {
+    path: 'connexion',
+    /* canActivate: [AuthGuardService], */ component: SignInComponent,
+  },
+  {
     path: 'profil',
-    /* canActivate: [AuthGuardService], */ component: ProfileComponent,
+    /* canActivate: [AuthGuardService], */ component: UserProfileComponent,
   },
   {
     path: 'liste/:id',
-    /* canActivate: [AuthGuardService], */ component: ItemDetailsComponent,
+    /* canActivate: [AuthGuardService], */ component: AnnounceDetailsComponent,
   },
   {
     path: 'ajout-annonce',
-    /* canActivate: [AuthGuardService], */ component: AddItemComponent,
+    /* canActivate: [AuthGuardService], */ component: AddAnnounceComponent,
   },
   {
     path: 'achat-ticket/:id',
@@ -60,13 +73,17 @@ const appRoutes: Routes = [
     CardItemComponent,
     ListItemsComponent,
     SignUpComponent,
-    AddItemComponent,
-    ItemDetailsComponent,
+    AddAnnounceComponent,
+    AnnounceDetailsComponent,
     BuyTickectComponent,
-    ProfileComponent,
+    UserProfileComponent,
     SignInComponent,
     LandingPageComponent,
     ModalProfileComponent,
+    HeaderComponent,
+    InputComponent,
+    BtnCtaFullComponent,
+    SummaryAnnounceComponent,
   ],
   imports: [
     BrowserModule,

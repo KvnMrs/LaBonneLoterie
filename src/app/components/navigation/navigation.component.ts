@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent implements OnInit {
+  public isDropdownVisible: boolean = false;
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
@@ -15,5 +16,9 @@ export class NavigationComponent implements OnInit {
   onDisconnect() {
     this.authService.disconnect();
     this.router.navigate(['']);
+  }
+
+  toggleDropdown() {
+    this.isDropdownVisible = !this.isDropdownVisible;
   }
 }

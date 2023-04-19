@@ -1,27 +1,39 @@
-<nav class="">
-  <div class="">
-    <a class="" href="#">LeBonLot</a>
-    <ul class="">
-      <li class="">
-        <a class="" [routerLink]="['/']">Accueil </a>
-      </li>
-      <li class="">
-        <a class="" [routerLink]="['/liste']">Liste</a>
-      </li>
-      <li class="">
-        <a class="" [routerLink]="['/ajout-annonce']">Ajouter une annonce </a>
-      </li>
-      <li class="">
-        <a class="" [routerLink]="['/profil']">Profil</a>
-      </li>
-      <li class="">
-        <button
-          type="button"
-          class="btn btn-outline-danger mx-1"
-          (click)="onDisconnect()"
+<nav role="navigation" aria-label="Menu principal" class="navbar bg-base-100">
+  <div class="flex-1">
+    <a class="btn btn-ghost normal-case logo-letters">LeBonLot</a>
+  </div>
+  <div class="flex-none">
+    <ul class="menu menu-horizontal px-1">
+      <li>
+        <a [routerLink]="['/recherche']" class="btn btn-ghost rounded-btn"
+          >Rechercher</a
         >
-          Se déconnecter
-        </button>
+      </li>
+      <li>
+        <a [routerLink]="['/ajout-annonce']" class="btn btn-ghost rounded-btn"
+          >Ajouter une annonce</a
+        >
+      </li>
+      <li tabindex="0" class="dropdown dropdown-bottom dropdown-end">
+        <a>
+          Menu
+          <svg
+            class="fill-current"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+            />
+          </svg>
+        </a>
+        <ul class="p-2 bg-base-200 right-0 border divide-y">
+          <li><a [routerLink]="['/recherche']">Mes recherches</a></li>
+          <li><a [routerLink]="['/ajout-annonce']">Ajouter une annonce</a></li>
+          <li><a [routerLink]="['/inscription']">Se connecter</a></li>
+        </ul>
       </li>
     </ul>
   </div>
