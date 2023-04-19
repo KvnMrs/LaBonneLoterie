@@ -24,49 +24,21 @@
 }
 
 // NavBar ///////////////////////////////////////////////////////////////////////
+
 nav {
   @apply h-16 flex border-b shadow-md border-slate-400 bg-gray-200
 }
-.nav-container {
-  @apply w-28 flex
-}
-.links {
-  @apply relative top-4 left-6
-/* MD */ md:left-10
-}
-.link-container {
-  @apply flex my-2
-/* HOVER */ hover:my-3 hover:scale-105 transition-all duration-500 ease-in-out
-}
-.link-nav {
-  @apply ml-4 text-lg font-sans text-nav
-/* HOVER */ hover:text-xl hover:font-medium hover:border-b-2 border-blue-500 hover:shadow-lg transition-all duration-200 ease-in-out
-}
-.logo-letters-container {
-  @apply m-auto flex-col items-center space-y-1
-/* MD */ md:space-y-3
-}
 .logo-letters {
-  @apply text-3xl font-bold text-lbl
-}
-.logo-letters-underline {
-  @apply w-16 h-0.5 mx-auto bg-lbl
-}
-.logo-png-container {
-  @apply w-1/6 flex
-/* MD */ md:w-1/12
-}
-.logo-png {
-  @apply h-3/4 m-auto border border-white rounded-lg
+  @apply text-2xl font-semibold text-lbl
 }
 
 // Forms ///////////////////////////////////////////////////////////////////////
 
 .form-container {
   @apply w-11/12 mx-auto p-4 flex-col border shadow-lg rounded-xl bg-slate-300
-  /* SM */ sm:w-2/3
-  /* MD */ md:w-3/4
-  /* LG */ lg:max-w-4xl
+/* SM */ sm:w-2/3
+/* MD */ md:w-3/4
+/* LG */ lg:max-w-4xl
 }
 .form-title {
   @apply mb-5 text-2xl font-medium
@@ -244,7 +216,6 @@ nav {
   @apply flex flex-col gap-4
 /* MD */ md:gap-6
 }
-
 .user-picture-infos {
   @apply flex gap-4 items-center justify-center
 /* MD */ md:justify-around
@@ -252,8 +223,8 @@ nav {
 .user-infos {
   @apply p-2 bg-slate-50 rounded-lg shadow-md
 }
-// Profile Menu
 
+// Profile Menu
 .user-profile-menu-container {
   @apply w-11/12 mx-auto py-4 flex flex-col gap-4 items-center self-center
 /* MD */ md:w-1/2
