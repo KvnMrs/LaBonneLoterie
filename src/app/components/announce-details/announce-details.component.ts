@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DocumentData } from 'firebase/firestore';
 // Models
@@ -12,6 +12,8 @@ import { AnnouncesService } from 'src/app/services/announces/announces.service';
   styleUrls: ['./announce-details.component.scss'],
 })
 export class AnnounceDetailsComponent implements OnInit {
+  @ViewChild('modalBuyTicket') modalBuyTicket!: ElementRef;
+
   constructor(
     private route: ActivatedRoute,
     private announesService: AnnouncesService
@@ -25,4 +27,8 @@ export class AnnounceDetailsComponent implements OnInit {
     this.announesService.getAnnounceByID(this.paramId);
 
   ngOnInit(): void {}
+
+  closeModal() {
+    this.modalBuyTicket.nativeElement.checked = false;
+  }
 }

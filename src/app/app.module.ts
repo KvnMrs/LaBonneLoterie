@@ -35,7 +35,7 @@ import { UploadImgService } from './services/uploads/upload-img.service';
 
 const appRoutes: Routes = [
   // { path: '', component: ListItemsComponent },
-  { path: '', component: UserProfileComponent },
+  { path: '', component: ListItemsComponent },
   {
     path: 'recherche',
     /* canActivate: [AuthGuardService], */ component: ListItemsComponent,
@@ -59,6 +59,10 @@ const appRoutes: Routes = [
   {
     path: 'ajout-annonce',
     /* canActivate: [AuthGuardService], */ component: AddAnnounceComponent,
+  },
+  {
+    path: 'recapitulatif-annonce',
+    /* canActivate: [AuthGuardService], */ component: SummaryAnnounceComponent,
   },
   {
     path: 'achat-ticket/:id',

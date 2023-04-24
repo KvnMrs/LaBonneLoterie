@@ -66,9 +66,42 @@
         <button class="btn btn-outline btn-info mr-1 shadow-md">
           Modifier
         </button>
-        <button class="btn btn-primary shadow-md">Publier</button>
+        <label for="modal-wish-success" class="btn btn-primary shadow-md"
+          >Publier</label
+        >
       </div>
     </div>
     <!-- </aside> -->
   </article>
 </section>
+
+<!-- Wish success modal -->
+<input type="checkbox" id="modal-wish-success" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box flex flex-col gap-4">
+    <label
+      for="modal-wish-success"
+      class="btn btn-sm btn-circle absolute right-4 top-4"
+      >✕</label
+    >
+    <h3 class="pb-4 font-bold text-3xl text-primary text-lbl">
+      Le bon succès ☀
+    </h3>
+    <p class="pb-2">
+      [Nom utilisateur], nous vous souhaitons bonne chance pour ce tirage ce
+      tirage à venir !
+    </p>
+    <p class="pb-2">
+      N'hésitez pas à nous contacter si vous avez des questions ou des
+      préoccupations concernant votre annonce. Nous sommes là pour vous aider.
+    </p>
+    <div class="modal-action">
+      <label
+        (click)="redirectUser()"
+        for="modal-wish-success"
+        class="btn btn-primary"
+        >Merci</label
+      >
+    </div>
+  </div>
+</div>

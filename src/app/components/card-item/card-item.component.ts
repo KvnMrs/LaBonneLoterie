@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AnnouncesService } from 'src/app/services/announces/announces.service';
 
@@ -15,6 +15,7 @@ export class CardItemComponent implements OnInit {
   @Input() img?: string;
   @Input() minTickets?: number | string | undefined;
   @Input() currentTickets: number | string | undefined;
+  @ViewChild('modalBuyTicket') modalBuyTicket!: ElementRef;
 
   constructor(
     private router: Router,
@@ -33,5 +34,9 @@ export class CardItemComponent implements OnInit {
 
   buyTicket(id: string) {
     this.router.navigate([`/achat-ticket/${this.id}`]);
+  }
+
+  closeModal() {
+    this.modalBuyTicket.nativeElement.checked = false;
   }
 }

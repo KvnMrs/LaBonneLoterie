@@ -44,23 +44,25 @@ export class AddAnnounceComponent implements OnInit {
   }
 
   async onSubmit() {
-    const data = this.formAnnounce.value;
-    // IF a value missing, show error message
-    if (data.name == '' || data.description == '') {
-      this.showErrorMessage = true;
-      return;
-    }
+    this.router.navigate(['/recapitulatif-annonce']);
+
+    // const data = this.formAnnounce.value;
+    // // IF a value missing, show error message
+    // if (data.name == '' || data.description == '') {
+    //   this.showErrorMessage = true;
+    //   return;
+    // }
     // ELSE validate the new announce & show submit message
-    else {
-      const urlImg = await this.onUpload();
-      data.img_url = urlImg;
-      this.annoucesService.addAnnounce(data).then((res) => {
-        this.formAnnounce.reset();
-        this.router.navigate(['/liste']);
-        this.showErrorMessage = false;
-        this.showSubmitMessage = true;
-      });
-      this.loading = false;
-    }
+    // else {
+    //   const urlImg = await this.onUpload();
+    //   data.img_url = urlImg;
+    //   this.annoucesService.addAnnounce(data).then((res) => {
+    //     this.formAnnounce.reset();
+    //     this.router.navigate(['/recapitulatif-annonce']);
+    //     this.showErrorMessage = false;
+    //     this.showSubmitMessage = true;
+    //   });
+    //   this.loading = false;
+    // }
   }
 }
