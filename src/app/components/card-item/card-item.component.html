@@ -24,17 +24,22 @@
       <button class="btn btn-outline btn-info" (click)="seeDetails()">
         Détails
       </button>
-      <label for="modal-buy-ticket" class="btn btn-primary">Acheter</label>
+      <label for="modalBuyTicket" class="btn btn-primary">Acheter</label>
     </div>
   </div>
 </div>
 
 <!-- Buy ticket modal -->
-<input type="checkbox" id="modal-buy-ticket" class="modal-toggle" />
+<input
+  type="checkbox"
+  #modalBuyTicket
+  id="modalBuyTicket"
+  class="modal-toggle"
+/>
 <div class="modal">
   <div class="modal-box flex flex-col gap-4">
     <label
-      for="modal-buy-ticket"
+      for="modalBuyTicket"
       class="btn btn-sm btn-circle absolute right-4 top-4"
       >✕</label
     >
@@ -68,10 +73,41 @@
       </tbody>
     </table>
     <div class="modal-action">
-      <label for="modal-buy-ticket" class="btn btn-outline btn-info"
+      <label for="modalBuyTicket" class="btn btn-outline btn-info"
         >Annuler</label
       >
-      <label for="modal-buy-ticket" class="btn btn-primary">Valider</label>
+      <label
+        for="modal-good-luck"
+        class="btn btn-primary"
+        (click)="closeModal()"
+        >Valider</label
+      >
+    </div>
+  </div>
+</div>
+
+<!-- Good luck modal -->
+<input type="checkbox" id="modal-good-luck" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box flex flex-col gap-4">
+    <label
+      for="modal-good-luck"
+      class="btn btn-sm btn-circle absolute right-4 top-4"
+      >✕</label
+    >
+    <h3 class="pb-4 font-bold text-3xl text-primary text-lbl">
+      La bonne chance 🤞
+    </h3>
+    <p class="pb-2">
+      [Nom utilisateur], nous vous souhaitons bonne chance pour ce tirage ce
+      tirage à venir !
+    </p>
+    <p class="pb-2">
+      N'hésitez pas à nous contacter si vous avez des questions ou des
+      préoccupations concernant votre annonce. Nous sommes là pour vous aider.
+    </p>
+    <div class="modal-action">
+      <label for="modal-good-luck" class="btn btn-primary">Merci</label>
     </div>
   </div>
 </div>
