@@ -23,7 +23,7 @@ import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { ModalProfileComponent } from './components/modals/modal-profile/modal-profile.component';
 import { SummaryAnnounceComponent } from './components/summary-announce/summary-announce.component';
-
+import { FooterComponent } from './components/footer/footer.component';
 // Libs
 import { HeaderComponent } from './shared/libs/ux-ui/header/header.component';
 import { InputComponent } from './shared/libs/ux-ui/forms/input/input.component';
@@ -88,6 +88,7 @@ const appRoutes: Routes = [
     InputComponent,
     BtnCtaFullComponent,
     SummaryAnnounceComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
