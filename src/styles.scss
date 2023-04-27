@@ -16,7 +16,7 @@
 }
 
 .main-container {
-  @apply flex flex-col p-2 bg-slate-50 to-slate-100 min-h-screen
+  @apply p-2 flex flex-col bg-slate-50 to-slate-100 min-h-screen
 }
 
 .inline-size-lbl {
@@ -26,7 +26,7 @@
 // NavBar ///////////////////////////////////////////////////////////////////////
 
 nav {
-  @apply h-16 flex border-b shadow-md border-slate-400 bg-gray-200
+  @apply h-16 flex border-b shadow-md border-slate-300 bg-base-200
 }
 .logo-letters {
   @apply text-2xl font-semibold text-lbl
