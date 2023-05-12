@@ -33,7 +33,7 @@ export class AuthService {
         this.userService
           .getUserByID(user.uid)
           .then((data) => (this.userData = data));
-        this.router.navigate(['/liste']);
+        this.router.navigate(['/recherche']);
       } else {
         this.router.navigate(['']);
       }
@@ -44,10 +44,12 @@ export class AuthService {
     uid: new FormControl(''),
     firstname: new FormControl('', Validators.required),
     lastname: new FormControl('', Validators.required),
+    birthday: new FormControl('', Validators.required),
     city: new FormControl('', Validators.required),
     phoneNumber: new FormControl(''),
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
+    confirmation_password: new FormControl('', Validators.required),
   });
 
   createUser(data: IUser) {
@@ -57,7 +59,7 @@ export class AuthService {
         const user = userCredential.user;
         data.uid = user.uid;
         this.userService.createProfileUser(user.uid, data);
-        this.router.navigate(['/liste']);
+        this.router.navigate(['/recherche']);
       })
       .catch((error) => {
         // const errorCode = error.code;
