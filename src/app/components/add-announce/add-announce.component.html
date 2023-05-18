@@ -5,50 +5,45 @@
     <div class="form-sub-container">
       <div class="md:w-full">
         <div class="form-input-container">
-          <label class="mb-1" for="firstname">Titre:</label>
+          <label class="mb-1" for="title">Titre:</label>
           <input
             class="input input-lbl"
             type="text"
-            id="firstname"
-            name="firstname"
-            formControlName="firstname"
-            autocomplete="username"
-            placeholder="Alexandre"
+            id="title"
+            name="title"
+            formControlName="title"
+            placeholder="Mon titre"
             required
           />
         </div>
         <div class="form-input-container">
           <label class="mb-1">Catégorie:</label>
           <select class="select select-bordered p-2">
-            <option>Bricolage</option>
-            <option>Divers</option>
-            <option>Multimédia</option>
-            <option>Véhicule</option>
-            <option>Vêtement</option>
+            <option *ngFor="let category of categorys" [value]="category.id">
+              {{ category.name }}
+            </option>
           </select>
         </div>
         <div class="form-input-container">
-          <label class="mb-1" for="birthday">Estimation:</label>
+          <label class="mb-1" for="estimate">Estimation:</label>
           <input
             class="input input-lbl"
             type="number"
-            id="birthday"
-            name="birthday"
-            formControlName="birthday"
-            autocomplete="username"
+            id="estimate"
+            name="estimate"
+            formControlName="estimate"
             placeholder="0 $"
             required
           />
         </div>
         <div class="form-input-container">
-          <label class="mb-1" for="birthday">Prix ticket:</label>
+          <label class="mb-1" for="oneTicketPrice">Prix ticket:</label>
           <input
             class="input input-lbl"
             type="number"
-            id="birthday"
-            name="birthday"
-            formControlName="birthday"
-            autocomplete="username"
+            id="oneTicketPrice"
+            name="oneTicketPrice"
+            formControlName="oneTicketPrice"
             placeholder="0 $"
             required
           />
@@ -57,15 +52,18 @@
       <div class="col-upload-descript-buttons">
         <div class="md:w-full mt-0">
           <div class="form-input-container">
-            <label class="mb-1" for="birthday">Télécharger un fichier:</label>
-
+            <label class="mb-1" for="img_url">Télécharger un fichier:</label>
             <input
               type="file"
+              id="img_url"
+              name="img_url"
+              formControlName="img_url"
               class="file-input file-input-bordered file-input-success file-input-md mt-4 md:mt-0 w-full max-w-xs"
+              required
             />
           </div>
           <div class="form-input-container">
-            <label class="label">Description:</label>
+            <label class="label" for="description">Description:</label>
             <textarea
               class="textarea input-lbl h-24 mb-3"
               placeholder="250 charatères maximum..."

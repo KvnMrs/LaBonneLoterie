@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 // Services
 import { AnnouncesService } from '../../services/announces/announces.service';
@@ -18,7 +18,16 @@ export class AddAnnounceComponent implements OnInit {
   shortLink: string = '';
   loading: boolean = false; // Flag variable
   file!: File; // Variable to store file
-  public formAnnounce!: UntypedFormGroup;
+  public formAnnounce!: FormGroup;
+
+  public categorys = [
+    { id: 1, name: 'Vêtement' },
+    { id: 2, name: 'Véhicule' },
+    { id: 3, name: 'Multimédia' },
+    { id: 4, name: 'Décoration' },
+    { id: 5, name: 'Electomenager' },
+    { id: 6, name: 'Jardin' },
+  ];
 
   constructor(
     public annoucesService: AnnouncesService,

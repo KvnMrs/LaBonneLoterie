@@ -1,6 +1,6 @@
 export interface IAnnounce {
   id: string;
-  name: string;
+  title: string;
   category: string;
   description: string;
   img_url?: string;

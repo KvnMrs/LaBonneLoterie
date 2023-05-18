@@ -22,13 +22,14 @@ export class AnnouncesService {
   constructor(private firestore: Firestore) {}
 
   form = new FormGroup({
-    name: new FormControl('', Validators.required),
+    title: new FormControl('', Validators.required),
     category: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
     img_url: new FormControl('', Validators.required),
-    minTickets: new FormControl(0),
-    currentTickets: new FormControl(0),
-    oneTicketPrice: new FormControl(0),
+    estimate: new FormControl(0, Validators.required),
+    minTickets: new FormControl(0, Validators.required),
+    currentTickets: new FormControl(0, Validators.required),
+    oneTicketPrice: new FormControl(0, Validators.required),
   });
 
   // getAllAnnounce
