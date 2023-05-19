@@ -33,8 +33,7 @@ export class BuyTickectComponent implements OnInit {
   selectTicket() {
     var input = document.querySelector('#numberTicket') as HTMLInputElement;
     this.numberTicket = parseInt(input.value);
-    this.totalPrice =
-      this.numberTicket * this.currentAnnounce?.['oneTicketPrice'];
+    this.totalPrice = this.numberTicket * this.currentAnnounce?.['ticketPrice'];
   }
   buyTickets() {
     this.announcesService.updateAnnouceTickets(this.id, this.numberTicket);

@@ -1,9 +1,13 @@
 <div class="main-container">
   <lbl-header>Publier votre annonce !</lbl-header>
-  <form [formGroup]="formAnnounce" class="form-container">
+  <form
+    [formGroup]="formAnnounce"
+    class="form-container"
+    (ngSubmit)="onSubmit()"
+  >
     <h1 class="form-title">Informations</h1>
     <div class="form-sub-container">
-      <div class="md:w-full">
+      <div class="self-start md:w-full">
         <div class="form-input-container">
           <label class="mb-1" for="title">Titre:</label>
           <input
@@ -37,13 +41,13 @@
           />
         </div>
         <div class="form-input-container">
-          <label class="mb-1" for="oneTicketPrice">Prix ticket:</label>
+          <label class="mb-1" for="ticketPrice">Prix ticket:</label>
           <input
             class="input input-lbl"
             type="number"
-            id="oneTicketPrice"
-            name="oneTicketPrice"
-            formControlName="oneTicketPrice"
+            id="ticketPrice"
+            name="ticketPrice"
+            formControlName="ticketPrice"
             placeholder="0 $"
             required
           />
@@ -53,19 +57,36 @@
         <div class="md:w-full mt-0">
           <div class="form-input-container">
             <label class="mb-1" for="img_url">Télécharger un fichier:</label>
-            <input
-              type="file"
-              id="img_url"
-              name="img_url"
-              formControlName="img_url"
-              class="file-input file-input-bordered file-input-success file-input-md mt-4 md:mt-0 w-full max-w-xs"
-              required
-            />
+            <div class="flex mt-4 md:mt-0">
+              <input
+                type="file"
+                id="img_url"
+                name="img_url"
+                formControlName="img_url"
+                (change)="onChange($event)"
+                class="file-input rounded-r-none file-input-bordered file-input-success file-input-md w-full max-w-xs"
+                required
+              />
+              <button
+                class="btn btn-success btn-square rounded-l-none"
+                type="button"
+                (click)="onUpload()"
+              >
+                ok
+              </button>
+            </div>
+            <div *ngFor="let shortLink of shortLinks">
+              <p>{{ shortLink }}</p>
+            </div>
           </div>
           <div class="form-input-container">
             <label class="label" for="description">Description:</label>
             <textarea
               class="textarea input-lbl h-24 mb-3"
+              type="text"
+              id="announce-description"
+              name="announce-description"
+              formControlName="description"
               placeholder="250 charatères maximum..."
             ></textarea>
           </div>
@@ -74,7 +95,11 @@
           class="btn-group btn-group-horizontal lg:btn-group-horizontal flex justify-end md:mt-3 md:mr-6"
         >
           <button class="btn btn-outline btn-info bg-slate-50">Retour</button>
-          <button (click)="onSubmit()" class="btn btn-stroke btn-primary">
+          <button
+            (click)="onSubmit()"
+            type="button"
+            class="btn btn-stroke btn-primary"
+          >
             Publier
           </button>
         </div>

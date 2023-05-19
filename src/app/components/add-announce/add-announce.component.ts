@@ -12,13 +12,12 @@ import { UploadImgService } from '../../services/uploads/upload-img.service';
   styleUrls: ['./add-announce.component.scss'],
 })
 export class AddAnnounceComponent implements OnInit {
-  // variable triggers message, submit or error
   showSubmitMessage!: boolean;
   showErrorMessage!: boolean;
-  shortLink: string = '';
-  loading: boolean = false; // Flag variable
-  file!: File; // Variable to store file
-  public formAnnounce!: FormGroup;
+  public shortLinks: Array<string> = [];
+  loading: boolean = false;
+  file!: File;
+  formAnnounce!: FormGroup;
 
   public categorys = [
     { id: 1, name: 'Vêtement' },
@@ -48,30 +47,31 @@ export class AddAnnounceComponent implements OnInit {
     if (!this.file) return;
     else {
       this.loading = !this.loading;
+      this.shortLinks.push(this.file.name);
       return this.uploadImgService.uploadAnnounceImg(this.file);
     }
   }
 
   async onSubmit() {
-    this.router.navigate(['/recapitulatif-annonce']);
-
-    // const data = this.formAnnounce.value;
-    // // IF a value missing, show error message
-    // if (data.name == '' || data.description == '') {
-    //   this.showErrorMessage = true;
-    //   return;
-    // }
+    const data = this.formAnnounce.value;
+    console.log(data);
+    // IF a value missing, show error message
+    if (data.title === '' || data.description === '') {
+      console.log('hello');
+      this.showErrorMessage = true;
+      return;
+    }
     // ELSE validate the new announce & show submit message
-    // else {
-    //   const urlImg = await this.onUpload();
-    //   data.img_url = urlImg;
-    //   this.annoucesService.addAnnounce(data).then((res) => {
-    //     this.formAnnounce.reset();
-    //     this.router.navigate(['/recapitulatif-annonce']);
-    //     this.showErrorMessage = false;
-    //     this.showSubmitMessage = true;
-    //   });
-    //   this.loading = false;
-    // }
+    else {
+      const urlImg = await this.onUpload();
+      data.img_url = urlImg;
+      this.annoucesService.addAnnounce(data).then(() => {
+        this.formAnnounce.reset();
+        this.router.navigate(['/recapitulatif-annonce']);
+        this.showErrorMessage = false;
+        this.showSubmitMessage = true;
+      });
+      this.loading = false;
+    }
   }
 }
