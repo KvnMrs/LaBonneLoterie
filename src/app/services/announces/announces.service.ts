@@ -24,11 +24,13 @@ export class AnnouncesService {
   form = new FormGroup({
     title: new FormControl('', Validators.required),
     category: new FormControl('', Validators.required),
+    tags: new FormControl([''], Validators.required),
+    description: new FormControl('', Validators.required),
+    img_url: new FormControl('', Validators.required),
     estimate: new FormControl(0, Validators.required),
     ticketPrice: new FormControl(0, Validators.required),
-    img_url: new FormControl('', Validators.required),
-    description: new FormControl('', Validators.required),
     minTickets: new FormControl(0, Validators.required),
+    maxTickets: new FormControl(0, Validators.required),
     currentTickets: new FormControl(0, Validators.required),
   });
 
