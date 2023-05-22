@@ -29,7 +29,19 @@
           </select>
         </div>
         <div class="form-input-container">
-          <label class="mb-1" for="estimate">Estimation:</label>
+          <label class="mb-1" for="title">Ajouter un tag:</label>
+          <input
+            class="input input-lbl"
+            type="text"
+            id="tags"
+            name="tags"
+            formControlName="tags"
+            placeholder="#myTag"
+            required
+          />
+        </div>
+        <div class="form-input-container">
+          <label class="mb-1" for="estimate">Estimation du lot:</label>
           <input
             class="input input-lbl"
             type="number"
@@ -49,6 +61,34 @@
             name="ticketPrice"
             formControlName="ticketPrice"
             placeholder="0 $"
+            required
+          />
+        </div>
+        <div class="form-input-container">
+          <label class="mb-1" for="maxTickets"
+            >Nombre de tickets à vendre:</label
+          >
+          <input
+            class="input input-lbl"
+            type="number"
+            id="maxTickets"
+            name="maxTickets"
+            formControlName="maxTickets"
+            placeholder="0"
+            required
+          />
+        </div>
+        <div class="form-input-container">
+          <label class="mb-1" for="minTickets"
+            >Nombre de tickets minimum:</label
+          >
+          <input
+            class="input input-lbl"
+            type="number"
+            id="minTickets"
+            name="minTickets"
+            formControlName="minTickets"
+            placeholder="0"
             required
           />
         </div>
