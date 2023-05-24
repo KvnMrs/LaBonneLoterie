@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -8,20 +7,14 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent implements OnInit {
-  public isLoggedIn$: Observable<boolean>;
   public isDropdownVisible: boolean = false;
-  constructor(private authService: AuthService) {
-    this.isLoggedIn$ = authService.isLoggedIn();
-  }
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.authService.isLoggedIn();
   }
 
-  async onDisconnect() {
-    this.isLoggedIn$.subscribe((value: any) => {
-      value = this.authService.isLoggedIn();
-    });
+  onDisconnect() {
     this.authService.disconnect();
   }
 
