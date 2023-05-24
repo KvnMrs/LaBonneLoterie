@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -8,14 +8,21 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent implements OnInit {
+  public isLoggedIn$: Observable<boolean>;
   public isDropdownVisible: boolean = false;
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService) {
+    this.isLoggedIn$ = authService.isLoggedIn();
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.isLoggedIn();
+  }
 
-  onDisconnect() {
+  async onDisconnect() {
+    this.isLoggedIn$.subscribe((value: any) => {
+      value = this.authService.isLoggedIn();
+    });
     this.authService.disconnect();
-    this.router.navigate(['']);
   }
 
   toggleDropdown() {

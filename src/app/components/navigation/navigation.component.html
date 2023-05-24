@@ -1,6 +1,11 @@
-<nav role="navigation" aria-label="Menu principal" class="navbar">
+<nav
+  *ngIf="isLoggedIn$ | async; else buttonsSignLog"
+  role="navigation"
+  aria-label="Menu principal"
+  class="navbar"
+>
   <div class="flex-1">
-    <a class="btn btn-ghost normal-case logo-letters">LeBonLot</a>
+    <a class="normal-case logo-letters">LeBonLot</a>
   </div>
   <div class="flex-none">
     <ul class="menu menu-horizontal px-1">
@@ -37,9 +42,40 @@
           <li><a [routerLink]="['/recherche']">Mes recherches</a></li>
           <li><a [routerLink]="['/ajout-annonce']">Ajouter une annonce</a></li>
           <li><a [routerLink]="['/profil']">Mon profil</a></li>
-          <li><a [routerLink]="['/inscription']">Se connecter</a></li>
+          <li>
+            <button
+              class="btn btn-ghost btn-outline btn-error"
+              (click)="onDisconnect()"
+            >
+              Se déonnecter
+            </button>
+          </li>
         </ul>
       </li>
     </ul>
   </div>
 </nav>
+
+<ng-template #buttonsSignLog>
+  <nav role="navigation" aria-label="Menu principal" class="navbar">
+    <div class="flex-1">
+      <a class="btn btn-ghost normal-case logo-letters">LeBonLot</a>
+    </div>
+    <ul class="gap-1">
+      <li>
+        <a
+          [routerLink]="['/inscription']"
+          class="btn btn-ghost btn-outline btn-primary"
+          >S'inscrire</a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="['/connexion']"
+          class="btn btn-ghost btn-outline btn-primary"
+          >Se connecter</a
+        >
+      </li>
+    </ul>
+  </nav>
+</ng-template>
