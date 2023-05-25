@@ -32,7 +32,6 @@ export class AuthService {
         this.userService
           .getUserByID(user.uid)
           .then((data) => (this.userData = data));
-        this.router.navigate(['/recherche']);
       } else {
         this.router.navigate(['']);
       }
@@ -50,6 +49,38 @@ export class AuthService {
     password: new FormControl('', Validators.required),
     confirmation_password: new FormControl('', Validators.required),
   });
+
+  isLoggedIn(): Observable<boolean> {
+    return new Observable<boolean>((observer) => {
+      this.auth.onAuthStateChanged((user) => {
+        if (user) {
+          console.log('1');
+          this.userService
+            .getUserByID(user.uid)
+            .then((data) => {
+              this.userData = data;
+              this.router.navigate(['/recherche']);
+              observer.next(true);
+              observer.complete();
+            })
+            .catch((error) => {
+              console.log('2');
+
+              console.error(
+                'Erreur lors de la récupération des données utilisateur:',
+                error
+              );
+              observer.error(false);
+              observer.complete();
+            });
+        } else {
+          this.router.navigate(['']);
+          observer.next(false);
+          observer.complete();
+        }
+      });
+    });
+  }
 
   createUser(data: IUser) {
     createUserWithEmailAndPassword(this.auth, data.email, data.password)
@@ -73,7 +104,16 @@ export class AuthService {
   }
 
   disconnect() {
-    signOut(this.auth);
+    signOut(this.auth)
+      .then(() => {
+        // Disconnection successfull
+        console.log('Utilisateur déconnecté');
+        this.router.navigate(['/connexion']);
+      })
+      .catch((error) => {
+        // Disconnection error
+        console.log('Erreur lors de la déconnexion', error);
+      });
   }
 
   canActivate(
