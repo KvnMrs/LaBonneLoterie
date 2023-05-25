@@ -8,7 +8,6 @@ import {
 } from '@angular/router';
 import {
   createUserWithEmailAndPassword,
-  onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth';
@@ -62,10 +61,8 @@ export class AuthService {
         this.router.navigate(['/recherche']);
       })
       .catch((error) => {
-        // const errorCode = error.code;
         const errorMessage = error.message;
         console.error(errorMessage);
-        // ..
       });
   }
 
