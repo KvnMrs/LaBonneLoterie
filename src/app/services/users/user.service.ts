@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import {
-  addDoc,
-  collection,
   doc,
   DocumentData,
   DocumentSnapshot,
