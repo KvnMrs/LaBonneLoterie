@@ -10,4 +10,5 @@ export interface IUser {
   memberSince: Date;
   announcesUser?: Array<string>;
   rate?: number;
+  accountBalance: number;
 }

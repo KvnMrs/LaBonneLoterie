@@ -48,6 +48,7 @@ export class AuthService {
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
     confirmation_password: new FormControl('', Validators.required),
+    bankAccount: new FormControl(0, Validators.required),
   });
 
   isLoggedIn(): Observable<boolean> {
