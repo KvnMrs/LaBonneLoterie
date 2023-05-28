@@ -7,7 +7,7 @@ import {
   getDoc,
   setDoc,
 } from '@angular/fire/firestore';
-import { IUserProfile } from 'src/app/models/user/user.model';
+import { IUser } from 'src/app/models/user/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -15,19 +15,18 @@ import { IUserProfile } from 'src/app/models/user/user.model';
 export class UserService {
   constructor(private firestore: Firestore) {}
 
-  createProfileUser(uid: string, user: IUserProfile) {
-    return setDoc(doc(this.firestore, 'UserProfiles', uid), user);
+  createProfileUser(uid: string, user: IUser) {
+    return setDoc(doc(this.firestore, 'Users', uid), user);
   }
 
-  // getUserById
-  public async getUserByID(id: string) {
-    const userRef = doc(this.firestore, `UserProfiles`, id);
+  async getUserByID(id: string) {
+    const userRef = doc(this.firestore, `Users`, id);
     const DOC_SNAP: DocumentSnapshot<DocumentData> = await getDoc(userRef);
     return DOC_SNAP.data();
   }
 
-  upadteUserProfile(imgUrl: string, userData: IUserProfile) {
-    const userRef = doc(this.firestore, `UserProfiles`, userData.uid);
+  upadteUserProfile(imgUrl: string, userData: IUser) {
+    const userRef = doc(this.firestore, `Users`, userData.uid);
     setDoc(userRef, { ...userData, imgProfile: imgUrl });
   }
 }

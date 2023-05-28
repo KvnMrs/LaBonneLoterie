@@ -21,7 +21,7 @@ import { UserService } from '../users/user.service';
 })
 export class AuthService {
   isAuth = false;
-  userData: DocumentData | undefined;
+  userData!: DocumentData;
   constructor(
     private router: Router,
     private auth: Auth,
@@ -31,7 +31,7 @@ export class AuthService {
       if (user) {
         this.userService
           .getUserByID(user.uid)
-          .then((data) => (this.userData = data));
+          .then((data) => (this.userData = data as DocumentData));
       } else {
         this.router.navigate(['']);
       }
@@ -54,11 +54,10 @@ export class AuthService {
     return new Observable<boolean>((observer) => {
       this.auth.onAuthStateChanged((user) => {
         if (user) {
-          console.log('1');
           this.userService
             .getUserByID(user.uid)
             .then((data) => {
-              this.userData = data;
+              this.userData = data as DocumentData;
               this.router.navigate(['/recherche']);
               observer.next(true);
               observer.complete();
@@ -82,13 +81,15 @@ export class AuthService {
     });
   }
 
-  createUser(data: IUser) {
-    createUserWithEmailAndPassword(this.auth, data.email, data.password)
+  async createUser(data: IUser): Promise<void> {
+    return createUserWithEmailAndPassword(this.auth, data.email, data.password)
       .then((userCredential) => {
         // Signed in
-        const user = userCredential.user;
-        data.uid = user.uid;
-        this.userService.createProfileUser(user.uid, data);
+        const creationAt = userCredential.user.metadata.creationTime;
+        const memberSince = new Date(creationAt!);
+        data.uid = userCredential.user.uid;
+        data = { ...data, memberSince };
+        this.userService.createProfileUser(data.uid, data);
         this.router.navigate(['/recherche']);
       })
       .catch((error) => {

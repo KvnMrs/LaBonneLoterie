@@ -5,7 +5,7 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from '@angular/fire/storage';
-import { IUserProfile } from 'src/app/models/user/user.model';
+import { IUser } from 'src/app/models/user/user.model';
 import { UserService } from '../users/user.service';
 
 @Injectable({
@@ -23,7 +23,7 @@ export class UploadImgService {
     return imgUrl;
   }
 
-  async uploadProfileImg(file: File, userData: IUserProfile) {
+  async uploadProfileImg(file: File, userData: IUser) {
     const imgRef = ref(this.storage, `profileImg/${file.name}`);
     await uploadBytesResumable(imgRef, file);
     const imgUrl = await getDownloadURL(
