@@ -11,15 +11,3 @@ export interface IUser {
   announcesUser?: Array<string>;
   rate?: number;
 }
-
-// export interface IUser {
-//   uid: string;
-//   firstname: string;
-//   lastname: string;
-//   email: string;
-//   password: string;
-//   announcesUser?: Array<string>;
-//   imgUrl?: string;
-//   rate?: number;
-//   memberSince: Date;
-// }
