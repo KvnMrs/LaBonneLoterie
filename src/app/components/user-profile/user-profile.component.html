@@ -16,7 +16,6 @@
               <p class="font-semibold text-lg">
                 {{ profileData["firstname"] }} {{ profileData["lastname"] }}
               </p>
-              <!-- <p></p> -->
               <p>Loire Atlantique, {{ profileData["city"] }}</p>
               <p>
                 Membre depuis le
@@ -53,13 +52,14 @@
             </div>
           </div>
           <div class="w-full md:w-11/12 flex">
-            <button
+            <!-- <button
               type="button"
               class="btn btn-sm btn-info announce-user-contact ml-auto rounded-lg shadow-lg"
               (click)="updateProfile()"
             >
               Modifier profil
-            </button>
+            </button> -->
+            <app-modal-profile [profileData]="profileData"></app-modal-profile>
           </div>
         </aside>
         <aside class="mb-10 flex flex-col gap-6 items-center">
@@ -130,9 +130,3 @@
     </article>
   </div>
 </section>
-<app-modal-profile
-  *ngIf="modalUpdateProfile"
-  [profileData]="profileData"
-  [modalUpdateProfile]="modalUpdateProfile"
-  (modalUpdateEvent)="modalUpdateProfile = !modalUpdateProfile"
-></app-modal-profile>

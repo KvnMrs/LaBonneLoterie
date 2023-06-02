@@ -1,6 +1,27 @@
-<div class="s">
-  <div>
-    <input type="file" (change)="onChange($event)" />
-    <button (click)="onUpload()">Upload</button>
+<!-- The button to open modal -->
+<label
+  for="modal-update-profil"
+  class="btn btn-sm btn-info announce-user-contact ml-auto rounded-lg shadow-lg"
+  >Modifier profil</label
+>
+
+<!-- Put this part before </body> tag -->
+<input type="checkbox" id="modal-update-profil" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box relative">
+    <label
+      for="modal-update-profil"
+      class="btn btn-sm btn-circle absolute right-2 top-2"
+      >✕</label
+    >
+    <h3 class="mb-3 text-lg font-bold">Modifier votre photo profil.</h3>
+    <div class="">
+      <label
+        class="label btn btn-primary btn-outline justify-center hover:btn-primary transition duration-200 ease-in"
+      >
+        <input type="file" required />
+        <span class="mr-1 font-bold">+</span><span> Importer une photo</span>
+      </label>
+    </div>
   </div>
 </div>
