@@ -1,27 +1,102 @@
 <!-- The button to open modal -->
-<label
-  for="modal-update-profil"
-  class="btn btn-sm btn-info announce-user-contact ml-auto rounded-lg shadow-lg"
+<label for="modal-update-profil" class="btn btn-info rounded-lg shadow-lg"
   >Modifier profil</label
 >
 
 <!-- Put this part before </body> tag -->
 <input type="checkbox" id="modal-update-profil" class="modal-toggle" />
-<div class="modal">
+<form class="modal" (ngSubmit)="modalUpdateFunction()" [formGroup]="updateForm">
   <div class="modal-box relative">
     <label
       for="modal-update-profil"
-      class="btn btn-sm btn-circle absolute right-2 top-2"
+      class="btn btn-sm btn-circle absolute right-3 top-3"
       >✕</label
     >
-    <h3 class="mb-3 text-lg font-bold">Modifier votre photo profil.</h3>
-    <div class="">
+    <h3 class="mb-6 text-xl font-bold">Modifier votre profil:</h3>
+
+    <div class="mb-6 flex flex-col gap-2">
+      <div class="flex gap-3">
+        <label class="self-center" for="email">E-mail:</label>
+        <input
+          [(ngModel)]="profileData.email"
+          class="input-lbl"
+          type="email"
+          id="email"
+          name="email"
+          formControlName="email"
+          autocomplete="email"
+          placeholder="E-mail"
+          required
+        />
+      </div>
+      <div class="flex gap-3">
+        <label class="self-center" for="firstname">Prénom:</label>
+        <input
+          [(ngModel)]="profileData.firstname"
+          class="input-lbl"
+          type="text"
+          id="firstname"
+          name="firstname"
+          formControlName="firstname"
+          autocomplete="username"
+          placeholder="Prénom"
+          required
+        />
+      </div>
+      <div class="flex gap-3">
+        <label class="self-center" for="lastname">Nom:</label>
+        <input
+          [(ngModel)]="profileData.lastname"
+          class="input-lbl"
+          type="text"
+          id="lastname"
+          name="lastname"
+          formControlName="lastname"
+          autocomplete="username"
+          placeholder="Nom"
+          required
+        />
+      </div>
+      <div class="flex gap-3">
+        <label class="self-center" for="city">Ville:</label>
+        <input
+          [(ngModel)]="profileData.city"
+          class="input-lbl"
+          type="text"
+          id="city"
+          name="city"
+          formControlName="city"
+          autocomplete="username"
+          placeholder="Ville"
+          required
+        />
+      </div>
+      <div class="flex justify-center">
+        <img
+          [src]="profileData.imgProfile"
+          id="previewImage"
+          alt="Aperçu de
+      l'image"
+          class="w-40 h-40 mb-4 rounded-full"
+        />
+      </div>
       <label
         class="label btn btn-primary btn-outline justify-center hover:btn-primary transition duration-200 ease-in"
       >
-        <input type="file" required />
+        <input type="file" (change)="onChange($event)" required />
         <span class="mr-1 font-bold">+</span><span> Importer une photo</span>
       </label>
     </div>
+    <div class="flex justify-end">
+      <button class="btn btn-info ml-auto" (click)="modalUpdateFunction()">
+        Enregistrer
+      </button>
+    </div>
   </div>
-</div>
+</form>
+
+<!-- <div class="container">
+  <div>
+    <input type="file" (change)="onChange($event)" />
+  </div>
+</div> -->

@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { UploadImgService } from 'src/app/services/uploads/upload-img.service';
 
 @Component({
@@ -7,20 +9,42 @@ import { UploadImgService } from 'src/app/services/uploads/upload-img.service';
   styleUrls: ['./modal-profile.component.scss'],
 })
 export class ModalProfileComponent implements OnInit {
+  public updateForm!: FormGroup;
   @Input() profileData: any;
   @Input() modalUpdateProfile!: boolean;
   @Output() modalUpdateEvent = new EventEmitter<boolean>();
   loading: boolean = false; // Flag variable
   file!: File; // Variable to store file
 
-  constructor(private uploadImgService: UploadImgService) {}
+  constructor(
+    private uploadImgService: UploadImgService,
+    private authService: AuthService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.updateForm = this.authService.form;
+  }
 
   // On file Select
   onChange(event: any) {
-    this.file = event.target.files[0];
+    this.file = event.target.files[0]; // Retrieve the uploaded file
+
+    const reader = new FileReader(); // Create a FileReader object
+
+    reader.onload = function (event) {
+      const imageUrl = event.target!.result as string; // Explicitly annotate as string
+
+      const previewImage = document.getElementById(
+        'previewImage'
+      ) as HTMLImageElement;
+      if (previewImage !== null) {
+        previewImage.src = imageUrl; // Set the image URL as the source of the img element
+      }
+    };
+
+    reader.readAsDataURL(this.file); // Read the file as a data URL
     this.onUpload();
+    this.authService.isLoggedIn();
   }
 
   async onUpload() {
