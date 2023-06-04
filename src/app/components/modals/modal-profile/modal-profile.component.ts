@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UploadImgService } from 'src/app/services/uploads/upload-img.service';
 
 @Component({
-  selector: 'app-modal-profile',
+  selector: 'lbl-modal-profile',
   templateUrl: './modal-profile.component.html',
   styleUrls: ['./modal-profile.component.scss'],
 })
@@ -20,6 +20,7 @@ export class ModalProfileComponent implements OnInit {
   // On file Select
   onChange(event: any) {
     this.file = event.target.files[0];
+    this.onUpload();
   }
 
   async onUpload() {
