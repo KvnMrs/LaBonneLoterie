@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DocumentData } from 'firebase/firestore';
-import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -20,9 +19,5 @@ export class UserProfileComponent implements OnInit {
     this.profileData['memberSince'] = new Date(
       this.profileData['memberSince']['seconds']
     );
-  }
-
-  updateProfile() {
-    this.modalUpdateProfile = true;
   }
 }
