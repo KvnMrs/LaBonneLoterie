@@ -5,11 +5,15 @@
       <article class="profile-card">
         <aside class="user-info-container">
           <div class="user-picture-infos">
-            <div>
+            <div class="w-1/2 flex justify-center">
               <img
-                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+                src="{{
+                  profileData['imgProfile']
+                    ? profileData['imgProfile']
+                    : 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp'
+                }}"
                 alt="Generic placeholder image"
-                class="w-28 h-w-28 rounded-full"
+                class="w-28 h-28 rounded-full"
               />
             </div>
             <div class="user-infos">
@@ -51,7 +55,7 @@
               </div>
             </div>
           </div>
-          <div class="w-full md:w-11/12 flex justify-end">
+          <div class="w-full flex justify-end">
             <!-- <button
               type="button"
               class="btn btn-sm btn-info announce-user-contact ml-auto rounded-lg shadow-lg"
