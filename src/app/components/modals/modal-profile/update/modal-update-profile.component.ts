@@ -4,11 +4,11 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { UploadImgService } from 'src/app/services/uploads/upload-img.service';
 
 @Component({
-  selector: 'lbl-modal-profile',
-  templateUrl: './modal-profile.component.html',
-  styleUrls: ['./modal-profile.component.scss'],
+  selector: 'lbl-modal-update-profile',
+  templateUrl: './modal-update-profile.component.html',
+  styleUrls: ['./modal-update-profile.component.scss'],
 })
-export class ModalProfileComponent implements OnInit {
+export class ModalUpdateProfileComponent implements OnInit {
   public updateForm!: FormGroup;
   @Input() profileData: any;
   @Input() modalUpdateProfile!: boolean;
