@@ -13,8 +13,8 @@ export class ModalProfileComponent implements OnInit {
   @Input() profileData: any;
   @Input() modalUpdateProfile!: boolean;
   @Output() modalUpdateEvent = new EventEmitter<boolean>();
-  loading: boolean = false; // Flag variable
-  file!: File; // Variable to store file
+  loading: boolean = false;
+  file!: File;
 
   constructor(
     private uploadImgService: UploadImgService,
@@ -25,24 +25,23 @@ export class ModalProfileComponent implements OnInit {
     this.updateForm = this.authService.form;
   }
 
-  // On file Select
   onChange(event: any) {
-    this.file = event.target.files[0]; // Retrieve the uploaded file
+    this.file = event.target.files[0];
 
-    const reader = new FileReader(); // Create a FileReader object
+    const reader = new FileReader();
 
     reader.onload = function (event) {
-      const imageUrl = event.target!.result as string; // Explicitly annotate as string
+      const imageUrl = event.target!.result as string;
 
       const previewImage = document.getElementById(
         'previewImage'
       ) as HTMLImageElement;
       if (previewImage !== null) {
-        previewImage.src = imageUrl; // Set the image URL as the source of the img element
+        previewImage.src = imageUrl;
       }
     };
 
-    reader.readAsDataURL(this.file); // Read the file as a data URL
+    reader.readAsDataURL(this.file);
     this.onUpload();
     this.authService.isLoggedIn();
   }
