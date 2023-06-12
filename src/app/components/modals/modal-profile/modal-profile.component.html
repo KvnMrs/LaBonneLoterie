@@ -16,7 +16,7 @@
 
     <div class="mb-6 flex flex-col gap-2">
       <div class="flex gap-3">
-        <label class="self-center" for="email">E-mail:</label>
+        <label class="self-center font-medium w-1/4" for="email">E-mail:</label>
         <input
           [(ngModel)]="profileData.email"
           class="input-lbl"
@@ -30,7 +30,9 @@
         />
       </div>
       <div class="flex gap-3">
-        <label class="self-center" for="firstname">Prénom:</label>
+        <label class="self-center font-medium w-1/4" for="firstname"
+          >Prénom:</label
+        >
         <input
           [(ngModel)]="profileData.firstname"
           class="input-lbl"
@@ -44,7 +46,7 @@
         />
       </div>
       <div class="flex gap-3">
-        <label class="self-center" for="lastname">Nom:</label>
+        <label class="self-center font-medium w-1/4" for="lastname">Nom:</label>
         <input
           [(ngModel)]="profileData.lastname"
           class="input-lbl"
@@ -58,7 +60,7 @@
         />
       </div>
       <div class="flex gap-3">
-        <label class="self-center" for="city">Ville:</label>
+        <label class="self-center font-medium w-1/4" for="city">Ville:</label>
         <input
           [(ngModel)]="profileData.city"
           class="input-lbl"
@@ -73,11 +75,13 @@
       </div>
       <div class="flex justify-center">
         <img
-          [src]="profileData.imgProfile"
-          id="previewImage"
-          alt="Aperçu de
-      l'image"
-          class="w-40 h-40 mb-4 rounded-full"
+          src="{{
+            profileData['imgProfile']
+              ? profileData['imgProfile']
+              : 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp'
+          }}"
+          alt="Generic placeholder image"
+          class="w-28 h-28 rounded-full"
         />
       </div>
       <label
