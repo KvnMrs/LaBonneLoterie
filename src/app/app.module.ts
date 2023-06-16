@@ -21,7 +21,8 @@ import { BuyTickectComponent } from './components/buy-ticket/buy-ticket.componen
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { ModalUpdateProfileComponent } from './components/modals/modal-profile/update/modal-update-profile.component';
+import { ModalUpdateProfileComponent } from './components/modals/modals-profile/update/modal-update-profile.component';
+import { ModalCreditProfileComponent } from './components/modals/modals-profile/credit/modal-credit-profile.component';
 import { SummaryAnnounceComponent } from './components/summary-announce/summary-announce.component';
 import { FooterComponent } from './components/footer/footer.component';
 // Libs
@@ -84,6 +85,7 @@ const appRoutes: Routes = [
     SignInComponent,
     LandingPageComponent,
     ModalUpdateProfileComponent,
+    ModalCreditProfileComponent,
     HeaderComponent,
     InputComponent,
     BtnCtaFullComponent,
