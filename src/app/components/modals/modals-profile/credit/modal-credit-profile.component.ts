@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { UserService } from 'src/app/services/users/user.service';
 
 @Component({
   selector: 'lbl-modal-credit-profile',
@@ -9,16 +10,28 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class ModalCreditProfileComponent implements OnInit {
   public creditForm!: FormGroup;
+  private currentUser!: string;
   @Input() profileData: any;
   loading: boolean = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
-    this.creditForm = this.authService.form;
+    this.currentUser = this.authService.currentUser;
+    this.creditForm = new FormGroup({
+      bankAccount: new FormControl(0, Validators.required),
+    });
   }
 
-  OnCreditAcoount() {
-    console.log(this.creditForm.value);
+  onCreditAcoount() {
+    console.log(this.currentUser);
+    console.log(this.creditForm.value.bankAccount);
+    this.userService.creditUserAccount(
+      this.currentUser,
+      this.creditForm.value.bankAccount
+    );
   }
 }

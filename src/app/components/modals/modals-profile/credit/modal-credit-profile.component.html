@@ -5,7 +5,7 @@
 
 <!-- Put this part before </body> tag -->
 <input type="checkbox" id="modal-credit-profile" class="modal-toggle" />
-<form class="modal" (ngSubmit)="OnCreditAcoount()" [formGroup]="creditForm">
+<form class="modal" (ngSubmit)="onCreditAcoount()" [formGroup]="creditForm">
   <div class="modal-box relative">
     <label
       for="modal-credit-profile"
@@ -35,7 +35,7 @@
       <button
         type="submit"
         class="btn btn-primary ml-auto"
-        (click)="OnCreditAcoount()"
+        (click)="onCreditAcoount()"
       >
         Créditer mon compte
       </button>

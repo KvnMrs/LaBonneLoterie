@@ -29,4 +29,24 @@ export class UserService {
     const userRef = doc(this.firestore, `Users`, userData.uid);
     setDoc(userRef, { ...userData, imgProfile: imgUrl });
   }
+
+  creditUserAccount(uid: string, sum: number) {
+    const userRef = doc(this.firestore, `Users`, uid);
+    getDoc(userRef)
+      .then((docSnapshot) => {
+        if (docSnapshot.exists()) {
+          const userData = docSnapshot.data();
+          const updatedUserData = { ...userData, bankAccount: sum };
+          setDoc(userRef, updatedUserData);
+        } else {
+          console.log("L'utilisateur n'existe pas.");
+        }
+      })
+      .catch((error) => {
+        console.log(
+          "Une erreur s'est produite lors de la récupération des données de l'utilisateur:",
+          error
+        );
+      });
+  }
 }
