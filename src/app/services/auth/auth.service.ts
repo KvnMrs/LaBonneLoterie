@@ -21,6 +21,7 @@ import { UserService } from '../users/user.service';
 })
 export class AuthService {
   isAuth = false;
+  currentUser: string = '';
   userData!: DocumentData;
   constructor(
     private router: Router,
@@ -29,6 +30,7 @@ export class AuthService {
   ) {
     this.auth.onAuthStateChanged((user) => {
       if (user) {
+        this.currentUser = user.uid;
         this.userService
           .getUserByID(user.uid)
           .then((data) => (this.userData = data as DocumentData));
@@ -55,11 +57,11 @@ export class AuthService {
     return new Observable<boolean>((observer) => {
       this.auth.onAuthStateChanged((user) => {
         if (user) {
+          console.log('isLoggedIn user --->', user);
           this.userService
             .getUserByID(user.uid)
             .then((data) => {
               this.userData = data as DocumentData;
-              this.router.navigate(['/recherche']);
               observer.next(true);
               observer.complete();
             })
@@ -82,16 +84,17 @@ export class AuthService {
     });
   }
 
-  async createUser(data: IUser): Promise<void> {
+  async signupUser(data: IUser): Promise<void> {
     return createUserWithEmailAndPassword(this.auth, data.email, data.password)
       .then((userCredential) => {
         // Signed in
         const creationAt = userCredential.user.metadata.creationTime;
         const memberSince = new Date(creationAt!);
+
         data.uid = userCredential.user.uid;
         data = { ...data, memberSince };
+
         this.userService.createProfileUser(data.uid, data);
-        this.router.navigate(['/recherche']);
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -99,10 +102,12 @@ export class AuthService {
       });
   }
 
-  signIn(data: IUser) {
-    signInWithEmailAndPassword(this.auth, data.email, data.password).catch(
-      (err) => err.message
-    );
+  async signinUser(data: IUser) {
+    return signInWithEmailAndPassword(this.auth, data.email, data.password)
+      .then((user) => console.log('Service Auth signinUser ->', user))
+      .catch((err) =>
+        console.log('Service Auth signinUser error ->', err.message)
+      );
   }
 
   disconnect() {
