@@ -1,8 +1,8 @@
 <div class="main-container">
   <lbl-header>Heureux de vous revoir !</lbl-header>
   <form
-    (ngSubmit)="onLogIn()"
-    [formGroup]="formLogIn"
+    (ngSubmit)="onSubmitSigninForm()"
+    [formGroup]="signinForm"
     class="form-container lg:w-2/5"
   >
     <h1 class="form-title">Connexion</h1>
@@ -39,7 +39,6 @@
         <button
           class="w-fit py-2 px-4 rounded-lg font-semibold text-white shadow-md bg-lbl"
           type="submit"
-          [disabled]="!formLogIn.valid"
         >
           Se connecter
         </button>

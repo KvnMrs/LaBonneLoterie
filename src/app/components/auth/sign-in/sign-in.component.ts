@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
@@ -9,19 +9,32 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./sign-in.component.scss'],
 })
 export class SignInComponent implements OnInit {
-  public formLogIn!: FormGroup;
+  public signinForm!: FormGroup;
   @Input() haveAccount!: boolean;
   @Output() notHaveAccount = new EventEmitter<boolean>();
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.formLogIn = this.authService.form;
+    this.initSignInForm();
+    this.signinForm = this.authService.form;
   }
 
-  public onLogIn() {
-    const dataUser = this.formLogIn.value;
-    this.authService.signIn(dataUser);
+  initSignInForm(): void {
+    this.signinForm = new FormGroup({
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+    });
+  }
+
+  public onSubmitSigninForm() {
+    const dataUser = this.signinForm.value;
+    this.authService
+      .signinUser(dataUser)
+      .then(() => this.router.navigate(['/recherche']))
+      .catch((err) =>
+        console.error('SignIn onSubmitSigninForm() error -->', err.message)
+      );
   }
 
   onNotHaveAccount() {

@@ -20,9 +20,14 @@ export class SignUpComponent implements OnInit {
     this.formSignUp = this.authService.form;
   }
 
-  public onCreateUser() {
+  public onSubmitSignupForm() {
     const dataUser: IUser = this.formSignUp.value;
-    this.authService.createUser(dataUser);
+    this.authService
+      .signupUser(dataUser)
+      .then((user) => {
+        this.router.navigate(['/recherche']);
+      })
+      .catch((error) => console.error('SIGNP ERROR ==> ', error.message));
   }
 
   onHaveAccount() {
