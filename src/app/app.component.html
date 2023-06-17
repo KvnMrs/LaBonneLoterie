@@ -1,29 +1,3 @@
-<app-navigation
-  *ngIf="isLoggedIn$ | async; else buttonsSignLog"
-></app-navigation>
+<app-navigation></app-navigation>
 <router-outlet></router-outlet>
 <lbl-footer></lbl-footer>
-
-<ng-template #buttonsSignLog>
-  <nav role="navigation" aria-label="Menu principal" class="navbar">
-    <div class="flex-1">
-      <a class="btn btn-ghost normal-case logo-letters">LeBonLot</a>
-    </div>
-    <ul class="gap-1">
-      <li>
-        <a
-          [routerLink]="['/inscription']"
-          class="btn btn-ghost btn-outline btn-primary"
-          >S'inscrire</a
-        >
-      </li>
-      <li>
-        <a
-          [routerLink]="['/connexion']"
-          class="btn btn-ghost btn-outline btn-primary"
-          >Se connecter</a
-        >
-      </li>
-    </ul>
-  </nav>
-</ng-template>
