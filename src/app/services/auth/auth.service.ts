@@ -12,7 +12,7 @@ import {
   signOut,
 } from 'firebase/auth';
 import { DocumentData } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { IUser } from 'src/app/models/user/user.model';
 import { UserService } from '../users/user.service';
 
@@ -21,7 +21,7 @@ import { UserService } from '../users/user.service';
 })
 export class AuthService {
   isAuth = false;
-  currentUser: string = '';
+  currentUserSubject = new BehaviorSubject<IUser | null>(null);
   userData!: DocumentData;
   constructor(
     private router: Router,
@@ -30,7 +30,7 @@ export class AuthService {
   ) {
     this.auth.onAuthStateChanged((user) => {
       if (user) {
-        this.currentUser = user.uid;
+        this.currentUserSubject.next(user as IUser);
         this.userService
           .getUserByID(user.uid)
           .then((data) => (this.userData = data as DocumentData));
@@ -46,7 +46,7 @@ export class AuthService {
     lastname: new FormControl('', Validators.required),
     birthday: new FormControl('', Validators.required),
     city: new FormControl('', Validators.required),
-    phoneNumber: new FormControl(''),
+    phone: new FormControl(''),
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
     confirmation_password: new FormControl('', Validators.required),
@@ -106,7 +106,7 @@ export class AuthService {
     return signInWithEmailAndPassword(this.auth, data.email, data.password)
       .then((user) => console.log('Service Auth signinUser ->', user))
       .catch((err) =>
-        console.log('Service Auth signinUser error ->', err.message)
+        console.error('Error Service Auth signinUser ->', err.message)
       );
   }
 
