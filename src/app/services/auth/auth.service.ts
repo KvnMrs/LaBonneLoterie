@@ -6,12 +6,12 @@ import {
   Router,
   RouterStateSnapshot,
 } from '@angular/router';
+import { DocumentData } from '@angular/fire/firestore';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth';
-import { DocumentData } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IUser } from 'src/app/models/user/user.model';
 import { UserService } from '../users/user.service';
@@ -57,7 +57,6 @@ export class AuthService {
     return new Observable<boolean>((observer) => {
       this.auth.onAuthStateChanged((user) => {
         if (user) {
-          console.log('isLoggedIn user --->', user);
           this.userService
             .getUserByID(user.uid)
             .then((data) => {
@@ -66,8 +65,6 @@ export class AuthService {
               observer.complete();
             })
             .catch((error) => {
-              console.log('2');
-
               console.error(
                 'Erreur lors de la récupération des données utilisateur:',
                 error
@@ -116,7 +113,7 @@ export class AuthService {
         this.router.navigate(['/connexion']);
       })
       .catch((error) => {
-        console.log('Erreur lors de la déconnexion', error);
+        console.error('Erreur lors de la déconnexion', error);
       });
   }
 
