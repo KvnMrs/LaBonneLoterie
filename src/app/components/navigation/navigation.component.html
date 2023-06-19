@@ -10,6 +10,13 @@
   <ul class="gap-1">
     <li>
       <a
+        [routerLink]="['/recherche']"
+        class="hidden md:btn md:btn-ghost md:rounded-btn"
+        >Voir les annonces</a
+      >
+    </li>
+    <li>
+      <a
         [routerLink]="['/inscription']"
         class="btn btn-ghost btn-outline btn-primary"
         >S'inscrire</a
@@ -28,7 +35,7 @@
 <ng-template #LoginNav>
   <nav role="navigation" aria-label="Menu principal" class="navbar">
     <div class="flex-1">
-      <a class="normal-case logo-letters">LeBonLot</a>
+      <a class="btn btn-ghost normal-case logo-letters">LeBonLot</a>
     </div>
     <div class="flex-none">
       <ul class="menu menu-horizontal px-1">
