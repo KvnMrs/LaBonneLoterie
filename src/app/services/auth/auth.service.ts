@@ -87,7 +87,6 @@ export class AuthService {
   async signupUser(data: IUser): Promise<void> {
     return createUserWithEmailAndPassword(this.auth, data.email, data.password)
       .then((userCredential) => {
-        // Signed in
         const creationAt = userCredential.user.metadata.creationTime;
         const memberSince = new Date(creationAt!);
 
@@ -113,12 +112,10 @@ export class AuthService {
   disconnect() {
     signOut(this.auth)
       .then(() => {
-        // Disconnection successfull
-        console.log('Utilisateur déconnecté');
+        this.currentUserSubject.next(null);
         this.router.navigate(['/connexion']);
       })
       .catch((error) => {
-        // Disconnection error
         console.log('Erreur lors de la déconnexion', error);
       });
   }
