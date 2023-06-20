@@ -106,11 +106,10 @@ export class AuthService {
       );
   }
 
-  signOutUser() {
-    signOut(this.auth)
+  async signOutUser() {
+    return signOut(this.auth)
       .then(() => {
         this.currentUserSubject.next(null);
-        this.router.navigate(['/connexion']);
       })
       .catch((error) => {
         console.error('Erreur lors de la déconnexion', error);
