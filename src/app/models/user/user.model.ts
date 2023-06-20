@@ -7,10 +7,11 @@ export interface IUser extends User {
   city: string;
   phone: string;
   imgUrl: string;
+  imgProfile: string;
   email: string;
   password: string;
   memberSince: Date;
   announcesUser: Array<string>;
   rate: number;
-  accountBalance: number;
+  bankAccount: number;
 }

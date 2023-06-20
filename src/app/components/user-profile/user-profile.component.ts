@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DocumentData } from 'firebase/firestore';
+import { Subscription } from 'rxjs';
+import { IUser } from 'src/app/models/user/user.model';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -7,17 +9,32 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss'],
 })
-export class UserProfileComponent implements OnInit {
+export class UserProfileComponent implements OnInit, OnDestroy {
   public stars = [1, 2, 3, 4, 5];
+  public currentUserSubscritpion!: Subscription;
+  public currentUser!: IUser;
   public profileData!: DocumentData;
   modalUpdateProfile = false;
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
+    this.initCurrentUser();
     this.profileData = this.authService.userData;
     this.profileData['memberSince'] = new Date(
       this.profileData['memberSince']['seconds']
     );
+  }
+
+  initCurrentUser(): void {
+    this.currentUserSubscritpion =
+      this.authService.currentUserSubject.subscribe({
+        next: (user) => (this.currentUser = <IUser>user),
+        error: console.error,
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.currentUserSubscritpion.unsubscribe();
   }
 }
