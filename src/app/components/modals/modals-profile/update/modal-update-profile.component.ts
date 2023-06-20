@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IUser } from 'src/app/models/user/user.model';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { UploadImgService } from 'src/app/services/uploads/upload-img.service';
@@ -10,7 +10,7 @@ import { UploadImgService } from 'src/app/services/uploads/upload-img.service';
   styleUrls: ['./modal-update-profile.component.scss'],
 })
 export class ModalUpdateProfileComponent implements OnInit {
-  public updateForm!: FormGroup;
+  public updateProfileForm!: FormGroup;
   @Input() currentUser!: IUser;
   @Input() modalUpdateProfile!: boolean;
   @Output() modalUpdateEvent = new EventEmitter<string>();
@@ -23,7 +23,17 @@ export class ModalUpdateProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.updateForm = this.authService.form;
+    this.initUpdateProfileForm();
+  }
+
+  initUpdateProfileForm() {
+    this.updateProfileForm = new FormGroup({
+      email: new FormControl('', Validators.required),
+      firstname: new FormControl('', Validators.required),
+      lastname: new FormControl('', Validators.required),
+      city: new FormControl('', Validators.required),
+      phone: new FormControl(''),
+    });
   }
 
   onChange(event: any) {
