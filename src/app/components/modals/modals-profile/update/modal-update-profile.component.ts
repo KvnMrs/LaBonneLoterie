@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { IUser } from 'src/app/models/user/user.model';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { UploadImgService } from 'src/app/services/uploads/upload-img.service';
 
@@ -10,7 +11,7 @@ import { UploadImgService } from 'src/app/services/uploads/upload-img.service';
 })
 export class ModalUpdateProfileComponent implements OnInit {
   public updateForm!: FormGroup;
-  @Input() profileData: any;
+  @Input() currentUser!: IUser;
   @Input() modalUpdateProfile!: boolean;
   @Output() modalUpdateEvent = new EventEmitter<boolean>();
   loading: boolean = false;
@@ -50,7 +51,7 @@ export class ModalUpdateProfileComponent implements OnInit {
     if (!this.file) return;
     else {
       this.loading = !this.loading;
-      await this.uploadImgService.uploadProfileImg(this.file, this.profileData);
+      await this.uploadImgService.uploadProfileImg(this.file, this.currentUser);
       return this.modalUpdateFunction();
     }
   }

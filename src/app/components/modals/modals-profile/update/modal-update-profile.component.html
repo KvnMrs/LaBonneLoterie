@@ -18,7 +18,7 @@
       <div class="flex gap-3">
         <label class="self-center font-medium w-1/4" for="email">E-mail:</label>
         <input
-          [(ngModel)]="profileData.email"
+          [(ngModel)]="currentUser.email"
           class="input-lbl"
           type="email"
           id="email"
@@ -34,7 +34,7 @@
           >Prénom:</label
         >
         <input
-          [(ngModel)]="profileData.firstname"
+          [(ngModel)]="currentUser.firstname"
           class="input-lbl"
           type="text"
           id="firstname"
@@ -48,7 +48,7 @@
       <div class="flex gap-3">
         <label class="self-center font-medium w-1/4" for="lastname">Nom:</label>
         <input
-          [(ngModel)]="profileData.lastname"
+          [(ngModel)]="currentUser.lastname"
           class="input-lbl"
           type="text"
           id="lastname"
@@ -62,7 +62,7 @@
       <div class="flex gap-3">
         <label class="self-center font-medium w-1/4" for="city">Ville:</label>
         <input
-          [(ngModel)]="profileData.city"
+          [(ngModel)]="currentUser.city"
           class="input-lbl"
           type="text"
           id="city"
@@ -76,8 +76,8 @@
       <div class="flex justify-center">
         <img
           src="{{
-            profileData['imgProfile']
-              ? profileData['imgProfile']
+            currentUser['imgProfile']
+              ? currentUser['imgProfile']
               : 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp'
           }}"
           alt="Generic placeholder image"
