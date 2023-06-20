@@ -56,15 +56,9 @@
             </div>
           </div>
           <div class="w-full flex justify-end">
-            <!-- <button
-              type="button"
-              class="btn btn-sm btn-info announce-user-contact ml-auto rounded-lg shadow-lg"
-              (click)="updateProfile()"
-            >
-              Modifier profil
-            </button> -->
             <lbl-modal-update-profile
               [currentUser]="currentUser"
+              (modalUpdateEvent)="getUpdateUserProfile($event)"
             ></lbl-modal-update-profile>
           </div>
         </aside>

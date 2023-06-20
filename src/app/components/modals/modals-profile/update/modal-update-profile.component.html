@@ -5,7 +5,11 @@
 
 <!-- Put this part before </body> tag -->
 <input type="checkbox" id="modal-update-profil" class="modal-toggle" />
-<form class="modal" (ngSubmit)="modalUpdateFunction()" [formGroup]="updateForm">
+<form
+  class="modal"
+  (ngSubmit)="onUpdateUserProfileEmit()"
+  [formGroup]="updateForm"
+>
   <div class="modal-box relative">
     <label
       for="modal-update-profil"
@@ -92,7 +96,7 @@
       </label>
     </div>
     <div class="flex justify-end">
-      <button class="btn btn-info ml-auto" (click)="modalUpdateFunction()">
+      <button class="btn btn-info ml-auto" (click)="onUpdateUserProfileEmit()">
         Enregistrer
       </button>
     </div>

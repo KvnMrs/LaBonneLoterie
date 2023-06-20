@@ -13,7 +13,7 @@ export class ModalUpdateProfileComponent implements OnInit {
   public updateForm!: FormGroup;
   @Input() currentUser!: IUser;
   @Input() modalUpdateProfile!: boolean;
-  @Output() modalUpdateEvent = new EventEmitter<boolean>();
+  @Output() modalUpdateEvent = new EventEmitter<string>();
   loading: boolean = false;
   file!: File;
 
@@ -52,11 +52,11 @@ export class ModalUpdateProfileComponent implements OnInit {
     else {
       this.loading = !this.loading;
       await this.uploadImgService.uploadProfileImg(this.file, this.currentUser);
-      return this.modalUpdateFunction();
+      // return this.modalUpdateFunction();
     }
   }
 
-  modalUpdateFunction() {
-    this.modalUpdateEvent.emit(this.modalUpdateProfile);
+  onUpdateUserProfileEmit() {
+    this.modalUpdateEvent.emit('Test');
   }
 }
