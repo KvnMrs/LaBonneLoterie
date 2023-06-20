@@ -106,7 +106,7 @@ export class AuthService {
       );
   }
 
-  disconnect() {
+  signOutUser() {
     signOut(this.auth)
       .then(() => {
         this.currentUserSubject.next(null);

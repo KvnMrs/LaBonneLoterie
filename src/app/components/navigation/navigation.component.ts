@@ -25,7 +25,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
   }
 
   onDisconnect() {
-    this.authService.disconnect();
+    this.authService.signOutUser();
   }
 
   ngOnDestroy(): void {
