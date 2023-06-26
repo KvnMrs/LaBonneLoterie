@@ -53,34 +53,6 @@ export class AuthService {
     bankAccount: new FormControl(0, Validators.required),
   });
 
-  isLoggedIn(): Observable<boolean> {
-    return new Observable<boolean>((observer) => {
-      this.auth.onAuthStateChanged((user) => {
-        if (user) {
-          this.userService
-            .getUserByID(user.uid)
-            .then((data) => {
-              this.userData = data as DocumentData;
-              observer.next(true);
-              observer.complete();
-            })
-            .catch((error) => {
-              console.error(
-                'Erreur lors de la récupération des données utilisateur:',
-                error
-              );
-              observer.error(false);
-              observer.complete();
-            });
-        } else {
-          this.router.navigate(['']);
-          observer.next(false);
-          observer.complete();
-        }
-      });
-    });
-  }
-
   async signupUser(data: IUser): Promise<void> {
     return createUserWithEmailAndPassword(this.auth, data.email, data.password)
       .then((userCredential) => {

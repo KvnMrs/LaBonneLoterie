@@ -54,7 +54,6 @@ export class ModalUpdateProfileComponent implements OnInit {
 
     reader.readAsDataURL(this.file);
     this.onUpload();
-    this.authService.isLoggedIn();
   }
 
   async onUpload() {

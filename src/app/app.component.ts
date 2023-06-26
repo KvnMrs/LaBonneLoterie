@@ -8,10 +8,7 @@ import { AuthService } from './services/auth/auth.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  public isLoggedIn$: Observable<boolean>;
-  constructor(private authService: AuthService) {
-    this.isLoggedIn$ = authService.isLoggedIn();
-  }
+  constructor() {}
 
   title = 'LeBonLot';
 }
