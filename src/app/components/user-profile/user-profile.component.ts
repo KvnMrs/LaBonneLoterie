@@ -21,9 +21,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initCurrentUser();
     this.profileData = this.authService.userData;
-    this.profileData['memberSince'] = new Date(
-      this.profileData['memberSince']['seconds']
-    );
   }
 
   initCurrentUser(): void {

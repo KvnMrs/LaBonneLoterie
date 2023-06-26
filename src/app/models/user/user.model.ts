@@ -10,7 +10,7 @@ export interface IUser extends User {
   imgProfile: string;
   email: string;
   password: string;
-  memberSince: Date;
+  memberSince: string;
   announcesUser: Array<string>;
   rate: number;
   bankAccount: number;

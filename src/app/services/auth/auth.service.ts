@@ -56,12 +56,9 @@ export class AuthService {
   async signupUser(data: IUser): Promise<void> {
     return createUserWithEmailAndPassword(this.auth, data.email, data.password)
       .then((userCredential) => {
-        const creationAt = userCredential.user.metadata.creationTime;
-        const memberSince = new Date(creationAt!);
-
+        const memberSince = userCredential.user.metadata.creationTime as string;
         data.uid = userCredential.user.uid;
         data = { ...data, memberSince };
-
         this.userService.createProfileUser(data.uid, data);
       })
       .catch((error) => {
