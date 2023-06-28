@@ -19,17 +19,17 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.initCurrentUser();
+    // this.initCurrentUser();
     this.profileData = this.authService.userData;
   }
 
-  initCurrentUser(): void {
-    this.currentUserSubscritpion =
-      this.authService.currentUserSubject.subscribe({
-        next: (user) => (this.currentUser = <IUser>user),
-        error: console.error,
-      });
-  }
+  // initCurrentUser(): void {
+  //   this.currentUserSubscritpion =
+  //     this.authService.currentUserSubject.subscribe({
+  //       next: (user) => (this.currentUser = <IUser>user),
+  //       error: console.error,
+  //     });
+  // }
 
   getUpdateUserProfile(e: String) {
     console.log(e);
