@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DocumentData } from 'firebase/firestore';
 import { IUser } from 'src/app/models/user/user.model';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { UploadImgService } from 'src/app/services/uploads/upload-img.service';
@@ -11,7 +12,7 @@ import { UploadImgService } from 'src/app/services/uploads/upload-img.service';
 })
 export class ModalUpdateProfileComponent implements OnInit {
   public updateProfileForm!: FormGroup;
-  @Input() currentUser!: IUser;
+  @Input() profileData!: DocumentData;
   @Input() modalUpdateProfile!: boolean;
   @Output() modalUpdateEvent = new EventEmitter<string>();
   loading: boolean = false;
@@ -60,7 +61,10 @@ export class ModalUpdateProfileComponent implements OnInit {
     if (!this.file) return;
     else {
       this.loading = !this.loading;
-      await this.uploadImgService.uploadProfileImg(this.file, this.currentUser);
+      await this.uploadImgService.uploadProfileImg(
+        this.file,
+        this.profileData as IUser
+      );
       // return this.modalUpdateFunction();
     }
   }
