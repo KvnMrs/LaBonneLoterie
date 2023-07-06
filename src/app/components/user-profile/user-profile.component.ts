@@ -31,9 +31,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   //     });
   // }
 
-  getUpdateUserProfile(e: String) {
-    console.log(e);
-  }
+  getUpdateUserProfile(e: String) {}
 
   ngOnDestroy(): void {
     this.currentUserSubscritpion.unsubscribe();

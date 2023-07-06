@@ -30,7 +30,6 @@ export class ModalCreditProfileComponent implements OnInit, OnDestroy {
     this.authService.currentUserSubject.subscribe({
       next: (user) => {
         this.currentUser = user as IUser;
-        console.log('this.currentUser --->', this.currentUser);
       },
       error: (error) => {
         console.error('Erreur récupération utilisateur.', error);
@@ -39,8 +38,6 @@ export class ModalCreditProfileComponent implements OnInit, OnDestroy {
   }
 
   onCreditAcoount() {
-    // console.log(this.currentUser);
-    // console.log(this.creditForm.value.bankAccount);
     // this.userService.creditUserAccount(
     //   this.currentUser,
     //   this.creditForm.value.bankAccount

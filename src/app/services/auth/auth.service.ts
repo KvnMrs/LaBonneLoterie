@@ -68,11 +68,13 @@ export class AuthService {
   }
 
   async signinUser(data: IUser) {
-    return signInWithEmailAndPassword(this.auth, data.email, data.password)
-      .then((user) => console.log('Service Auth signinUser ->', user))
-      .catch((err) =>
-        console.error('Error Service Auth signinUser ->', err.message)
-      );
+    return signInWithEmailAndPassword(
+      this.auth,
+      data.email,
+      data.password
+    ).catch((err) =>
+      console.error('Error Service Auth signinUser ->', err.message)
+    );
   }
 
   async signOutUser() {

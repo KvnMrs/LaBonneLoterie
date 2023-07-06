@@ -24,10 +24,10 @@ export class SignUpComponent implements OnInit {
     const dataUser: IUser = this.formSignUp.value;
     this.authService
       .signupUser(dataUser)
-      .then((user) => {
+      .then(() => {
         this.router.navigate(['/recherche']);
       })
-      .catch((error) => console.error('SIGNP ERROR ==> ', error.message));
+      .catch((error) => console.error('SIGNUP ERROR ==> ', error.message));
   }
 
   onHaveAccount() {

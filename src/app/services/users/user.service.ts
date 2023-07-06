@@ -39,11 +39,11 @@ export class UserService {
           const updatedUserData = { ...userData, bankAccount: sum };
           setDoc(userRef, updatedUserData);
         } else {
-          console.log("L'utilisateur n'existe pas.");
+          console.error("L'utilisateur n'existe pas.");
         }
       })
       .catch((error) => {
-        console.log(
+        console.error(
           "Une erreur s'est produite lors de la récupération des données de l'utilisateur:",
           error
         );
