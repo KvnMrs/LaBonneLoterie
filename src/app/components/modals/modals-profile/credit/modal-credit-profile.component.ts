@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { IUser } from 'src/app/models/user/user.model';
@@ -10,9 +10,9 @@ import { UserService } from 'src/app/services/users/user.service';
   templateUrl: './modal-credit-profile.component.html',
   styleUrls: ['./modal-credit-profile.component.scss'],
 })
-export class ModalCreditProfileComponent implements OnInit, OnDestroy {
+export class ModalCreditProfileComponent implements OnInit {
   public currentUserSubscription!: Subscription;
-  public creditForm!: FormGroup;
+  public creditBankBalanceForm!: FormGroup;
   public currentUser!: IUser;
   @Input() profileData: any;
   loading: boolean = false;
@@ -23,8 +23,7 @@ export class ModalCreditProfileComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    // this.authService.currentUserSubject;
-    this.creditForm = new FormGroup({
+    this.creditBankBalanceForm = new FormGroup({
       bankAccount: new FormControl(0, Validators.required),
     });
     this.authService.currentUserSubject.subscribe({
@@ -37,14 +36,10 @@ export class ModalCreditProfileComponent implements OnInit, OnDestroy {
     });
   }
 
-  onCreditAcoount() {
+  onCreditBankBalance() {
     // this.userService.creditUserAccount(
     //   this.currentUser,
     //   this.creditForm.value.bankAccount
     // );
-  }
-
-  ngOnDestroy(): void {
-    // this.currentUserSubscription.unsubscribe();
   }
 }
