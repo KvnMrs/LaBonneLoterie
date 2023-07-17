@@ -54,10 +54,8 @@ export class AddAnnounceComponent implements OnInit {
 
   async onSubmit() {
     const data = this.formAnnounce.value;
-    console.log(data);
     // IF a value missing, show error message
     if (data.title === '' || data.description === '') {
-      console.log('hello');
       this.showErrorMessage = true;
       return;
     }
