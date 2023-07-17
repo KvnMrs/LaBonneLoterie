@@ -80,13 +80,14 @@ export class ModalUpdateProfileComponent implements OnInit {
 
   async onUpdateUserProfile() {
     const uid = this.profileData['uid'];
+    const memberSince = this.profileData['memberSince'];
     const dataToUpdate = { uid, ...this.updateProfileForm.value };
     await this.userService.upadteUserProfile(dataToUpdate);
     this.userService
       .getUserByID(uid)
       .then(
         (data) => (
-          (this.profileData = data as DocumentData),
+          (this.profileData = { memberSince, ...(data as DocumentData) }),
           this.modalUpdateEvent.emit(this.profileData as DocumentData)
         )
       );
