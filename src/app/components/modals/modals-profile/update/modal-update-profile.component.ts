@@ -2,8 +2,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DocumentData } from 'firebase/firestore';
 import { IUser } from 'src/app/models/user/user.model';
-import { AuthService } from 'src/app/services/auth/auth.service';
 import { UploadImgService } from 'src/app/services/uploads/upload-img.service';
+import { UserService } from 'src/app/services/users/user.service';
 
 @Component({
   selector: 'lbl-modal-update-profile',
@@ -14,13 +14,13 @@ export class ModalUpdateProfileComponent implements OnInit {
   public updateProfileForm!: FormGroup;
   @Input() profileData!: DocumentData;
   @Input() modalUpdateProfile!: boolean;
-  @Output() modalUpdateEvent = new EventEmitter<string>();
+  @Output() modalUpdateEvent = new EventEmitter<DocumentData>();
   loading: boolean = false;
   file!: File;
 
   constructor(
     private uploadImgService: UploadImgService,
-    private authService: AuthService
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -29,11 +29,20 @@ export class ModalUpdateProfileComponent implements OnInit {
 
   initUpdateProfileForm() {
     this.updateProfileForm = new FormGroup({
-      email: new FormControl('', Validators.required),
-      firstname: new FormControl('', Validators.required),
-      lastname: new FormControl('', Validators.required),
-      city: new FormControl('', Validators.required),
-      phone: new FormControl(''),
+      email: new FormControl(this.profileData['email'], [
+        Validators.required,
+        Validators.email,
+      ]),
+      firstname: new FormControl(
+        this.profileData['firstname'],
+        Validators.required
+      ),
+      lastname: new FormControl(
+        this.profileData['lastname'],
+        Validators.required
+      ),
+      city: new FormControl(this.profileData['city'], Validators.required),
+      phone: new FormControl(this.profileData['phone'], Validators.required),
     });
   }
 
@@ -69,7 +78,17 @@ export class ModalUpdateProfileComponent implements OnInit {
     }
   }
 
-  onUpdateUserProfileEmit() {
-    this.modalUpdateEvent.emit('Test');
+  async onUpdateUserProfile() {
+    const uid = this.profileData['uid'];
+    const dataToUpdate = { uid, ...this.updateProfileForm.value };
+    await this.userService.upadteUserProfile(dataToUpdate);
+    this.userService
+      .getUserByID(uid)
+      .then(
+        (data) => (
+          (this.profileData = data as DocumentData),
+          this.modalUpdateEvent.emit(this.profileData as DocumentData)
+        )
+      );
   }
 }

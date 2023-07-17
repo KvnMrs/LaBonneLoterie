@@ -7,7 +7,7 @@
 <input type="checkbox" id="modal-update-profil" class="modal-toggle" />
 <form
   class="modal"
-  (ngSubmit)="onUpdateUserProfileEmit()"
+  (ngSubmit)="onUpdateUserProfile()"
   [formGroup]="updateProfileForm"
 >
   <div class="modal-box relative">
@@ -98,7 +98,7 @@
       <label
         for="modal-update-profil"
         class="btn btn-info"
-        (click)="onUpdateUserProfileEmit()"
+        (click)="onUpdateUserProfile()"
       >
         Enregistrer
       </label>

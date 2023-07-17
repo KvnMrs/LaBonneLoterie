@@ -29,6 +29,6 @@ export class UploadImgService {
     const imgUrl = await getDownloadURL(
       ref(this.storage, `profileImg/${file.name}`)
     );
-    return this.userService.upadteUserProfile(imgUrl, userData);
+    return this.userService.upadteUserProfile(userData);
   }
 }

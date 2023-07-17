@@ -45,6 +45,6 @@ export class ModalCreditProfileComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.currentUserSubscription.unsubscribe();
+    // this.currentUserSubscription.unsubscribe();
   }
 }

@@ -25,9 +25,9 @@ export class UserService {
     return DOC_SNAP.data();
   }
 
-  upadteUserProfile(imgUrl: string, userData: IUser) {
+  async upadteUserProfile(userData: IUser) {
     const userRef = doc(this.firestore, `Users`, userData.uid);
-    setDoc(userRef, { ...userData, imgProfile: imgUrl });
+    return setDoc(userRef, { ...userData });
   }
 
   creditUserAccount(uid: string, sum: number) {
