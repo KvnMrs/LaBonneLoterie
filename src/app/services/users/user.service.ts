@@ -30,7 +30,7 @@ export class UserService {
     return setDoc(userRef, { ...userData });
   }
 
-  async creditUserAccount(uid: string, sum: number) {
+  async onCreditUserAccount(uid: string, sum: number) {
     const userRef = doc(this.firestore, `Users`, uid);
     await getDoc(userRef)
       .then((docSnapshot) => {

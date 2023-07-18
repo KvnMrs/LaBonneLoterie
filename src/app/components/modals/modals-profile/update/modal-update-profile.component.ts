@@ -78,7 +78,7 @@ export class ModalUpdateProfileComponent implements OnInit {
     }
   }
 
-  async onUpdateUserProfile() {
+  async onUpdateUserProfile(): Promise<void> {
     const uid = this.profileData['uid'];
     const memberSince = this.profileData['memberSince'];
     const dataToUpdate = {
