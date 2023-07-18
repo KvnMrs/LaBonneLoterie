@@ -38,7 +38,9 @@ export class ModalCreditProfileComponent implements OnInit {
   }
 
   async onCreditBankBalance(): Promise<void> {
-    const sumToCredit = this.creditBankBalanceForm.value.bankAccount;
+    const sumToCredit =
+      this.creditBankBalanceForm.value.bankAccount +
+      this.profileData['bankAccount'];
     await this.userService.onCreditUserAccount(
       this.profileData['uid'],
       sumToCredit
