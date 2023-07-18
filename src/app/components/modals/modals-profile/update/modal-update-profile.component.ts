@@ -74,7 +74,6 @@ export class ModalUpdateProfileComponent implements OnInit {
         this.file,
         this.profileData as IUser
       );
-      // return this.modalUpdateFunction();
     }
   }
 
@@ -87,12 +86,13 @@ export class ModalUpdateProfileComponent implements OnInit {
       ...this.updateProfileForm.value,
     };
     await this.userService.upadteUserProfile(dataToUpdate);
-    this.userService
+    await this.userService
       .getUserByID(uid)
       .then(
         (data) => (
           (this.profileData = { memberSince, ...(data as DocumentData) }),
-          this.modalUpdateEvent.emit(this.profileData as DocumentData)
+          this.modalUpdateEvent.emit(this.profileData as DocumentData),
+          this.updateProfileForm.reset()
         )
       );
   }

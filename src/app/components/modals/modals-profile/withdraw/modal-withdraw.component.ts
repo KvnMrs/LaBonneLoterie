@@ -7,16 +7,16 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { UserService } from 'src/app/services/users/user.service';
 
 @Component({
-  selector: 'lbl-modal-credit-profile',
-  templateUrl: './modal-credit-profile.component.html',
-  styleUrls: ['./modal-credit-profile.component.scss'],
+  selector: 'lbl-modal-withdraw',
+  templateUrl: './modal-withdraw.component.html',
+  styleUrls: ['./modal-withdraw.component.scss'],
 })
-export class ModalCreditProfileComponent implements OnInit {
+export class ModalWithdrawComponent implements OnInit {
   public currentUserSubscription!: Subscription;
-  public creditBankBalanceForm!: FormGroup;
+  public withdrawBankBalanceForm!: FormGroup;
   public currentUser!: IUser;
   @Input() profileData!: DocumentData;
-  @Output() creditBankBalanceEvent = new EventEmitter<DocumentData>();
+  @Output() withdrawEvent = new EventEmitter<DocumentData>();
 
   constructor(
     private authService: AuthService,
@@ -24,7 +24,7 @@ export class ModalCreditProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.creditBankBalanceForm = new FormGroup({
+    this.withdrawBankBalanceForm = new FormGroup({
       bankAccount: new FormControl(0, Validators.required),
     });
     this.authService.currentUserSubject.subscribe({
@@ -37,21 +37,20 @@ export class ModalCreditProfileComponent implements OnInit {
     });
   }
 
-  async onCreditBankBalance(): Promise<void> {
-    const sumToCredit =
-      this.creditBankBalanceForm.value.bankAccount +
-      this.profileData['bankAccount'];
+  async onWithdraw(): Promise<void> {
+    const sumToWithdraw = this.withdrawBankBalanceForm.value.bankAccount;
+    const newBalanceBank = this.profileData['bankAccount'] - sumToWithdraw;
     await this.userService.onCreditUserAccount(
       this.profileData['uid'],
-      sumToCredit
+      newBalanceBank
     );
-    this.userService
+    await this.userService
       .getUserByID(this.profileData['uid'])
       .then(
         (data) => (
           (this.profileData = data as DocumentData),
-          this.creditBankBalanceEvent.emit(this.profileData as DocumentData),
-          this.creditBankBalanceForm.reset()
+          this.withdrawEvent.emit(this.profileData as DocumentData),
+          this.withdrawBankBalanceForm.reset()
         )
       );
   }

@@ -70,9 +70,10 @@
         </aside>
         <!-- CTA's Group -->
         <div class="btn-group flex justify-center gap-2">
-          <button class="btn btn-outline btn-info mr-1 shadow-md">
-            Retirer
-          </button>
+          <lbl-modal-withdraw
+            [profileData]="profileData"
+            (withdrawEvent)="getUpdateUserProfile($event)"
+          ></lbl-modal-withdraw>
           <lbl-modal-credit-profile
             [profileData]="profileData"
             (creditBankBalanceEvent)="getUpdateUserProfile($event)"
