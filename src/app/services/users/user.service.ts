@@ -30,14 +30,14 @@ export class UserService {
     return setDoc(userRef, { ...userData });
   }
 
-  creditUserAccount(uid: string, sum: number) {
+  async creditUserAccount(uid: string, sum: number) {
     const userRef = doc(this.firestore, `Users`, uid);
-    getDoc(userRef)
+    await getDoc(userRef)
       .then((docSnapshot) => {
         if (docSnapshot.exists()) {
           const userData = docSnapshot.data();
-          const updatedUserData = { ...userData, bankAccount: sum };
-          setDoc(userRef, updatedUserData);
+          userData['bankAccount'] = sum;
+          setDoc(userRef, userData);
         } else {
           console.error("L'utilisateur n'existe pas.");
         }

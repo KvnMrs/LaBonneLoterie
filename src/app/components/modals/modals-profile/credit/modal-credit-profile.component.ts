@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DocumentData } from 'firebase/firestore';
 import { Subscription } from 'rxjs';
 import { IUser } from 'src/app/models/user/user.model';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -14,8 +15,7 @@ export class ModalCreditProfileComponent implements OnInit {
   public currentUserSubscription!: Subscription;
   public creditBankBalanceForm!: FormGroup;
   public currentUser!: IUser;
-  @Input() profileData: any;
-  loading: boolean = false;
+  @Input() profileData!: DocumentData;
 
   constructor(
     private authService: AuthService,
@@ -36,10 +36,8 @@ export class ModalCreditProfileComponent implements OnInit {
     });
   }
 
-  onCreditBankBalance() {
-    // this.userService.creditUserAccount(
-    //   this.currentUser,
-    //   this.creditForm.value.bankAccount
-    // );
+  onCreditBankBalance(): void {
+    const sumToCredit = this.creditBankBalanceForm.value.bankAccount;
+    this.userService.creditUserAccount(this.profileData['uid'], sumToCredit);
   }
 }
