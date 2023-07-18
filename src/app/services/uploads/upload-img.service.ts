@@ -30,4 +30,20 @@ export class UploadImgService {
     );
     return imgUrl;
   }
+
+  showImgBeforeUpload(event: File) {
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+      const imageUrl = event.target!.result as string;
+
+      const previewImage = document.getElementById(
+        'previewImage'
+      ) as HTMLImageElement;
+      if (previewImage !== null) {
+        previewImage.src = imageUrl;
+      }
+    };
+    reader.readAsDataURL(event);
+  }
 }

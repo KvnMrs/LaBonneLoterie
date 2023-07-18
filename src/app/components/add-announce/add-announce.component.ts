@@ -14,9 +14,8 @@ import { UploadImgService } from '../../services/uploads/upload-img.service';
 export class AddAnnounceComponent implements OnInit {
   showSubmitMessage!: boolean;
   showErrorMessage!: boolean;
-  public shortLinks: Array<string> = [];
-  loading: boolean = false;
-  file!: File;
+  public selectedImgs: Array<File | null> = [];
+  file!: File | null;
   formAnnounce!: FormGroup;
 
   public categorys = [
@@ -41,15 +40,20 @@ export class AddAnnounceComponent implements OnInit {
   // On file Select
   onChange(event: any) {
     this.file = event.target.files[0];
+    this.uploadImgService.showImgBeforeUpload(this.file!);
   }
 
-  async onUpload() {
-    if (!this.file) return;
-    else {
-      this.loading = !this.loading;
-      this.shortLinks.push(this.file.name);
-      return this.uploadImgService.uploadAnnounceImg(this.file);
+  removeShortLink(index: number): void {
+    if (index >= 0 && index < this.selectedImgs.length) {
+      this.selectedImgs.splice(index, 1);
     }
+  }
+
+  async onPrepareUploadImg(): Promise<void> {
+    this.selectedImgs.push(this.file);
+    this.file = null;
+    // await this.uploadImgService.uploadAnnounceImg(this.file);
+    this.formAnnounce.reset();
   }
 
   async onSubmit() {
@@ -61,7 +65,7 @@ export class AddAnnounceComponent implements OnInit {
     }
     // ELSE validate the new announce & show submit message
     else {
-      const urlImg = await this.onUpload();
+      const urlImg = await this.onUploadImg();
       data.img_url = urlImg;
       this.annoucesService.addAnnounce(data).then(() => {
         this.formAnnounce.reset();
@@ -69,7 +73,10 @@ export class AddAnnounceComponent implements OnInit {
         this.showErrorMessage = false;
         this.showSubmitMessage = true;
       });
-      this.loading = false;
     }
+  }
+
+  onUploadImg() {
+    // const test = this.uploadImgService.showImgBeforeUpload(this.file);
   }
 }
