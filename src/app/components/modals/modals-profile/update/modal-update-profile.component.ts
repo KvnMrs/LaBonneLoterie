@@ -61,25 +61,25 @@ export class ModalUpdateProfileComponent implements OnInit {
         previewImage.src = imageUrl;
       }
     };
-
     reader.readAsDataURL(this.file);
-    this.onUpload();
   }
 
   async onUpload() {
     if (!this.file) return;
     else {
       this.loading = !this.loading;
-      await this.uploadImgService.uploadProfileImg(
-        this.file,
-        this.profileData as IUser
+      const createImgURL = await this.uploadImgService.uploadProfileImg(
+        this.file
       );
+      return createImgURL;
     }
   }
 
   async onUpdateUserProfile(): Promise<void> {
+    const profileImgURL = await this.onUpload();
     const uid = this.profileData['uid'];
     const memberSince = this.profileData['memberSince'];
+    this.profileData['imgProfile'] = profileImgURL;
     const dataToUpdate = {
       uid,
       ...this.profileData,
