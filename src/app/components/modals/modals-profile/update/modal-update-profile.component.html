@@ -1,12 +1,12 @@
 <!-- The button to open modal -->
 <label
-  for="modal-update-profil"
+  for="modal-update-profile"
   class="btn btn-info btn-outline rounded-lg shadow-md bg-slate-50"
   >Modifier profil</label
 >
 
 <!-- Put this part before </body> tag -->
-<input type="checkbox" id="modal-update-profil" class="modal-toggle" />
+<input type="checkbox" id="modal-update-profile" class="modal-toggle" />
 <form
   class="modal"
   (ngSubmit)="onUpdateUserProfile()"
@@ -14,7 +14,7 @@
 >
   <div class="modal-box relative">
     <label
-      for="modal-update-profil"
+      for="modal-update-profile"
       class="btn btn-sm btn-circle absolute right-3 top-3"
       >✕</label
     >
@@ -96,9 +96,10 @@
       </div>
     </div>
     <div class="flex justify-end modal-action">
-      <label for="modal-update-profil" class="btn ml-auto"> Annuler </label>
+      <label for="modal-update-profile" class="btn ml-auto"> Annuler </label>
       <label
-        for="modal-update-profil"
+        type="submit"
+        for="modal-update-profile"
         class="btn btn-info"
         (click)="onUpdateUserProfile()"
       >
