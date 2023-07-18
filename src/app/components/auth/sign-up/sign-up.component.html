@@ -1,6 +1,10 @@
 <div class="main-container">
   <lbl-header>Rejoignez-nous !</lbl-header>
-  <form [formGroup]="formSignUp" class="form-container">
+  <form
+    (ngSubmit)="onSubmitSignupForm()"
+    [formGroup]="formSignUp"
+    class="form-container"
+  >
     <h1 class="form-title">Inscription</h1>
     <div class="form-sub-container">
       <div class="md:w-full">
@@ -85,25 +89,24 @@
             />
           </div>
           <div class="form-input-container">
-            <label class="mb-1" for="confirmation-password"
+            <label class="mb-1" for="confirmation_password"
               >Confirmation:</label
             >
             <input
               class="input-lbl"
               type="text"
-              id="confirmation-password"
-              name="confirmation-password"
-              formControlName="confirmation-password"
-              autocomplete="confirmation-password"
+              id="confirmation_password"
+              name="confirmation_password"
+              formControlName="confirmation_password"
+              autocomplete="confirmation_password"
               required
             />
           </div>
         </div>
         <div class="auth-cta-container">
           <button
-            (click)="onCreateUser()"
             class="w-fit py-2 px-4 rounded-lg font-semibold text-white shadow-md bg-lbl"
-            type="button"
+            type="submit"
             [disabled]="!formSignUp.valid"
           >
             S'incrire

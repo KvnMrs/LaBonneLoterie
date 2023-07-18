@@ -1,0 +1,117 @@
+<!-- The button to open modal -->
+<label
+  for="modal-update-profile"
+  class="btn btn-info btn-outline rounded-lg shadow-md bg-slate-50"
+  >Modifier profil</label
+>
+
+<!-- Put this part before </body> tag -->
+<input type="checkbox" id="modal-update-profile" class="modal-toggle" />
+<form
+  class="modal"
+  (ngSubmit)="onUpdateUserProfile()"
+  [formGroup]="updateProfileForm"
+>
+  <div class="modal-box relative">
+    <label
+      for="modal-update-profile"
+      class="btn btn-sm btn-circle absolute right-3 top-3"
+      >✕</label
+    >
+    <h3 class="mb-6 text-xl font-bold">Modifier votre profil:</h3>
+
+    <div class="mb-6 flex flex-col gap-3 | lg:mb-8">
+      <div class="flex gap-3">
+        <label class="self-center font-medium w-1/4" for="email">E-mail:</label>
+        <input
+          class="input-lbl"
+          type="email"
+          id="email"
+          name="email"
+          formControlName="email"
+          autocomplete="email"
+          placeholder="E-mail"
+          required
+        />
+      </div>
+      <div class="flex gap-3">
+        <label class="self-center font-medium w-1/4" for="firstname"
+          >Prénom:</label
+        >
+        <input
+          class="input-lbl"
+          type="text"
+          id="firstname"
+          name="firstname"
+          formControlName="firstname"
+          autocomplete="username"
+          placeholder="Prénom"
+          required
+        />
+      </div>
+      <div class="flex gap-3">
+        <label class="self-center font-medium w-1/4" for="lastname">Nom:</label>
+        <input
+          class="input-lbl"
+          type="text"
+          id="lastname"
+          name="lastname"
+          formControlName="lastname"
+          autocomplete="username"
+          placeholder="Nom"
+          required
+        />
+      </div>
+      <div class="flex gap-3 mb-3">
+        <label class="self-center font-medium w-1/4" for="city">Ville:</label>
+        <input
+          class="input-lbl"
+          type="text"
+          id="city"
+          name="city"
+          formControlName="city"
+          autocomplete="username"
+          placeholder="Ville"
+          required
+        />
+      </div>
+      <div class="flex flex-col gap-3">
+        <div class="flex justify-center">
+          <img
+            id="previewImage"
+            src="{{
+              profileData['imgProfile']
+                ? profileData['imgProfile']
+                : 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp'
+            }}"
+            alt="Generic placeholder image"
+            class="w-28 h-28 rounded-full"
+          />
+        </div>
+        <label
+          class="label btn btn-primary btn-outline justify-center hover:btn-primary transition duration-200 ease-in"
+        >
+          <input type="file" (change)="onChange($event)" required />
+          <span class="mr-1 font-bold">+</span><span> Importer une photo</span>
+        </label>
+      </div>
+    </div>
+    <div class="flex justify-end modal-action">
+      <label for="modal-update-profile" class="btn ml-auto"> Annuler </label>
+      <label
+        type="submit"
+        for="modal-update-profile"
+        class="btn btn-info"
+        (click)="onUpdateUserProfile()"
+      >
+        Enregistrer
+      </label>
+    </div>
+  </div>
+</form>
+
+<!-- <div class="container">
+  <div>
+    <input type="file" (change)="onChange($event)" />
+  </div>
+</div> -->

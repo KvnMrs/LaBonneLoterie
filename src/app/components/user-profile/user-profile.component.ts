@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DocumentData } from 'firebase/firestore';
+import { Subscription } from 'rxjs';
+import { IUser } from 'src/app/models/user/user.model';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -9,15 +11,19 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class UserProfileComponent implements OnInit {
   public stars = [1, 2, 3, 4, 5];
-  public profileData: DocumentData | undefined;
+  public currentUserSubscritpion!: Subscription;
+  public currentUser!: IUser;
+  public profileData!: DocumentData;
   modalUpdateProfile = false;
+
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.profileData = this.authService.userData;
   }
 
-  updateProfile() {
-    this.modalUpdateProfile = true;
+  getUpdateUserProfile(updatedData: DocumentData): void {
+    this.profileData = updatedData;
+    this.authService.userData = this.profileData;
   }
 }

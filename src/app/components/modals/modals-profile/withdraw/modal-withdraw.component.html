@@ -1,0 +1,49 @@
+<!-- The button to open modal -->
+<label for="modal-withdraw" class="btn btn-outline btn-info mr-1 shadow-md"
+  >Retirer</label
+>
+
+<!-- Put this part before </body> tag -->
+<input type="checkbox" id="modal-withdraw" class="modal-toggle" />
+<form
+  class="modal"
+  (ngSubmit)="onWithdraw()"
+  [formGroup]="withdrawBankBalanceForm"
+>
+  <div class="modal-box relative">
+    <label
+      for="modal-withdraw"
+      class="btn btn-sm btn-circle absolute right-3 top-3"
+      >✕</label
+    >
+    <h3 class="mb-6 text-xl font-bold">Retirer votre argent:</h3>
+
+    <div class="mb-6 flex flex-col gap-2">
+      <div class="flex flex-col gap-3">
+        <label class="font-medium" for="bankAccount"
+          >Retirer la somme de:</label
+        >
+        <input
+          class="input-lbl"
+          type="number"
+          id="bankAccount"
+          name="bankAccount"
+          formControlName="bankAccount"
+          autocomplete="bankAccount"
+          placeholder="0 $"
+          required
+        />
+      </div>
+    </div>
+    <div class="flex justify-end">
+      <label
+        for="modal-withdraw"
+        type="submit"
+        class="btn btn-primary ml-auto"
+        (click)="onWithdraw()"
+      >
+        Retirer
+      </label>
+    </div>
+  </div>
+</form>

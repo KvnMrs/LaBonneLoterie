@@ -16,7 +16,7 @@
 }
 
 .main-container {
-  @apply p-2 flex flex-col bg-slate-50 to-slate-100 min-h-screen
+  @apply px-2 py-8 flex flex-col bg-slate-50 to-slate-100 min-h-screen
 }
 
 .inline-size-lbl {
@@ -218,10 +218,9 @@ nav {
 }
 .user-picture-infos {
   @apply flex gap-4 items-center justify-center
-/* MD */ md:justify-around
 }
 .user-infos {
-  @apply p-2 bg-slate-50 rounded-lg shadow-md
+  @apply  ml-auto p-2 bg-slate-50 rounded-lg shadow-md
 }
 
 // Profile Menu

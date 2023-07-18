@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { IUser } from '../../models/user/user.model';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -7,18 +9,29 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
 })
-export class NavigationComponent implements OnInit {
-  public isDropdownVisible: boolean = false;
+export class NavigationComponent implements OnInit, OnDestroy {
+  public currentUserSubscription!: Subscription;
+  public currentUser!: IUser;
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {}
-
-  onDisconnect() {
-    this.authService.disconnect();
-    this.router.navigate(['']);
+  ngOnInit(): void {
+    this.authService.currentUserSubject.subscribe({
+      next: (user) => {
+        this.currentUser = user as IUser;
+      },
+      error: (error) => {
+        console.error('Erreur récupération utilisateur.', error);
+      },
+    });
   }
 
-  toggleDropdown() {
-    this.isDropdownVisible = !this.isDropdownVisible;
+  onDisconnect() {
+    this.authService
+      .signOutUser()
+      .then(() => this.router.navigate(['/connexion']));
+  }
+
+  ngOnDestroy(): void {
+    this.currentUserSubscription.unsubscribe();
   }
 }

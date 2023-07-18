@@ -10,11 +10,7 @@ import {
   Firestore,
   getDoc,
 } from '@angular/fire/firestore';
-import {
-  UntypedFormControl,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { setDoc } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { IAnnounce } from '../../models/annouce/annouce.model';
@@ -25,14 +21,17 @@ import { IAnnounce } from '../../models/annouce/annouce.model';
 export class AnnouncesService {
   constructor(private firestore: Firestore) {}
 
-  form = new UntypedFormGroup({
-    name: new UntypedFormControl('', Validators.required),
-    category: new UntypedFormControl('', Validators.required),
-    description: new UntypedFormControl('', Validators.required),
-    img_url: new UntypedFormControl('', Validators.required),
-    minTickets: new UntypedFormControl(0),
-    currentTickets: new UntypedFormControl(0),
-    oneTicketPrice: new UntypedFormControl(0),
+  form = new FormGroup({
+    title: new FormControl('', Validators.required),
+    category: new FormControl('', Validators.required),
+    tags: new FormControl([''], Validators.required),
+    description: new FormControl('', Validators.required),
+    img_url: new FormControl('', Validators.required),
+    estimate: new FormControl(0, Validators.required),
+    ticketPrice: new FormControl(0, Validators.required),
+    minTickets: new FormControl(0, Validators.required),
+    maxTickets: new FormControl(0, Validators.required),
+    currentTickets: new FormControl(0, Validators.required),
   });
 
   // getAllAnnounce

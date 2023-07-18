@@ -1,20 +1,17 @@
-export interface IUser {
+import { User } from 'firebase/auth';
+
+export interface IUser extends User {
   uid: string;
   firstname: string;
   lastname: string;
   city: string;
-  phoneNumber?: string;
+  phone: string;
+  imgUrl: string;
+  imgProfile: string;
   email: string;
   password: string;
-}
-
-export interface IUserProfile {
-  uid: string;
-  firstname: string;
-  lastname: string;
-  email: string;
-  password: string;
-  announcesUser?: Array<string>;
-  imgUrl?: string;
-  rate?: number;
+  memberSince: string;
+  announcesUser: Array<string>;
+  rate: number;
+  bankAccount: number;
 }

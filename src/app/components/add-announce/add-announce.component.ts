@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 // Services
 import { AnnouncesService } from '../../services/announces/announces.service';
@@ -12,13 +12,21 @@ import { UploadImgService } from '../../services/uploads/upload-img.service';
   styleUrls: ['./add-announce.component.scss'],
 })
 export class AddAnnounceComponent implements OnInit {
-  // variable triggers message, submit or error
   showSubmitMessage!: boolean;
   showErrorMessage!: boolean;
-  shortLink: string = '';
-  loading: boolean = false; // Flag variable
-  file!: File; // Variable to store file
-  public formAnnounce!: UntypedFormGroup;
+  public shortLinks: Array<string> = [];
+  loading: boolean = false;
+  file!: File;
+  formAnnounce!: FormGroup;
+
+  public categorys = [
+    { id: 1, name: 'Vêtement' },
+    { id: 2, name: 'Véhicule' },
+    { id: 3, name: 'Multimédia' },
+    { id: 4, name: 'Décoration' },
+    { id: 5, name: 'Electomenager' },
+    { id: 6, name: 'Jardin' },
+  ];
 
   constructor(
     public annoucesService: AnnouncesService,
@@ -39,30 +47,29 @@ export class AddAnnounceComponent implements OnInit {
     if (!this.file) return;
     else {
       this.loading = !this.loading;
+      this.shortLinks.push(this.file.name);
       return this.uploadImgService.uploadAnnounceImg(this.file);
     }
   }
 
   async onSubmit() {
-    this.router.navigate(['/recapitulatif-annonce']);
-
-    // const data = this.formAnnounce.value;
-    // // IF a value missing, show error message
-    // if (data.name == '' || data.description == '') {
-    //   this.showErrorMessage = true;
-    //   return;
-    // }
+    const data = this.formAnnounce.value;
+    // IF a value missing, show error message
+    if (data.title === '' || data.description === '') {
+      this.showErrorMessage = true;
+      return;
+    }
     // ELSE validate the new announce & show submit message
-    // else {
-    //   const urlImg = await this.onUpload();
-    //   data.img_url = urlImg;
-    //   this.annoucesService.addAnnounce(data).then((res) => {
-    //     this.formAnnounce.reset();
-    //     this.router.navigate(['/recapitulatif-annonce']);
-    //     this.showErrorMessage = false;
-    //     this.showSubmitMessage = true;
-    //   });
-    //   this.loading = false;
-    // }
+    else {
+      const urlImg = await this.onUpload();
+      data.img_url = urlImg;
+      this.annoucesService.addAnnounce(data).then(() => {
+        this.formAnnounce.reset();
+        this.router.navigate(['/recapitulatif-annonce']);
+        this.showErrorMessage = false;
+        this.showSubmitMessage = true;
+      });
+      this.loading = false;
+    }
   }
 }

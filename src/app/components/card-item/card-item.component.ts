@@ -9,7 +9,7 @@ import { AnnouncesService } from 'src/app/services/announces/announces.service';
 })
 export class CardItemComponent implements OnInit {
   @Input() id!: string;
-  @Input() name!: string;
+  @Input() title!: string;
   @Input() category!: string;
   @Input() description!: string;
   @Input() img?: string;

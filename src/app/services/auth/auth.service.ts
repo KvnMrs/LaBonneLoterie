@@ -6,14 +6,13 @@ import {
   Router,
   RouterStateSnapshot,
 } from '@angular/router';
+import { DocumentData } from '@angular/fire/firestore';
 import {
   createUserWithEmailAndPassword,
-  onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth';
-import { DocumentData } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { IUser } from 'src/app/models/user/user.model';
 import { UserService } from '../users/user.service';
 
@@ -22,7 +21,8 @@ import { UserService } from '../users/user.service';
 })
 export class AuthService {
   isAuth = false;
-  userData: DocumentData | undefined;
+  currentUserSubject = new BehaviorSubject<IUser | null>(null);
+  userData!: DocumentData;
   constructor(
     private router: Router,
     private auth: Auth,
@@ -30,10 +30,10 @@ export class AuthService {
   ) {
     this.auth.onAuthStateChanged((user) => {
       if (user) {
+        this.currentUserSubject.next(user as IUser);
         this.userService
           .getUserByID(user.uid)
-          .then((data) => (this.userData = data));
-        this.router.navigate(['/liste']);
+          .then((data) => (this.userData = data as DocumentData));
       } else {
         this.router.navigate(['']);
       }
@@ -44,37 +44,47 @@ export class AuthService {
     uid: new FormControl(''),
     firstname: new FormControl('', Validators.required),
     lastname: new FormControl('', Validators.required),
+    birthday: new FormControl('', Validators.required),
     city: new FormControl('', Validators.required),
-    phoneNumber: new FormControl(''),
+    phone: new FormControl(''),
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
+    confirmation_password: new FormControl('', Validators.required),
+    bankAccount: new FormControl(0, Validators.required),
   });
 
-  createUser(data: IUser) {
-    createUserWithEmailAndPassword(this.auth, data.email, data.password)
+  async signupUser(data: IUser): Promise<void> {
+    return createUserWithEmailAndPassword(this.auth, data.email, data.password)
       .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        data.uid = user.uid;
-        this.userService.createProfileUser(user.uid, data);
-        this.router.navigate(['/liste']);
+        const memberSince = userCredential.user.metadata.creationTime as string;
+        data.uid = userCredential.user.uid;
+        data = { ...data, memberSince };
+        this.userService.createProfileUser(data.uid, data);
       })
       .catch((error) => {
-        // const errorCode = error.code;
         const errorMessage = error.message;
         console.error(errorMessage);
-        // ..
       });
   }
 
-  signIn(data: IUser) {
-    signInWithEmailAndPassword(this.auth, data.email, data.password).catch(
-      (err) => err.message
+  async signinUser(data: IUser) {
+    return signInWithEmailAndPassword(
+      this.auth,
+      data.email,
+      data.password
+    ).catch((err) =>
+      console.error('Error Service Auth signinUser ->', err.message)
     );
   }
 
-  disconnect() {
-    signOut(this.auth);
+  async signOutUser() {
+    return signOut(this.auth)
+      .then(() => {
+        this.currentUserSubject.next(null);
+      })
+      .catch((error) => {
+        console.error('Erreur lors de la déconnexion', error);
+      });
   }
 
   canActivate(

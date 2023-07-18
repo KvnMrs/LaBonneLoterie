@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import {
-  addDoc,
-  collection,
   doc,
   DocumentData,
   DocumentSnapshot,
@@ -9,7 +7,7 @@ import {
   getDoc,
   setDoc,
 } from '@angular/fire/firestore';
-import { IUserProfile } from 'src/app/models/user/user.model';
+import { IUser } from 'src/app/models/user/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -17,19 +15,38 @@ import { IUserProfile } from 'src/app/models/user/user.model';
 export class UserService {
   constructor(private firestore: Firestore) {}
 
-  createProfileUser(uid: string, user: IUserProfile) {
-    return setDoc(doc(this.firestore, 'UserProfiles', uid), user);
+  createProfileUser(uid: string, user: IUser) {
+    return setDoc(doc(this.firestore, 'Users', uid), user);
   }
 
-  // getUserById
-  public async getUserByID(id: string) {
-    const userRef = doc(this.firestore, `UserProfiles`, id);
+  async getUserByID(id: string) {
+    const userRef = doc(this.firestore, `Users`, id);
     const DOC_SNAP: DocumentSnapshot<DocumentData> = await getDoc(userRef);
     return DOC_SNAP.data();
   }
 
-  upadteUserProfile(imgUrl: string, userData: IUserProfile) {
-    const userRef = doc(this.firestore, `UserProfiles`, userData.uid);
-    setDoc(userRef, { ...userData, imgProfile: imgUrl });
+  async upadteUserProfile(userData: IUser) {
+    const userRef = doc(this.firestore, `Users`, userData.uid);
+    return setDoc(userRef, { ...userData });
+  }
+
+  async onCreditUserAccount(uid: string, sum: number) {
+    const userRef = doc(this.firestore, `Users`, uid);
+    await getDoc(userRef)
+      .then((docSnapshot) => {
+        if (docSnapshot.exists()) {
+          const userData = docSnapshot.data();
+          userData['bankAccount'] = sum;
+          setDoc(userRef, userData);
+        } else {
+          console.error("L'utilisateur n'existe pas.");
+        }
+      })
+      .catch((error) => {
+        console.error(
+          "Une erreur s'est produite lors de la récupération des données de l'utilisateur:",
+          error
+        );
+      });
   }
 }
