@@ -1,7 +1,7 @@
 <div class="main-container">
   <lbl-header>Publier votre annonce !</lbl-header>
   <form
-    [formGroup]="formAnnounce"
+    [formGroup]="createAnnounceForm"
     class="form-container"
     (ngSubmit)="onSubmit()"
   >
@@ -96,13 +96,15 @@
       <div class="col-upload-descript-buttons">
         <div class="md:w-full mt-0">
           <div class="form-input-container">
-            <label class="mb-1" for="img_url">Télécharger un fichier:</label>
+            <label class="mb-1" for="imgsAnnounce"
+              >Télécharger un fichier:</label
+            >
             <div class="flex mt-4 md:mt-0 mb-4">
               <input
                 type="file"
-                id="img_url"
-                name="img_url"
-                formControlName="img_url"
+                id="imgsAnnounce"
+                name="imgsAnnounce"
+                formControlName="imgsAnnounce"
                 (change)="onChange($event)"
                 class="file-input rounded-r-none file-input-bordered file-input-success file-input-md w-full max-w-xs"
                 required
