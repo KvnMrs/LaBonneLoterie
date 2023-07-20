@@ -13,12 +13,12 @@ import { IAnnounce } from 'src/app/models/annouce/annouce.model';
   styleUrls: ['./add-announce.component.scss'],
 })
 export class AddAnnounceComponent implements OnInit {
-  createAnnounceForm!: FormGroup;
+  public createAnnounceForm!: FormGroup;
   public selectedImgs: Array<File | null> = [];
   public announceData!: IAnnounce;
-  file!: File | null;
-  showSubmitMessage!: boolean;
-  showErrorMessage!: boolean;
+  public file!: File | null;
+  public showSubmitMessage!: boolean;
+  public showErrorMessage!: boolean;
 
   public categorys = [
     { id: 1, name: 'Vêtement' },
@@ -30,9 +30,9 @@ export class AddAnnounceComponent implements OnInit {
   ];
 
   constructor(
-    public annoucesService: AnnouncesService,
-    public router: Router,
-    private uploadImgService: UploadImgService
+    private annoucesService: AnnouncesService,
+    private uploadImgService: UploadImgService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -95,7 +95,7 @@ export class AddAnnounceComponent implements OnInit {
           ...this.announceData,
           imgsAnnounce: imgsAnnounceUrl,
         } as IAnnounce;
-        await this.annoucesService.addAnnounce(this.announceData);
+        this.annoucesService.emitAnnounceData(this.announceData);
         this.createAnnounceForm.reset();
         this.router.navigate(['/recapitulatif-annonce']);
         this.showErrorMessage = false;
@@ -104,12 +104,5 @@ export class AddAnnounceComponent implements OnInit {
         console.error('Error occurred:', error);
       }
     }
-  }
-
-  sendData() {
-    const dataToSend = {
-      /* Vos données ici */
-    };
-    this.router.navigate(['/destination-component'], { state: dataToSend });
   }
 }

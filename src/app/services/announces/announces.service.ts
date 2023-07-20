@@ -10,15 +10,18 @@ import {
   Firestore,
   getDoc,
 } from '@angular/fire/firestore';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { setDoc } from 'firebase/firestore';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { IAnnounce } from '../../models/annouce/annouce.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AnnouncesService {
+  private announceDataSubject: BehaviorSubject<any> =
+    new BehaviorSubject<IAnnounce | null>(null);
+  public announceData$: Observable<IAnnounce> =
+    this.announceDataSubject.asObservable();
   constructor(private firestore: Firestore) {}
 
   // getAllAnnounce
@@ -56,5 +59,9 @@ export class AnnouncesService {
     announce!['currentTickets'] = actualisationTickets;
     const data = { currentTickets: announce!['currentTickets'], ...announce };
     return setDoc(announceRef, data);
+  }
+
+  emitAnnounceData(data: IAnnounce) {
+    this.announceDataSubject.next(data);
   }
 }
