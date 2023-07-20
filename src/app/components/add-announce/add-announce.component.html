@@ -22,8 +22,13 @@
         </div>
         <div class="form-input-container">
           <label class="mb-1">Catégorie:</label>
-          <select class="select select-bordered p-2">
-            <option *ngFor="let category of categorys" [value]="category.id">
+          <select
+            id="category"
+            name="category"
+            formControlName="category"
+            class="select select-bordered p-2"
+          >
+            <option *ngFor="let category of categorys" [value]="category.name">
               {{ category.name }}
             </option>
           </select>
