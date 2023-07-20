@@ -43,7 +43,7 @@ export class AddAnnounceComponent implements OnInit {
     this.createAnnounceForm = new FormGroup({
       title: new FormControl('', Validators.required),
       category: new FormControl('', Validators.required),
-      tags: new FormControl([''], Validators.required),
+      tags: new FormControl([], Validators.required),
       description: new FormControl('', Validators.required),
       imgsAnnounce: new FormControl([], Validators.required),
       estimate: new FormControl(0, Validators.required),
