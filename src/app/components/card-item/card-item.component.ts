@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 import { AnnouncesService } from 'src/app/services/announces/announces.service';
 
 @Component({
@@ -9,12 +10,8 @@ import { AnnouncesService } from 'src/app/services/announces/announces.service';
 })
 export class CardItemComponent implements OnInit {
   @Input() id!: string;
-  @Input() title!: string;
-  @Input() category!: string;
-  @Input() description!: string;
-  @Input() img?: string;
-  @Input() minTickets?: number | string | undefined;
-  @Input() currentTickets: number | string | undefined;
+  @Input() data!: IAnnounce;
+
   @ViewChild('modalBuyTicket') modalBuyTicket!: ElementRef;
 
   constructor(
