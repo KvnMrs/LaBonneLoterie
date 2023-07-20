@@ -26,8 +26,12 @@ export class SummaryAnnounceComponent implements OnInit {
     );
   }
 
-  public redirectUser() {
-    this.router.navigate(['']);
+  public redirectUser(): void {
+    this.router.navigate(['/recherche']);
+  }
+
+  async onPublish(): Promise<void> {
+    await this.annoucesService.addAnnounce(this.newAnnounceData);
   }
 
   ngOnDestroy() {
