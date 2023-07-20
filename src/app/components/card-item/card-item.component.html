@@ -15,10 +15,10 @@
       <div class="mb-4">
         <h4 class="card-title text-2xl">{{ data.title }}</h4>
       </div>
-      <div class="flex mb-2">
-        <div class="badge p-3 mr-1">tag 1</div>
-        <div class="badge p-3 mr-1">tag 2</div>
-        <div class="badge p-3 mr-1">tag 3</div>
+      <div *ngIf="data.tags" class="flex mb-2">
+        <div *ngFor="let tag of data.tags" class="announce-badges">
+          {{ tag }}
+        </div>
       </div>
     </div>
 

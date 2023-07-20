@@ -20,11 +20,8 @@
         }}</span>
       </div>
       <!-- Badges -->
-      <div class="flex">
-        <div class="announce-badges mr-1">neutral</div>
-        <div class="announce-badges mx-1">neutral</div>
-        <div class="announce-badges mx-1">neutral</div>
-        <div class="announce-badges ml-1">neutral</div>
+      <div class="flex" *ngFor="let tag of newAnnounceData.tags">
+        <div class="announce-badges mr-1">{{ tag }}</div>
       </div>
       <div class="divider my-0"></div>
       <!-- Description -->
