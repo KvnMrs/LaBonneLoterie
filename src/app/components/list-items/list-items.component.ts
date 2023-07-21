@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AnnouncesService } from '../../services/announces/announces.service';
 import { IAnnounce } from '../../models/annouce/annouce.model';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-list-items',
@@ -8,7 +10,8 @@ import { IAnnounce } from '../../models/annouce/annouce.model';
   styleUrls: ['./list-items.component.scss'],
 })
 export class ListItemsComponent implements OnInit {
-  public items: IAnnounce[] = [];
+  public announces: IAnnounce[] = [];
+  public searchForm!: FormGroup;
 
   public categorys = [
     { id: 1, name: 'Vêtement' },
@@ -20,11 +23,26 @@ export class ListItemsComponent implements OnInit {
   ];
 
   constructor(private announesService: AnnouncesService) {}
-
   ngOnInit(): void {
     // using SERVICE for retrieve informations of all announces
     this.announesService.getAnnounces().subscribe((res: IAnnounce[]) => {
-      this.items = res;
+      this.announces = res;
     });
+    this.initSearchForm();
+  }
+
+  initSearchForm() {
+    this.searchForm = new FormGroup({
+      search: new FormControl(''),
+      category: new FormControl(''),
+      minPrice: new FormControl(),
+      maxPrice: new FormControl(),
+    });
+  }
+
+  async onSearch(): Promise<void> {
+    this.announces = await this.announesService.filterAnnounces(
+      this.searchForm.value
+    );
   }
 }
