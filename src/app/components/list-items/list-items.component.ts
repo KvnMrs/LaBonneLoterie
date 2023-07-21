@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 export class ListItemsComponent implements OnInit {
   public announces: IAnnounce[] = [];
   public searchForm!: FormGroup;
+  public showResetBtn = false;
 
   public categorys = [
     { id: 1, name: 'Vêtement' },
@@ -24,11 +25,14 @@ export class ListItemsComponent implements OnInit {
 
   constructor(private announesService: AnnouncesService) {}
   ngOnInit(): void {
-    // using SERVICE for retrieve informations of all announces
+    this.fetchAnnounces();
+    this.initSearchForm();
+  }
+
+  fetchAnnounces() {
     this.announesService.getAnnounces().subscribe((res: IAnnounce[]) => {
       this.announces = res;
     });
-    this.initSearchForm();
   }
 
   initSearchForm() {
@@ -44,5 +48,12 @@ export class ListItemsComponent implements OnInit {
     this.announces = await this.announesService.filterAnnounces(
       this.searchForm.value
     );
+    this.showResetBtn = true;
+  }
+
+  onResetSearch() {
+    this.fetchAnnounces();
+    this.searchForm.reset();
+    this.showResetBtn = false;
   }
 }

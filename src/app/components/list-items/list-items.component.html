@@ -40,9 +40,23 @@
         class="w-11/12 md:w-auto input input-bordered max-w-xs cursor-pointer"
       />
     </form>
-    <button (click)="onSearch()" class="btn btn-outline btn-info ml-auto gap-2">
-      Recherchez
-    </button>
+    <div class="btn-group ml-auto gap-1">
+      <button
+        type="button"
+        (click)="onResetSearch()"
+        [disabled]="!showResetBtn"
+        class="btn btn-outline btn-info ml-auto gap-2"
+      >
+        No filter
+      </button>
+      <button
+        type="button"
+        (click)="onSearch()"
+        class="btn btn-info ml-auto gap-2"
+      >
+        Recherchez
+      </button>
+    </div>
   </div>
   <div class="cards-container">
     <app-card-item
