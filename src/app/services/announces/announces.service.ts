@@ -73,6 +73,18 @@ export class AnnouncesService {
 
   async filterAnnounces(search: any): Promise<IAnnounce[]> {
     let resultSearch: IAnnounce[] = [];
+    // TODO: filter title a nnounce by word
+    if (search.search) {
+      const q = query(
+        collection(this.firestore, 'Announces'),
+        where('title', 'array-contains', search.search)
+      );
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        const announce = doc.data();
+        resultSearch.push(announce as IAnnounce);
+      });
+    }
     if (search.category) {
       const q = query(
         collection(this.firestore, 'Announces'),
