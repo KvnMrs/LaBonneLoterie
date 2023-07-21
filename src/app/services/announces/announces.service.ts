@@ -10,8 +10,8 @@ import {
   Firestore,
   getDoc,
 } from '@angular/fire/firestore';
-import { setDoc } from 'firebase/firestore';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { getDocs, query, setDoc, where } from 'firebase/firestore';
+import { BehaviorSubject, filter, Observable } from 'rxjs';
 import { IAnnounce } from '../../models/annouce/annouce.model';
 
 @Injectable({
@@ -22,6 +22,12 @@ export class AnnouncesService {
     new BehaviorSubject<IAnnounce | null>(null);
   public announceData$: Observable<IAnnounce> =
     this.announceDataSubject.asObservable();
+
+  private announcesDataSubject: BehaviorSubject<any> = new BehaviorSubject<
+    IAnnounce[] | null
+  >(null);
+  public announcesData$: Observable<IAnnounce> =
+    this.announcesDataSubject.asObservable();
   constructor(private firestore: Firestore) {}
 
   // getAllAnnounce
@@ -63,5 +69,55 @@ export class AnnouncesService {
 
   emitAnnounceData(data: IAnnounce) {
     this.announceDataSubject.next(data);
+  }
+
+  async filterAnnounces(search: any): Promise<IAnnounce[]> {
+    let resultSearch: IAnnounce[] = [];
+    // TODO: filter title a nnounce by word
+    if (search.search) {
+      const q = query(
+        collection(this.firestore, 'Announces'),
+        where('title', 'array-contains', search.search)
+      );
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        const announce = doc.data();
+        resultSearch.push(announce as IAnnounce);
+      });
+    }
+    if (search.category) {
+      const q = query(
+        collection(this.firestore, 'Announces'),
+        where('category', '==', search.category)
+      );
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        const announce = doc.data();
+        resultSearch.push(announce as IAnnounce);
+      });
+    }
+    if (search.minPrice) {
+      const q = query(
+        collection(this.firestore, 'Announces'),
+        where('ticketPrice', '>', search.minPrice)
+      );
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        const announce = doc.data();
+        resultSearch.push(announce as IAnnounce);
+      });
+    }
+    if (search.maxPrice) {
+      const q = query(
+        collection(this.firestore, 'Announces'),
+        where('ticketPrice', '<', search.maxPrice)
+      );
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        const announce = doc.data();
+        resultSearch.push(announce as IAnnounce);
+      });
+    }
+    return resultSearch;
   }
 }
