@@ -34,7 +34,7 @@ export class ListItemsComponent implements OnInit {
   initSearchForm() {
     this.searchForm = new FormGroup({
       search: new FormControl(''),
-      category: new FormControl(''),
+      category: new FormControl(null),
       minPrice: new FormControl(),
       maxPrice: new FormControl(),
     });

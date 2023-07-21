@@ -18,7 +18,7 @@
         formControlName="category"
         class="w-11/12 md:w-auto select select-bordered max-w-xs"
       >
-        <option disabled selected>Dans quel catégorie?</option>
+        <option [ngValue]="null">Dans quelle catégorie?</option>
         <option *ngFor="let category of categorys" [value]="category.name">
           {{ category.name }}
         </option>
