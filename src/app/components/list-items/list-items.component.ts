@@ -9,6 +9,16 @@ import { IAnnounce } from '../../models/annouce/annouce.model';
 })
 export class ListItemsComponent implements OnInit {
   public items: IAnnounce[] = [];
+
+  public categorys = [
+    { id: 1, name: 'Vêtement' },
+    { id: 2, name: 'Véhicule' },
+    { id: 3, name: 'Multimédia' },
+    { id: 4, name: 'Décoration' },
+    { id: 5, name: 'Electomenager' },
+    { id: 6, name: 'Jardin' },
+  ];
+
   constructor(private announesService: AnnouncesService) {}
 
   ngOnInit(): void {

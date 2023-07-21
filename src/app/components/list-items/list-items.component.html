@@ -9,10 +9,9 @@
       />
       <select class="w-11/12 md:w-auto select select-bordered max-w-xs">
         <option disabled selected>Dans quel catégorie?</option>
-        <option>Multimédia</option>
-        <option>Vêtements</option>
-        <option>Divers</option>
-        <option>Musique</option>
+        <option *ngFor="let category of categorys" [value]="category.name">
+          {{ category.name }}
+        </option>
       </select>
       <input
         type="number"
