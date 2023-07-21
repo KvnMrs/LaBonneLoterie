@@ -10,29 +10,19 @@ import {
   Firestore,
   getDoc,
 } from '@angular/fire/firestore';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { setDoc } from 'firebase/firestore';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { IAnnounce } from '../../models/annouce/annouce.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AnnouncesService {
+  private announceDataSubject: BehaviorSubject<any> =
+    new BehaviorSubject<IAnnounce | null>(null);
+  public announceData$: Observable<IAnnounce> =
+    this.announceDataSubject.asObservable();
   constructor(private firestore: Firestore) {}
-
-  form = new FormGroup({
-    title: new FormControl('', Validators.required),
-    category: new FormControl('', Validators.required),
-    tags: new FormControl([''], Validators.required),
-    description: new FormControl('', Validators.required),
-    img_url: new FormControl('', Validators.required),
-    estimate: new FormControl(0, Validators.required),
-    ticketPrice: new FormControl(0, Validators.required),
-    minTickets: new FormControl(0, Validators.required),
-    maxTickets: new FormControl(0, Validators.required),
-    currentTickets: new FormControl(0, Validators.required),
-  });
 
   // getAllAnnounce
   public getAnnounces(): Observable<IAnnounce[]> {
@@ -69,5 +59,9 @@ export class AnnouncesService {
     announce!['currentTickets'] = actualisationTickets;
     const data = { currentTickets: announce!['currentTickets'], ...announce };
     return setDoc(announceRef, data);
+  }
+
+  emitAnnounceData(data: IAnnounce) {
+    this.announceDataSubject.next(data);
   }
 }

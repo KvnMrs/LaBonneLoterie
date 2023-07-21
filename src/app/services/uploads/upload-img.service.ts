@@ -16,7 +16,7 @@ export class UploadImgService {
   async uploadAnnounceImg(file: File) {
     const imgRef = ref(this.storage, `announesImg/${file.name}`);
     await uploadBytesResumable(imgRef, file);
-    const imgUrl = getDownloadURL(
+    const imgUrl = await getDownloadURL(
       ref(this.storage, `announesImg/${file.name}`)
     );
     return imgUrl;
@@ -29,5 +29,21 @@ export class UploadImgService {
       ref(this.storage, `profileImg/${file.name}`)
     );
     return imgUrl;
+  }
+
+  showImgBeforeUpload(event: File) {
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+      const imageUrl = event.target!.result as string;
+
+      const previewImage = document.getElementById(
+        'previewImage'
+      ) as HTMLImageElement;
+      if (previewImage !== null) {
+        previewImage.src = imageUrl;
+      }
+    };
+    reader.readAsDataURL(event);
   }
 }

@@ -2,71 +2,44 @@
   <lbl-header>Vérifions ensemble !</lbl-header>
   <article class="summary-container">
     <!-- CARROUSEL -->
-    <aside class="carrousel-container">
-      <div class="carousel-item w-11/12">
-        <img
-          src="https://img.leboncoin.fr/api/v1/lbcpb1/images/f8/a7/b5/f8a7b51e7108f8c32f587748fb7ae33bd8d9186b.jpg?rule=classified-1200x800-webp"
-          class="rounded-box"
-        />
-      </div>
-      <div class="carousel-item w-fit">
-        <img
-          src="https://img.leboncoin.fr/api/v1/lbcpb1/images/f8/a7/b5/f8a7b51e7108f8c32f587748fb7ae33bd8d9186b.jpg?rule=classified-1200x800-webp"
-          class="rounded-box"
-        />
-      </div>
-      <div class="carousel-item w-fit">
-        <img
-          src="https://img.leboncoin.fr/api/v1/lbcpb1/images/f8/a7/b5/f8a7b51e7108f8c32f587748fb7ae33bd8d9186b.jpg?rule=classified-1200x800-webp"
-          class="rounded-box"
-        />
-      </div>
-      <div class="carousel-item w-fit">
-        <img
-          src="https://img.leboncoin.fr/api/v1/lbcpb1/images/f8/a7/b5/f8a7b51e7108f8c32f587748fb7ae33bd8d9186b.jpg?rule=classified-1200x800-webp"
-          class="rounded-box"
-        />
-      </div>
-      <div class="carousel-item w-fit">
-        <img
-          src="https://img.leboncoin.fr/api/v1/lbcpb1/images/f8/a7/b5/f8a7b51e7108f8c32f587748fb7ae33bd8d9186b.jpg?rule=classified-1200x800-webp"
-          class="rounded-box"
-        />
+    <aside class="carrousel-container border-2">
+      <div
+        *ngFor="let imgUrl of newAnnounceData.imgsAnnounce"
+        class="carousel-item w-11/12"
+      >
+        <img [src]="imgUrl" class="rounded-box" />
       </div>
     </aside>
     <!-- Main info -->
     <div class="summary-main-info-container">
       <div class="summary-main-info">
-        <h2 class="text-xl sm:text-2xl">Categorie |</h2>
-        <h3 class="text-lg sm:text-xl">Mon super titre |</h3>
-        <span class="text-lg sm:text-xl">10 $</span>
+        <h2 class="text-xl sm:text-2xl">{{ newAnnounceData.category }} |</h2>
+        <h3 class="text-lg sm:text-xl">{{ newAnnounceData.title }} |</h3>
+        <span class="text-lg sm:text-xl">{{
+          newAnnounceData.ticketPrice | currency : "EUR" : true
+        }}</span>
       </div>
       <!-- Badges -->
-      <div class="flex">
-        <div class="announce-badges mr-1">neutral</div>
-        <div class="announce-badges mx-1">neutral</div>
-        <div class="announce-badges mx-1">neutral</div>
-        <div class="announce-badges ml-1">neutral</div>
+      <div class="flex" *ngFor="let tag of newAnnounceData.tags">
+        <div class="announce-badges mr-1">{{ tag }}</div>
       </div>
       <div class="divider my-0"></div>
       <!-- Description -->
       <div class="flex flex-col gap-2">
         <h3 class="card-title">Description:</h3>
         <p class="sm:w-3/4 text-gray-800 leading-normal">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
-          risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,
-          ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula
-          massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci
-          nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl
-          sit amet erat. Duis semper.
+          {{ newAnnounceData.description }}
         </p>
       </div>
       <!-- CTA's Group -->
       <div class="btn-group flex justify-end mt-auto">
-        <button class="btn btn-outline btn-info mr-1 shadow-md">
+        <button type="button" class="btn btn-outline btn-info mr-1 shadow-md">
           Modifier
         </button>
-        <label for="modal-wish-success" class="btn btn-primary shadow-md"
+        <label
+          (click)="onPublish()"
+          for="modal-wish-success"
+          class="btn btn-primary shadow-md"
           >Publier</label
         >
       </div>

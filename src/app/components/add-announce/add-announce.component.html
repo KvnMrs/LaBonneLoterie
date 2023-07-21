@@ -1,7 +1,7 @@
 <div class="main-container">
   <lbl-header>Publier votre annonce !</lbl-header>
   <form
-    [formGroup]="formAnnounce"
+    [formGroup]="createAnnounceForm"
     class="form-container"
     (ngSubmit)="onSubmit()"
   >
@@ -22,14 +22,19 @@
         </div>
         <div class="form-input-container">
           <label class="mb-1">Catégorie:</label>
-          <select class="select select-bordered p-2">
-            <option *ngFor="let category of categorys" [value]="category.id">
+          <select
+            id="category"
+            name="category"
+            formControlName="category"
+            class="select select-bordered p-2"
+          >
+            <option *ngFor="let category of categorys" [value]="category.name">
               {{ category.name }}
             </option>
           </select>
         </div>
         <div class="form-input-container">
-          <label class="mb-1" for="title">Ajouter un tag:</label>
+          <label class="mb-1" for="tags">Ajouter un tag:</label>
           <input
             class="input input-lbl"
             type="text"
@@ -96,13 +101,15 @@
       <div class="col-upload-descript-buttons">
         <div class="md:w-full mt-0">
           <div class="form-input-container">
-            <label class="mb-1" for="img_url">Télécharger un fichier:</label>
-            <div class="flex mt-4 md:mt-0">
+            <label class="mb-1" for="imgsAnnounce"
+              >Télécharger un fichier:</label
+            >
+            <div class="flex mt-4 md:mt-0 mb-4">
               <input
                 type="file"
-                id="img_url"
-                name="img_url"
-                formControlName="img_url"
+                id="imgsAnnounce"
+                name="imgsAnnounce"
+                formControlName="imgsAnnounce"
                 (change)="onChange($event)"
                 class="file-input rounded-r-none file-input-bordered file-input-success file-input-md w-full max-w-xs"
                 required
@@ -110,13 +117,36 @@
               <button
                 class="btn btn-success btn-square rounded-l-none"
                 type="button"
-                (click)="onUpload()"
+                (click)="onPrepareUploadImg()"
               >
                 ok
               </button>
             </div>
-            <div *ngFor="let shortLink of shortLinks">
-              <p>{{ shortLink }}</p>
+            <div class="mb-4 self-center gap-1">
+              <img
+                id="previewImage"
+                src="{{ this.file }}"
+                alt=""
+                class="{{
+                  this.file
+                    ? 'w-28 h-28 rounded-full lg:w-40 lg:h-40'
+                    : 'hidden'
+                }}"
+              />
+              <p class="font-semibold">{{ this.file ? this.file.name : "" }}</p>
+            </div>
+            <div
+              *ngFor="let selectedImg of selectedImgs; let i = index"
+              class="flex"
+            >
+              <button
+                type="button"
+                class="btn btn-sm btn-ghost btn-circle"
+                (click)="removeShortLink(i)"
+              >
+                x
+              </button>
+              <p class="text-lg">{{ selectedImg!.name }}</p>
             </div>
           </div>
           <div class="form-input-container">
@@ -140,7 +170,7 @@
             type="button"
             class="btn btn-stroke btn-primary"
           >
-            Publier
+            Vérifier
           </button>
         </div>
       </div>
