@@ -14,15 +14,20 @@ export class AnnounceDetailsComponent implements OnInit {
   @ViewChild('modalBuyTicket') modalBuyTicket!: ElementRef;
   public currentAnnounce!: IAnnounce;
   paramId!: string;
+  postedDate: any;
 
   constructor(
     private route: ActivatedRoute,
     private announcesService: AnnouncesService
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.paramId = this.route.snapshot.params['id'];
-    this.fetchAnnounceById(this.paramId);
+    await this.fetchAnnounceById(this.paramId);
+    this.postedDate = this.currentAnnounce.createdAt;
+    this.currentAnnounce.createdAt = new Date(
+      this.postedDate.seconds * 1000 + this.postedDate.nanoseconds / 1000000
+    );
   }
 
   async fetchAnnounceById(id: string): Promise<IAnnounce> {

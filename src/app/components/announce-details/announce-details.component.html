@@ -118,7 +118,10 @@
         </div>
         <div class="mb-3">
           <h3 class="text-xl mb-2">{{ currentAnnounce.title }}</h3>
-          <p>Posté le 9 avril 2023</p>
+          <p>
+            Posté le
+            {{ currentAnnounce.createdAt | date : "dd/MM/yyyy" }}
+          </p>
         </div>
         <!-- Badges -->
         <div class="flex mb-3">

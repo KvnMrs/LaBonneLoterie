@@ -47,6 +47,9 @@ export class AnnouncesService {
 
   // addAnnounce
   public addAnnounce(announce: IAnnounce) {
+    const timestamp = Date.now();
+    const createdAt = new Date(timestamp);
+    announce = { ...announce, createdAt };
     const announceRef = collection(this.firestore, 'Announces');
     return addDoc(announceRef, announce);
   }
