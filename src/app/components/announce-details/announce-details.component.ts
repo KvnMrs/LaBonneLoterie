@@ -17,7 +17,7 @@ export class AnnounceDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private announesService: AnnouncesService
+    private announcesService: AnnouncesService
   ) {}
 
   ngOnInit(): void {
@@ -26,7 +26,7 @@ export class AnnounceDetailsComponent implements OnInit {
   }
 
   async fetchAnnounceById(id: string): Promise<IAnnounce> {
-    return (this.currentAnnounce = await this.announesService.getAnnounceByID(
+    return (this.currentAnnounce = await this.announcesService.getAnnounceByID(
       id
     ));
   }

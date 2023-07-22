@@ -22,14 +22,14 @@ export class ListItemsComponent implements OnInit {
     { id: 6, name: 'Jardin' },
   ];
 
-  constructor(private announesService: AnnouncesService) {}
+  constructor(private announcesService: AnnouncesService) {}
   ngOnInit(): void {
     this.fetchAnnounces();
     this.initSearchForm();
   }
 
   fetchAnnounces() {
-    this.announesService.getAnnounces().subscribe((res: IAnnounce[]) => {
+    this.announcesService.getAnnounces().subscribe((res: IAnnounce[]) => {
       this.announces = res;
     });
   }
@@ -44,7 +44,7 @@ export class ListItemsComponent implements OnInit {
   }
 
   async onSearch(): Promise<void> {
-    this.announces = await this.announesService.filterAnnounces(
+    this.announces = await this.announcesService.filterAnnounces(
       this.searchForm.value
     );
     this.showResetBtn = true;

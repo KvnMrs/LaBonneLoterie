@@ -14,10 +14,10 @@ export class UploadImgService {
   constructor(public storage: Storage, private userService: UserService) {}
 
   async uploadAnnounceImg(file: File) {
-    const imgRef = ref(this.storage, `announesImg/${file.name}`);
+    const imgRef = ref(this.storage, `announcesImg/${file.name}`);
     await uploadBytesResumable(imgRef, file);
     const imgUrl = await getDownloadURL(
-      ref(this.storage, `announesImg/${file.name}`)
+      ref(this.storage, `announcesImg/${file.name}`)
     );
     return imgUrl;
   }
