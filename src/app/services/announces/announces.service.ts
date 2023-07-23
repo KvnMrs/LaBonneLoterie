@@ -13,6 +13,7 @@ import {
 import { getDocs, query, where } from 'firebase/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IAnnounce } from '../../models/annouce/annouce.model';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +29,7 @@ export class AnnouncesService {
   >(null);
   public announcesData$: Observable<IAnnounce> =
     this.announcesDataSubject.asObservable();
-  constructor(private firestore: Firestore) {}
+  constructor(private firestore: Firestore, private authService: AuthService) {}
 
   // getAllAnnounce
   public getAnnounces(): Observable<IAnnounce[]> {
@@ -47,9 +48,14 @@ export class AnnouncesService {
 
   // addAnnounce
   public addAnnounce(announce: IAnnounce) {
+    let authorUid = '';
+    this.authService.currentUserSubject.subscribe((user) => {
+      if (!user) return;
+      authorUid = user.uid;
+    });
     const timestamp = Date.now();
     const createdAt = new Date(timestamp);
-    announce = { ...announce, createdAt };
+    announce = { ...announce, createdAt, authorUid };
     const announceRef = collection(this.firestore, 'Announces');
     return addDoc(announceRef, announce);
   }
