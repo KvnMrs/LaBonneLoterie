@@ -6,6 +6,9 @@ import { AnnouncesService } from '../../services/announces/announces.service';
 import { UploadImgService } from '../../services/uploads/upload-img.service';
 // Models
 import { IAnnounce } from 'src/app/models/annouce/annouce.model';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { IUser } from 'src/app/models/user/user.model';
+import { User } from 'firebase/auth';
 
 @Component({
   selector: 'app-add-item',
@@ -15,10 +18,11 @@ import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 export class AddAnnounceComponent implements OnInit {
   public createAnnounceForm!: FormGroup;
   public selectedImgs: Array<File | null> = [];
-  public announceData!: IAnnounce;
-  public file!: File | null;
-  public showSubmitMessage!: boolean;
-  public showErrorMessage!: boolean;
+  public announceData: IAnnounce | null = null;
+  public file: File | null = null;
+  public showSubmitMessage = false;
+  public showErrorMessage = false;
+  private currentUser: User | null = null;
 
   public categorys = [
     { id: 1, name: 'Vêtement' },
@@ -32,14 +36,23 @@ export class AddAnnounceComponent implements OnInit {
   constructor(
     private annoucesService: AnnouncesService,
     private uploadImgService: UploadImgService,
+    private authService: AuthService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.initUpdateProfileForm();
+    this.initCreateAnnounceForm();
+    this.authService.currentUserSubject.subscribe({
+      next: (user) => {
+        this.currentUser = user;
+      },
+      error: (error) => {
+        console.error('Erreur récupération utilisateur.', error);
+      },
+    });
   }
 
-  initUpdateProfileForm() {
+  initCreateAnnounceForm() {
     this.createAnnounceForm = new FormGroup({
       title: new FormControl('', Validators.required),
       category: new FormControl('', Validators.required),
@@ -91,10 +104,12 @@ export class AddAnnounceComponent implements OnInit {
             imgsAnnounceUrl.push(urlImg);
           })
         );
+        if (!this.currentUser) throw Error;
         this.announceData = {
           ...this.announceData,
           imgsAnnounce: imgsAnnounceUrl,
-        } as IAnnounce;
+          authorUid: this.currentUser.uid,
+        };
         this.annoucesService.emitAnnounceData(this.announceData);
         this.createAnnounceForm.reset();
         this.router.navigate(['/recapitulatif-annonce']);
