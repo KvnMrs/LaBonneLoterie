@@ -12,8 +12,8 @@ import { AnnouncesService } from 'src/app/services/announces/announces.service';
 })
 export class AnnounceDetailsComponent implements OnInit {
   @ViewChild('modalBuyTicket') modalBuyTicket!: ElementRef;
-  public currentAnnounce!: IAnnounce;
-  paramId!: string;
+  public currentAnnounce: IAnnounce | null = null;
+  paramId: string = '';
   postedDate: any;
 
   constructor(
@@ -22,12 +22,18 @@ export class AnnounceDetailsComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.paramId = this.route.snapshot.params['id'];
-    await this.fetchAnnounceById(this.paramId);
-    this.postedDate = this.currentAnnounce.createdAt;
-    this.currentAnnounce.createdAt = new Date(
-      this.postedDate.seconds * 1000 + this.postedDate.nanoseconds / 1000000
-    );
+    try {
+      this.paramId = this.route.snapshot.params['id'];
+      await this.fetchAnnounceById(this.paramId);
+      if (!this.currentAnnounce) throw Error;
+      this.postedDate = this.currentAnnounce.createdAt;
+      this.currentAnnounce.createdAt = new Date(
+        this.postedDate.seconds * 1000 + this.postedDate.nanoseconds / 1000000
+      );
+    } catch (error) {
+      // TODO: error management - redirect show an error message
+      console.error("Une erreur s'est produite :", error);
+    }
   }
 
   async fetchAnnounceById(id: string): Promise<IAnnounce> {
