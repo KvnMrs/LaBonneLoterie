@@ -9,7 +9,6 @@ import { AnnouncesService } from 'src/app/services/announces/announces.service';
   styleUrls: ['./card-item.component.scss'],
 })
 export class CardItemComponent implements OnInit {
-  @Input() id!: string;
   @Input() data!: IAnnounce;
 
   @ViewChild('modalBuyTicket') modalBuyTicket!: ElementRef;
@@ -22,7 +21,7 @@ export class CardItemComponent implements OnInit {
   ngOnInit(): void {}
 
   seeDetails() {
-    this.router.navigate([`/liste/${this.id}`]);
+    this.router.navigate([`/liste/${this.data.id}`]);
   }
 
   deleteAnnouce(id: string) {
@@ -30,7 +29,7 @@ export class CardItemComponent implements OnInit {
   }
 
   buyTicket(id: string) {
-    this.router.navigate([`/achat-ticket/${this.id}`]);
+    this.router.navigate([`/achat-ticket/${this.data.id}`]);
   }
 
   closeModal() {

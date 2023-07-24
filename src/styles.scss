@@ -132,9 +132,6 @@ nav {
 /* MD */ md:gap-2 md:w-3/4
 /* LG */ lg:w-8/12
 }
-.announce-user-info-texts {
-  @apply text-gray-600
-}
 .announce-user-links {
   @apply mb-4 px-2 flex justify-start items-center gap-4
 /* MD */ md:hidden

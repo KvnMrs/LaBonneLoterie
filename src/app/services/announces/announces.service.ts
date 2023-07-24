@@ -10,9 +10,10 @@ import {
   Firestore,
   getDoc,
 } from '@angular/fire/firestore';
-import { getDocs, query, setDoc, where } from 'firebase/firestore';
-import { BehaviorSubject, filter, Observable } from 'rxjs';
+import { getDocs, query, where } from 'firebase/firestore';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { IAnnounce } from '../../models/annouce/annouce.model';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +29,7 @@ export class AnnouncesService {
   >(null);
   public announcesData$: Observable<IAnnounce> =
     this.announcesDataSubject.asObservable();
-  constructor(private firestore: Firestore) {}
+  constructor(private firestore: Firestore, private authService: AuthService) {}
 
   // getAllAnnounce
   public getAnnounces(): Observable<IAnnounce[]> {
@@ -39,14 +40,22 @@ export class AnnouncesService {
   }
 
   // getAnnounceById
-  public async getAnnounceByID(id: string) {
+  public async getAnnounceByID(id: string): Promise<IAnnounce> {
     const announceRef = doc(this.firestore, `Announces`, id);
     const DOC_SNAP: DocumentSnapshot<DocumentData> = await getDoc(announceRef);
-    return DOC_SNAP.data();
+    return DOC_SNAP.data() as IAnnounce;
   }
 
   // addAnnounce
   public addAnnounce(announce: IAnnounce) {
+    let authorUid = '';
+    this.authService.currentUserSubject.subscribe((user) => {
+      if (!user) return;
+      authorUid = user.uid;
+    });
+    const timestamp = Date.now();
+    const createdAt = new Date(timestamp);
+    announce = { ...announce, createdAt, authorUid };
     const announceRef = collection(this.firestore, 'Announces');
     return addDoc(announceRef, announce);
   }
@@ -61,10 +70,12 @@ export class AnnouncesService {
     let actualisationTickets: number;
     const announceRef = doc(this.firestore, `Announces`, id);
     const announce = await this.getAnnounceByID(id).then((res) => res);
-    actualisationTickets = announce?.['currentTickets'] + numberTicketsBuyed;
-    announce!['currentTickets'] = actualisationTickets;
-    const data = { currentTickets: announce!['currentTickets'], ...announce };
-    return setDoc(announceRef, data);
+    // TODO: See back this part, problem was created since getAnnounceByID return an observable
+
+    // actualisationTickets = announce?.['currentTickets'] + numberTicketsBuyed;
+    // announce!['currentTickets'] = actualisationTickets;
+    // const data = { currentTickets: announce!['currentTickets'], ...announce };
+    // return setDoc(announceRef, data);
   }
 
   emitAnnounceData(data: IAnnounce) {

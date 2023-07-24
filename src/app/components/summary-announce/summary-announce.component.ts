@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 import { AnnouncesService } from 'src/app/services/announces/announces.service';
@@ -15,7 +16,8 @@ export class SummaryAnnounceComponent implements OnInit {
 
   constructor(
     public router: Router,
-    private annoucesService: AnnouncesService
+    private annoucesService: AnnouncesService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -32,6 +34,10 @@ export class SummaryAnnounceComponent implements OnInit {
 
   async onPublish(): Promise<void> {
     await this.annoucesService.addAnnounce(this.newAnnounceData);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
   ngOnDestroy() {
