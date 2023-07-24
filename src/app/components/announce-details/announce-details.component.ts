@@ -1,9 +1,11 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { DocumentData } from 'firebase/firestore';
 // Models
 import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 // Service
 import { AnnouncesService } from 'src/app/services/announces/announces.service';
+import { UserService } from 'src/app/services/users/user.service';
 
 @Component({
   selector: 'app-announce-details',
@@ -13,12 +15,14 @@ import { AnnouncesService } from 'src/app/services/announces/announces.service';
 export class AnnounceDetailsComponent implements OnInit {
   @ViewChild('modalBuyTicket') modalBuyTicket!: ElementRef;
   public currentAnnounce: IAnnounce | null = null;
+  public authorAnnounce: DocumentData | null = null;
   paramId: string = '';
   postedDate: any;
 
   constructor(
     private route: ActivatedRoute,
-    private announcesService: AnnouncesService
+    private announcesService: AnnouncesService,
+    private userService: UserService
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -30,8 +34,14 @@ export class AnnounceDetailsComponent implements OnInit {
       this.currentAnnounce.createdAt = new Date(
         this.postedDate.seconds * 1000 + this.postedDate.nanoseconds / 1000000
       );
+      await this.userService
+        .getUserByID(this.currentAnnounce.authorUid)
+        .then((data) => {
+          if (!data) return;
+          this.authorAnnounce = data;
+        });
     } catch (error) {
-      // TODO: error management - redirect show an error message
+      // TODO: error management - show an error message and redirect user
       console.error("Une erreur s'est produite :", error);
     }
   }
