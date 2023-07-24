@@ -1,4 +1,4 @@
-<div *ngIf="currentAnnounce" class="main-container">
+<div *ngIf="currentAnnounce && authorAnnounce" class="main-container">
   <lbl-header>Détails de l'annonce</lbl-header>
   <!-- MAIN CONTAINER -->
   <div class="details-container">
@@ -23,11 +23,8 @@
             />
             <div class="announce-user-info">
               <p class="text-gray-800 font-bold text-xl sm:text-2xl lg:text-lg">
-                Kévin Marais
-              </p>
-              <p class="announce-user-info-texts">Loire-Atlantique, Nantes</p>
-              <p class="announce-user-info-texts">
-                Membre depuis le 20/02/2023
+                {{ authorAnnounce["firstname"] }}
+                {{ authorAnnounce["lastname"] }}
               </p>
               <div class="rating rating-md mb-4 pt-1 lg:mb-0">
                 <input
@@ -182,11 +179,7 @@
           />
           <div class="announce-user-info">
             <p class="text-gray-800 font-bold text-xl sm:text-2xl">
-              Kévin Marais
-            </p>
-            <p class="announce-user-info-texts">Loire-Atlantique, Nantes</p>
-            <p class="announce-user-info-texts text-sm">
-              Membre depuis le 20/02/2023
+              {{ authorAnnounce["firstname"] }} {{ authorAnnounce["lastname"] }}
             </p>
             <div class="mb-4 pt-1 rating rating-md">
               <input
