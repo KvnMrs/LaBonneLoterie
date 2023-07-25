@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormGroup } from '@angular/forms';
+import { FormGroup, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DocumentData } from 'firebase/firestore';
 import { AnnouncesService } from 'src/app/services/announces/announces.service';
 
 @Component({
-  selector: 'app-buy-ticket',
-  templateUrl: './buy-ticket.component.html',
-  styleUrls: ['./buy-ticket.component.scss'],
+  selector: 'app-modal-buy-ticket',
+  templateUrl: './modal-buy-ticket.component.html',
+  styleUrls: ['./modal-buy-ticket.component.scss'],
 })
-export class BuyTickectComponent implements OnInit {
-  id!: string;
-  public formTicket!: UntypedFormGroup;
+export class ModalBuyTickectComponent implements OnInit {
+  id: string = ' ';
+  public buyTicketForm: FormGroup = new FormGroup(0, Validators.required);
   public numberTicket: number = 0;
   public totalPrice: number = 0;
-  public currentAnnounce: DocumentData | undefined;
+  public currentAnnounce: DocumentData | null = null;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -30,13 +30,14 @@ export class BuyTickectComponent implements OnInit {
     });
   }
 
-  selectTicket() {
-    var input = document.querySelector('#numberTicket') as HTMLInputElement;
-    this.numberTicket = parseInt(input.value);
-    this.totalPrice = this.numberTicket * this.currentAnnounce?.['ticketPrice'];
+  onChange() {
+    // var input = document.querySelector('#numberTicket') as HTMLInputElement;
+    // this.numberTicket = parseInt(input.value);
+    // this.totalPrice = this.numberTicket * this.currentAnnounce?.['ticketPrice'];
   }
-  buyTickets() {
+  onBuyTickets() {
     this.announcesService.updateAnnouceTickets(this.id, this.numberTicket);
+    this.buyTicketForm.reset();
     this.router.navigate(['/liste']);
   }
 }

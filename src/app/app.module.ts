@@ -17,7 +17,7 @@ import { ListItemsComponent } from './components/list-items/list-items.component
 import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { AddAnnounceComponent } from './components/add-announce/add-announce.component';
 import { AnnounceDetailsComponent } from './components/announce-details/announce-details.component';
-import { BuyTickectComponent } from './components/buy-ticket/buy-ticket.component';
+import { ModalBuyTickectComponent } from './components/modals/modals-announce/buy-ticket/modal-buy-ticket.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
@@ -68,7 +68,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'achat-ticket/:id',
-    /* canActivate: [AuthGuardService], */ component: BuyTickectComponent,
+    /* canActivate: [AuthGuardService], */ component: ModalBuyTickectComponent,
   },
 ];
 @NgModule({
@@ -81,7 +81,7 @@ const appRoutes: Routes = [
     SignUpComponent,
     AddAnnounceComponent,
     AnnounceDetailsComponent,
-    BuyTickectComponent,
+    ModalBuyTickectComponent,
     UserProfileComponent,
     SignInComponent,
     LandingPageComponent,
