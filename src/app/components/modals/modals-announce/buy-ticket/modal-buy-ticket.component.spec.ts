@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BuyTickectComponent } from './buy-ticket.component';
+import { ModalBuyTickectComponent } from './modal-buy-ticket.component';
 
-describe('BuyTickectComponent', () => {
-  let component: BuyTickectComponent;
-  let fixture: ComponentFixture<BuyTickectComponent>;
+describe('ModalBuyTickectComponent', () => {
+  let component: ModalBuyTickectComponent;
+  let fixture: ComponentFixture<ModalBuyTickectComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BuyTickectComponent],
+      declarations: [ModalBuyTickectComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BuyTickectComponent);
+    fixture = TestBed.createComponent(ModalBuyTickectComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
