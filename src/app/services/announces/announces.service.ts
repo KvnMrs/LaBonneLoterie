@@ -10,10 +10,11 @@ import {
   Firestore,
   getDoc,
 } from '@angular/fire/firestore';
-import { getDocs, query, where } from 'firebase/firestore';
+import { getDocs, query, setDoc, where } from 'firebase/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IAnnounce } from '../../models/annouce/annouce.model';
 import { AuthService } from '../auth/auth.service';
+import { User } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -66,20 +67,21 @@ export class AnnouncesService {
     return deleteDoc(announceDocRef);
   }
 
-  async buyTicket(announce: any, buyer: any, numberTicketsBuyed: number) {
-    const relation = { announce, buyer, numberTicketsBuyed };
-    // const announceRef = collection(this.firestore, 'Announces');
-    // return addDoc(announceRef, announce);
+  async buyTicket(announce: any, buyer: Partial<User>, otherInfos: any) {
+    // Create purchase relation.
+    const relation = { announce, buyer, otherInfos };
+    const purchasesRef = collection(this.firestore, 'purchases');
+    await addDoc(purchasesRef, relation);
+    // Update 'currentTickets' value of the announce.
+    const announceRef = doc(this.firestore, `Announces`, announce.id);
+    const announceCurrrentData = await this.getAnnounceByID(announce.id).then(
+      (res) => res
+    );
+    const actualisationTickets =
+      announceCurrrentData?.['currentTickets'] + otherInfos.numberTicketBuyed;
 
-    // let actualisationTickets: number;
-    // const announceRef = doc(this.firestore, `Announces`, id);
-    // const announce = await this.getAnnounceByID(id).then((res) => res);
-    // TODO: See back this part, problem was created since getAnnounceByID return an observable
-
-    // actualisationTickets = announce?.['currentTickets'] + numberTicketsBuyed;
-    // announce!['currentTickets'] = actualisationTickets;
-    // const data = { currentTickets: announce!['currentTickets'], ...announce };
-    // return setDoc(announceRef, data);
+    announceCurrrentData['currentTickets'] = actualisationTickets;
+    return setDoc(announceRef, announceCurrrentData);
   }
 
   emitAnnounceData(data: IAnnounce) {

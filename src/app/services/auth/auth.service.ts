@@ -25,8 +25,8 @@ export class AuthService {
   userData!: DocumentData;
   constructor(
     private router: Router,
-    private auth: Auth,
-    private userService: UserService
+    private userService: UserService,
+    public auth: Auth
   ) {
     this.auth.onAuthStateChanged((user) => {
       if (user) {

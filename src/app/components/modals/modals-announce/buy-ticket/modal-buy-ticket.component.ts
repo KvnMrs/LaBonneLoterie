@@ -35,7 +35,6 @@ export class ModalBuyTickectComponent implements OnInit {
     // this.totalPrice = this.numberTicket * this.currentAnnounce?.['ticketPrice'];
   }
   onBuyTickets() {
-    const numberTicketBuyed = this.buyTicketForm.value.numberTicketSelected;
     try {
       const currentUser = this.authService.auth.currentUser;
       if (!currentUser) throw Error();
@@ -44,7 +43,11 @@ export class ModalBuyTickectComponent implements OnInit {
         id: this.currentAnnounce.id,
         ticketPrice: this.currentAnnounce.ticketPrice,
       };
-      this.announcesService.buyTicket(announce, buyer, numberTicketBuyed);
+      const otherInfos = {
+        numberTicketBuyed: this.buyTicketForm.value.numberTicketSelected,
+        date: new Date(),
+      };
+      this.announcesService.buyTicket(announce, buyer, otherInfos);
       this.buyTicketForm.reset();
     } catch (err) {
       // TODO: error management - show an error message buy ticket failed
