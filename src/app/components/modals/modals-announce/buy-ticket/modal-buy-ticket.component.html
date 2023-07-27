@@ -12,11 +12,12 @@
       >✕</label
     >
     <h3 class="font-bold text-lg">
-      Achat de ticket(s) pour 'clio 3 bon état'.
+      Achat de ticket(s) pour '{{ currentAnnounce.title }}'.
     </h3>
-    <div class="w-full flex flex-col my-3 gap-2">
+    <div class="w-full flex flex-col mt-3 mb-5 gap-2">
       <label for="buyTickets">Selectionner un nombre de ticket:</label>
       <input
+        (change)="onChange($event)"
         id="numberTicketSelected"
         formControlName="numberTicketSelected"
         type="number"
@@ -29,15 +30,22 @@
           <th colspan="2" scope="row" class="font-normal">
             Nombre de tickets sélectionnés:
           </th>
-          <td class="font-medium">22</td>
+          <td class="font-medium">{{ purchasesInfo.numberTicket }}</td>
         </tr>
         <tr class="flex justify-between">
           <th colspan="2" scope="row" class="font-normal">Nombre de chances</th>
-          <td class="font-medium">1/5</td>
+          <td class="font-medium">
+            {{ purchasesInfo.numberTicket }}/{{
+              currentAnnounce.currentTickets
+            }}5
+          </td>
         </tr>
+        <div class="divider"></div>
         <tr class="flex justify-between">
           <th colspan="2" scope="row" class="font-normal">Prix total:</th>
-          <td class="font-medium">54 $</td>
+          <td class="font-medium">
+            {{ purchasesInfo.totalPrice | currency : "EUR" }}
+          </td>
         </tr>
       </tbody>
     </table>
@@ -46,7 +54,7 @@
         >Annuler</label
       >
       <label
-        for="modal-good-luck"
+        for="modalBuyTicket"
         class="btn btn-primary"
         (click)="onBuyTickets()"
         >Valider</label

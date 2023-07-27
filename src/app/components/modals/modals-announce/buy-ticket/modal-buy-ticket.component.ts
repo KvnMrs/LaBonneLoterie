@@ -17,22 +17,23 @@ export class ModalBuyTickectComponent implements OnInit {
   public buyTicketForm: FormGroup = new FormGroup({
     numberTicketSelected: new FormControl(0, Validators.required),
   });
-  public numberTicket: number = 0;
-  public totalPrice: number = 0;
+  purchasesInfo = {
+    numberTicket: 0,
+    totalPrice: 0,
+  };
   constructor(
-    private router: Router,
     private announcesService: AnnouncesService,
     private authService: AuthService
   ) {}
 
   ngOnInit() {
-    console.log(this.currentAnnounce);
+    console.log();
   }
 
-  onChange() {
-    // var input = document.querySelector('#numberTicket') as HTMLInputElement;
-    // this.numberTicket = parseInt(input.value);
-    // this.totalPrice = this.numberTicket * this.currentAnnounce?.['ticketPrice'];
+  onChange(event: any) {
+    this.purchasesInfo.numberTicket = event.target.value;
+    this.purchasesInfo.totalPrice =
+      this.purchasesInfo.numberTicket * this.currentAnnounce.ticketPrice;
   }
   onBuyTickets() {
     try {
