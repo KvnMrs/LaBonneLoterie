@@ -66,10 +66,14 @@ export class AnnouncesService {
     return deleteDoc(announceDocRef);
   }
 
-  async updateAnnouceTickets(id: string, numberTicketsBuyed: number) {
-    let actualisationTickets: number;
-    const announceRef = doc(this.firestore, `Announces`, id);
-    const announce = await this.getAnnounceByID(id).then((res) => res);
+  async buyTicket(announce: any, buyer: any, numberTicketsBuyed: number) {
+    const relation = { announce, buyer, numberTicketsBuyed };
+    // const announceRef = collection(this.firestore, 'Announces');
+    // return addDoc(announceRef, announce);
+
+    // let actualisationTickets: number;
+    // const announceRef = doc(this.firestore, `Announces`, id);
+    // const announce = await this.getAnnounceByID(id).then((res) => res);
     // TODO: See back this part, problem was created since getAnnounceByID return an observable
 
     // actualisationTickets = announce?.['currentTickets'] + numberTicketsBuyed;

@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, UntypedFormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { DocumentData } from 'firebase/firestore';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { IAnnounce } from 'src/app/models/annouce/annouce.model';
+// Services
 import { AnnouncesService } from 'src/app/services/announces/announces.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-modal-buy-ticket',
@@ -10,24 +12,21 @@ import { AnnouncesService } from 'src/app/services/announces/announces.service';
   styleUrls: ['./modal-buy-ticket.component.scss'],
 })
 export class ModalBuyTickectComponent implements OnInit {
+  @Input() currentAnnounce!: IAnnounce;
   id: string = ' ';
-  public buyTicketForm: FormGroup = new FormGroup(0, Validators.required);
+  public buyTicketForm: FormGroup = new FormGroup({
+    numberTicketSelected: new FormControl(0, Validators.required),
+  });
   public numberTicket: number = 0;
   public totalPrice: number = 0;
-  public currentAnnounce: DocumentData | null = null;
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
-    private announcesService: AnnouncesService
+    private announcesService: AnnouncesService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
-    this.route.params.subscribe(async (params) => {
-      this.id = params['id'];
-      await this.announcesService
-        .getAnnounceByID(this.id)
-        .then((data) => (this.currentAnnounce = data));
-    });
+    console.log(this.currentAnnounce);
   }
 
   onChange() {
@@ -36,8 +35,20 @@ export class ModalBuyTickectComponent implements OnInit {
     // this.totalPrice = this.numberTicket * this.currentAnnounce?.['ticketPrice'];
   }
   onBuyTickets() {
-    this.announcesService.updateAnnouceTickets(this.id, this.numberTicket);
-    this.buyTicketForm.reset();
-    this.router.navigate(['/liste']);
+    const numberTicketBuyed = this.buyTicketForm.value.numberTicketSelected;
+    try {
+      const currentUser = this.authService.auth.currentUser;
+      if (!currentUser) throw Error();
+      const buyer = { id: currentUser.uid, email: currentUser.email };
+      const announce = {
+        id: this.currentAnnounce.id,
+        ticketPrice: this.currentAnnounce.ticketPrice,
+      };
+      this.announcesService.buyTicket(announce, buyer, numberTicketBuyed);
+      this.buyTicketForm.reset();
+    } catch (err) {
+      // TODO: error management - show an error message buy ticket failed
+      console.error(err);
+    }
   }
 }
