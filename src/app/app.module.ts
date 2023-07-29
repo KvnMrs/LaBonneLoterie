@@ -12,7 +12,7 @@ import { environment } from '../environments/environment';
 // Components
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
-import { CardItemComponent } from './components/card-item/card-item.component';
+import { CardComponent } from './components/announce/card/card.component';
 import { ListItemsComponent } from './components/list-items/list-items.component';
 import { SignUpComponent } from './components/user/auth/sign-up/sign-up.component';
 import { AddFormComponent } from './components/announce/add-form/add-form.component';
@@ -77,7 +77,7 @@ const appRoutes: Routes = [
     // Components
     AppComponent,
     NavigationComponent,
-    CardItemComponent,
+    CardComponent,
     ListItemsComponent,
     SignUpComponent,
     AddFormComponent,
