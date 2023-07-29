@@ -14,12 +14,12 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { CardItemComponent } from './components/card-item/card-item.component';
 import { ListItemsComponent } from './components/list-items/list-items.component';
-import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
+import { SignUpComponent } from './components/user/auth/sign-up/sign-up.component';
 import { AddFormComponent } from './components/announce/add-form/add-form.component';
 import { DetailPageComponent } from './components/announce/detail-page/detail-page.component';
 import { ModalBuyTickectComponent } from './components/modals/modals-announce/buy-ticket/modal-buy-ticket.component';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { SignInComponent } from './components/auth/sign-in/sign-in.component';
+import { ProfileComponent } from './components/user/profile-page/profile.component';
+import { SignInComponent } from './components/user/auth/sign-in/sign-in.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { ModalUpdateProfileComponent } from './components/modals/modals-profile/update/modal-update-profile.component';
 import { ModalCreditProfileComponent } from './components/modals/modals-profile/credit/modal-credit-profile.component';
@@ -53,7 +53,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'profil',
-    /* canActivate: [AuthGuardService], */ component: UserProfileComponent,
+    /* canActivate: [AuthGuardService], */ component: ProfileComponent,
   },
   {
     path: 'liste/:id',
@@ -83,7 +83,7 @@ const appRoutes: Routes = [
     AddFormComponent,
     DetailPageComponent,
     ModalBuyTickectComponent,
-    UserProfileComponent,
+    ProfileComponent,
     SignInComponent,
     LandingPageComponent,
     ModalUpdateProfileComponent,
