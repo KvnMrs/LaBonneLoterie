@@ -4,11 +4,11 @@ import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 import { AnnouncesService } from 'src/app/services/announces/announces.service';
 
 @Component({
-  selector: 'app-card-item',
-  templateUrl: './card-item.component.html',
-  styleUrls: ['./card-item.component.scss'],
+  selector: 'app-card',
+  templateUrl: './card.component.html',
+  styleUrls: ['./card.component.scss'],
 })
-export class CardItemComponent implements OnInit {
+export class CardComponent implements OnInit {
   @Input() data!: IAnnounce;
 
   @ViewChild('modalBuyTicket') modalBuyTicket!: ElementRef;

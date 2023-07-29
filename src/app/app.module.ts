@@ -11,23 +11,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
 // Components
 import { AppComponent } from './app.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
-import { CardItemComponent } from './components/card-item/card-item.component';
-import { ListItemsComponent } from './components/list-items/list-items.component';
-import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
-import { AddAnnounceComponent } from './components/add-announce/add-announce.component';
-import { AnnounceDetailsComponent } from './components/announce-details/announce-details.component';
+import { NavigationComponent } from './components/commun/navigation/navigation.component';
+import { CardComponent } from './components/announce/card/card.component';
+import { ListItemsComponent } from './components/announce/list-page/list-items.component';
+import { SignUpComponent } from './components/user/auth/sign-up/sign-up.component';
+import { AddFormComponent } from './components/announce/add-form/add-form.component';
+import { DetailPageComponent } from './components/announce/detail-page/detail-page.component';
 import { ModalBuyTickectComponent } from './components/modals/modals-announce/buy-ticket/modal-buy-ticket.component';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { SignInComponent } from './components/auth/sign-in/sign-in.component';
-import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { ProfileComponent } from './components/user/profile-page/profile.component';
+import { SignInComponent } from './components/user/auth/sign-in/sign-in.component';
+import { LandingPageComponent } from './components/commun/landing-page/landing-page.component';
 import { ModalUpdateProfileComponent } from './components/modals/modals-profile/update/modal-update-profile.component';
 import { ModalCreditProfileComponent } from './components/modals/modals-profile/credit/modal-credit-profile.component';
 import { ModalWishGoodLuckComponent } from './components/modals/modals-announce/wish-good-luck/modal-wish-good-luck.component';
-
 import { ModalWithdrawComponent } from './components/modals/modals-profile/withdraw/modal-withdraw.component';
-import { SummaryAnnounceComponent } from './components/summary-announce/summary-announce.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { SummaryAnnounceComponent } from './components/announce/summary-announce/summary-announce.component';
+import { FooterComponent } from './components/commun/footer/footer.component';
 // Libs
 import { HeaderComponent } from './shared/libs/ux-ui/header/header.component';
 import { InputComponent } from './shared/libs/ux-ui/forms/input/input.component';
@@ -54,15 +53,15 @@ const appRoutes: Routes = [
   },
   {
     path: 'profil',
-    /* canActivate: [AuthGuardService], */ component: UserProfileComponent,
+    /* canActivate: [AuthGuardService], */ component: ProfileComponent,
   },
   {
     path: 'liste/:id',
-    /* canActivate: [AuthGuardService], */ component: AnnounceDetailsComponent,
+    /* canActivate: [AuthGuardService], */ component: DetailPageComponent,
   },
   {
     path: 'ajout-annonce',
-    /* canActivate: [AuthGuardService], */ component: AddAnnounceComponent,
+    /* canActivate: [AuthGuardService], */ component: AddFormComponent,
   },
   {
     path: 'recapitulatif-annonce',
@@ -78,13 +77,13 @@ const appRoutes: Routes = [
     // Components
     AppComponent,
     NavigationComponent,
-    CardItemComponent,
+    CardComponent,
     ListItemsComponent,
     SignUpComponent,
-    AddAnnounceComponent,
-    AnnounceDetailsComponent,
+    AddFormComponent,
+    DetailPageComponent,
     ModalBuyTickectComponent,
-    UserProfileComponent,
+    ProfileComponent,
     SignInComponent,
     LandingPageComponent,
     ModalUpdateProfileComponent,
