@@ -11,22 +11,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
 // Components
 import { AppComponent } from './app.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
+import { NavigationComponent } from './components/commun/navigation/navigation.component';
 import { CardComponent } from './components/announce/card/card.component';
-import { ListItemsComponent } from './components/list-items/list-items.component';
+import { ListItemsComponent } from './components/announce/list-page/list-items.component';
 import { SignUpComponent } from './components/user/auth/sign-up/sign-up.component';
 import { AddFormComponent } from './components/announce/add-form/add-form.component';
 import { DetailPageComponent } from './components/announce/detail-page/detail-page.component';
 import { ModalBuyTickectComponent } from './components/modals/modals-announce/buy-ticket/modal-buy-ticket.component';
 import { ProfileComponent } from './components/user/profile-page/profile.component';
 import { SignInComponent } from './components/user/auth/sign-in/sign-in.component';
-import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { LandingPageComponent } from './components/commun/landing-page/landing-page.component';
 import { ModalUpdateProfileComponent } from './components/modals/modals-profile/update/modal-update-profile.component';
 import { ModalCreditProfileComponent } from './components/modals/modals-profile/credit/modal-credit-profile.component';
 import { ModalWishGoodLuckComponent } from './components/modals/modals-announce/wish-good-luck/modal-wish-good-luck.component';
 import { ModalWithdrawComponent } from './components/modals/modals-profile/withdraw/modal-withdraw.component';
-import { SummaryAnnounceComponent } from './components/summary-announce/summary-announce.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { SummaryAnnounceComponent } from './components/announce/summary-announce/summary-announce.component';
+import { FooterComponent } from './components/commun/footer/footer.component';
 // Libs
 import { HeaderComponent } from './shared/libs/ux-ui/header/header.component';
 import { InputComponent } from './shared/libs/ux-ui/forms/input/input.component';
