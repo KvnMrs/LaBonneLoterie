@@ -8,11 +8,11 @@ import { AnnouncesService } from 'src/app/services/announces/announces.service';
 import { UserService } from 'src/app/services/users/user.service';
 
 @Component({
-  selector: 'app-announce-details',
-  templateUrl: './announce-details.component.html',
-  styleUrls: ['./announce-details.component.scss'],
+  selector: 'app-detail-page',
+  templateUrl: './detail-page.component.html',
+  styleUrls: ['./detail-page.component.scss'],
 })
-export class AnnounceDetailsComponent implements OnInit {
+export class DetailPageComponent implements OnInit {
   @ViewChild('modalBuyTicket') modalBuyTicket!: ElementRef;
   public currentAnnounce: IAnnounce | null = null;
   public authorAnnounce: DocumentData | null = null;

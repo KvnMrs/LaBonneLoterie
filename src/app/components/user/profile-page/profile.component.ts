@@ -6,10 +6,10 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-profile',
-  templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.scss'],
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.scss'],
 })
-export class UserProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit {
   public stars = [1, 2, 3, 4, 5];
   public currentUserSubscritpion!: Subscription;
   public currentUser!: IUser;

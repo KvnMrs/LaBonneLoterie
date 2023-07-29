@@ -1,8 +1,8 @@
 <div
-  class="card md:card-side w-10/12 md:w-8/12 mx-auto md:ml-20 pb-5 border-b borber-b-2 border-gray-600 rounded-none"
+  class="card md:card-side w-10/12 md:w-8/12 md:h-60 mx-auto md:ml-20 pb-5 border-b borber-b-2 border-gray-600 rounded-none"
 >
-  <figure class="md:w-3/12 max-h-44">
-    <img class="md:w-full h-auto" [src]="data.imgsAnnounce![0]" alt="car!" />
+  <figure class="md:w-3/12">
+    <img class="md:w-full" [src]="data.imgsAnnounce![0]" alt="car!" />
   </figure>
   <div class="card-body py-0 pr-1">
     <div class="flex flex-col gap-2 mb-4">
@@ -24,14 +24,14 @@
       <h3 class="card-title text-xl">
         {{ data.ticketPrice | currency : "EUR" }}
       </h3>
-      <div *ngIf="data.tags![0]" class="flex mb-2">
+      <!-- <div *ngIf="data.tags![0]" class="flex mb-2">
         <div *ngFor="let tag of data.tags" class="announce-badges">
           {{ tag }}
         </div>
-      </div>
+      </div> -->
     </div>
 
-    <div class="card-actions justify-end">
+    <div class="card-actions justify-end mt-auto">
       <button class="btn btn-outline btn-info" (click)="seeDetails()">
         Détails
       </button>
