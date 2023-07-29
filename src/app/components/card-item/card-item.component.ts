@@ -28,6 +28,11 @@ export class CardItemComponent implements OnInit {
     this.annoucesService.deleteAnnounce(id);
   }
 
+  //TODO: create addFavorite logic/
+  onAddFavorite() {
+    console.log();
+  }
+
   buyTicket(id: string) {
     this.router.navigate([`/achat-ticket/${this.data.id}`]);
   }
