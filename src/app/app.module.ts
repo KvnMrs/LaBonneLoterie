@@ -15,7 +15,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { CardItemComponent } from './components/card-item/card-item.component';
 import { ListItemsComponent } from './components/list-items/list-items.component';
 import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
-import { AddAnnounceComponent } from './components/add-announce/add-announce.component';
+import { AddFormComponent } from './components/announce/add-form/add-form.component';
 import { AnnounceDetailsComponent } from './components/announce-details/announce-details.component';
 import { ModalBuyTickectComponent } from './components/modals/modals-announce/buy-ticket/modal-buy-ticket.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
@@ -62,7 +62,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'ajout-annonce',
-    /* canActivate: [AuthGuardService], */ component: AddAnnounceComponent,
+    /* canActivate: [AuthGuardService], */ component: AddFormComponent,
   },
   {
     path: 'recapitulatif-annonce',
@@ -81,7 +81,7 @@ const appRoutes: Routes = [
     CardItemComponent,
     ListItemsComponent,
     SignUpComponent,
-    AddAnnounceComponent,
+    AddFormComponent,
     AnnounceDetailsComponent,
     ModalBuyTickectComponent,
     UserProfileComponent,

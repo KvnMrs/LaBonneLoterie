@@ -2,20 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 // Services
-import { AnnouncesService } from '../../services/announces/announces.service';
-import { UploadImgService } from '../../services/uploads/upload-img.service';
+import { AnnouncesService } from '../../../services/announces/announces.service';
+import { UploadImgService } from '../../../services/uploads/upload-img.service';
 // Models
 import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { IUser } from 'src/app/models/user/user.model';
 import { User } from 'firebase/auth';
 
 @Component({
   selector: 'app-add-item',
-  templateUrl: './add-announce.component.html',
-  styleUrls: ['./add-announce.component.scss'],
+  templateUrl: './add-form.component.html',
+  styleUrls: ['./add-form.component.scss'],
 })
-export class AddAnnounceComponent implements OnInit {
+export class AddFormComponent implements OnInit {
   public createAnnounceForm!: FormGroup;
   public selectedImgs: Array<File | null> = [];
   public announceData: IAnnounce | null = null;
