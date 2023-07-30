@@ -35,7 +35,7 @@ import { BtnCtaFullComponent } from './shared/libs/ux-ui/buttons/btn-cta-full/bt
 // Services
 import { AnnouncesService } from './services/announce/announces.service';
 import { AuthService } from './services/auth/auth.service';
-import { UploadImgService } from './services/uploads/upload-img.service';
+import { UploadImgService } from './services/upload/upload-img.service';
 
 const appRoutes: Routes = [
   // { path: '', component: ListItemsComponent },

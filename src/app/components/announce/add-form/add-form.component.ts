@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 // Services
 import { AnnouncesService } from '../../../services/announce/announces.service';
-import { UploadImgService } from '../../../services/uploads/upload-img.service';
+import { UploadImgService } from '../../../services/upload/upload-img.service';
 // Models
 import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 import { AuthService } from 'src/app/services/auth/auth.service';
