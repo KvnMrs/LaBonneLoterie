@@ -63,6 +63,7 @@ export class AddFormComponent implements OnInit {
       minTickets: new FormControl(0, Validators.required),
       maxTickets: new FormControl(0, Validators.required),
       currentTickets: new FormControl(0, Validators.required),
+      endDate: new FormControl(new Date(), Validators.required),
     });
   }
 
