@@ -5,7 +5,7 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from '@angular/fire/storage';
-import { UserService } from '../users/user.service';
+import { UserService } from '../user/user.service';
 
 @Injectable({
   providedIn: 'root',

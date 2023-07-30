@@ -4,7 +4,7 @@ import { DocumentData } from 'firebase/firestore';
 import { Subscription } from 'rxjs';
 import { IUser } from 'src/app/models/user/user.model';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { UserService } from 'src/app/services/users/user.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'lbl-modal-credit-profile',
