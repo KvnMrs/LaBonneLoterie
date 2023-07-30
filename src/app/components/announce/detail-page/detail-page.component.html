@@ -19,7 +19,7 @@
           <div class="announce-user-profile">
             <img
               class="announce-user-picture"
-              src="https://via.placeholder.com/150"
+              [src]="authorAnnounce['imgProfile']"
             />
             <div class="announce-user-info">
               <p class="text-gray-800 font-bold text-xl sm:text-2xl lg:text-lg">
@@ -68,39 +68,7 @@
           </div>
 
           <!-- Timer -->
-          <div class="announce-timer-container">
-            <div class="w-full flex">
-              <div class="announce-titles-divider">
-                <h3 class="announce-titles">Temps restant</h3>
-              </div>
-            </div>
-            <div class="grid grid-flow-col">
-              <div class="announce-timer-boxes">
-                <span class="announce-timer-times">
-                  <span style="--value: 15"></span>
-                </span>
-                <p class="text-neutral">days</p>
-              </div>
-              <div class="announce-timer-boxes">
-                <span class="announce-timer-times">
-                  <span style="--value: 10"></span>
-                </span>
-                <p class="text-neutral">hours</p>
-              </div>
-              <div class="announce-timer-boxes">
-                <span class="announce-timer-times">
-                  <span style="--value: 24"></span>
-                </span>
-                <p class="text-neutral">min</p>
-              </div>
-              <div class="announce-timer-boxes">
-                <span class="announce-timer-times">
-                  <span style="--value: 49"></span>
-                </span>
-                <p class="text-neutral">sec</p>
-              </div>
-            </div>
-          </div>
+          <app-timer></app-timer>
         </div>
       </div>
     </div>
@@ -252,39 +220,7 @@
           </div>
         </div>
         <!-- Timer -->
-        <div class="lg:hidden announce-timer-container">
-          <div class="w-full flex">
-            <div class="announce-titles-divider">
-              <h3 class="announce-titles">Temps restant</h3>
-            </div>
-          </div>
-          <div class="grid grid-flow-col">
-            <div class="announce-timer-boxes">
-              <span class="announce-timer-times">
-                <span style="--value: 15"></span>
-              </span>
-              <p class="text-neutral">days</p>
-            </div>
-            <div class="announce-timer-boxes">
-              <span class="announce-timer-times">
-                <span style="--value: 10"></span>
-              </span>
-              <p class="text-neutral">hours</p>
-            </div>
-            <div class="announce-timer-boxes">
-              <span class="announce-timer-times">
-                <span style="--value: 24"></span>
-              </span>
-              <p class="text-neutral">min</p>
-            </div>
-            <div class="announce-timer-boxes">
-              <span class="announce-timer-times">
-                <span style="--value: 49"></span>
-              </span>
-              <p class="text-neutral">sec</p>
-            </div>
-          </div>
-        </div>
+        <app-timer></app-timer>
       </div>
 
       <!-- CTA's Group -->

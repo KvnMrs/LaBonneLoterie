@@ -1,1 +1,33 @@
-<p>timer works!</p>
+<div class="announce-timer-container">
+  <div class="w-full flex">
+    <div *ngIf="!hideText" class="announce-titles-divider">
+      <h3 class="announce-titles">Temps restant</h3>
+    </div>
+  </div>
+  <div class="grid grid-flow-col">
+    <div class="announce-timer-boxes">
+      <span class="announce-timer-times">
+        <span style="--value: 15"></span>
+      </span>
+      <p class="text-neutral">days</p>
+    </div>
+    <div class="announce-timer-boxes">
+      <span class="announce-timer-times">
+        <span style="--value: 10"></span>
+      </span>
+      <p class="text-neutral">hours</p>
+    </div>
+    <div class="announce-timer-boxes">
+      <span class="announce-timer-times">
+        <span style="--value: 24"></span>
+      </span>
+      <p class="text-neutral">min</p>
+    </div>
+    <div class="announce-timer-boxes">
+      <span class="announce-timer-times">
+        <span style="--value: 49"></span>
+      </span>
+      <p class="text-neutral">sec</p>
+    </div>
+  </div>
+</div>

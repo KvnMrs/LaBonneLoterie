@@ -160,7 +160,7 @@ nav {
   @apply w-full flex justify-between
 }
 .announce-timer-container {
-  @apply mx-auto mb-4 py-3 flex flex-col  gap-1 items-center justify-around text-center bg-white shadow-lg
+  @apply mx-auto py-3 flex flex-col gap-1 items-center justify-around text-center bg-white
 /* SM */ sm:mx-0 sm:mb-6 sm:place-content-center sm:gap-3 sm:rounded-lg
 /* MD */ md:mb-8
 /* LG */ lg:mb-0 lg:py-0 lg:shadow-none

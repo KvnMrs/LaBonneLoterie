@@ -1,14 +1,17 @@
 <div
-  class="card md:card-side w-10/12 md:w-8/12 md:h-60 mx-auto md:ml-20 pb-5 border-b borber-b-2 border-gray-600 rounded-none"
+  class="card md:card-side w-10/12 md:w-8/12 md:h-60 mx-auto md:ml-20 pb-5 border-b borber-b-2 border-gray-600 rounded-none bg-white"
 >
-  <figure class="md:w-3/12">
+  <figure class="md:w-3/12 h-56 mb-2">
     <img class="md:w-full" [src]="data.imgsAnnounce![0]" alt="car!" />
   </figure>
+  <app-timer [hideText]="true"></app-timer>
+
   <div class="card-body py-0 pr-1">
     <div class="flex flex-col gap-2 mb-4">
       <div class="flex justify-between">
         <h4 class="card-title text-xl">{{ data.title }}</h4>
         <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+        <!-- <app-timer [hideText]="true"></app-timer> -->
         <button
           (click)="onAddFavorite()"
           class="btn btn-circle btn-md btn-ghost"
