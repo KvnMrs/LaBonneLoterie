@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 // Services
-import { AnnouncesService } from '../../../services/announces/announces.service';
+import { AnnouncesService } from '../../../services/announce/announces.service';
 import { UploadImgService } from '../../../services/uploads/upload-img.service';
 // Models
 import { IAnnounce } from 'src/app/models/annouce/annouce.model';

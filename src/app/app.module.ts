@@ -33,7 +33,7 @@ import { HeaderComponent } from './shared/libs/ux-ui/header/header.component';
 import { InputComponent } from './shared/libs/ux-ui/forms/input/input.component';
 import { BtnCtaFullComponent } from './shared/libs/ux-ui/buttons/btn-cta-full/btn-cta-full.component';
 // Services
-import { AnnouncesService } from './services/announces/announces.service';
+import { AnnouncesService } from './services/announce/announces.service';
 import { AuthService } from './services/auth/auth.service';
 import { UploadImgService } from './services/uploads/upload-img.service';
 

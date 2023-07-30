@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 // Services
-import { AnnouncesService } from 'src/app/services/announces/announces.service';
+import { AnnouncesService } from 'src/app/services/announce/announces.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({

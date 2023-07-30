@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IAnnounce } from 'src/app/models/annouce/annouce.model';
-import { AnnouncesService } from 'src/app/services/announces/announces.service';
+import { AnnouncesService } from 'src/app/services/announce/announces.service';
 
 @Component({
   selector: 'app-card',
