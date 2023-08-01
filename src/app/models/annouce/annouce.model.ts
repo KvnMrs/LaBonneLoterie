@@ -11,5 +11,6 @@ export interface IAnnounce {
   maxTickets?: number;
   currentTickets: number;
   createdAt: Date;
+  endAt: any;
   authorUid: string;
 }
