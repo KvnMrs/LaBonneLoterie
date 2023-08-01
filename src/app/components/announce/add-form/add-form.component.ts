@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable, interval, map } from 'rxjs';
 // Services
 import { AnnouncesService } from '../../../services/announce/announces.service';
 import { UploadImgService } from '../../../services/upload/upload-img.service';

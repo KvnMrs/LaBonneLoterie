@@ -87,10 +87,10 @@ nav {
 }
 .details-sub-container {
   @apply flex justify-start
-/* LG */ lg:gap-20
+/* LG */ lg:gap-10
 }
 .carrousel-container {
-  @apply carousel carousel-center h-96 max-w-md p-4 self-center space-x-4 rounded-box
+  @apply carousel carousel-center h-96 p-4 self-center space-x-4 rounded-box
 }
 .announce-info-container {
   @apply py-4 px-2
