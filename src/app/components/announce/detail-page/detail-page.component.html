@@ -7,7 +7,7 @@
       <div class="carrousel-container">
         <div
           *ngFor="let imgUrl of currentAnnounce.imgsAnnounce"
-          class="carousel-item w-11/12"
+          class="carousel-item"
         >
           <img [src]="imgUrl" class="rounded-box" />
         </div>
@@ -22,46 +22,42 @@
               [src]="authorAnnounce['imgProfile']"
             />
             <div class="announce-user-info">
-              <div class="flex gap-2">
-                <p
-                  class="text-gray-800 font-bold text-xl sm:text-2xl lg:text-lg"
-                >
-                  {{ authorAnnounce["firstname"] }}
-                  {{ authorAnnounce["lastname"] }}
-                </p>
-                <div class="rating rating-md mb-4 lg:mb-0">
-                  <input
-                    type="radio"
-                    name="rating-9"
-                    class="mx-0.5 mask mask-star-2 bg-yellow-300"
-                  />
-                  <input
-                    type="radio"
-                    name="rating-9"
-                    class="mx-0.5 mask mask-star-2 bg-yellow-300"
-                    checked
-                  />
-                  <input
-                    type="radio"
-                    name="rating-9"
-                    class="mx-0.5 mask mask-star-2 bg-primary"
-                  />
-                  <input
-                    type="radio"
-                    name="rating-9"
-                    class="mx-0.5 mask mask-star-2 bg-primary"
-                  />
-                  <input
-                    type="radio"
-                    name="rating-9"
-                    class="mx-0.5 mask mask-star-2 bg-primary"
-                  />
-                </div>
+              <p class="text-gray-800 font-bold text-xl sm:text-2xl lg:text-lg">
+                {{ authorAnnounce["firstname"] }}
+                {{ authorAnnounce["lastname"] }}
+              </p>
+              <div class="rating rating-md mb-4 lg:mb-0">
+                <input
+                  type="radio"
+                  name="rating-9"
+                  class="mx-0.5 mask mask-star-2 bg-yellow-300"
+                />
+                <input
+                  type="radio"
+                  name="rating-9"
+                  class="mx-0.5 mask mask-star-2 bg-yellow-300"
+                  checked
+                />
+                <input
+                  type="radio"
+                  name="rating-9"
+                  class="mx-0.5 mask mask-star-2 bg-primary"
+                />
+                <input
+                  type="radio"
+                  name="rating-9"
+                  class="mx-0.5 mask mask-star-2 bg-primary"
+                />
+                <input
+                  type="radio"
+                  name="rating-9"
+                  class="mx-0.5 mask mask-star-2 bg-primary"
+                />
               </div>
               <!-- MD Link's Group -->
               <div class="MD-announce-user-links">
                 <a class="link text-blue-500">Voir les 29 annonces</a>
-                <button class="btn btn-info mr-auto">Contacter</button>
+                <button class="btn btn-info btn-sm w-full">Contacter</button>
               </div>
             </div>
           </div>
