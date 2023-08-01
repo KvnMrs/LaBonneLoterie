@@ -14,7 +14,7 @@ import {
 } from 'firebase/auth';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IUser } from 'src/app/models/user/user.model';
-import { UserService } from '../users/user.service';
+import { UserService } from '../user/user.service';
 
 @Injectable({
   providedIn: 'root',

@@ -11,7 +11,7 @@ import {
   getDoc,
 } from '@angular/fire/firestore';
 import { getDocs, query, setDoc, where } from 'firebase/firestore';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, interval, map, Observable } from 'rxjs';
 import { IAnnounce } from '../../models/annouce/annouce.model';
 import { AuthService } from '../auth/auth.service';
 import { User } from 'firebase/auth';
@@ -20,8 +20,22 @@ import { User } from 'firebase/auth';
   providedIn: 'root',
 })
 export class AnnouncesService {
-  private announceDataSubject: BehaviorSubject<any> =
-    new BehaviorSubject<IAnnounce | null>(null);
+  private announceDataSubject = new BehaviorSubject<IAnnounce>({
+    id: '',
+    title: '',
+    category: '',
+    tags: [],
+    description: '',
+    imgsAnnounce: [],
+    estimate: 0,
+    ticketPrice: 0,
+    minTickets: 0,
+    maxTickets: 0,
+    currentTickets: 0,
+    createdAt: new Date(),
+    authorUid: '',
+    endAt: { string: '', timestamp: new Date().getTime() },
+  });
   public announceData$: Observable<IAnnounce> =
     this.announceDataSubject.asObservable();
 
@@ -49,14 +63,14 @@ export class AnnouncesService {
 
   // addAnnounce
   public addAnnounce(announce: IAnnounce) {
-    let authorUid = '';
-    this.authService.currentUserSubject.subscribe((user) => {
-      if (!user) return;
-      authorUid = user.uid;
-    });
+    this.authService.currentUserSubject.subscribe((user) => {});
     const timestamp = Date.now();
     const createdAt = new Date(timestamp);
-    announce = { ...announce, createdAt, authorUid };
+    announce.endAt = {
+      string: announce.endAt,
+      timestamp: new Date(announce.endAt).getTime(),
+    };
+    announce = { ...announce, createdAt };
     const announceRef = collection(this.firestore, 'Announces');
     return addDoc(announceRef, announce);
   }
@@ -136,5 +150,8 @@ export class AnnouncesService {
       });
     }
     return resultSearch;
+  }
+  createTimerObservable(initialDate: number): Observable<number> {
+    return interval(1000).pipe(map(() => initialDate - Date.now()));
   }
 }

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { IAnnounce } from 'src/app/models/annouce/annouce.model';
-import { AnnouncesService } from 'src/app/services/announces/announces.service';
+import { AnnouncesService } from 'src/app/services/announce/announces.service';
 
 @Component({
   selector: 'app-summary-announce',

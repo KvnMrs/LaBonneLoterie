@@ -13,50 +13,56 @@
         </div>
       </div>
       <!-- Others info -->
-      <div class="hidden lg:flex lg:flex-col">
+      <div class="hidden lg:w-5/12 lg:flex lg:flex-col">
         <div class="hidden announce-others-info-container">
           <!-- User -->
           <div class="announce-user-profile">
             <img
               class="announce-user-picture"
-              src="https://via.placeholder.com/150"
+              [src]="authorAnnounce['imgProfile']"
             />
             <div class="announce-user-info">
-              <p class="text-gray-800 font-bold text-xl sm:text-2xl lg:text-lg">
-                {{ authorAnnounce["firstname"] }}
-                {{ authorAnnounce["lastname"] }}
-              </p>
-              <div class="rating rating-md mb-4 pt-1 lg:mb-0">
-                <input
-                  type="radio"
-                  name="rating-9"
-                  class="mx-0.5 mask mask-star-2 bg-yellow-300"
-                />
-                <input
-                  type="radio"
-                  name="rating-9"
-                  class="mx-0.5 mask mask-star-2 bg-yellow-300"
-                  checked
-                />
-                <input
-                  type="radio"
-                  name="rating-9"
-                  class="mx-0.5 mask mask-star-2 bg-primary"
-                />
-                <input
-                  type="radio"
-                  name="rating-9"
-                  class="mx-0.5 mask mask-star-2 bg-primary"
-                />
-                <input
-                  type="radio"
-                  name="rating-9"
-                  class="mx-0.5 mask mask-star-2 bg-primary"
-                />
+              <div class="flex gap-2">
+                <p
+                  class="text-gray-800 font-bold text-xl sm:text-2xl lg:text-lg"
+                >
+                  {{ authorAnnounce["firstname"] }}
+                  {{ authorAnnounce["lastname"] }}
+                </p>
+                <div class="rating rating-md mb-4 lg:mb-0">
+                  <input
+                    type="radio"
+                    name="rating-9"
+                    class="mx-0.5 mask mask-star-2 bg-yellow-300"
+                  />
+                  <input
+                    type="radio"
+                    name="rating-9"
+                    class="mx-0.5 mask mask-star-2 bg-yellow-300"
+                    checked
+                  />
+                  <input
+                    type="radio"
+                    name="rating-9"
+                    class="mx-0.5 mask mask-star-2 bg-primary"
+                  />
+                  <input
+                    type="radio"
+                    name="rating-9"
+                    class="mx-0.5 mask mask-star-2 bg-primary"
+                  />
+                  <input
+                    type="radio"
+                    name="rating-9"
+                    class="mx-0.5 mask mask-star-2 bg-primary"
+                  />
+                </div>
               </div>
               <!-- MD Link's Group -->
               <div class="MD-announce-user-links">
                 <a class="link text-blue-500">Voir les 29 annonces</a>
+              </div>
+              <div>
                 <button class="btn btn-info">Contacter</button>
               </div>
             </div>
@@ -64,48 +70,16 @@
           <!-- Link's Group -->
           <div class="announce-user-links">
             <a class="link text-blue-500">Voir les 29 annonces</a>
-            <button class="btn btn-info">Contacter</button>
+            <button class="btn btn-info btn-sm">Contacter</button>
           </div>
 
           <!-- Timer -->
-          <div class="announce-timer-container">
-            <div class="w-full flex">
-              <div class="announce-titles-divider">
-                <h3 class="announce-titles">Temps restant</h3>
-              </div>
-            </div>
-            <div class="grid grid-flow-col">
-              <div class="announce-timer-boxes">
-                <span class="announce-timer-times">
-                  <span style="--value: 15"></span>
-                </span>
-                <p class="text-neutral">days</p>
-              </div>
-              <div class="announce-timer-boxes">
-                <span class="announce-timer-times">
-                  <span style="--value: 10"></span>
-                </span>
-                <p class="text-neutral">hours</p>
-              </div>
-              <div class="announce-timer-boxes">
-                <span class="announce-timer-times">
-                  <span style="--value: 24"></span>
-                </span>
-                <p class="text-neutral">min</p>
-              </div>
-              <div class="announce-timer-boxes">
-                <span class="announce-timer-times">
-                  <span style="--value: 49"></span>
-                </span>
-                <p class="text-neutral">sec</p>
-              </div>
-            </div>
-          </div>
+          <app-timer [endDate]="currentAnnounce.endAt.timestamp"></app-timer>
         </div>
       </div>
     </div>
     <!-- CONTENT CARD -->
-    <div class="mb-5 py-2 lg:py-0">
+    <div class="py-2 lg:py-0">
       <div class="announce-info-container">
         <div class="category-price-line md:w-1/2">
           <h2 class="text-2xl">{{ currentAnnounce.category }}</h2>
@@ -252,46 +226,15 @@
           </div>
         </div>
         <!-- Timer -->
-        <div class="lg:hidden announce-timer-container">
-          <div class="w-full flex">
-            <div class="announce-titles-divider">
-              <h3 class="announce-titles">Temps restant</h3>
-            </div>
-          </div>
-          <div class="grid grid-flow-col">
-            <div class="announce-timer-boxes">
-              <span class="announce-timer-times">
-                <span style="--value: 15"></span>
-              </span>
-              <p class="text-neutral">days</p>
-            </div>
-            <div class="announce-timer-boxes">
-              <span class="announce-timer-times">
-                <span style="--value: 10"></span>
-              </span>
-              <p class="text-neutral">hours</p>
-            </div>
-            <div class="announce-timer-boxes">
-              <span class="announce-timer-times">
-                <span style="--value: 24"></span>
-              </span>
-              <p class="text-neutral">min</p>
-            </div>
-            <div class="announce-timer-boxes">
-              <span class="announce-timer-times">
-                <span style="--value: 49"></span>
-              </span>
-              <p class="text-neutral">sec</p>
-            </div>
-          </div>
-        </div>
+        <app-timer [endDate]="currentAnnounce.endAt.timestamp"></app-timer>
       </div>
-
-      <!-- CTA's Group -->
-      <div class="btn-group flex justify-end">
-        <button class="btn btn-outline btn-info mr-1 shadow-md">Détails</button>
-        <label for="modalBuyTicket" class="btn btn-primary">Acheter</label>
-      </div>
+    </div>
+    <!-- CTA's Group -->
+    <div class="btn-group ml-auto gap-1">
+      <button class="btn btn-outline btn-info ml-auto">Retour</button>
+      <label for="modalBuyTicket" class="btn btn-primary ml-auto"
+        >Acheter</label
+      >
     </div>
   </div>
 </div>

@@ -2,8 +2,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DocumentData } from 'firebase/firestore';
 import { IUser } from 'src/app/models/user/user.model';
-import { UploadImgService } from 'src/app/services/uploads/upload-img.service';
-import { UserService } from 'src/app/services/users/user.service';
+import { UploadImgService } from 'src/app/services/upload/upload-img.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'lbl-modal-update-profile',

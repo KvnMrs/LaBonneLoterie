@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AnnouncesService } from '../../../services/announces/announces.service';
+import { AnnouncesService } from '../../../services/announce/announces.service';
 import { IAnnounce } from '../../../models/annouce/annouce.model';
 import { FormControl, FormGroup } from '@angular/forms';
 

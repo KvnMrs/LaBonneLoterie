@@ -4,8 +4,8 @@ import { DocumentData } from 'firebase/firestore';
 // Models
 import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 // Service
-import { AnnouncesService } from 'src/app/services/announces/announces.service';
-import { UserService } from 'src/app/services/users/user.service';
+import { AnnouncesService } from 'src/app/services/announce/announces.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-detail-page',

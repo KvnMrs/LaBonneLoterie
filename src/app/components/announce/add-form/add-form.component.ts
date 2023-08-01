@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable, interval, map } from 'rxjs';
 // Services
-import { AnnouncesService } from '../../../services/announces/announces.service';
-import { UploadImgService } from '../../../services/uploads/upload-img.service';
+import { AnnouncesService } from '../../../services/announce/announces.service';
+import { UploadImgService } from '../../../services/upload/upload-img.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 // Models
 import { IAnnounce } from 'src/app/models/annouce/annouce.model';
-import { AuthService } from 'src/app/services/auth/auth.service';
 import { User } from 'firebase/auth';
 
 @Component({
@@ -63,6 +64,7 @@ export class AddFormComponent implements OnInit {
       minTickets: new FormControl(0, Validators.required),
       maxTickets: new FormControl(0, Validators.required),
       currentTickets: new FormControl(0, Validators.required),
+      endAt: new FormControl(new Date(), Validators.required),
     });
   }
 
