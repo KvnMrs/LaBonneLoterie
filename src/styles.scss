@@ -138,7 +138,7 @@ nav {
 }
 .MD-announce-user-links {
   @apply hidden
-/* MD */  md:items-center md:gap-6
+/* MD */ md:flex md:flex-col md:items-center md:gap-6 md:mr-auto
 }
 .announce-user-contact {
   @apply
