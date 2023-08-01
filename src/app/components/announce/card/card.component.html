@@ -8,7 +8,7 @@
   <div class="card-body py-2 md:py-0 px-0 md:pl-4">
     <div class="flex flex-col gap-2 mb-4">
       <div class="flex justify-between">
-        <app-timer [hideText]="true"></app-timer>
+        <app-timer [endDate]="data.endAt" [hideText]="true"></app-timer>
         <button
           (click)="onAddFavorite()"
           class="hidden md:flex btn btn-circle btn-md btn-ghost"
