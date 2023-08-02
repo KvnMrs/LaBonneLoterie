@@ -97,7 +97,7 @@ export class AddFormComponent implements OnInit {
       return;
     } else {
       try {
-        // Download url of selected imgs.
+        // Download urls of selected imgs.
         await Promise.all(
           this.selectedImgs.map(async (file) => {
             const urlImg = await this.uploadImgService.uploadAnnounceImg(file!);
@@ -110,6 +110,7 @@ export class AddFormComponent implements OnInit {
           imgsAnnounce: imgsAnnounceUrl,
           authorUid: this.currentUser.uid,
         };
+        // emit data for summary page.
         this.annoucesService.emitAnnounceData(this.announceData);
         this.createAnnounceForm.reset();
         this.router.navigate(['/recapitulatif-annonce']);

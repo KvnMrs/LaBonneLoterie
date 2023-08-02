@@ -63,7 +63,6 @@ export class AnnouncesService {
 
   // addAnnounce
   public addAnnounce(announce: IAnnounce) {
-    this.authService.currentUserSubject.subscribe((user) => {});
     const timestamp = Date.now();
     const createdAt = new Date(timestamp);
     announce.endAt = {
