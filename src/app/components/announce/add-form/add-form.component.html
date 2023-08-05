@@ -101,13 +101,25 @@
       <div class="col-upload-descript-buttons">
         <div class="md:w-full mt-0">
           <div class="form-input-container">
-            <label class="mb-1" for="endAt">Date du tirage:</label>
+            <label class="mb-1" for="endDate">Date du tirage:</label>
             <input
               class="input input-lbl"
               type="date"
-              id="endAt"
-              name="endAt"
-              formControlName="endAt"
+              id="endDate"
+              name="endDate"
+              formControlName="endDate"
+              placeholder=""
+              required
+            />
+          </div>
+          <div class="form-input-container">
+            <label class="mb-1" for="endHour">Heure du tirage:</label>
+            <input
+              class="input input-lbl"
+              type="number"
+              id="endHour"
+              name="endHour"
+              formControlName="endHour"
               placeholder=""
               required
             />
@@ -116,23 +128,23 @@
             <label class="mb-1" for="imgsAnnounce"
               >Télécharger un fichier:</label
             >
-            <div class="flex mt-4 md:mt-0 mb-4">
+            <div class="mb-4">
               <input
                 type="file"
                 id="imgsAnnounce"
                 name="imgsAnnounce"
                 formControlName="imgsAnnounce"
                 (change)="onChange($event)"
-                class="file-input rounded-r-none file-input-bordered file-input-success file-input-md w-full max-w-xs"
+                class="file-input rounded-r-none file-input-bordered file-input-info file-input-sm w-full | md:file-input-md"
                 required
               />
-              <button
+              <!-- <button
                 class="btn btn-success btn-square rounded-l-none"
                 type="button"
                 (click)="onPrepareUploadImg()"
               >
                 ok
-              </button>
+              </button> -->
             </div>
             <div class="mb-4 self-center gap-1">
               <img
@@ -140,13 +152,19 @@
                 src="{{ this.file }}"
                 alt=""
                 class="{{
-                  this.file
-                    ? 'w-28 h-28 rounded-full lg:w-40 lg:h-40'
-                    : 'hidden'
+                  this.file ? 'w-28 h-28 rounded-md lg:w-40 lg:h-40' : 'hidden'
                 }}"
               />
               <p class="font-semibold">{{ this.file ? this.file.name : "" }}</p>
             </div>
+            <button
+              [disabled]="!this.file"
+              class="btn btn-success btn-sm | md:w-2/3 md:mx-auto"
+              type="button"
+              (click)="onPrepareUploadImg()"
+            >
+              importer
+            </button>
             <div
               *ngFor="let selectedImg of selectedImgs; let i = index"
               class="flex"

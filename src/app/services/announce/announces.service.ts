@@ -20,8 +20,7 @@ import { User } from 'firebase/auth';
   providedIn: 'root',
 })
 export class AnnouncesService {
-  private announceDataSubject = new BehaviorSubject<IAnnounce>({
-    id: '',
+  private announceDataSubject = new BehaviorSubject<Partial<IAnnounce>>({
     title: '',
     category: '',
     tags: [],
@@ -34,9 +33,9 @@ export class AnnouncesService {
     currentTickets: 0,
     createdAt: new Date(),
     authorUid: '',
-    endAt: { string: '', timestamp: new Date().getTime() },
+    endAt: { date: null, timestamp: new Date().getTime() },
   });
-  public announceData$: Observable<IAnnounce> =
+  public announceData$: Observable<Partial<IAnnounce>> =
     this.announceDataSubject.asObservable();
 
   private announcesDataSubject: BehaviorSubject<any> = new BehaviorSubject<
@@ -62,13 +61,9 @@ export class AnnouncesService {
   }
 
   // addAnnounce
-  public addAnnounce(announce: IAnnounce) {
+  public addAnnounce(announce: Partial<IAnnounce>) {
     const timestamp = Date.now();
     const createdAt = new Date(timestamp);
-    announce.endAt = {
-      string: announce.endAt,
-      timestamp: new Date(announce.endAt).getTime(),
-    };
     announce = { ...announce, createdAt };
     const announceRef = collection(this.firestore, 'Announces');
     return addDoc(announceRef, announce);
@@ -97,7 +92,7 @@ export class AnnouncesService {
     return setDoc(announceRef, announceCurrrentData);
   }
 
-  emitAnnounceData(data: IAnnounce) {
+  emitAnnounceData(data: Partial<IAnnounce>) {
     this.announceDataSubject.next(data);
   }
 

@@ -17,7 +17,7 @@ import { User } from 'firebase/auth';
 export class AddFormComponent implements OnInit {
   public createAnnounceForm!: FormGroup;
   public selectedImgs: Array<File | null> = [];
-  public announceData: IAnnounce | null = null;
+  public announceData: null = null;
   public file: File | null = null;
   public showSubmitMessage = false;
   public showErrorMessage = false;
@@ -63,7 +63,8 @@ export class AddFormComponent implements OnInit {
       minTickets: new FormControl(0, Validators.required),
       maxTickets: new FormControl(0, Validators.required),
       currentTickets: new FormControl(0, Validators.required),
-      endAt: new FormControl(new Date(), Validators.required),
+      endDate: new FormControl(new Date(), Validators.required),
+      endHour: new FormControl(0, Validators.required),
     });
   }
 
@@ -88,11 +89,10 @@ export class AddFormComponent implements OnInit {
 
   async onSubmit() {
     let imgsAnnounceUrl: Array<string> = [];
-    this.announceData = this.createAnnounceForm.value as IAnnounce;
-    if (
-      this.announceData.title === '' ||
-      this.announceData.description === ''
-    ) {
+    let announceData = this.createAnnounceForm.value;
+
+    if (!announceData) return;
+    if (announceData.title === '' || announceData.description === '') {
       this.showErrorMessage = true;
       return;
     } else {
@@ -104,14 +104,28 @@ export class AddFormComponent implements OnInit {
             imgsAnnounceUrl.push(urlImg);
           })
         );
+        // Define new values from the new announce document
         if (!this.currentUser) throw Error;
-        this.announceData = {
-          ...this.announceData,
+        const endAt = {
+          date: new Date(announceData.endDate),
+          timestamp: new Date(announceData.endDate).getTime(),
+        };
+        const newAnnounce = {
+          title: announceData.title,
+          category: announceData.category,
+          tags: announceData.tags,
+          description: announceData.description,
           imgsAnnounce: imgsAnnounceUrl,
+          estimate: announceData.estimate,
+          ticketPrice: announceData.ticketPrice,
+          minTickets: announceData.minTickets,
+          maxTickets: announceData.maxTickets,
+          currentTickets: announceData.currentTickets,
+          createdAt: new Date(),
+          endAt: endAt,
           authorUid: this.currentUser.uid,
         };
-        // emit data for summary page.
-        this.annoucesService.emitAnnounceData(this.announceData);
+        this.annoucesService.emitAnnounceData(newAnnounce); // emit announceData for summary page.
         this.createAnnounceForm.reset();
         this.router.navigate(['/recapitulatif-annonce']);
         this.showErrorMessage = false;
