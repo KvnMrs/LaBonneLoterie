@@ -11,7 +11,7 @@ import { AnnouncesService } from 'src/app/services/announce/announces.service';
   styleUrls: ['./summary-announce.component.scss'],
 })
 export class SummaryAnnounceComponent implements OnInit {
-  newAnnounceData!: IAnnounce;
+  newAnnounceData!: Partial<IAnnounce>;
   private dataSubscription!: Subscription;
 
   constructor(

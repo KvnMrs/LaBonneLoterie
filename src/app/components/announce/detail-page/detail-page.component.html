@@ -4,14 +4,14 @@
   <div class="details-container">
     <div class="details-sub-container">
       <!-- CARROUSEL -->
-      <div class="carrousel-container">
+      <aside class="carrousel-container">
         <div
           *ngFor="let imgUrl of currentAnnounce.imgsAnnounce"
           class="carousel-item"
         >
           <img [src]="imgUrl" class="rounded-box" />
         </div>
-      </div>
+      </aside>
       <!-- Others info -->
       <div class="hidden lg:w-5/12 lg:flex lg:flex-col">
         <div class="hidden announce-others-info-container">
