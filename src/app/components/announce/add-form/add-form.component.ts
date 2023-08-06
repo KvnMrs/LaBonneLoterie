@@ -104,28 +104,20 @@ export class AddFormComponent implements OnInit {
             imgsAnnounceUrl.push(urlImg);
           })
         );
-        // Define new values from the new announce document
+
+        // Define new values from the futur new announce document
         if (!this.currentUser) throw Error;
         const endAt = {
           date: new Date(announceData.endDate),
           timestamp: new Date(announceData.endDate).getTime(),
         };
-        const newAnnounce = {
-          title: announceData.title,
-          category: announceData.category,
-          tags: announceData.tags,
-          description: announceData.description,
+        announceData = {
+          ...announceData,
           imgsAnnounce: imgsAnnounceUrl,
-          estimate: announceData.estimate,
-          ticketPrice: announceData.ticketPrice,
-          minTickets: announceData.minTickets,
-          maxTickets: announceData.maxTickets,
-          currentTickets: announceData.currentTickets,
-          createdAt: new Date(),
-          endAt: endAt,
           authorUid: this.currentUser.uid,
+          endAt: endAt,
         };
-        this.annoucesService.emitAnnounceData(newAnnounce); // emit announceData for summary page.
+        this.annoucesService.emitAnnounceData(announceData); // emit announceData for summary page.
         this.createAnnounceForm.reset();
         this.router.navigate(['/recapitulatif-annonce']);
         this.showErrorMessage = false;
