@@ -10,7 +10,7 @@ export interface IAnnounce {
   minTickets?: number;
   maxTickets?: number;
   currentTickets: number;
-  createdAt: Date;
+  createdAt: number | Date;
   endAt: { date: Date | null; timestamp: number };
   authorUid: string;
 }

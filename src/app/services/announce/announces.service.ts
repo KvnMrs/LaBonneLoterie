@@ -31,7 +31,7 @@ export class AnnouncesService {
     minTickets: 0,
     maxTickets: 0,
     currentTickets: 0,
-    createdAt: new Date(),
+    createdAt: Date.now(),
     authorUid: '',
     endAt: { date: null, timestamp: new Date().getTime() },
   });
@@ -62,24 +62,27 @@ export class AnnouncesService {
 
   // addAnnounce
   public addAnnounce(announce: Partial<IAnnounce>) {
-    const timestamp = Date.now();
-    const newAnnounce: Partial<IAnnounce> = {
-      title: announce.title,
-      category: announce.category,
-      tags: announce.tags,
-      description: announce.description,
-      imgsAnnounce: announce.imgsAnnounce,
-      estimate: announce.estimate,
-      ticketPrice: announce.ticketPrice,
-      minTickets: announce.minTickets,
-      maxTickets: announce.maxTickets,
-      currentTickets: announce.currentTickets,
-      createdAt: new Date(timestamp),
-      endAt: announce.endAt,
-      authorUid: announce.authorUid,
-    };
-    const announceRef = collection(this.firestore, 'Announces');
-    return addDoc(announceRef, newAnnounce);
+    try {
+      const newAnnounce: Partial<IAnnounce> = {
+        title: announce.title,
+        category: announce.category,
+        tags: announce.tags,
+        description: announce.description,
+        imgsAnnounce: announce.imgsAnnounce,
+        estimate: announce.estimate,
+        ticketPrice: announce.ticketPrice,
+        minTickets: announce.minTickets,
+        maxTickets: announce.maxTickets,
+        currentTickets: announce.currentTickets,
+        createdAt: Date.now(),
+        endAt: announce.endAt,
+        authorUid: announce.authorUid,
+      };
+      const announceRef = collection(this.firestore, 'Announces');
+      return addDoc(announceRef, newAnnounce);
+    } catch (err) {
+      return;
+    }
   }
 
   // deleteAnnounceById
