@@ -33,7 +33,8 @@ export class AnnouncesService {
     currentTickets: 0,
     createdAt: Date.now(),
     authorUid: '',
-    endAt: { date: null, timestamp: new Date().getTime() },
+    endAt: 0,
+    endHour: 0,
   });
   public announceData$: Observable<Partial<IAnnounce>> =
     this.announceDataSubject.asObservable();
@@ -63,6 +64,9 @@ export class AnnouncesService {
   // addAnnounce
   public addAnnounce(announce: Partial<IAnnounce>) {
     try {
+      if (!announce.endAt || !announce.endHour) throw Error;
+      announce.endAt =
+        new Date(announce.endAt).getTime() + announce.endHour * 60 * 60 * 1000;
       const newAnnounce: Partial<IAnnounce> = {
         title: announce.title,
         category: announce.category,
@@ -81,6 +85,7 @@ export class AnnouncesService {
       const announceRef = collection(this.firestore, 'Announces');
       return addDoc(announceRef, newAnnounce);
     } catch (err) {
+      console.error('Problem with the announce data');
       return;
     }
   }
@@ -161,7 +166,10 @@ export class AnnouncesService {
     }
     return resultSearch;
   }
+
   createTimerObservable(initialDate: number): Observable<number> {
-    return interval(1000).pipe(map(() => initialDate - Date.now()));
+    console.log('initialDate', initialDate);
+    let test = interval(1000).pipe(map(() => initialDate - Date.now()));
+    return test;
   }
 }
