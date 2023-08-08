@@ -2,10 +2,10 @@
   <lbl-header>Vérifions ensemble !</lbl-header>
   <article class="summary-container">
     <!-- CARROUSEL -->
-    <aside class="carrousel-container border-2">
+    <aside class="carrousel-container | md:w-5/12">
       <div
         *ngFor="let imgUrl of newAnnounceData.imgsAnnounce"
-        class="carousel-item w-11/12"
+        class="carousel-item"
       >
         <img [src]="imgUrl" class="rounded-box" />
       </div>
@@ -20,14 +20,14 @@
         }}</span>
       </div>
       <!-- Badges -->
-      <div *ngIf="newAnnounceData.tags![0]" class="flex">
+      <!-- <div *ngIf="newAnnounceData.tags![0]" class="flex">
         <div
           *ngFor="let tag of newAnnounceData.tags"
           class="announce-badges mr-1"
         >
           {{ tag }}
         </div>
-      </div>
+      </div> -->
       <div class="divider my-0"></div>
       <!-- Description -->
       <div class="flex flex-col gap-2">

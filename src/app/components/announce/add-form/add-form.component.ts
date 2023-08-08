@@ -17,7 +17,7 @@ import { User } from 'firebase/auth';
 export class AddFormComponent implements OnInit {
   public createAnnounceForm!: FormGroup;
   public selectedImgs: Array<File | null> = [];
-  public announceData: IAnnounce | null = null;
+  public announceData: null = null;
   public file: File | null = null;
   public showSubmitMessage = false;
   public showErrorMessage = false;
@@ -64,6 +64,7 @@ export class AddFormComponent implements OnInit {
       maxTickets: new FormControl(0, Validators.required),
       currentTickets: new FormControl(0, Validators.required),
       endAt: new FormControl(new Date(), Validators.required),
+      endHour: new FormControl(0, Validators.required),
     });
   }
 
@@ -88,29 +89,30 @@ export class AddFormComponent implements OnInit {
 
   async onSubmit() {
     let imgsAnnounceUrl: Array<string> = [];
-    this.announceData = this.createAnnounceForm.value as IAnnounce;
-    if (
-      this.announceData.title === '' ||
-      this.announceData.description === ''
-    ) {
+    let announceData = this.createAnnounceForm.value;
+
+    if (!announceData) return;
+    if (announceData.title === '' || announceData.description === '') {
       this.showErrorMessage = true;
       return;
     } else {
       try {
-        // Download url of selected imgs.
+        // Download urls of selected imgs.
         await Promise.all(
           this.selectedImgs.map(async (file) => {
             const urlImg = await this.uploadImgService.uploadAnnounceImg(file!);
             imgsAnnounceUrl.push(urlImg);
           })
         );
+
+        // Define new values from the futur new announce document
         if (!this.currentUser) throw Error;
-        this.announceData = {
-          ...this.announceData,
+        announceData = {
+          ...announceData,
           imgsAnnounce: imgsAnnounceUrl,
           authorUid: this.currentUser.uid,
         };
-        this.annoucesService.emitAnnounceData(this.announceData);
+        this.annoucesService.emitAnnounceData(announceData); // emit announceData for summary page.
         this.createAnnounceForm.reset();
         this.router.navigate(['/recapitulatif-annonce']);
         this.showErrorMessage = false;

@@ -31,9 +31,7 @@ export class DetailPageComponent implements OnInit {
       await this.fetchAnnounceById(this.paramId);
       if (!this.currentAnnounce) throw Error;
       this.postedDate = this.currentAnnounce.createdAt;
-      this.currentAnnounce.createdAt = new Date(
-        this.postedDate.seconds * 1000 + this.postedDate.nanoseconds / 1000000
-      );
+      this.currentAnnounce.createdAt = new Date(this.currentAnnounce.createdAt);
       await this.userService
         .getUserByID(this.currentAnnounce.authorUid)
         .then((data) => {

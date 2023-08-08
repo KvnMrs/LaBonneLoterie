@@ -20,8 +20,7 @@ import { User } from 'firebase/auth';
   providedIn: 'root',
 })
 export class AnnouncesService {
-  private announceDataSubject = new BehaviorSubject<IAnnounce>({
-    id: '',
+  private announceDataSubject = new BehaviorSubject<Partial<IAnnounce>>({
     title: '',
     category: '',
     tags: [],
@@ -32,11 +31,12 @@ export class AnnouncesService {
     minTickets: 0,
     maxTickets: 0,
     currentTickets: 0,
-    createdAt: new Date(),
+    createdAt: Date.now(),
     authorUid: '',
-    endAt: { string: '', timestamp: new Date().getTime() },
+    endAt: 0,
+    endHour: 0,
   });
-  public announceData$: Observable<IAnnounce> =
+  public announceData$: Observable<Partial<IAnnounce>> =
     this.announceDataSubject.asObservable();
 
   private announcesDataSubject: BehaviorSubject<any> = new BehaviorSubject<
@@ -62,17 +62,33 @@ export class AnnouncesService {
   }
 
   // addAnnounce
-  public addAnnounce(announce: IAnnounce) {
-    this.authService.currentUserSubject.subscribe((user) => {});
-    const timestamp = Date.now();
-    const createdAt = new Date(timestamp);
-    announce.endAt = {
-      string: announce.endAt,
-      timestamp: new Date(announce.endAt).getTime(),
-    };
-    announce = { ...announce, createdAt };
-    const announceRef = collection(this.firestore, 'Announces');
-    return addDoc(announceRef, announce);
+  public addAnnounce(announce: Partial<IAnnounce>) {
+    try {
+      if (!announce.endAt || !announce.endHour) throw Error;
+      announce.endAt =
+        new Date(announce.endAt).getTime() +
+        (announce.endHour - 2) * 60 * 60 * 1000; // subtract 2 hours to align with the European time zone
+      const newAnnounce: Partial<IAnnounce> = {
+        title: announce.title,
+        category: announce.category,
+        tags: announce.tags,
+        description: announce.description,
+        imgsAnnounce: announce.imgsAnnounce,
+        estimate: announce.estimate,
+        ticketPrice: announce.ticketPrice,
+        minTickets: announce.minTickets,
+        maxTickets: announce.maxTickets,
+        currentTickets: announce.currentTickets,
+        createdAt: Date.now(),
+        endAt: announce.endAt,
+        authorUid: announce.authorUid,
+      };
+      const announceRef = collection(this.firestore, 'Announces');
+      return addDoc(announceRef, newAnnounce);
+    } catch (err) {
+      console.error('Problem with the announce data');
+      return;
+    }
   }
 
   // deleteAnnounceById
@@ -98,7 +114,7 @@ export class AnnouncesService {
     return setDoc(announceRef, announceCurrrentData);
   }
 
-  emitAnnounceData(data: IAnnounce) {
+  emitAnnounceData(data: Partial<IAnnounce>) {
     this.announceDataSubject.next(data);
   }
 
@@ -151,7 +167,9 @@ export class AnnouncesService {
     }
     return resultSearch;
   }
-  createTimerObservable(initialDate: number): Observable<number> {
-    return interval(1000).pipe(map(() => initialDate - Date.now()));
+
+  createTimerObservable(endDate: number): Observable<number> {
+    let time = interval(1000).pipe(map(() => endDate - Date.now()));
+    return time;
   }
 }
