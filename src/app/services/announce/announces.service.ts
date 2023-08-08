@@ -66,7 +66,8 @@ export class AnnouncesService {
     try {
       if (!announce.endAt || !announce.endHour) throw Error;
       announce.endAt =
-        new Date(announce.endAt).getTime() + announce.endHour * 60 * 60 * 1000;
+        new Date(announce.endAt).getTime() +
+        (announce.endHour - 2) * 60 * 60 * 1000; // subtract 2 hours to align with the European time zone
       const newAnnounce: Partial<IAnnounce> = {
         title: announce.title,
         category: announce.category,
@@ -167,9 +168,8 @@ export class AnnouncesService {
     return resultSearch;
   }
 
-  createTimerObservable(initialDate: number): Observable<number> {
-    console.log('initialDate', initialDate);
-    let test = interval(1000).pipe(map(() => initialDate - Date.now()));
-    return test;
+  createTimerObservable(endDate: number): Observable<number> {
+    let time = interval(1000).pipe(map(() => endDate - Date.now()));
+    return time;
   }
 }
