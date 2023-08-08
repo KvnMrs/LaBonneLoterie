@@ -63,7 +63,7 @@ export class AddFormComponent implements OnInit {
       minTickets: new FormControl(0, Validators.required),
       maxTickets: new FormControl(0, Validators.required),
       currentTickets: new FormControl(0, Validators.required),
-      endDate: new FormControl(new Date(), Validators.required),
+      endAt: new FormControl(new Date(), Validators.required),
       endHour: new FormControl(0, Validators.required),
     });
   }
@@ -107,15 +107,10 @@ export class AddFormComponent implements OnInit {
 
         // Define new values from the futur new announce document
         if (!this.currentUser) throw Error;
-        const endAt = {
-          date: new Date(announceData.endDate),
-          timestamp: new Date(announceData.endDate).getTime(),
-        };
         announceData = {
           ...announceData,
           imgsAnnounce: imgsAnnounceUrl,
           authorUid: this.currentUser.uid,
-          endAt: endAt,
         };
         this.annoucesService.emitAnnounceData(announceData); // emit announceData for summary page.
         this.createAnnounceForm.reset();
