@@ -1,14 +1,12 @@
 <div
+  (click)="seeDetails()"
   class="card md:card-side w-10/12 md:w-9/12 mx-auto md:ml-20 py-4 border-b borber-b-2 border-gray-600 rounded-none"
 >
   <figure class="md:w-3/12 h-56 md:h-64 mb-2">
     <img class="md:w-full md:h-full" [src]="data.imgsAnnounce![0]" alt="car!" />
   </figure>
 
-  <div
-    class="card-body py-2 md:py-0 px-0 md:pl-4 cursor-pointer"
-    (click)="seeDetails()"
-  >
+  <div class="card-body py-2 md:py-0 px-0 md:pl-4 cursor-pointer">
     <div class="flex flex-col gap-2 mb-4">
       <div class="flex justify-between">
         <app-timer [endDate]="data.endAt" [hideText]="true"></app-timer>
