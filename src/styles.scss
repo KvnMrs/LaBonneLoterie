@@ -103,7 +103,6 @@ nav {
 .announce-badges {
   @apply p-3 badge badge-outline
 }
-
 .announce-user-stats-container {
   @apply py-4 px-2 mb-4 rounded bg-white 
 /* SM */ sm:mb-6 sm:py-8 sm:px-4
@@ -111,7 +110,7 @@ nav {
 /* LG */ lg:flex lg:flex-col lg:gap-8 lg:justify-center lg:pb-0 lg:px-4
 }
 .announce-user-profile {
-  @apply h-1/4 mb-4 flex items-center
+  @apply h-1/4 p-2 flex gap-1 items-center
 /* SM */ sm:mb-6
 /* MD */ md:mb-8 md:gap-16 md:px-4
 /* LG */ lg:px-0 lg:gap-8
