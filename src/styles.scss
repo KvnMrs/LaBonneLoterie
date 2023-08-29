@@ -89,7 +89,7 @@ nav {
   @apply flex flex-col 
 }
 .carousel-container {
-  @apply carousel carousel-center h-96  self-center space-x-4 rounded-box
+  @apply carousel rounded-box
 }
 .announce-info-container {
   @apply pt-4 px-2 bg-white 

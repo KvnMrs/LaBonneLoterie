@@ -5,13 +5,22 @@
     <!-- Left part desktop -->
     <div class="details-container-2">
       <!-- carousel-->
-      <aside class="carousel-container">
-        <img
-          *ngFor="let imgUrl of currentAnnounce.imgsAnnounce"
-          [src]="imgUrl"
-          class="rounded-box carousel-item object-fill w-full"
-        />
-      </aside>
+      <div class="carousel-container">
+        <div
+          *ngFor="let imgUrl of currentAnnounce.imgsAnnounce; let i = index"
+          id="slide{{ i + 1 }}"
+          class="carousel-item relative w-full"
+        >
+          <img [src]="imgUrl" class="w-full" />
+          <div
+            class="absolute flex justify-between transform -translate-y-1/2 left-2 right-2 top-1/2"
+          >
+            <a href="#slide{{ i - 1 }}" class="btn btn-circle btn-sm">❮</a>
+            <a href="#slide{{ i + 1 }}" class="btn btn-circle btn-sm">❯</a>
+          </div>
+        </div>
+      </div>
+
       <!-- Announce infos -->
       <div class="announce-info-container">
         <div class="category-price-line md:w-1/2">
