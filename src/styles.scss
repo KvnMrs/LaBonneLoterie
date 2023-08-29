@@ -80,7 +80,7 @@ nav {
 // Announce-details page ///////////////////////////////////////////////////////////////////////
 
 .details-container {
-  @apply w-11/12 mx-auto py-4 px-2 flex flex-col bg-slate-50 to-slate-100
+  @apply h-5/6 py-4 px-2 flex flex-col bg-slate-50 to-slate-100
 /* SM */ sm:w-10/12 sm:mb-6 sm:py-6 sm:px-4
 /* MD */ md:mb-8 md:py-8 md:px-8
 /* LG */ lg:px-0
@@ -90,7 +90,7 @@ nav {
 /* LG */ lg:gap-10
 }
 .carousel-container {
-  @apply carousel carousel-center h-96 p-4 self-center space-x-4 rounded-box
+  @apply carousel carousel-center h-96  self-center space-x-4 rounded-box
 }
 .announce-info-container {
   @apply py-4 px-2

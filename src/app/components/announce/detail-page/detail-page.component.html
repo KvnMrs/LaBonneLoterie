@@ -5,12 +5,11 @@
     <div class="details-sub-container">
       <!-- carousel-->
       <aside class="carousel-container">
-        <div
+        <img
           *ngFor="let imgUrl of currentAnnounce.imgsAnnounce"
-          class="carousel-item"
-        >
-          <img [src]="imgUrl" class="rounded-box" />
-        </div>
+          [src]="imgUrl"
+          class="rounded-box carousel-item object-fill w-full"
+        />
       </aside>
       <!-- Others info -->
       <div class="hidden lg:w-5/12 lg:flex lg:flex-col">
@@ -142,8 +141,8 @@
         <!-- User -->
         <div class="lg:hidden announce-user-profile">
           <img
-            class="announce-user-picture"
-            src="https://via.placeholder.com/150"
+            class="w-24 mask mask-squircle"
+            [src]="authorAnnounce['imgProfile']"
           />
           <div class="announce-user-info">
             <p class="text-gray-800 font-bold text-xl sm:text-2xl">
