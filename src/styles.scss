@@ -80,7 +80,7 @@ nav {
 // Announce-details page ///////////////////////////////////////////////////////////////////////
 
 .details-container {
-  @apply h-5/6 py-4 px-2 flex flex-col bg-slate-50 to-slate-100
+  @apply h-5/6 py-4 flex flex-col bg-slate-50 to-slate-100
 /* SM */ sm:w-10/12 sm:mb-6 sm:py-6 sm:px-4
 /* MD */ md:mb-8 md:py-8 md:px-8
 /* LG */ lg:px-0
@@ -111,7 +111,7 @@ nav {
 /* LG */ lg:w-5/12
 }
 .announce-others-info-container {
-  @apply pb-4 px-2 mb-4 shadow-lg rounded bg-white
+  @apply py-4 px-2 mb-4 rounded bg-white shadow-md
 /* SM */ sm:mb-6 sm:py-8 sm:px-4
 /* MD */ md:mb-8 md:py-10 md:px-8
 /* LG */ lg:flex lg:flex-col lg:gap-8 lg:justify-center lg:pb-0 lg:px-4
@@ -133,7 +133,7 @@ nav {
 /* LG */ lg:w-8/12
 }
 .announce-user-links {
-  @apply mb-4 px-2 flex justify-start items-center gap-4
+  @apply mb-4 px-2 flex justify-center items-center gap-4
 /* MD */ md:hidden
 }
 .MD-announce-user-links {
@@ -145,7 +145,7 @@ nav {
 /* MD */ md:py-0
 }
 .announce-statistics-info {
-  @apply p-2 flex flex-col gap-1 rounded-lg
+  @apply mb-4 p-2 flex flex-col gap-1 rounded-lg
 /* SM */ sm:gap-2
 /* MD */ md:gap-3
 /* LG */ lg:px-0

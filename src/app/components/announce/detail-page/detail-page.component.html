@@ -138,56 +138,6 @@
       </div>
       <!-- Others info -->
       <div class="lg:hidden announce-others-info-container">
-        <!-- User -->
-        <div class="lg:hidden announce-user-profile">
-          <img
-            class="w-24 mask mask-squircle"
-            [src]="authorAnnounce['imgProfile']"
-          />
-          <div class="announce-user-info">
-            <p class="text-gray-800 font-bold text-xl sm:text-2xl">
-              {{ authorAnnounce["firstname"] }} {{ authorAnnounce["lastname"] }}
-            </p>
-            <div class="mb-4 pt-1 rating rating-md">
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-yellow-300"
-              />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-yellow-300"
-                checked
-              />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-primary"
-              />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-primary"
-              />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-primary"
-              />
-            </div>
-            <!-- MD Link's Group -->
-            <div class="MD-announce-user-links">
-              <a class="link text-blue-500">Voir les 29 annonces</a>
-              <button class="btn btn-info">Contacter</button>
-            </div>
-          </div>
-        </div>
-        <!-- Link's Group -->
-        <div class="announce-user-links">
-          <a class="link text-blue-500">Voir les 29 annonces</a>
-          <button class="btn btn-info btn-outline">Contacter</button>
-        </div>
         <!-- Statistics -->
         <div class="announce-statistics-info">
           <div class="announce-titles-divider">
@@ -221,14 +171,71 @@
         <!-- Timer -->
         <app-timer [endDate]="currentAnnounce.endAt"></app-timer>
       </div>
+      <div class="announce-others-info-container">
+        <!-- User -->
+        <div class="lg:hidden announce-user-profile">
+          <img
+            class="w-24 mask mask-squircle"
+            [src]="authorAnnounce['imgProfile']"
+          />
+          <div class="announce-user-info">
+            <p class="text-gray-800 font-bold text-xl sm:text-2xl">
+              {{ authorAnnounce["firstname"] }}
+              {{ authorAnnounce["lastname"] }}
+            </p>
+            <div class="rating rating-md">
+              <input
+                type="radio"
+                name="rating-9"
+                class="mr-0.5 mask mask-star-2 bg-yellow-300"
+              />
+              <input
+                type="radio"
+                name="rating-9"
+                class="mx-0.5 mask mask-star-2 bg-yellow-300"
+                checked
+              />
+              <input
+                type="radio"
+                name="rating-9"
+                class="mx-0.5 mask mask-star-2 bg-primary"
+              />
+              <input
+                type="radio"
+                name="rating-9"
+                class="mx-0.5 mask mask-star-2 bg-primary"
+              />
+              <input
+                type="radio"
+                name="rating-9"
+                class="mx-0.5 mask mask-star-2 bg-primary"
+              />
+            </div>
+            <a class="link text-blue-500">Voir les 29 annonces</a>
+            <!-- MD Link's Group -->
+            <div class="MD-announce-user-links">
+              <a class="link text-blue-500">Voir les 29 annonces</a>
+              <button class="btn btn-info">Contacter</button>
+            </div>
+          </div>
+        </div>
+        <!-- Link's Group -->
+        <div class="btn-group flex justify-center gap-0.5">
+          <!-- <a class="link text-blue-500">Voir les 29 annonces</a> -->
+          <button class="ml-auto btn btn-info btn-sm btn-outline">
+            Contacter
+          </button>
+          <button class="btn btn-primary btn-sm">acheter</button>
+        </div>
+      </div>
     </div>
     <!-- CTA's Group -->
-    <div class="btn-group ml-auto gap-1">
+    <!-- <div class="btn-group ml-auto gap-1">
       <button class="btn btn-outline btn-info ml-auto">Retour</button>
       <label for="modalBuyTicket" class="btn btn-primary ml-auto"
         >Acheter</label
       >
-    </div>
+    </div> -->
   </div>
 </div>
 
