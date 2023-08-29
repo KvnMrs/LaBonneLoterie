@@ -1,8 +1,8 @@
 <div *ngIf="currentAnnounce && authorAnnounce" class="main-container">
   <lbl-header>Détails de l'annonce</lbl-header>
   <!-- MAIN CONTAINER -->
-  <div class="details-container">
-    <div class="details-sub-container">
+  <div class="details-container-1">
+    <div class="details-container-2">
       <!-- carousel-->
       <aside class="carousel-container">
         <img
@@ -11,68 +11,6 @@
           class="rounded-box carousel-item object-fill w-full"
         />
       </aside>
-      <!-- Others info -->
-      <div class="hidden lg:w-5/12 lg:flex lg:flex-col">
-        <div class="hidden announce-others-info-container">
-          <!-- User -->
-          <div class="announce-user-profile">
-            <img
-              class="announce-user-picture"
-              [src]="authorAnnounce['imgProfile']"
-            />
-            <div class="announce-user-info">
-              <p class="text-gray-800 font-bold text-xl sm:text-2xl lg:text-lg">
-                {{ authorAnnounce["firstname"] }}
-                {{ authorAnnounce["lastname"] }}
-              </p>
-              <div class="rating rating-md mb-4 lg:mb-0">
-                <input
-                  type="radio"
-                  name="rating-9"
-                  class="mx-0.5 mask mask-star-2 bg-yellow-300"
-                />
-                <input
-                  type="radio"
-                  name="rating-9"
-                  class="mx-0.5 mask mask-star-2 bg-yellow-300"
-                  checked
-                />
-                <input
-                  type="radio"
-                  name="rating-9"
-                  class="mx-0.5 mask mask-star-2 bg-primary"
-                />
-                <input
-                  type="radio"
-                  name="rating-9"
-                  class="mx-0.5 mask mask-star-2 bg-primary"
-                />
-                <input
-                  type="radio"
-                  name="rating-9"
-                  class="mx-0.5 mask mask-star-2 bg-primary"
-                />
-              </div>
-              <!-- MD Link's Group -->
-              <div class="MD-announce-user-links">
-                <a class="link text-blue-500">Voir les 29 annonces</a>
-                <button class="btn btn-info btn-sm w-full">Contacter</button>
-              </div>
-            </div>
-          </div>
-          <!-- Link's Group -->
-          <div class="announce-user-links">
-            <a class="link text-blue-500">Voir les 29 annonces</a>
-            <button class="btn btn-info btn-sm">Contacter</button>
-          </div>
-
-          <!-- Timer -->
-          <app-timer [endDate]="currentAnnounce.endAt"></app-timer>
-        </div>
-      </div>
-    </div>
-    <!-- CONTENT CARD -->
-    <div class="py-2 lg:py-0">
       <div class="announce-info-container">
         <div class="category-price-line md:w-1/2">
           <h2 class="text-2xl">{{ currentAnnounce.category }}</h2>
@@ -94,9 +32,7 @@
           <div class="announce-badges mx-1">neutral</div>
           <div class="announce-badges ml-1">neutral</div>
         </div>
-        <div class="divider mb-0 lg:mb-8"></div>
-      </div>
-      <div class="w-full flex justify-start gap-12 md:mb-6">
+        <div class="divider lg:mb-8"></div>
         <!-- Description -->
         <div class="announce-description-container">
           <h3 class="card-title mb-2">Description:</h3>
@@ -104,44 +40,13 @@
             {{ currentAnnounce.description }}
           </p>
         </div>
-        <div class="hidden announce-others-info-container lg:w-5/12 lg:pb-4">
-          <div class="announce-statistics-info">
-            <div class="announce-titles-divider">
-              <h3 class="announce-titles">Statistiques</h3>
-            </div>
-            <div class="announce-statistics-lines">
-              <p class="font-mono">Estimation</p>
-              <p class="font-mono">{{ currentAnnounce.estimate }}</p>
-            </div>
-            <div class="announce-statistics-lines">
-              <p class="font-mono">Prix pour 1 ticket</p>
-              <p class="font-mono">{{ currentAnnounce.ticketPrice }}</p>
-            </div>
-            <div class="announce-statistics-lines">
-              <p class="font-mono">Nb Ticket maximum</p>
-              <p class="font-mono">{{ currentAnnounce.maxTickets }}</p>
-            </div>
-            <div class="announce-statistics-lines">
-              <p class="font-mono">Nb Ticket en cours</p>
-              <p class="font-mono">{{ currentAnnounce.currentTickets }}</p>
-            </div>
-            <div class="announce-statistics-lines">
-              <p class="font-mono">Nombre d'acheteurs</p>
-              <p class="font-mono">32</p>
-            </div>
-            <div class="announce-statistics-lines">
-              <p class="font-mono">Durant la dernière heure</p>
-              <p class="font-mono">500</p>
-            </div>
-          </div>
-        </div>
       </div>
       <!-- Others info -->
-      <div class="lg:hidden announce-others-info-container">
+      <div class="announce-user-stats-container">
         <!-- Statistics -->
         <div class="announce-statistics-info">
           <div class="announce-titles-divider">
-            <h3 class="announce-titles">Statistiques</h3>
+            <h3 class="section-title">Statistiques</h3>
           </div>
           <div class="announce-statistics-lines">
             <p class="font-mono">Estimation</p>
@@ -171,62 +76,98 @@
         <!-- Timer -->
         <app-timer [endDate]="currentAnnounce.endAt"></app-timer>
       </div>
-      <div class="announce-others-info-container">
-        <!-- User -->
-        <div class="lg:hidden announce-user-profile">
-          <img
-            class="w-24 mask mask-squircle"
-            [src]="authorAnnounce['imgProfile']"
-          />
-          <div class="announce-user-info">
-            <p class="text-gray-800 font-bold text-xl sm:text-2xl">
-              {{ authorAnnounce["firstname"] }}
-              {{ authorAnnounce["lastname"] }}
-            </p>
-            <div class="rating rating-md">
-              <input
-                type="radio"
-                name="rating-9"
-                class="mr-0.5 mask mask-star-2 bg-yellow-300"
-              />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-yellow-300"
-                checked
-              />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-primary"
-              />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-primary"
-              />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-primary"
-              />
-            </div>
-            <a class="link text-blue-500">Voir les 29 annonces</a>
-            <!-- MD Link's Group -->
-            <div class="MD-announce-user-links">
-              <a class="link text-blue-500">Voir les 29 annonces</a>
-              <button class="btn btn-info">Contacter</button>
-            </div>
+      <!-- Others info -->
+    </div>
+    <!-- CONTENT CARD -->
+    <div class="w-full flex justify-start gap-12 md:mb-6">
+      <div class="hidden announce-user-stats-container lg:w-5/12 lg:pb-4">
+        <div class="announce-statistics-info">
+          <div class="announce-titles-divider">
+            <h3 class="section-title">Statistiques</h3>
+          </div>
+          <div class="announce-statistics-lines">
+            <p class="font-mono">Estimation</p>
+            <p class="font-mono">{{ currentAnnounce.estimate }}</p>
+          </div>
+          <div class="announce-statistics-lines">
+            <p class="font-mono">Prix pour 1 ticket</p>
+            <p class="font-mono">{{ currentAnnounce.ticketPrice }}</p>
+          </div>
+          <div class="announce-statistics-lines">
+            <p class="font-mono">Nb Ticket maximum</p>
+            <p class="font-mono">{{ currentAnnounce.maxTickets }}</p>
+          </div>
+          <div class="announce-statistics-lines">
+            <p class="font-mono">Nb Ticket en cours</p>
+            <p class="font-mono">{{ currentAnnounce.currentTickets }}</p>
+          </div>
+          <div class="announce-statistics-lines">
+            <p class="font-mono">Nombre d'acheteurs</p>
+            <p class="font-mono">32</p>
+          </div>
+          <div class="announce-statistics-lines">
+            <p class="font-mono">Durant la dernière heure</p>
+            <p class="font-mono">500</p>
           </div>
         </div>
-        <!-- Link's Group -->
-        <div class="btn-group flex justify-center gap-0.5">
-          <!-- <a class="link text-blue-500">Voir les 29 annonces</a> -->
-          <button class="ml-auto btn btn-info btn-sm btn-outline">
-            Contacter
-          </button>
-          <button class="btn btn-primary btn-sm">acheter</button>
+      </div>
+    </div>
+    <!-- User & stats container  -->
+    <div class="announce-user-stats-container">
+      <!-- User -->
+      <div class="announce-user-profile">
+        <img
+          class="w-24 mask mask-squircle"
+          [src]="authorAnnounce['imgProfile']"
+        />
+        <div class="announce-user-info">
+          <p class="text-gray-800 font-bold text-xl sm:text-2xl">
+            {{ authorAnnounce["firstname"] }}
+            {{ authorAnnounce["lastname"] }}
+          </p>
+          <div class="rating rating-md">
+            <input
+              type="radio"
+              name="rating-9"
+              class="mr-0.5 mask mask-star-2 bg-yellow-300"
+            />
+            <input
+              type="radio"
+              name="rating-9"
+              class="mx-0.5 mask mask-star-2 bg-yellow-300"
+              checked
+            />
+            <input
+              type="radio"
+              name="rating-9"
+              class="mx-0.5 mask mask-star-2 bg-primary"
+            />
+            <input
+              type="radio"
+              name="rating-9"
+              class="mx-0.5 mask mask-star-2 bg-primary"
+            />
+            <input
+              type="radio"
+              name="rating-9"
+              class="mx-0.5 mask mask-star-2 bg-primary"
+            />
+          </div>
+          <a class="link text-blue-500">Voir les 29 annonces</a>
+          <!-- MD Link's Group -->
+          <!-- <div class="MD-announce-user-links">
+            <a class="link text-blue-500">Voir les 29 annonces</a>
+            <button class="btn btn-info">Contacter</button>
+          </div> -->
         </div>
+      </div>
+      <!-- Link's Group -->
+      <div class="btn-group flex justify-center gap-0.5">
+        <!-- <a class="link text-blue-500">Voir les 29 annonces</a> -->
+        <button class="ml-auto btn btn-info btn-sm btn-outline">
+          Contacter
+        </button>
+        <button class="btn btn-primary btn-sm">acheter</button>
       </div>
     </div>
     <!-- CTA's Group -->
