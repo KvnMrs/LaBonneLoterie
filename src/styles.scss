@@ -16,7 +16,7 @@
 }
 
 .main-container {
-  @apply p-2 flex flex-col bg-slate-50 to-slate-100 min-h-screen
+  @apply p-2 flex flex-col  min-h-screen
 }
 
 .inline-size-lbl {
@@ -26,7 +26,7 @@
 // NavBar ///////////////////////////////////////////////////////////////////////
 
 nav {
-  @apply h-16 flex border-b shadow-md border-slate-300 bg-base-200
+  @apply h-16 flex border-b  border-slate-300 bg-base-200
 }
 .logo-letters {
   @apply text-2xl font-semibold text-lbl
@@ -67,8 +67,9 @@ nav {
 
 // Announces page ///////////////////////////////////////////////////////////////////////
 
-.filters-bar {
-  @apply lg:w-11/12 flex flex-wrap mb-5 md:mb-10 md:mx-auto py-2 px-3 gap-4 md:gap-0 border border-base-300 rounded-box bg-gray-200 shadow-xl
+.filter-collapse {
+  @apply mb-5 mx-auto bg-base-200 rounded-box shadow-md
+/* MD */ md:w-11/12
 }
 .filters-container {
   @apply inline-flex inline-size-lbl flex-wrap gap-2
@@ -79,23 +80,21 @@ nav {
 
 // Announce-details page ///////////////////////////////////////////////////////////////////////
 
-.details-container {
-  @apply w-11/12 mx-auto py-4 px-2 flex flex-col bg-slate-50 to-slate-100
-/* SM */ sm:w-10/12 sm:mb-6 sm:py-6 sm:px-4
-/* MD */ md:mb-8 md:py-8 md:px-8
-/* LG */ lg:px-0
+.details-container-1 {
+  @apply py-4 mx-auto
+/* SM */ sm:w-10/12 sm:mb-6 sm:py-6
+/* MD */ md:w-full md:flex
 }
-.details-sub-container {
-  @apply flex justify-start
-/* LG */ lg:gap-10
+.details-container-2 {
+  @apply flex flex-col
+/* MD */ md:mx-auto
 }
-.carrousel-container {
-  @apply carousel carousel-center h-96 p-4 self-center space-x-4 rounded-box
+.carousel-container {
+  @apply carousel rounded-box
+/* SM */ sm:h-96
 }
 .announce-info-container {
-  @apply py-4 px-2
-/* SM */ sm:py-6 sm:px-4
-/* MD */ md:py-8 md:px-8
+  @apply pt-4 px-2 bg-white 
 /* LG */ lg:w-3/4 lg:pb-0
 }
 .category-price-line {
@@ -104,23 +103,14 @@ nav {
 .announce-badges {
   @apply p-3 badge badge-outline
 }
-.announce-description-container {
-  @apply mb-4 pb-4 px-2
-/* SM */ sm:mb-6 sm:pb-6 sm:px-4
-/* MD */ md:mb-8 md:pb-8 md:p-8
-/* LG */ lg:w-5/12
-}
-.announce-others-info-container {
-  @apply pb-4 px-2 mb-4 shadow-lg rounded bg-white
-/* SM */ sm:mb-6 sm:py-8 sm:px-4
-/* MD */ md:mb-8 md:py-10 md:px-8
-/* LG */ lg:flex lg:flex-col lg:gap-8 lg:justify-center lg:pb-0 lg:px-4
+.announce-user-stats-container {
+  @apply py-4 px-2 mb-4 rounded
+/* LG */ lg:px-4 lg:flex lg:flex-col lg:justify-center
 }
 .announce-user-profile {
-  @apply h-1/4 mb-4 flex items-center
-/* SM */ sm:mb-6
-/* MD */ md:mb-8 md:gap-16 md:px-4
-/* LG */ lg:px-0 lg:gap-8
+  @apply flex justify-around items-center
+/* sm */ 
+/* MD */ md:flex-col
 }
 .announce-user-picture {
   @apply  mx-auto rounded-full object-cover
@@ -128,32 +118,25 @@ nav {
 /* MD */ md:w-28 md:h-28
 }
 .announce-user-info {
-  @apply mx-auto gap-1 flex flex-col justify-between rounded-lg
-/* MD */ md:gap-2 md:w-3/4
+  @apply gap-1 flex flex-col items-center justify-between rounded-lg
+/* MD */ md:mb-4
 /* LG */ lg:w-8/12
 }
 .announce-user-links {
-  @apply mb-4 px-2 flex justify-start items-center gap-4
+  @apply mb-4 px-2 flex justify-center items-center gap-4
 /* MD */ md:hidden
 }
-.MD-announce-user-links {
-  @apply hidden
-/* MD */ md:flex md:flex-col md:items-center md:gap-6 md:mr-auto
-}
-.announce-user-contact {
-  @apply
-/* MD */ md:py-0
-}
+
 .announce-statistics-info {
-  @apply p-2 flex flex-col gap-1 rounded-lg
+  @apply mb-4 p-2 flex flex-col gap-1 rounded-lg
 /* SM */ sm:gap-2
 /* MD */ md:gap-3
 /* LG */ lg:px-0
 }
 .announce-titles-divider {
-  @apply divider divide-black w-full mt-0
+  @apply divider divide-black w-full
 }
-.announce-titles {
+.section-title {
   @apply text-2xl font-mono font-medium text-gray-800
 }
 .announce-statistics-lines {
@@ -169,10 +152,6 @@ nav {
 .announce-timer-times {
   @apply countdown p-2 text-3xl font-mono bg-neutral rounded-xl
 /* SM */ sm:text-2xl
-  
-}
-.announce-CTA-group {
-  @apply btn-group flex justify-end
 }
 
 // Summary-Announce page ///////////////////////////////////////////////////////////////////////
@@ -202,7 +181,7 @@ nav {
 /* LG */ lg:w-11/12
 }
 .profile-card-container {
-  @apply p-4 bg-slate-100 rounded-md shadow-md
+  @apply p-4 bg-slate-100 rounded-md 
 /* MD */ md:w-5/12 md:h-fit
 }
 .profile-card {
@@ -216,7 +195,7 @@ nav {
   @apply flex gap-4 items-center justify-center
 }
 .user-infos {
-  @apply  ml-auto p-2 bg-slate-50 rounded-lg shadow-md
+  @apply  ml-auto p-2 bg-slate-50 rounded-lg 
 }
 
 // Profile Menu
@@ -229,5 +208,5 @@ nav {
 /* MD */ md:flex-row
 }
 .card-menu {
-  @apply h-full px-2 py-4 flex flex-col gap-8 text-center items-center justify-center bg-slate-200 rounded-md shadow-md
+  @apply h-full px-2 py-4 flex flex-col gap-8 text-center items-center justify-center bg-slate-200 rounded-md 
 }
