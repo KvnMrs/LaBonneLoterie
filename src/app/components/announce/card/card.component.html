@@ -1,25 +1,19 @@
 <div
   (click)="seeDetails()"
-  class="card md:card-side w-10/12 md:w-9/12 mx-auto md:ml-20 py-4 border-b borber-b-2 border-gray-600 rounded-none"
+  class="card w-10/12 mx-auto mb-4 py-4 border-b borber-b-2 border-gray-600 rounded-none | md:card-side md:w-9/12 md:ml-20"
 >
-  <figure class="md:w-3/12 h-56 md:h-64 mb-2">
-    <img class="md:w-full md:h-full" [src]="data.imgsAnnounce![0]" alt="car!" />
+  <!-- IMG part -->
+  <figure class="h-56 | md:max-h-64">
+    <img
+      class="object-fill max-h-full w-full"
+      [src]="data.imgsAnnounce![0]"
+      alt="car!"
+    />
   </figure>
-
-  <div class="card-body py-2 md:py-0 px-0 md:pl-4 cursor-pointer">
+  <div class="card-body py-2 px-0 cursor-pointer | md:w-9/12 md:py-0 md:pl-4">
     <div class="flex flex-col gap-2 mb-4">
       <div class="flex justify-between">
         <app-timer [endDate]="data.endAt" [hideText]="true"></app-timer>
-        <button
-          (click)="onAddFavorite()"
-          class="hidden md:flex btn btn-circle btn-md btn-ghost"
-        >
-          <img
-            class="w-6 h-6 cursor-pointer"
-            src="assets/svg/favorite.svg"
-            alt="Add to favorites"
-          />
-        </button>
       </div>
       <h4 class="card-title text-xl">{{ data.title }}</h4>
       <h3 class="card-title text-lg">{{ data.category }}</h3>
@@ -27,27 +21,21 @@
         {{ data.ticketPrice | currency : "EUR" }}
       </h3>
     </div>
-
-    <div class="mt-auto flex">
-      <button
-        (click)="onAddFavorite()"
-        class="md:hidden btn btn-circle btn-md btn-ghost"
-      >
-        <img
-          class="w-6 h-6 cursor-pointer"
-          src="assets/svg/favorite.svg"
-          alt="Add to favorites"
-        />
-      </button>
-      <div class="btn-group ml-auto gap-1">
-        <!-- <button class="btn btn-outline btn-info ml-auto" (click)="seeDetails()"> -->
-        <!-- Détails -->
-        <!-- </button> -->
-        <label for="modalBuyTicket" class="btn btn-primary ml-auto"
-          >Acheter</label
-        >
-      </div>
-    </div>
+  </div>
+  <div class="flex justify-between | md:flex-col">
+    <button
+      (click)="onAddFavorite()"
+      class="btn btn-circle btn-md btn-ghost | md:ml-auto"
+    >
+      <img
+        class="w-6 h-6 cursor-pointer"
+        src="assets/svg/favorite.svg"
+        alt="Add to favorites"
+      />
+    </button>
+    <label for="modalBuyTicket" class="btn btn-primary btn-md ml-auto"
+      >Acheter</label
+    >
   </div>
 </div>
 
