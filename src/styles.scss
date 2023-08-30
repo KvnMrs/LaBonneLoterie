@@ -80,21 +80,20 @@ nav {
 // Announce-details page ///////////////////////////////////////////////////////////////////////
 
 .details-container-1 {
-  @apply py-4 
-/* SM */ sm:w-10/12 sm:mb-6 sm:py-6 sm:px-4
-/* MD */ md:mb-8 md:py-8 md:px-8
-/* LG */ lg:px-0
+  @apply py-4 mx-auto
+/* SM */ sm:w-10/12 sm:mb-6 sm:py-6
+/* MD */ md:w-full md:flex
 }
 .details-container-2 {
-  @apply flex flex-col 
+  @apply flex flex-col
+/* MD */ md:mx-auto
 }
 .carousel-container {
   @apply carousel rounded-box
+/* SM */ sm:h-96
 }
 .announce-info-container {
   @apply pt-4 px-2 bg-white 
-/* SM */ sm:py-6 sm:px-4
-/* MD */ md:py-8 md:px-8
 /* LG */ lg:w-3/4 lg:pb-0
 }
 .category-price-line {
@@ -104,16 +103,13 @@ nav {
   @apply p-3 badge badge-outline
 }
 .announce-user-stats-container {
-  @apply py-4 px-2 mb-4 rounded bg-white 
-/* SM */ sm:mb-6 sm:py-8 sm:px-4
-/* MD */ md:mb-8 md:py-10 md:px-8
-/* LG */ lg:flex lg:flex-col lg:gap-8 lg:justify-center lg:pb-0 lg:px-4
+  @apply py-4 px-2 mb-4 rounded
+/* LG */ lg:px-4 lg:flex lg:flex-col lg:justify-center
 }
 .announce-user-profile {
-  @apply h-1/4 p-2 flex gap-1 items-center
-/* SM */ sm:mb-6
-/* MD */ md:mb-8 md:gap-16 md:px-4
-/* LG */ lg:px-0 lg:gap-8
+  @apply flex justify-around items-center
+/* sm */ 
+/* MD */ md:flex-col
 }
 .announce-user-picture {
   @apply  mx-auto rounded-full object-cover
@@ -121,22 +117,15 @@ nav {
 /* MD */ md:w-28 md:h-28
 }
 .announce-user-info {
-  @apply mx-auto gap-1 flex flex-col justify-between rounded-lg
-/* MD */ md:gap-2 md:w-3/4
+  @apply gap-1 flex flex-col items-center justify-between rounded-lg
+/* MD */ md:mb-4
 /* LG */ lg:w-8/12
 }
 .announce-user-links {
   @apply mb-4 px-2 flex justify-center items-center gap-4
 /* MD */ md:hidden
 }
-.MD-announce-user-links {
-  @apply hidden
-/* MD */ md:flex md:flex-col md:items-center md:gap-6 md:mr-auto
-}
-.announce-user-contact {
-  @apply
-/* MD */ md:py-0
-}
+
 .announce-statistics-info {
   @apply mb-4 p-2 flex flex-col gap-1 rounded-lg
 /* SM */ sm:gap-2
@@ -162,10 +151,6 @@ nav {
 .announce-timer-times {
   @apply countdown p-2 text-3xl font-mono bg-neutral rounded-xl
 /* SM */ sm:text-2xl
-  
-}
-.announce-CTA-group {
-  @apply btn-group flex justify-end
 }
 
 // Summary-Announce page ///////////////////////////////////////////////////////////////////////
