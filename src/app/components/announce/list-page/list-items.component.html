@@ -1,10 +1,12 @@
 <div class="main-container">
   <lbl-header>Découvrez les nouvelles offres !</lbl-header>
-  <div class="filters-bar">
+  <div class="collapse collapse-arrow filter-collapse bg-base-200">
+    <input type="checkbox" />
+    <div class="collapse-title text-lg font-medium">Rechercher</div>
     <form
       [formGroup]="searchForm"
       (ngSubmit)="onSearch()"
-      class="filters-container"
+      class="collapse-content filters-container"
     >
       <input
         type="text"
@@ -42,21 +44,27 @@
         placeholder="Prix max?"
         class="w-11/12 md:w-auto input input-bordered max-w-xs cursor-pointer"
       />
+      <div class="btn-group ml-auto gap-1">
+        <button
+          type="button"
+          (click)="onResetSearch()"
+          [disabled]="!showResetBtn"
+          class="btn btn-outline btn-info btn-sm ml-auto"
+        >
+          Retirer le filtre
+        </button>
+        <button
+          type="button"
+          (click)="onSearch()"
+          class="btn btn-info btn-sm ml-auto"
+        >
+          Rechercher
+        </button>
+      </div>
     </form>
-    <div class="btn-group ml-auto gap-1">
-      <button
-        type="button"
-        (click)="onResetSearch()"
-        [disabled]="!showResetBtn"
-        class="btn btn-outline btn-info ml-auto"
-      >
-        Retirer le filtre
-      </button>
-      <button type="button" (click)="onSearch()" class="btn btn-info ml-auto">
-        Rechercher
-      </button>
-    </div>
   </div>
+  <!-- collapse filters -->
+  <div class="collapse filter-collapse"></div>
   <div class="cards-container">
     <app-card
       *ngFor="let announce of announces; let i = index"
