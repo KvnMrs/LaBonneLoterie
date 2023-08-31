@@ -5,29 +5,30 @@
     class="form-container"
     (ngSubmit)="onSubmit()"
   >
-    <h1 class="form-title">Informations</h1>
+    <h1 class="form-title">Votre annonce</h1>
     <div class="form-sub-container">
       <div class="self-start md:w-full">
         <div class="form-input-container">
           <label class="mb-1" for="title">Titre:</label>
           <input
-            class="input input-lbl"
+            class="input input-lbl input-bordered border-slate-400"
             type="text"
             id="title"
             name="title"
             formControlName="title"
-            placeholder="Mon titre"
+            placeholder="Titre"
             required
           />
         </div>
         <div class="form-input-container">
           <label class="mb-1">Catégorie:</label>
           <select
+            class="select select-bordered p-2 border-slate-400"
             id="category"
             name="category"
             formControlName="category"
-            class="select select-bordered p-2"
           >
+            <option selected disabled>Catégorie</option>
             <option *ngFor="let category of categorys" [value]="category.name">
               {{ category.name }}
             </option>
@@ -36,19 +37,19 @@
         <div class="form-input-container">
           <label class="mb-1" for="tags">Ajouter un tag:</label>
           <input
-            class="input input-lbl"
+            class="input input-lbl input-bordered border-slate-400"
             type="text"
             id="tags"
             name="tags"
             formControlName="tags"
-            placeholder="#myTag"
+            placeholder="Tag"
             required
           />
         </div>
         <div class="form-input-container">
           <label class="mb-1" for="estimate">Estimation du lot:</label>
           <input
-            class="input input-lbl"
+            class="input input-lbl input-bordered border-slate-400"
             type="number"
             id="estimate"
             name="estimate"
@@ -60,12 +61,12 @@
         <div class="form-input-container">
           <label class="mb-1" for="ticketPrice">Prix ticket:</label>
           <input
-            class="input input-lbl"
+            class="input input-lbl input-bordered border-slate-400"
             type="number"
             id="ticketPrice"
             name="ticketPrice"
             formControlName="ticketPrice"
-            placeholder="0 $"
+            placeholder="Prix pour un ticket"
             required
           />
         </div>
@@ -74,12 +75,12 @@
             >Nombre de tickets à vendre:</label
           >
           <input
-            class="input input-lbl"
+            class="input input-lbl input-bordered border-slate-400"
             type="number"
             id="maxTickets"
             name="maxTickets"
             formControlName="maxTickets"
-            placeholder="0"
+            placeholder="Max"
             required
           />
         </div>
@@ -88,12 +89,12 @@
             >Nombre de tickets minimum:</label
           >
           <input
-            class="input input-lbl"
+            class="input input-lbl input-bordered border-slate-400"
             type="number"
             id="minTickets"
             name="minTickets"
             formControlName="minTickets"
-            placeholder="0"
+            placeholder="Min"
             required
           />
         </div>
@@ -103,19 +104,18 @@
           <div class="form-input-container">
             <label class="mb-1" for="endAt">Date du tirage:</label>
             <input
-              class="input input-lbl"
+              class="input input-lbl input-bordered border-slate-400"
               type="date"
               id="endAt"
               name="endAt"
               formControlName="endAt"
-              placeholder=""
               required
             />
           </div>
           <div class="form-input-container">
             <label class="mb-1" for="endHour">Heure du tirage:</label>
             <input
-              class="input input-lbl"
+              class="input input-lbl input-bordered border-slate-400"
               type="number"
               id="endHour"
               name="endHour"
@@ -182,7 +182,7 @@
           <div class="form-input-container">
             <label class="label" for="description">Description:</label>
             <textarea
-              class="textarea input-lbl h-24 mb-3"
+              class="textarea input-lbl input-bordered border-slate-400 h-24 mb-3"
               type="text"
               id="announce-description"
               name="announce-description"
@@ -191,16 +191,13 @@
             ></textarea>
           </div>
         </div>
-        <div
-          class="btn-group btn-group-horizontal lg:btn-group-horizontal flex justify-end md:mt-3 md:mr-6"
-        >
-          <button class="btn btn-outline btn-info bg-slate-50">Retour</button>
+        <div class="btn-group flex justify-end | md:mt-4 md:mr-6 | lg:mt-8">
           <button
             (click)="onSubmit()"
             type="button"
             class="btn btn-stroke btn-primary"
           >
-            Vérifier
+            Vérifier votre annonce
           </button>
         </div>
       </div>

@@ -35,7 +35,7 @@ nav {
 // Forms ///////////////////////////////////////////////////////////////////////
 
 .form-container {
-  @apply w-11/12 mx-auto p-4 flex-col border shadow-lg rounded-xl bg-slate-300
+  @apply w-11/12 mx-auto p-4 flex-col border border-slate-300 shadow-md rounded-xl bg-slate-50
 /* SM */ sm:w-2/3
 /* MD */ md:w-3/4
 /* LG */ lg:max-w-4xl
