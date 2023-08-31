@@ -30,6 +30,8 @@ export class AddFormComponent implements OnInit {
     { id: 4, name: 'Décoration' },
     { id: 5, name: 'Electomenager' },
     { id: 6, name: 'Jardin' },
+    { id: 7, name: 'Sport' },
+    { id: 8, name: 'Loisir' },
   ];
 
   constructor(
