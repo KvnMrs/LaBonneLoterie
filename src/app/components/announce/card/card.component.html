@@ -1,27 +1,29 @@
 <div
-  (click)="seeDetails()"
   class="card w-10/12 mx-auto mb-4 py-4 border-b borber-b-2 border-gray-600 rounded-none | md:card-side md:w-9/12 md:ml-20"
 >
-  <!-- IMG part -->
-  <figure class="h-56 | md:max-h-64">
-    <img
-      class="object-fill max-h-full w-full"
-      [src]="data.imgsAnnounce![0]"
-      alt="car!"
-    />
-  </figure>
-  <div class="card-body py-2 px-0 cursor-pointer | md:w-9/12 md:py-0 md:pl-4">
-    <div class="flex flex-col gap-2 mb-4">
-      <div class="flex justify-between">
-        <app-timer [endDate]="data.endAt" [hideText]="true"></app-timer>
+  <div (click)="seeDetails()" class="w-full flex flex-col | md:flex-row">
+    <!-- IMG part -->
+    <figure class="h-56 | md:max-h-64">
+      <img
+        class="object-fill max-h-full w-full"
+        [src]="data.imgsAnnounce![0]"
+        alt="car!"
+      />
+    </figure>
+    <div class="card-body py-2 px-0 cursor-pointer | md:w-9/12 md:py-0 md:pl-4">
+      <div class="flex flex-col gap-2 mb-4">
+        <div class="flex justify-between">
+          <app-timer [endDate]="data.endAt" [hideText]="true"></app-timer>
+        </div>
+        <h4 class="card-title text-xl">{{ data.title }}</h4>
+        <h3 class="card-title text-lg">{{ data.category }}</h3>
+        <h3 class="card-title text-xl">
+          {{ data.ticketPrice | currency : "EUR" }}
+        </h3>
       </div>
-      <h4 class="card-title text-xl">{{ data.title }}</h4>
-      <h3 class="card-title text-lg">{{ data.category }}</h3>
-      <h3 class="card-title text-xl">
-        {{ data.ticketPrice | currency : "EUR" }}
-      </h3>
     </div>
   </div>
+
   <div class="flex justify-between | md:flex-col">
     <button
       (click)="onAddFavorite()"
@@ -33,8 +35,10 @@
         alt="Add to favorites"
       />
     </button>
-    <label for="modalBuyTicket" class="btn btn-primary btn-md ml-auto"
-      >Acheter</label
+    <label
+      for="modalBuyTicket"
+      class="btn btn-primary btn-md w-max z-10 ml-auto"
+      >Achat ticket</label
     >
   </div>
 </div>
