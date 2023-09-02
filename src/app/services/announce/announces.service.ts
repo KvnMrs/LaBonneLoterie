@@ -20,7 +20,7 @@ import { User } from 'firebase/auth';
   providedIn: 'root',
 })
 export class AnnouncesService {
-  private announceDataSubject = new BehaviorSubject<Partial<IAnnounce>>({
+  public announceDataSubject = new BehaviorSubject<Partial<IAnnounce>>({
     title: '',
     category: '',
     tags: [],

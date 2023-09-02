@@ -59,6 +59,12 @@ nav {
 .input-lbl {
   @apply input input-bordered p-2 rounded-md border-slate-400
 }
+.textarea-lbl {
+  @apply textarea textarea-bordered p-2 rounded-md border-slate-400
+}
+.select-lbl {
+  @apply select select-bordered rounded-md border-slate-400
+}
 
 // Sign-up & Log-in ///////////////////////////////////////////////////////////////////////
 

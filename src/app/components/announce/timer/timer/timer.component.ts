@@ -70,4 +70,8 @@ export class TimerComponent implements OnInit {
   get getSeconds(): number {
     return this.timerValue.seconds;
   }
+
+  ngOnDestroy() {
+    this.timer$.unsubscribe();
+  }
 }
