@@ -2,54 +2,105 @@
   <lbl-header>Vérifions ensemble !</lbl-header>
   <article class="summary-container">
     <!-- Carousel-->
-    <aside class="carousel-container | md:w-5/12">
+    <div class="carousel-container md:w-1/2">
       <div
-        *ngFor="let imgUrl of newAnnounceData.imgsAnnounce"
-        class="carousel-item"
+        *ngFor="let imgUrl of newAnnounceData.imgsAnnounce; let i = index"
+        id="slide{{ i + 1 }}"
+        class="carousel-item relative w-full"
       >
-        <img [src]="imgUrl" class="rounded-box" />
+        <img [src]="imgUrl" class="w-full" />
+        <div
+          class="absolute flex justify-between transform -translate-y-1/2 left-2 right-2 top-1/2"
+        >
+          <a href="#slide{{ i - 1 }}" class="btn btn-circle btn-sm">❮</a>
+          <a href="#slide{{ i + 1 }}" class="btn btn-circle btn-sm">❯</a>
+        </div>
       </div>
-    </aside>
+    </div>
     <!-- Main info -->
     <div class="summary-main-info-container">
-      <div class="summary-main-info">
-        <h2 class="text-xl sm:text-2xl">{{ newAnnounceData.category }} |</h2>
-        <h3 class="text-lg sm:text-xl">{{ newAnnounceData.title }} |</h3>
-        <span class="text-lg sm:text-xl">{{
-          newAnnounceData.ticketPrice | currency : "EUR" : true
-        }}</span>
-      </div>
-      <!-- Badges -->
-      <!-- <div *ngIf="newAnnounceData.tags![0]" class="flex">
-        <div
-          *ngFor="let tag of newAnnounceData.tags"
-          class="announce-badges mr-1"
-        >
-          {{ tag }}
+      <!-- Announce infos -->
+      <div class="announce-info-container mb-4">
+        <div class="flex flex-col">
+          <div class="flex gap-2 items-center">
+            <h2 class="text-lg">Titre:</h2>
+            <h3>Titre{{ newAnnounceData.title }}</h3>
+          </div>
+          <div class="mb-2 flex gap-2 items-center">
+            <h2 class="text-lg">Catégorie:</h2>
+            <h3>Catégorie{{ newAnnounceData.category }}</h3>
+          </div>
+          <div class="mb-2 flex gap-2 items-center">
+            <h2 class="text-lg">Estimation:</h2>
+            <h3>150{{ newAnnounceData.estimate }} $</h3>
+          </div>
+          <div class="flex">
+            <div class="announce-badges mr-1">neutral</div>
+            <div class="announce-badges mx-1">neutral</div>
+            <div class="announce-badges mx-1">neutral</div>
+            <div class="announce-badges ml-1">neutral</div>
+          </div>
         </div>
-      </div> -->
-      <div class="divider my-0"></div>
-      <!-- Description -->
-      <div class="flex flex-col gap-2">
-        <h3 class="card-title">Description:</h3>
-        <p class="sm:w-3/4 text-gray-800 leading-normal">
-          {{ newAnnounceData.description }}
-        </p>
+
+        <!-- <span class="text-2xl font-semibold">{{
+            newAnnounceData.ticketPrice | currency : "EUR"
+          }}</span> -->
+
+        <div class="divider lg:mb-8"></div>
+        <!-- Description -->
+        <div>
+          <h3 class="card-title mb-2">Description:</h3>
+          <p class="text-gray-800 leading-normal">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+            pharetra, urna eu placerat imperdiet.
+            {{ newAnnounceData.description }}
+          </p>
+        </div>
+        <div class="divider lg:mb-8"></div>
+        <div>
+          <h3 class="card-title mb-2">Tickets:</h3>
+          <div class="flex justify-between">
+            <p>Prix d'un ticket:</p>
+            <p>1{{ newAnnounceData.ticketPrice }}$</p>
+          </div>
+          <div class="flex justify-between">
+            <p>Nombre de ticket minimum:</p>
+            <p>100{{ newAnnounceData.minTickets }}</p>
+          </div>
+          <div class="flex justify-between">
+            <p>Nombre de ticket maximum:</p>
+            <p>40{{ newAnnounceData.maxTickets }}</p>
+          </div>
+        </div>
+        <div class="divider lg:mb-8"></div>
+        <div>
+          <h3 class="card-title mb-2">Tirage:</h3>
+          <div class="flex justify-between">
+            <p>Date du tirage:</p>
+            <p>
+              {{ newAnnounceData.endAt | date }}
+            </p>
+          </div>
+          <app-timer
+            *ngIf="newAnnounceData.endAt"
+            [endDate]="newAnnounceData.endAt"
+          ></app-timer>
+        </div>
       </div>
       <!-- CTA's Group -->
-      <div class="btn-group flex justify-end mt-auto">
+      <div class="btn-group flex gap-0.5 justify-end mt-auto | md:gap-1">
         <button
           (click)="goBack()"
           type="button"
-          class="btn btn-outline btn-info mr-1 shadow-md"
+          class="btn btn-outline btn-info"
         >
-          Modifier
+          Retour
         </button>
         <label
           (click)="onPublish()"
           for="modal-wish-success"
-          class="btn btn-primary shadow-md"
-          >Publier</label
+          class="btn btn-primary"
+          >Valider</label
         >
       </div>
     </div>
@@ -67,7 +118,7 @@
       >✕</label
     >
     <h3 class="pb-4 font-bold text-3xl text-primary text-lbl">
-      Le bon succès ☀
+      Le bon succès 🍀
     </h3>
     <p class="pb-2">
       [Nom utilisateur], nous vous souhaitons bonne chance pour ce tirage ce

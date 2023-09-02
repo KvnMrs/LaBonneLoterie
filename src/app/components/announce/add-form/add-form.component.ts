@@ -19,7 +19,6 @@ export class AddFormComponent implements OnInit {
   public selectedImgs: Array<File | null> = [];
   public announceData: null = null;
   public file: File | null = null;
-  public showSubmitMessage = false;
   public showErrorMessage = false;
   private currentUser: User | null = null;
 
@@ -107,18 +106,17 @@ export class AddFormComponent implements OnInit {
           })
         );
 
-        // Define new values from the futur new announce document
         if (!this.currentUser) throw Error;
+        // Define new values from the futur new announce document
         announceData = {
           ...announceData,
           imgsAnnounce: imgsAnnounceUrl,
           authorUid: this.currentUser.uid,
         };
         this.annoucesService.emitAnnounceData(announceData); // emit announceData for summary page.
-        this.createAnnounceForm.reset();
+        // this.createAnnounceForm.reset();
         this.router.navigate(['/recapitulatif-annonce']);
         this.showErrorMessage = false;
-        this.showSubmitMessage = true;
       } catch (error) {
         console.error('Error occurred:', error);
       }

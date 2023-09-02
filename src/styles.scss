@@ -41,10 +41,11 @@ nav {
 /* LG */ lg:max-w-4xl
 }
 .form-title {
-  @apply mb-5 text-2xl font-medium
+  @apply mb-4 text-xl font-medium
+/* MD */ md:text-2xl
 }
 .form-sub-container {
-  @apply mx-auto py-3 items-center
+  @apply mx-auto items-center
 /* MD */ md:w-11/12 md:flex
 }
 .col-upload-descript-buttons {
@@ -81,21 +82,21 @@ nav {
 // Announce-details page ///////////////////////////////////////////////////////////////////////
 
 .details-container-1 {
-  @apply py-4 mx-auto
+  @apply py-4 mx-auto justify-center
 /* SM */ sm:w-10/12 sm:mb-6 sm:py-6
 /* MD */ md:w-full md:flex
 }
 .details-container-2 {
   @apply flex flex-col
-/* MD */ md:mx-auto
 }
 .carousel-container {
   @apply carousel rounded-box
 /* SM */ sm:h-96
+/* SM */ lg:w-11/12
 }
 .announce-info-container {
   @apply pt-4 px-2 bg-white
-/* LG */ lg:w-3/4 lg:pb-0
+/* LG */ lg:w-3/4 lg:px-0
 }
 .category-price-line {
   @apply w-full mb-2 flex justify-between
@@ -134,7 +135,7 @@ nav {
 /* LG */ lg:px-0
 }
 .announce-titles-divider {
-  @apply divider divide-black w-full
+  @apply divider mb-8 divide-black w-full
 }
 .section-title {
   @apply text-2xl font-mono font-medium text-gray-800
