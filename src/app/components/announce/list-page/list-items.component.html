@@ -14,14 +14,14 @@
         name="search"
         formControlName="search"
         placeholder="Que recherchez-vous?"
-        class="w-11/12 md:w-auto input input-bordered max-w-xs"
+        class="input-lbl"
       />
       <select
         type="text"
         id="category"
         name="category"
         formControlName="category"
-        class="w-11/12 md:w-auto select select-bordered max-w-xs"
+        class="select select-bordered lbl-input"
       >
         <option [ngValue]="null">Dans quelle catégorie?</option>
         <option *ngFor="let category of categorys" [value]="category.name">
@@ -34,7 +34,7 @@
         name="minPrice"
         formControlName="minPrice"
         placeholder="Prix min?"
-        class="w-11/12 md:w-auto input input-bordered max-w-xs cursor-pointer"
+        class="input-lbl"
       />
       <input
         type="number"
@@ -42,7 +42,7 @@
         name="maxPrice"
         formControlName="maxPrice"
         placeholder="Prix max?"
-        class="w-11/12 md:w-auto input input-bordered max-w-xs cursor-pointer"
+        class="input-lbl"
       />
       <div class="btn-group ml-auto gap-1">
         <button

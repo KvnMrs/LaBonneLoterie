@@ -1,9 +1,9 @@
 <div
-  class="card w-10/12 mx-auto mb-4 py-4 border-b borber-b-2 border-gray-600 rounded-none | md:card-side md:w-9/12 md:ml-20"
+  class="card w-11/12 mx-auto mb-4 py-4 border-b borber-b-2 border-gray-600 rounded-none | md:card-side | lg:w-9/12 lg:ml-20"
 >
-  <div (click)="seeDetails()" class="w-full flex flex-col | md:flex-row">
+  <div (click)="seeDetails()" class="w-full flex flex-col gap-4 | md:flex-row">
     <!-- IMG part -->
-    <figure class="h-56 | md:max-h-64">
+    <figure class="h-56 | sm:w-10/12 |md:max-h-72 | md:w-fit">
       <img
         class="object-fill max-h-full w-full"
         [src]="data.imgsAnnounce![0]"

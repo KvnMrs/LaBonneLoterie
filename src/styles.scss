@@ -57,7 +57,7 @@ nav {
 /* SM */ sm:w-10/12 sm:mx-auto
 }
 .input-lbl {
-  @apply p-2 rounded-md
+  @apply input input-bordered p-2 rounded-md border-slate-400
 }
 
 // Sign-up & Log-in ///////////////////////////////////////////////////////////////////////
@@ -96,7 +96,7 @@ nav {
 }
 .announce-info-container {
   @apply pt-4 px-2 bg-white
-/* LG */ lg:w-3/4 lg:px-0
+/* LG */ lg:w-11/12 lg:px-0
 }
 .category-price-line {
   @apply w-full mb-2 flex justify-between
