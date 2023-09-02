@@ -3,7 +3,7 @@
   <form
     (ngSubmit)="onSubmitSigninForm()"
     [formGroup]="signinForm"
-    class="form-container lg:w-2/5"
+    class="form-container | md:mt-16 | lg:w-2/6"
   >
     <h1 class="form-title">Connexion</h1>
     <div class="form-sub-container md:flex-col">
@@ -43,7 +43,7 @@
           Se connecter
         </button>
         <p>
-          je ne suis pas inscris,
+          Je souhaite
           <a
             class="text-blue-600 hover:text-blue-400 underline"
             [routerLink]="['/inscription']"
