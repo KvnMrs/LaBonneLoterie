@@ -1,10 +1,8 @@
 {
   "hosting": {
     "target": "LeBonLot",
-    "public": "dist/la-bonne-loterie",
-    "ignore": [
-      "**/.*"
-    ],
+    "public": "dist/LaBonneLoterie",
+    "ignore": ["**/.*"],
     "headers": [
       {
         "source": "*.[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f].+(css|js)",
