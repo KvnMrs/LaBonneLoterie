@@ -1,0 +1,57 @@
+<div class="main-container">
+  <lbl-header>Heureux de vous revoir !</lbl-header>
+  <form
+    (ngSubmit)="onSubmitSigninForm()"
+    [formGroup]="signinForm"
+    class="form-container | md:mt-16 | lg:w-2/6"
+  >
+    <h1 class="form-title">Connexion</h1>
+    <div class="form-sub-container md:flex-col">
+      <div class="md:w-full">
+        <div class="form-input-container">
+          <label class="mb-1" for="email">E-mail:</label>
+          <input
+            class="input-lbl"
+            type="email"
+            id="email"
+            name="email"
+            formControlName="email"
+            autocomplete="email"
+            placeholder="Email"
+            required
+          />
+        </div>
+        <div class="form-input-container">
+          <label class="mb-1" for="password">Mot de passe:</label>
+          <input
+            class="input input-lbl"
+            type="password"
+            id="password"
+            name="password"
+            formControlName="password"
+            autocomplete="current-password"
+            placeholder="Mot de passe"
+            required
+          />
+        </div>
+      </div>
+      <div class="auth-cta-container">
+        <button
+          class="w-fit py-2 px-4 rounded-lg font-semibold text-white shadow-md bg-lbl"
+          type="submit"
+        >
+          Se connecter
+        </button>
+        <p>
+          Je souhaite
+          <a
+            class="text-blue-600 hover:text-blue-400 underline"
+            [routerLink]="['/inscription']"
+          >
+            m'inscrire.
+          </a>
+        </p>
+      </div>
+    </div>
+  </form>
+</div>

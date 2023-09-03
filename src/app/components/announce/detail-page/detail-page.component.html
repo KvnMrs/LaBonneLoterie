@@ -1,0 +1,167 @@
+<div *ngIf="currentAnnounce && authorAnnounce" class="main-container">
+  <lbl-header>Détails de l'annonce</lbl-header>
+  <!-- Details container -->
+  <div class="details-container-1">
+    <!-- Left part desktop -->
+    <div class="details-container-2 | md:w-1/2">
+      <!-- carousel-->
+      <div class="carousel-container">
+        <div
+          *ngFor="let imgUrl of currentAnnounce.imgsAnnounce; let i = index"
+          id="slide{{ i + 1 }}"
+          class="carousel-item relative w-full"
+        >
+          <img [src]="imgUrl" class="w-full" />
+          <div
+            class="absolute flex justify-between transform -translate-y-1/2 left-2 right-2 top-1/2"
+          >
+            <a href="#slide{{ i - 1 }}" class="btn btn-circle btn-sm">❮</a>
+            <a href="#slide{{ i + 1 }}" class="btn btn-circle btn-sm">❯</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Announce infos -->
+      <div class="announce-info-container">
+        <div class="category-price-line">
+          <h2 class="text-2xl">{{ currentAnnounce.category }}</h2>
+          <span class="text-2xl font-semibold">{{
+            currentAnnounce.ticketPrice | currency : "EUR"
+          }}</span>
+        </div>
+        <div class="mb-3">
+          <h3 class="text-xl mb-2">{{ currentAnnounce.title }}</h3>
+          <p>
+            Posté le
+            {{ currentAnnounce.createdAt | date : "dd/MM/yyyy" }}
+          </p>
+        </div>
+        <!-- Badges -->
+        <div class="flex mb-3">
+          <div class="announce-badges mr-1">neutral</div>
+          <div class="announce-badges mx-1">neutral</div>
+          <div class="announce-badges mx-1">neutral</div>
+        </div>
+        <div class="divider lg:mb-8"></div>
+        <!-- Description -->
+        <div>
+          <h3 class="card-title mb-2">Description:</h3>
+          <p class="text-gray-800 leading-normal">
+            {{ currentAnnounce.description }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Right part desktop -->
+    <div class="details-container-2 | md:w-1/3 md:flex-col-reverse md:-gap-4">
+      <!-- User & stats infos  -->
+      <div class="announce-user-stats-container">
+        <!-- Statistics -->
+        <div class="announce-statistics-info">
+          <div class="announce-titles-divider">
+            <h3 class="section-title">Statistiques</h3>
+          </div>
+          <div class="announce-statistics-lines">
+            <p class="font-mono">Estimation</p>
+            <p class="font-mono">{{ currentAnnounce.estimate }}</p>
+          </div>
+          <div class="announce-statistics-lines">
+            <p class="font-mono">Prix pour 1 ticket</p>
+            <p class="font-mono">{{ currentAnnounce.ticketPrice }}</p>
+          </div>
+          <div class="announce-statistics-lines">
+            <p class="font-mono">Nb Ticket maximum</p>
+            <p class="font-mono">{{ currentAnnounce.maxTickets }}</p>
+          </div>
+          <div class="announce-statistics-lines">
+            <p class="font-mono">Nb Ticket en cours</p>
+            <p class="font-mono">{{ currentAnnounce.currentTickets }}</p>
+          </div>
+          <div class="announce-statistics-lines">
+            <p class="font-mono">Nombre d'acheteur actuel</p>
+            <p class="font-mono">32</p>
+          </div>
+          <div class="announce-statistics-lines">
+            <p class="font-mono">Durant la dernière heure</p>
+            <p class="font-mono">500</p>
+          </div>
+        </div>
+        <!-- Timer -->
+        <app-timer [endDate]="currentAnnounce.endAt"></app-timer>
+      </div>
+      <!-- User -->
+      <div
+        class="announce-user-stats-container border border-slate-300 | sm:w-10/12 sm:mx-auto"
+      >
+        <div class="announce-user-profile">
+          <img
+            class="w-24 mask mask-squircle"
+            [src]="authorAnnounce['imgProfile']"
+          />
+          <div class="announce-user-info">
+            <p class="self-center text-gray-800 font-bold text-xl">
+              {{ authorAnnounce["firstname"] }}
+              {{ authorAnnounce["lastname"] }}
+            </p>
+            <div class="rating rating-md">
+              <input
+                type="radio"
+                name="rating-9"
+                class="mr-0.5 mask mask-star-2 bg-yellow-300"
+              />
+              <input
+                type="radio"
+                name="rating-9"
+                class="mx-0.5 mask mask-star-2 bg-yellow-300"
+                checked
+              />
+              <input
+                type="radio"
+                name="rating-9"
+                class="mx-0.5 mask mask-star-2 bg-primary"
+              />
+              <input
+                type="radio"
+                name="rating-9"
+                class="mx-0.5 mask mask-star-2 bg-primary"
+              />
+              <input
+                type="radio"
+                name="rating-9"
+                class="mx-0.5 mask mask-star-2 bg-primary"
+              />
+            </div>
+            <a class="link text-blue-500 | md:hidden | lg:flex"
+              >Voir les 29 annonces</a
+            >
+          </div>
+        </div>
+        <div class="hidden | md:btn-group md:flex md:justify-center gap-0.5">
+          <button class="ml-auto btn btn-info btn-sm btn-outline">
+            Contacter
+          </button>
+          <label for="modalBuyTicket" class="btn btn-primary btn-sm">
+            acheter
+          </label>
+        </div>
+      </div>
+      <div class="btn-group flex justify-center gap-0.5 | md:hidden">
+        <button class="ml-auto btn btn-info btn-sm btn-outline">
+          Contacter
+        </button>
+        <label for="modal-good-luck" class="btn btn-primary btn-sm">
+          acheter
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Buy ticket modal -->
+<app-modal-buy-ticket
+  *ngIf="currentAnnounce"
+  [currentAnnounce]="currentAnnounce"
+></app-modal-buy-ticket>
+
+<!-- Good luck modal -->
+<app-modal-wish-good-luck></app-modal-wish-good-luck>

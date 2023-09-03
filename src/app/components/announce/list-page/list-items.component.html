@@ -1,0 +1,74 @@
+<div class="main-container">
+  <lbl-header>Découvrez les nouvelles offres !</lbl-header>
+  <div class="collapse collapse-arrow filter-collapse bg-base-200">
+    <input type="checkbox" />
+    <div class="collapse-title text-lg font-medium">Rechercher</div>
+    <form
+      [formGroup]="searchForm"
+      (ngSubmit)="onSearch()"
+      class="collapse-content filters-container"
+    >
+      <input
+        type="text"
+        id="search"
+        name="search"
+        formControlName="search"
+        placeholder="Que recherchez-vous?"
+        class="input-lbl"
+      />
+      <select
+        type="text"
+        id="category"
+        name="category"
+        formControlName="category"
+        class="select-lbl"
+      >
+        <option [ngValue]="null">Dans quelle catégorie?</option>
+        <option *ngFor="let category of categorys" [value]="category.name">
+          {{ category.name }}
+        </option>
+      </select>
+      <input
+        type="number"
+        id="minPrice"
+        name="minPrice"
+        formControlName="minPrice"
+        placeholder="Prix min?"
+        class="input-lbl"
+      />
+      <input
+        type="number"
+        id="maxPrice"
+        name="maxPrice"
+        formControlName="maxPrice"
+        placeholder="Prix max?"
+        class="input-lbl"
+      />
+      <div class="btn-group ml-auto gap-1">
+        <button
+          type="button"
+          (click)="onResetSearch()"
+          [disabled]="!showResetBtn"
+          class="btn btn-outline btn-info btn-sm ml-auto | md:btn-md"
+        >
+          Retirer le filtre
+        </button>
+        <button
+          type="button"
+          (click)="onSearch()"
+          class="btn btn-info btn-sm ml-auto | md:btn-md"
+        >
+          Rechercher
+        </button>
+      </div>
+    </form>
+  </div>
+  <!-- collapse filters -->
+  <div class="collapse filter-collapse"></div>
+  <div class="cards-container">
+    <app-card
+      *ngFor="let announce of announces; let i = index"
+      [data]="announce"
+    ></app-card>
+  </div>
+</div>

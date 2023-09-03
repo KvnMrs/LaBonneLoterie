@@ -1,0 +1,49 @@
+<!-- The button to open modal -->
+<label for="modal-credit-profile" class="btn btn-primary shadow-md"
+  >Créditer</label
+>
+
+<!-- Put this part before </body> tag -->
+<input type="checkbox" id="modal-credit-profile" class="modal-toggle" />
+<form
+  class="modal"
+  (ngSubmit)="onCreditBankBalance()"
+  [formGroup]="creditBankBalanceForm"
+>
+  <div class="modal-box relative">
+    <label
+      for="modal-credit-profile"
+      class="btn btn-sm btn-circle absolute right-3 top-3"
+      >✕</label
+    >
+    <h3 class="mb-6 text-xl font-bold">Créditer votre profil:</h3>
+
+    <div class="mb-6 flex flex-col gap-2">
+      <div class="flex flex-col gap-3">
+        <label class="font-medium" for="bankAccount"
+          >Créditer la somme de:</label
+        >
+        <input
+          class="input-lbl"
+          type="number"
+          id="bankAccount"
+          name="bankAccount"
+          formControlName="bankAccount"
+          autocomplete="bankAccount"
+          placeholder="0 $"
+          required
+        />
+      </div>
+    </div>
+    <div class="flex justify-end">
+      <label
+        for="modal-credit-profile"
+        type="submit"
+        class="btn btn-primary ml-auto"
+        (click)="onCreditBankBalance()"
+      >
+        Créditer mon compte
+      </label>
+    </div>
+  </div>
+</form>

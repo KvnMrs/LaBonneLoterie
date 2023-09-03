@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "LaBonneLoterie": {
+    "LeBonLot": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -26,13 +26,8 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -72,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "LaBonneLoterie:build:production"
+              "browserTarget": "LeBonLot:build:production"
             },
             "development": {
-              "browserTarget": "LaBonneLoterie:build:development"
+              "browserTarget": "LeBonLot:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "LaBonneLoterie:build"
+            "browserTarget": "LeBonLot:build"
           }
         },
         "test": {
@@ -94,18 +89,25 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.scss"],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "LeBonLot:build:production",
+            "firebaseProject": "lebonlot-ca78b",
+            "firebaseHostingSite": "lebonlot-ca78b"
           }
         }
       }
     }
   },
-  "defaultProject": "LaBonneLoterie"
+  "cli": {
+    "analytics": false
+  }
 }

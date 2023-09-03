@@ -1,0 +1,64 @@
+<input
+  type="checkbox"
+  #modalBuyTicket
+  id="modalBuyTicket"
+  class="modal-toggle"
+/>
+<form class="modal" [formGroup]="buyTicketForm">
+  <div class="modal-box flex flex-col gap-4">
+    <label
+      for="modalBuyTicket"
+      class="btn btn-sm btn-circle absolute right-4 top-4"
+      >✕</label
+    >
+    <h3 class="font-bold text-lg">
+      Achat de ticket(s) pour '{{ currentAnnounce.title }}'.
+    </h3>
+    <div class="w-full flex flex-col mt-3 mb-5 gap-2">
+      <label for="buyTickets">Selectionner un nombre de ticket:</label>
+      <input
+        (change)="onChange($event)"
+        id="numberTicketSelected"
+        formControlName="numberTicketSelected"
+        type="number"
+        class="input-lbl w-1/3 border-2 bg-base-200"
+      />
+    </div>
+    <table class="w-full py-4">
+      <tbody>
+        <tr class="flex justify-between">
+          <th colspan="2" scope="row" class="font-normal">
+            Nombre de tickets sélectionnés:
+          </th>
+          <td class="font-medium">{{ purchasesInfo.numberTicket }}</td>
+        </tr>
+        <tr class="flex justify-between">
+          <th colspan="2" scope="row" class="font-normal">Nombre de chances</th>
+          <td class="font-medium">
+            {{ purchasesInfo.numberTicket }}/{{
+              currentAnnounce.currentTickets
+            }}5
+          </td>
+        </tr>
+        <div class="divider"></div>
+        <tr class="flex justify-between">
+          <th colspan="2" scope="row" class="font-normal">Prix total:</th>
+          <td class="font-medium">
+            {{ purchasesInfo.totalPrice | currency : "EUR" }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="modal-action">
+      <label for="modalBuyTicket" class="btn btn-outline btn-info"
+        >Annuler</label
+      >
+      <label
+        for="modalBuyTicket"
+        class="btn btn-primary"
+        (click)="onBuyTickets()"
+        >Valider</label
+      >
+    </div>
+  </div>
+</form>

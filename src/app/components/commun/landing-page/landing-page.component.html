@@ -1,0 +1,40 @@
+<section class="">
+  <div class="">
+    <div class="">
+      <div class="">
+        <div class="">
+          <div class="">
+            <div class="">
+              <h1 class="">LeBonLot</h1>
+              <p class="">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Phasellus pharetra ipsum imperdiet erat pharetra, et molestie
+                nunc laoreet. Etiam bibendum luctus velit et suscipit. Maecenas
+                nec lacus malesuada sem mollis elementum. Etiam venenatis
+                vestibulum elementum. Suspendisse molestie elit mauris, sed
+                vehicula lacus porttitor eget. Praesent porta tincidunt pretium.
+                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+                posuere cubilia curae; Donec quam nisl, eleifend eget rhoncus
+                quis, aliquam ac nunc. Proin mollis odio mauris. In bibendum
+                commodo dolor, sed lobortis nisl vulputate in. Maecenas finibus
+                ac velit vel hendrerit.
+              </p>
+            </div>
+            <div class="">
+              <app-sign-up
+                *ngIf="!haveAccount"
+                [haveAccount]="haveAccount"
+                (onAccount)="haveAccount = !haveAccount"
+              ></app-sign-up>
+              <app-sign-in
+                *ngIf="haveAccount"
+                [haveAccount]="haveAccount"
+                (notHaveAccount)="haveAccount = !haveAccount"
+              ></app-sign-in>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

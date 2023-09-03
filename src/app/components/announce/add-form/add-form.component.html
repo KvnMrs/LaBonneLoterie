@@ -1,0 +1,206 @@
+<div class="main-container">
+  <lbl-header>Publier votre annonce !</lbl-header>
+  <form
+    [formGroup]="createAnnounceForm"
+    class="form-container"
+    (ngSubmit)="onSubmit()"
+  >
+    <h1 class="form-title">Votre annonce</h1>
+    <div class="form-sub-container">
+      <div class="self-start md:w-full">
+        <div class="form-input-container">
+          <label class="mb-1" for="title">Titre:</label>
+          <input
+            class="input input-lbl"
+            type="text"
+            id="title"
+            name="title"
+            formControlName="title"
+            placeholder="Titre"
+            required
+          />
+        </div>
+        <div class="form-input-container">
+          <label class="mb-1">Catégorie:</label>
+          <select
+            class="select-lbl"
+            id="category"
+            name="category"
+            formControlName="category"
+          >
+            <option selected disabled>Catégorie</option>
+            <option *ngFor="let category of categorys" [value]="category.name">
+              {{ category.name }}
+            </option>
+          </select>
+        </div>
+        <div class="form-input-container">
+          <label class="mb-1" for="tags">Ajouter un tag:</label>
+          <input
+            class="input input-lbl"
+            type="text"
+            id="tags"
+            name="tags"
+            formControlName="tags"
+            placeholder="Tag"
+            required
+          />
+        </div>
+        <div class="form-input-container">
+          <label class="mb-1" for="estimate">Estimation du lot:</label>
+          <input
+            class="input input-lbl"
+            type="number"
+            id="estimate"
+            name="estimate"
+            formControlName="estimate"
+            placeholder="0 $"
+            required
+          />
+        </div>
+        <div class="form-input-container">
+          <label class="mb-1" for="ticketPrice">Prix ticket:</label>
+          <input
+            class="input-lbl"
+            type="number"
+            id="ticketPrice"
+            name="ticketPrice"
+            formControlName="ticketPrice"
+            placeholder="Prix pour un ticket"
+            required
+          />
+        </div>
+        <div class="form-input-container">
+          <label class="mb-1" for="maxTickets"
+            >Nombre de tickets à vendre:</label
+          >
+          <input
+            class="input-lbl"
+            type="number"
+            id="maxTickets"
+            name="maxTickets"
+            formControlName="maxTickets"
+            placeholder="Max"
+            required
+          />
+        </div>
+        <div class="form-input-container">
+          <label class="mb-1" for="minTickets"
+            >Nombre de tickets minimum:</label
+          >
+          <input
+            class="input input-lbl"
+            type="number"
+            id="minTickets"
+            name="minTickets"
+            formControlName="minTickets"
+            placeholder="Min"
+            required
+          />
+        </div>
+      </div>
+      <div class="col-upload-descript-buttons">
+        <div class="md:w-full mt-0">
+          <div class="form-input-container">
+            <label class="mb-1" for="endAt">Date du tirage:</label>
+            <input
+              class="input input-lbl"
+              type="date"
+              id="endAt"
+              name="endAt"
+              formControlName="endAt"
+              required
+            />
+          </div>
+          <div class="form-input-container">
+            <label class="mb-1" for="endHour">Heure du tirage:</label>
+            <input
+              class="input input-lbl"
+              type="number"
+              id="endHour"
+              name="endHour"
+              formControlName="endHour"
+              placeholder=""
+              required
+            />
+          </div>
+          <div class="form-input-container">
+            <label class="mb-1" for="imgsAnnounce"
+              >Télécharger un fichier:</label
+            >
+            <div class="mb-4">
+              <input
+                type="file"
+                id="imgsAnnounce"
+                name="imgsAnnounce"
+                formControlName="imgsAnnounce"
+                (change)="onChange($event)"
+                class="file-input rounded-r-none file-input-bordered file-input-info file-input-sm w-full | md:file-input-md"
+                required
+              />
+              <!-- <button
+                class="btn btn-success btn-square rounded-l-none"
+                type="button"
+                (click)="onPrepareUploadImg()"
+              >
+                ok
+              </button> -->
+            </div>
+            <div class="mb-4 self-center gap-1">
+              <img
+                id="previewImage"
+                src="{{ this.file }}"
+                alt=""
+                class="{{
+                  this.file ? 'w-28 h-28 rounded-md lg:w-40 lg:h-40' : 'hidden'
+                }}"
+              />
+              <p class="font-semibold">{{ this.file ? this.file.name : "" }}</p>
+            </div>
+            <button
+              [disabled]="!this.file"
+              class="btn btn-success btn-sm | md:w-2/3 md:mx-auto"
+              type="button"
+              (click)="onPrepareUploadImg()"
+            >
+              importer
+            </button>
+            <div
+              *ngFor="let selectedImg of selectedImgs; let i = index"
+              class="flex"
+            >
+              <button
+                type="button"
+                class="btn btn-sm btn-ghost btn-circle"
+                (click)="removeShortLink(i)"
+              >
+                x
+              </button>
+              <p class="text-lg">{{ selectedImg!.name }}</p>
+            </div>
+          </div>
+          <div class="form-input-container">
+            <label class="label" for="description">Description:</label>
+            <textarea
+              class="textarea-lbl"
+              type="text"
+              id="announce-description"
+              name="announce-description"
+              formControlName="description"
+              placeholder="250 charatères maximum..."
+            ></textarea>
+          </div>
+        </div>
+        <div class="btn-group flex justify-end | md:mt-4 md:mr-6 | lg:mt-8">
+          <button
+            (click)="onSubmit()"
+            type="button"
+            class="btn btn-stroke btn-primary"
+          >
+            Vérifier votre annonce
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

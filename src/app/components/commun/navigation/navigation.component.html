@@ -1,0 +1,90 @@
+<nav
+  *ngIf="!currentUser; else LoginNav"
+  role="navigation"
+  aria-label="Menu principal"
+  class="navbar"
+>
+  <div class="flex-1">
+    <a class="btn btn-ghost normal-case logo-letters">LeBonLot</a>
+  </div>
+  <ul class="gap-1">
+    <li>
+      <a
+        [routerLink]="['/recherche']"
+        class="hidden md:btn md:btn-ghost md:rounded-btn"
+        >Voir les annonces</a
+      >
+    </li>
+    <li>
+      <a
+        [routerLink]="['/inscription']"
+        class="btn btn-ghost btn-outline btn-primary"
+        >S'inscrire</a
+      >
+    </li>
+    <li>
+      <a
+        [routerLink]="['/connexion']"
+        class="btn btn-ghost btn-outline btn-primary"
+        >Se connecter</a
+      >
+    </li>
+  </ul>
+</nav>
+
+<ng-template #LoginNav>
+  <nav role="navigation" aria-label="Menu principal" class="navbar">
+    <div class="flex-1">
+      <a class="btn btn-ghost normal-case logo-letters">LeBonLot</a>
+    </div>
+    <div class="flex-none">
+      <ul class="menu menu-horizontal z-10 px-1">
+        <li>
+          <a
+            [routerLink]="['/recherche']"
+            class="hidden md:btn md:btn-ghost md:rounded-btn"
+            >Rechercher</a
+          >
+        </li>
+        <li>
+          <a
+            [routerLink]="['/ajout-annonce']"
+            class="hidden md:btn md:btn-ghost md:rounded-btn"
+            >Ajouter une annonce</a
+          >
+        </li>
+        <li tabindex="0" class="dropdown dropdown-bottom dropdown-end">
+          <a>
+            Menu
+            <svg
+              class="fill-current"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+              />
+            </svg>
+          </a>
+          <ul class="p-2 bg-base-200 right-0 border divide-y">
+            <li><a [routerLink]="['/recherche']">Mes recherches</a></li>
+            <li>
+              <a [routerLink]="['/ajout-annonce']">Ajouter une annonce</a>
+            </li>
+            <li><a [routerLink]="['/profil']">Mon profil</a></li>
+            <li>
+              <button
+                class="btn btn-ghost btn-outline btn-error"
+                (click)="onDisconnect()"
+              >
+                Se déonnecter
+              </button>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</ng-template>
