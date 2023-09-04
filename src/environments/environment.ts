@@ -1,6 +1,8 @@
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
+import {} from 'firebase/firestore';
+import {} from 'firebase/auth';
+import {} from 'firebase/storage';
 // Your web app's Firebase configuration
 export const environment = {
   production: false,
