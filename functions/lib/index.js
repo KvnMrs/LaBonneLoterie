@@ -15,4 +15,4 @@
 //   logger.info("Hello logs!", {structuredData: true});
 //   response.send("Hello from Firebase!");
 // });
-//# sourceMappingURL=index.js.map
+// # sourceMappingURL=index.js.map
