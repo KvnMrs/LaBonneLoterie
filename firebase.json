@@ -7,7 +7,7 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
-    "public": "public",
+    "public": "dist/la-bonne-loterie",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
   },
   "storage": {
