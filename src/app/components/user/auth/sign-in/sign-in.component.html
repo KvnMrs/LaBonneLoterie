@@ -3,11 +3,11 @@
   <form
     (ngSubmit)="onSubmitSigninForm()"
     [formGroup]="signinForm"
-    class="form-container | md:mt-16 | lg:w-2/6"
+    class="form-container mt-8 | md:mt-16 | lg:w-2/6"
   >
     <h1 class="form-title">Connexion</h1>
     <div class="form-sub-container md:flex-col">
-      <div class="md:w-full">
+      <div class="md:w-full mb-8 | md:mb-4">
         <div class="form-input-container">
           <label class="mb-1" for="email">E-mail:</label>
           <input
@@ -42,13 +42,13 @@
         >
           Se connecter
         </button>
-        <p>
-          Je souhaite
+        <p class="flex flex-col gap-0.5 items-center">
+          Envie de nous rejoindre ?
           <a
             class="text-blue-600 hover:text-blue-400 underline"
             [routerLink]="['/inscription']"
           >
-            m'inscrire.
+            Créer un compte
           </a>
         </p>
       </div>
