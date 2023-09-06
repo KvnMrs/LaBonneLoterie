@@ -27,8 +27,8 @@
 // NavBar ///////////////////////////////////////////////////////////////////////
 
 nav {
-  @apply sticky flex flex-col gap-1 border-b border-slate-300 bg-base-200
-/* SM */ sm:flex-row sm:gap-0 sm:justify-between
+  @apply sticky top-0 flex border-b border-slate-300 bg-base-200
+/* SM */ sm:gap-0 sm:justify-between
 }
 .logo-letters {
   @apply text-2xl font-semibold text-lbl
@@ -72,7 +72,7 @@ nav {
 // Sign-up & Log-in ///////////////////////////////////////////////////////////////////////
 
 .auth-cta-container {
-  @apply h-24 flex flex-col items-center place-content-around
+  @apply flex flex-col gap-2 items-center 
 }
 
 // Announces page ///////////////////////////////////////////////////////////////////////

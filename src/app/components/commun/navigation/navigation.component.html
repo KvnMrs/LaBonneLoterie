@@ -2,10 +2,14 @@
   *ngIf="!currentUser; else LoginNav"
   role="navigation"
   aria-label="Menu principal"
-  class="navbar"
+  class="navbar z-50 mb-4 flex-col | sm:px-4 sm:flex-row"
 >
   <div class="flex">
-    <a class="btn btn-sm btn-ghost normal-case logo-letters">LeBonLot</a>
+    <a
+      [routerLink]="['/recherche']"
+      class="btn btn-ghost normal-case logo-letters"
+      >LeBonLot</a
+    >
   </div>
   <ul class="gap-1">
     <li>
@@ -33,12 +37,20 @@
 </nav>
 
 <ng-template #LoginNav>
-  <nav role="navigation" aria-label="Menu principal" class="navbar">
+  <nav
+    role="navigation"
+    aria-label="Menu principal"
+    class="navbar z-50 | sm:px-4"
+  >
     <div class="flex-1">
-      <a class="btn btn-ghost normal-case logo-letters">LeBonLot</a>
+      <a
+        [routerLink]="['/recherche']"
+        class="btn btn-ghost normal-case logo-letters"
+        >LeBonLot</a
+      >
     </div>
     <div class="flex-none">
-      <ul class="menu menu-horizontal z-10 px-1">
+      <ul class="menu menu-horizontal px-1">
         <li>
           <a
             [routerLink]="['/recherche']"
@@ -68,7 +80,9 @@
               />
             </svg>
           </a>
-          <ul class="p-2 bg-base-200 right-0 border divide-y">
+          <ul
+            class="p-2 border-b border-l border-r border-slate-300 bg-base-200 right-0 top-14 divide-y"
+          >
             <li><a [routerLink]="['/recherche']">Mes recherches</a></li>
             <li>
               <a [routerLink]="['/ajout-annonce']">Ajouter une annonce</a>
