@@ -115,13 +115,12 @@ nav {
   @apply p-3 badge badge-outline
 }
 .announce-user-stats-container {
-  @apply py-4 px-2 mb-4 rounded
+  @apply py-2 px-4 mb-4 rounded
 /* LG */ lg:px-4 lg:flex lg:flex-col lg:justify-center
 }
 .announce-user-profile {
-  @apply flex justify-around items-center
-/* sm */ 
-/* MD */ md:flex-col
+  @apply mb-4 flex gap-4 items-center
+/* MD */ md:mb-0 md:flex-col
 }
 .announce-user-picture {
   @apply  mx-auto rounded-full object-cover
