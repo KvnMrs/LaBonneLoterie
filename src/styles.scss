@@ -75,8 +75,9 @@ nav {
 // Announces page ///////////////////////////////////////////////////////////////////////
 
 .filter-collapse {
-  @apply mb-5 mx-auto bg-base-200 rounded-box shadow-md
-/* MD */ md:w-11/12
+  @apply mx-auto bg-base-200 border border-slate-300 rounded-box shadow-md
+/* MD */ md:w-10/12
+/* LG */ lg:ml-20
 }
 .filters-container {
   @apply inline-flex inline-size-lbl flex-wrap gap-2
