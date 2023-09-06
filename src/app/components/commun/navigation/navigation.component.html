@@ -4,8 +4,8 @@
   aria-label="Menu principal"
   class="navbar"
 >
-  <div class="flex-1">
-    <a class="btn btn-ghost normal-case logo-letters">LeBonLot</a>
+  <div class="flex">
+    <a class="btn btn-sm btn-ghost normal-case logo-letters">LeBonLot</a>
   </div>
   <ul class="gap-1">
     <li>
@@ -18,14 +18,14 @@
     <li>
       <a
         [routerLink]="['/inscription']"
-        class="btn btn-ghost btn-outline btn-primary"
+        class="btn btn-sm btn-outline btn-primary | md:btn-md"
         >S'inscrire</a
       >
     </li>
     <li>
       <a
         [routerLink]="['/connexion']"
-        class="btn btn-ghost btn-outline btn-primary"
+        class="btn btn-sm btn-outline btn-primary | md:btn-md"
         >Se connecter</a
       >
     </li>
@@ -79,7 +79,7 @@
                 class="btn btn-ghost btn-outline btn-error"
                 (click)="onDisconnect()"
               >
-                Se déonnecter
+                Se déconnecter
               </button>
             </li>
           </ul>

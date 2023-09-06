@@ -6,7 +6,6 @@
 
 .text-lbl {
   color: #712CF9;
-  font-family: Luckiest Guy;
 }
 .bg-lbl {
   background-color: #712CF9;
@@ -16,7 +15,9 @@
 }
 
 .main-container {
-  @apply p-2 flex flex-col  min-h-screen
+  @apply px-2 py-4 flex flex-col min-h-screen
+/* MD */ md:px-4 md:py-6
+/* LG */ lg:px-6 lg:py-8
 }
 
 .inline-size-lbl {
@@ -26,10 +27,12 @@
 // NavBar ///////////////////////////////////////////////////////////////////////
 
 nav {
-  @apply h-16 flex border-b  border-slate-300 bg-base-200
+  @apply sticky flex flex-col gap-1 border-b border-slate-300 bg-base-200
+/* SM */ sm:flex-row sm:gap-0 sm:justify-between
 }
 .logo-letters {
   @apply text-2xl font-semibold text-lbl
+/* MD */ md:text-2xl
 }
 
 // Forms ///////////////////////////////////////////////////////////////////////
@@ -63,7 +66,7 @@ nav {
   @apply textarea textarea-bordered p-2 rounded-md border-slate-400
 }
 .select-lbl {
-  @apply select select-bordered rounded-md border-slate-400
+  @apply select select-bordered pl-2 rounded-md border-slate-400
 }
 
 // Sign-up & Log-in ///////////////////////////////////////////////////////////////////////
@@ -75,8 +78,8 @@ nav {
 // Announces page ///////////////////////////////////////////////////////////////////////
 
 .filter-collapse {
-  @apply mx-auto bg-base-200 border border-slate-300 rounded-box shadow-md
-/* MD */ md:w-10/12
+  @apply w-11/12 mx-auto bg-base-200 border border-slate-300 rounded-box shadow-md
+/* MD */ md:w-10/12 md:mb-2
 /* LG */ lg:ml-20
 }
 .filters-container {
