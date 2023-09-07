@@ -86,7 +86,8 @@ nav {
   @apply inline-flex inline-size-lbl flex-wrap gap-2
 }
 .cards-container {
-  @apply flex flex-col gap-2
+  @apply py-4 flex flex-col gap-2
+/* MD */ md:py-8
 }
 
 // Announce-details page ///////////////////////////////////////////////////////////////////////
@@ -117,7 +118,7 @@ nav {
   @apply p-3 badge badge-outline
 }
 .announce-user-stats-container {
-  @apply p-4 mb-4 rounded
+  @apply p-4 mb-4 rounded flex flex-col justify-center
 /* LG */ lg:px-4 lg:flex lg:flex-col lg:justify-center
 }
 .announce-user-profile {
