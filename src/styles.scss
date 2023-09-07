@@ -187,9 +187,9 @@ nav {
 
 // User-profile
 .user-profile-container {
-  @apply mx-auto flex flex-col gap-4
-/* MD */ md:px-4 md:flex-row
-/* LG */ lg:w-11/12
+  @apply mt-4 mx-auto flex flex-col gap-4
+/* MD */ md:mt-8 md:px-4 md:flex-row
+/* LG */ lg:w-11/12 lg:mt-12
 }
 .profile-card {
   @apply mx-auto p-4 flex flex-col gap-4 bg-slate-100 border border-slate-300 rounded-lg shadow-lg
@@ -219,4 +219,5 @@ nav {
 .card-menu {
   @apply h-full py-4 px-8 flex flex-col gap-4 text-center items-center justify-center bg-slate-100 border border-slate-300 rounded-md shadow-md
 /* MD */ md:p-6
+/* LG */ lg:p-8 lg:gap-8
 }
