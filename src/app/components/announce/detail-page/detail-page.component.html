@@ -79,11 +79,11 @@
           </div>
           <div class="announce-statistics-lines">
             <p class="font-mono">Nombre d'acheteur actuel</p>
-            <p class="font-mono">32</p>
+            <p class="font-mono">7</p>
           </div>
           <div class="announce-statistics-lines">
             <p class="font-mono">Durant la dernière heure</p>
-            <p class="font-mono">500</p>
+            <p class="font-mono">{{ currentAnnounce.currentTickets + 12 }}</p>
           </div>
         </div>
         <!-- Timer -->
@@ -103,11 +103,12 @@
               {{ authorAnnounce["firstname"] }}
               {{ authorAnnounce["lastname"] }}
             </p>
-            <div class="rating rating-md">
+            <div class="rating rating-md | md:mb-4 | lg:mb-0">
               <input
                 type="radio"
                 name="rating-9"
-                class="mr-0.5 mask mask-star-2 bg-yellow-300"
+                class="mx-0.5 mask mask-star-2 bg-yellow-300"
+                checked
               />
               <input
                 type="radio"
@@ -118,12 +119,14 @@
               <input
                 type="radio"
                 name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-primary"
+                class="mx-0.5 mask mask-star-2 bg-yellow-300"
+                checked
               />
               <input
                 type="radio"
                 name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-primary"
+                class="mx-0.5 mask mask-star-2 bg-yellow-300"
+                checked
               />
               <input
                 type="radio"
