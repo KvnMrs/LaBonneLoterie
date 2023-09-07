@@ -28,7 +28,7 @@
             name="category"
             formControlName="category"
           >
-            <option selected disabled>Catégorie</option>
+            <option [ngValue]="null">Catégorie</option>
             <option *ngFor="let category of categorys" [value]="category.name">
               {{ category.name }}
             </option>
@@ -100,7 +100,7 @@
         </div>
       </div>
       <div class="col-upload-descript-buttons">
-        <div class="md:w-full mt-0">
+        <div class="md:w-full mt-0 mb-8">
           <div class="form-input-container">
             <label class="mb-1" for="endAt">Date du tirage:</label>
             <input
@@ -116,7 +116,7 @@
             <label class="mb-1" for="endHour">Heure du tirage:</label>
             <input
               class="input input-lbl"
-              type="number"
+              type="time"
               id="endHour"
               name="endHour"
               formControlName="endHour"
@@ -137,14 +137,8 @@
                 (change)="onChange($event)"
                 class="file-input rounded-r-none file-input-bordered file-input-info file-input-sm w-full | md:file-input-md"
                 required
+                #fileInput
               />
-              <!-- <button
-                class="btn btn-success btn-square rounded-l-none"
-                type="button"
-                (click)="onPrepareUploadImg()"
-              >
-                ok
-              </button> -->
             </div>
             <div class="mb-4 self-center gap-1">
               <img
@@ -191,7 +185,7 @@
             ></textarea>
           </div>
         </div>
-        <div class="btn-group flex justify-end | md:mt-4 md:mr-6 | lg:mt-8">
+        <div class="flex justify-end | md:mr-6">
           <button
             (click)="onSubmit()"
             type="button"

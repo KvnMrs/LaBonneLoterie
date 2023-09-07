@@ -6,7 +6,6 @@
 
 .text-lbl {
   color: #712CF9;
-  font-family: Luckiest Guy;
 }
 .bg-lbl {
   background-color: #712CF9;
@@ -16,7 +15,9 @@
 }
 
 .main-container {
-  @apply p-2 flex flex-col  min-h-screen
+  @apply px-2 py-4 flex flex-col min-h-screen
+/* MD */ md:px-4 md:py-6
+/* LG */ lg:px-6 lg:py-8
 }
 
 .inline-size-lbl {
@@ -26,10 +27,12 @@
 // NavBar ///////////////////////////////////////////////////////////////////////
 
 nav {
-  @apply h-16 flex border-b  border-slate-300 bg-base-200
+  @apply sticky top-0 flex border-b border-slate-300 bg-base-200
+/* SM */ sm:gap-0 sm:justify-between
 }
 .logo-letters {
   @apply text-2xl font-semibold text-lbl
+/* MD */ md:text-2xl
 }
 
 // Forms ///////////////////////////////////////////////////////////////////////
@@ -63,20 +66,21 @@ nav {
   @apply textarea textarea-bordered p-2 rounded-md border-slate-400
 }
 .select-lbl {
-  @apply select select-bordered rounded-md border-slate-400
+  @apply select select-bordered pl-2 rounded-md border-slate-400
 }
 
 // Sign-up & Log-in ///////////////////////////////////////////////////////////////////////
 
 .auth-cta-container {
-  @apply h-24 flex flex-col items-center place-content-around
+  @apply flex flex-col gap-2 items-center 
 }
 
 // Announces page ///////////////////////////////////////////////////////////////////////
 
 .filter-collapse {
-  @apply mb-5 mx-auto bg-base-200 rounded-box shadow-md
-/* MD */ md:w-11/12
+  @apply w-11/12 mx-auto bg-base-200 border border-slate-300 rounded-box shadow-md
+/* MD */ md:w-10/12 md:mb-2
+/* LG */ lg:ml-20
 }
 .filters-container {
   @apply inline-flex inline-size-lbl flex-wrap gap-2
@@ -90,18 +94,20 @@ nav {
 .details-container-1 {
   @apply py-4 mx-auto justify-center
 /* SM */ sm:w-10/12 sm:mb-6 sm:py-6
-/* MD */ md:w-full md:flex
+/* MD */ md:w-full md:flex md:justify-around
+/* LG */ lg:w-10/12
 }
 .details-container-2 {
   @apply flex flex-col
 }
 .carousel-container {
-  @apply carousel rounded-box
+  @apply h-72 carousel rounded-box
 /* SM */ sm:h-96
-/* SM */ lg:w-11/12
+/* SM */ md:w-11/12
+/* SM */ lg:w-10/12
 }
 .announce-info-container {
-  @apply pt-4 px-2 bg-white
+  @apply pt-4 px-2 
 /* LG */ lg:w-11/12 lg:px-0
 }
 .category-price-line {
@@ -111,13 +117,12 @@ nav {
   @apply p-3 badge badge-outline
 }
 .announce-user-stats-container {
-  @apply py-4 px-2 mb-4 rounded
+  @apply p-4 mb-4 rounded
 /* LG */ lg:px-4 lg:flex lg:flex-col lg:justify-center
 }
 .announce-user-profile {
-  @apply flex justify-around items-center
-/* sm */ 
-/* MD */ md:flex-col
+  @apply mb-4 flex gap-4 items-center justify-center 
+/* MD */ md:mb-0 md:flex-col
 }
 .announce-user-picture {
   @apply  mx-auto rounded-full object-cover
@@ -133,7 +138,6 @@ nav {
   @apply mb-4 px-2 flex justify-center items-center gap-4
 /* MD */ md:hidden
 }
-
 .announce-statistics-info {
   @apply mb-4 p-2 flex flex-col gap-1 rounded-lg
 /* SM */ sm:gap-2
@@ -183,16 +187,12 @@ nav {
 
 // User-profile
 .user-profile-container {
-  @apply mx-auto flex flex-col gap-4
-/* MD */ md:px-4 md:flex-row
-/* LG */ lg:w-11/12
-}
-.profile-card-container {
-  @apply p-4 bg-slate-100 rounded-md 
-/* MD */ md:w-5/12 md:h-fit
+  @apply mt-4 mx-auto flex flex-col gap-4
+/* MD */ md:mt-8 md:px-4 md:flex-row
+/* LG */ lg:w-11/12 lg:mt-12
 }
 .profile-card {
-  @apply mx-auto py-4 px-2 flex flex-col gap-4 bg-slate-200 rounded-lg shadow-lg
+  @apply mx-auto p-4 flex flex-col gap-4 bg-slate-100 border border-slate-300 rounded-lg shadow-lg
 }
 .user-info-container {
   @apply flex flex-col gap-4
@@ -202,18 +202,22 @@ nav {
   @apply flex gap-4 items-center justify-center
 }
 .user-infos {
-  @apply  ml-auto p-2 bg-slate-50 rounded-lg 
+  @apply ml-auto p-2  bg-white rounded-lg border border-slate-300
+/* MD */ md:p-4
+
 }
 
 // Profile Menu
 .user-profile-menu-container {
-  @apply w-11/12 mx-auto py-4 flex flex-col gap-4 items-center self-center
-/* MD */ md:w-1/2
+  @apply mx-auto  flex flex-col gap-4 items-center self-center
+/* MD */
 }
 .pair-menu-container {
   @apply w-full flex flex-col gap-4
 /* MD */ md:flex-row
 }
 .card-menu {
-  @apply h-full px-2 py-4 flex flex-col gap-8 text-center items-center justify-center bg-slate-200 rounded-md 
+  @apply h-full py-4 px-8 flex flex-col gap-4 text-center items-center justify-center bg-slate-100 border border-slate-300 rounded-md shadow-md
+/* MD */ md:p-6
+/* LG */ lg:p-8 lg:gap-8
 }

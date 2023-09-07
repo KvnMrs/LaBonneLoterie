@@ -1,6 +1,6 @@
 <div class="main-container">
   <lbl-header>Découvrez les nouvelles offres !</lbl-header>
-  <div class="collapse collapse-arrow filter-collapse bg-base-200">
+  <div class="collapse collapse-arrow filter-collapse">
     <input type="checkbox" />
     <div class="collapse-title text-lg font-medium">Rechercher</div>
     <form
@@ -14,14 +14,14 @@
         name="search"
         formControlName="search"
         placeholder="Que recherchez-vous?"
-        class="input-lbl"
+        class="input-lbl w-2/3 | sm:w-auto"
       />
       <select
         type="text"
         id="category"
         name="category"
         formControlName="category"
-        class="select-lbl"
+        class="select-lbl w-2/3 | sm:w-auto"
       >
         <option [ngValue]="null">Dans quelle catégorie?</option>
         <option *ngFor="let category of categorys" [value]="category.name">
@@ -34,7 +34,7 @@
         name="minPrice"
         formControlName="minPrice"
         placeholder="Prix min?"
-        class="input-lbl"
+        class="input-lbl w-2/3 | sm:w-auto"
       />
       <input
         type="number"
@@ -42,9 +42,9 @@
         name="maxPrice"
         formControlName="maxPrice"
         placeholder="Prix max?"
-        class="input-lbl"
+        class="input-lbl w-2/3 | sm:w-auto"
       />
-      <div class="btn-group ml-auto gap-1">
+      <div class="btn-group mt-4 ml-auto gap-1 | lg:mt-0">
         <button
           type="button"
           (click)="onResetSearch()"
@@ -64,7 +64,6 @@
     </form>
   </div>
   <!-- collapse filters -->
-  <div class="collapse filter-collapse"></div>
   <div class="cards-container">
     <app-card
       *ngFor="let announce of announces; let i = index"

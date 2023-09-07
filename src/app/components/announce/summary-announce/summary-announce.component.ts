@@ -34,6 +34,7 @@ export class SummaryAnnounceComponent implements OnInit {
 
   async onPublish(): Promise<void> {
     await this.annoucesService.addAnnounce(this.newAnnounceData);
+    this.newAnnounceData = {};
   }
 
   goBack(): void {

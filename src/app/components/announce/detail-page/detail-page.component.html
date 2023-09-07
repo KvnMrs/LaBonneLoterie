@@ -2,7 +2,7 @@
   <lbl-header>Détails de l'annonce</lbl-header>
   <!-- Details container -->
   <div class="details-container-1">
-    <!-- Left part desktop -->
+    <!-- Left part -->
     <div class="details-container-2 | md:w-1/2">
       <!-- carousel-->
       <div class="carousel-container">
@@ -38,9 +38,9 @@
         </div>
         <!-- Badges -->
         <div class="flex mb-3">
-          <div class="announce-badges mr-1">neutral</div>
-          <div class="announce-badges mx-1">neutral</div>
-          <div class="announce-badges mx-1">neutral</div>
+          <div class="announce-badges mr-1">Tag1</div>
+          <div class="announce-badges mx-1">Tag2</div>
+          <div class="announce-badges mx-1">Tag3</div>
         </div>
         <div class="divider lg:mb-8"></div>
         <!-- Description -->
@@ -52,7 +52,7 @@
         </div>
       </div>
     </div>
-    <!-- Right part desktop -->
+    <!-- Right part -->
     <div class="details-container-2 | md:w-1/3 md:flex-col-reverse md:-gap-4">
       <!-- User & stats infos  -->
       <div class="announce-user-stats-container">
@@ -70,20 +70,20 @@
             <p class="font-mono">{{ currentAnnounce.ticketPrice }}</p>
           </div>
           <div class="announce-statistics-lines">
-            <p class="font-mono">Nb Ticket maximum</p>
+            <p class="font-mono">Nb Tickets maximum</p>
             <p class="font-mono">{{ currentAnnounce.maxTickets }}</p>
           </div>
           <div class="announce-statistics-lines">
-            <p class="font-mono">Nb Ticket en cours</p>
+            <p class="font-mono">Nb Ticket(s) en cours</p>
             <p class="font-mono">{{ currentAnnounce.currentTickets }}</p>
           </div>
           <div class="announce-statistics-lines">
-            <p class="font-mono">Nombre d'acheteur actuel</p>
-            <p class="font-mono">32</p>
+            <p class="font-mono">Nombre d'acheteur(s) actuel</p>
+            <p class="font-mono">7</p>
           </div>
           <div class="announce-statistics-lines">
             <p class="font-mono">Durant la dernière heure</p>
-            <p class="font-mono">500</p>
+            <p class="font-mono">{{ currentAnnounce.currentTickets + 12 }}</p>
           </div>
         </div>
         <!-- Timer -->
@@ -91,7 +91,7 @@
       </div>
       <!-- User -->
       <div
-        class="announce-user-stats-container border border-slate-300 | sm:w-10/12 sm:mx-auto"
+        class="announce-user-stats-container border border-slate-300 | sm:mx-auto | md:w-10/12"
       >
         <div class="announce-user-profile">
           <img
@@ -103,11 +103,24 @@
               {{ authorAnnounce["firstname"] }}
               {{ authorAnnounce["lastname"] }}
             </p>
-            <div class="rating rating-md">
+            <div class="rating rating-md | md:mb-4 | lg:mb-0">
               <input
                 type="radio"
                 name="rating-9"
-                class="mr-0.5 mask mask-star-2 bg-yellow-300"
+                class="mx-0.5 mask mask-star-2 bg-yellow-300"
+                checked
+              />
+              <input
+                type="radio"
+                name="rating-9"
+                class="mx-0.5 mask mask-star-2 bg-yellow-300"
+                checked
+              />
+              <input
+                type="radio"
+                name="rating-9"
+                class="mx-0.5 mask mask-star-2 bg-yellow-300"
+                checked
               />
               <input
                 type="radio"
@@ -120,22 +133,22 @@
                 name="rating-9"
                 class="mx-0.5 mask mask-star-2 bg-primary"
               />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-primary"
-              />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-primary"
-              />
             </div>
             <a class="link text-blue-500 | md:hidden | lg:flex"
               >Voir les 29 annonces</a
             >
           </div>
         </div>
+        <!-- User CTA { MOBILE }  -->
+        <div class="btn-group flex justify-center gap-0.5 | md:hidden">
+          <button class="ml-auto btn btn-info btn-sm btn-outline">
+            Contacter
+          </button>
+          <label for="modalBuyTicket" class="btn btn-primary btn-sm">
+            acheter
+          </label>
+        </div>
+        <!-- User CTA { DESKTOP }  -->
         <div class="hidden | md:btn-group md:flex md:justify-center gap-0.5">
           <button class="ml-auto btn btn-info btn-sm btn-outline">
             Contacter
@@ -144,14 +157,6 @@
             acheter
           </label>
         </div>
-      </div>
-      <div class="btn-group flex justify-center gap-0.5 | md:hidden">
-        <button class="ml-auto btn btn-info btn-sm btn-outline">
-          Contacter
-        </button>
-        <label for="modal-good-luck" class="btn btn-primary btn-sm">
-          acheter
-        </label>
       </div>
     </div>
   </div>
