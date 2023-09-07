@@ -6,10 +6,7 @@
         <div class="user-picture-infos">
           <div class="w-1/2 flex justify-center">
             <img
-              src="{{
-                profileData['imgProfile'] ||
-                  'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp'
-              }}"
+              src="{{ profileData['imgProfile'] || '/assets/svg/profile.svg' }}"
               alt="Generic placeholder image"
               class="w-28 h-28 rounded-full"
             />
