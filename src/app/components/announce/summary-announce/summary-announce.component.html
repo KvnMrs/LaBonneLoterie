@@ -24,35 +24,32 @@
         <div class="flex flex-col">
           <div class="flex gap-2 items-center">
             <h2 class="text-lg">Titre:</h2>
-            <h3>Titre{{ newAnnounceData.title }}</h3>
+            <h3 class="text-lg font-semibold">{{ newAnnounceData.title }}</h3>
           </div>
-          <div class="mb-2 flex gap-2 items-center">
+          <div class="flex gap-2 items-center">
             <h2 class="text-lg">Catégorie:</h2>
-            <h3>Catégorie{{ newAnnounceData.category }}</h3>
+            <h3 class="text-lg font-semibold">
+              {{ newAnnounceData.category }}
+            </h3>
           </div>
           <div class="mb-2 flex gap-2 items-center">
             <h2 class="text-lg">Estimation:</h2>
-            <h3>150{{ newAnnounceData.estimate }} $</h3>
+            <h3 class="text-lg font-semibold">
+              {{ newAnnounceData.estimate }} $
+            </h3>
           </div>
           <div class="flex">
-            <div class="announce-badges mr-1">neutral</div>
-            <div class="announce-badges mx-1">neutral</div>
-            <div class="announce-badges mx-1">neutral</div>
-            <div class="announce-badges ml-1">neutral</div>
+            <div class="announce-badges mr-1">Tag1</div>
+            <div class="announce-badges mx-1">Tag2</div>
+            <div class="announce-badges mx-1">Tag3</div>
           </div>
         </div>
-
-        <!-- <span class="text-2xl font-semibold">{{
-            newAnnounceData.ticketPrice | currency : "EUR"
-          }}</span> -->
 
         <div class="divider lg:mb-8"></div>
         <!-- Description -->
         <div>
           <h3 class="card-title mb-2">Description:</h3>
           <p class="text-gray-800 leading-normal">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-            pharetra, urna eu placerat imperdiet.
             {{ newAnnounceData.description }}
           </p>
         </div>
@@ -61,15 +58,21 @@
           <h3 class="card-title mb-2">Tickets:</h3>
           <div class="flex justify-between">
             <p>Prix d'un ticket:</p>
-            <p>1{{ newAnnounceData.ticketPrice }}$</p>
+            <p class="text-lg font-semibold">
+              {{ newAnnounceData.ticketPrice }}$
+            </p>
           </div>
           <div class="flex justify-between">
             <p>Nombre de ticket minimum:</p>
-            <p>100{{ newAnnounceData.minTickets }}</p>
+            <p class="text-lg font-semibold">
+              {{ newAnnounceData.minTickets }}
+            </p>
           </div>
           <div class="flex justify-between">
             <p>Nombre de ticket maximum:</p>
-            <p>40{{ newAnnounceData.maxTickets }}</p>
+            <p class="text-lg font-semibold">
+              {{ newAnnounceData.maxTickets }}
+            </p>
           </div>
         </div>
         <div class="divider lg:mb-8"></div>
@@ -77,7 +80,7 @@
           <h3 class="card-title mb-2">Tirage:</h3>
           <div class="flex justify-between">
             <p>Date du tirage:</p>
-            <p>
+            <p class="text-lg font-semibold">
               {{ newAnnounceData.endAt | date }}
             </p>
           </div>

@@ -7,7 +7,7 @@
   >
     <h1 class="form-title">Inscription</h1>
     <div class="form-sub-container">
-      <div class="md:w-full">
+      <div class="md:w-full | md:mb-6">
         <div class="form-input-container">
           <label class="mb-1" for="firstname">Prénom:</label>
           <input
@@ -62,7 +62,7 @@
         </div>
       </div>
       <div class="col-upload-descript-buttons">
-        <div class="md:w-full">
+        <div class="md:w-full mb-8 | md:mb-4">
           <div class="form-input-container">
             <label class="mb-1" for="email">E-mail:</label>
             <input
@@ -112,8 +112,8 @@
           >
             S'incrire
           </button>
-          <p>
-            j'ai déjà un compte,
+          <p class="flex flex-col gap-0.5 items-center">
+            J'ai déjà un compte,
             <a
               class="text-blue-600 hover:text-blue-400 underline"
               [routerLink]="['/connexion']"

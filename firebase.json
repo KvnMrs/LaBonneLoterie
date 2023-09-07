@@ -1,55 +1,30 @@
 {
-  "hosting": {
-    "public": "public",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
+  "functions": {
+    "source": "functions"
   },
   "firestore": {
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
   },
-  "functions": [
-    {
-      "source": "functions",
-      "codebase": "default",
-      "ignore": [
-        "node_modules",
-        ".git",
-        "firebase-debug.log",
-        "firebase-debug.*.log"
-      ],
-      "predeploy": [
-        "npm --prefix \"$RESOURCE_DIR\" run lint"
-      ]
-    }
-  ],
+  "hosting": {
+    "public": "dist/la-bonne-loterie",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  },
   "storage": {
     "rules": "storage.rules"
   },
   "emulators": {
     "auth": {
-      "port": 2212
+      "port": 9099
     },
     "functions": {
-      "port": 1101
+      "port": 5001
     },
     "firestore": {
-      "port": 1610
-    },
-    "database": {
-      "port": 2910
+      "port": 8080
     },
     "hosting": {
-      "port": 2312
+      "port": 5000
     },
     "storage": {
       "port": 9199

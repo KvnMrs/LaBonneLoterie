@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 // Services
@@ -6,7 +6,6 @@ import { AnnouncesService } from '../../../services/announce/announces.service';
 import { UploadImgService } from '../../../services/upload/upload-img.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 // Models
-import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 import { User } from 'firebase/auth';
 
 @Component({
@@ -15,6 +14,7 @@ import { User } from 'firebase/auth';
   styleUrls: ['./add-form.component.scss'],
 })
 export class AddFormComponent implements OnInit {
+  @ViewChild('fileInput') fileInput: ElementRef | null = null;
   public createAnnounceForm!: FormGroup;
   public selectedImgs: Array<File | null> = [];
   public announceData: null = null;
@@ -27,7 +27,7 @@ export class AddFormComponent implements OnInit {
     { id: 2, name: 'Véhicule' },
     { id: 3, name: 'Multimédia' },
     { id: 4, name: 'Décoration' },
-    { id: 5, name: 'Electomenager' },
+    { id: 5, name: 'Electroménager' },
     { id: 6, name: 'Jardin' },
     { id: 7, name: 'Sport' },
     { id: 8, name: 'Loisir' },
@@ -75,11 +75,12 @@ export class AddFormComponent implements OnInit {
     this.uploadImgService.showImgBeforeUpload(this.file!);
   }
 
-  // Show picture announce before upload.
+  // Show picture announce before its upload.
   async onPrepareUploadImg(): Promise<void> {
     this.selectedImgs.push(this.file);
     this.file = null;
     this.createAnnounceForm.value.imgsAnnounce = '';
+    this.fileInput!.nativeElement.value = null;
   }
 
   removeShortLink(index: number): void {
@@ -88,10 +89,29 @@ export class AddFormComponent implements OnInit {
     }
   }
 
+  getTimeStampFromSelectedTime(time: string) {
+    if (time) {
+      const timeParts = time.split(':');
+      const hours = parseInt(timeParts[0], 10);
+      const minutes = parseInt(timeParts[1], 10);
+      if (!isNaN(hours) && !isNaN(minutes)) {
+        const date = new Date();
+        date.setHours(hours, minutes, 0, 0);
+        const timestamp = date.getTime();
+        return timestamp;
+      } else return null;
+    } else {
+      const timestamp = 1;
+      return timestamp;
+    }
+  }
+
   async onSubmit() {
     let imgsAnnounceUrl: Array<string> = [];
     let announceData = this.createAnnounceForm.value;
-
+    announceData.endHour = this.getTimeStampFromSelectedTime(
+      announceData.endHour
+    );
     if (!announceData) return;
     if (announceData.title === '' || announceData.description === '') {
       this.showErrorMessage = true;

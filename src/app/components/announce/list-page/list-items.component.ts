@@ -18,7 +18,7 @@ export class ListItemsComponent implements OnInit {
     { id: 2, name: 'Véhicule' },
     { id: 3, name: 'Multimédia' },
     { id: 4, name: 'Décoration' },
-    { id: 5, name: 'Electomenager' },
+    { id: 5, name: 'Electroménager' },
     { id: 6, name: 'Jardin' },
   ];
 

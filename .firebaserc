@@ -1,13 +1,4 @@
 {
-  "targets": {
-    "lebonlot-ca78b": {
-      "hosting": {
-        "LeBonLot": [
-          "lebonlot-ca78b"
-        ]
-      }
-    }
-  },
   "projects": {
     "default": "lebonlot-ca78b"
   }
