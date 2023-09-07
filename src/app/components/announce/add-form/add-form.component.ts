@@ -75,7 +75,7 @@ export class AddFormComponent implements OnInit {
     this.uploadImgService.showImgBeforeUpload(this.file!);
   }
 
-  // Show picture announce before upload.
+  // Show picture announce before its upload.
   async onPrepareUploadImg(): Promise<void> {
     this.selectedImgs.push(this.file);
     this.file = null;
