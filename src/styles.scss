@@ -94,15 +94,17 @@ nav {
 .details-container-1 {
   @apply py-4 mx-auto justify-center
 /* SM */ sm:w-10/12 sm:mb-6 sm:py-6
-/* MD */ md:w-full md:flex
+/* MD */ md:w-full md:flex md:justify-around
+/* LG */ lg:w-10/12
 }
 .details-container-2 {
   @apply flex flex-col
 }
 .carousel-container {
-  @apply carousel rounded-box
+  @apply h-72 carousel rounded-box
 /* SM */ sm:h-96
-/* SM */ lg:w-11/12
+/* SM */ md:w-11/12
+/* SM */ lg:w-10/12
 }
 .announce-info-container {
   @apply pt-4 px-2 bg-white
