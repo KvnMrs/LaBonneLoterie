@@ -28,7 +28,7 @@
             name="category"
             formControlName="category"
           >
-            <option selected disabled>Catégorie</option>
+            <option [ngValue]="null">Catégorie</option>
             <option *ngFor="let category of categorys" [value]="category.name">
               {{ category.name }}
             </option>
@@ -116,7 +116,7 @@
             <label class="mb-1" for="endHour">Heure du tirage:</label>
             <input
               class="input input-lbl"
-              type="number"
+              type="time"
               id="endHour"
               name="endHour"
               formControlName="endHour"
@@ -138,13 +138,6 @@
                 class="file-input rounded-r-none file-input-bordered file-input-info file-input-sm w-full | md:file-input-md"
                 required
               />
-              <!-- <button
-                class="btn btn-success btn-square rounded-l-none"
-                type="button"
-                (click)="onPrepareUploadImg()"
-              >
-                ok
-              </button> -->
             </div>
             <div class="mb-4 self-center gap-1">
               <img
