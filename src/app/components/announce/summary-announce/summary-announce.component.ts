@@ -37,7 +37,6 @@ export class SummaryAnnounceComponent implements OnInit {
           ' ' +
           announceAuthor['lastname'].toUpperCase()
         }`;
-        console.log('announceAuthor', announceAuthor);
       }
     );
   }

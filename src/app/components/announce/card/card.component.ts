@@ -42,9 +42,7 @@ export class CardComponent implements OnInit {
   }
 
   //TODO: create addFavorite logic/
-  onAddFavorite() {
-    console.log();
-  }
+  onAddFavorite() {}
 
   buyTicket() {
     this.router.navigate([`/achat-ticket/${this.data.id}`]);
