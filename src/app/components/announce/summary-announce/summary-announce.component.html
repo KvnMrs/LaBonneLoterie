@@ -1,6 +1,6 @@
 <section class="main-container">
   <lbl-header>Vérifions ensemble !</lbl-header>
-  <article class="summary-container">
+  <article *ngIf="newAnnounceData" class="summary-container">
     <!-- Carousel-->
     <div class="carousel-container md:w-1/2">
       <div
@@ -95,14 +95,14 @@
         <button
           (click)="goBack()"
           type="button"
-          class="btn btn-outline btn-info"
+          class="btn btn-sm btn-outline btn-info | md:btn-md"
         >
           Retour
         </button>
         <label
           (click)="onPublish()"
           for="modal-wish-success"
-          class="btn btn-primary"
+          class="btn btn-sm btn-primary | md:btn-md"
           >Valider</label
         >
       </div>
@@ -124,8 +124,8 @@
       Le bon succès 🍀
     </h3>
     <p class="pb-2">
-      [Nom utilisateur], nous vous souhaitons bonne chance pour ce tirage ce
-      tirage à venir !
+      {{ fullNameAuthor }}, nous espèrons et vou souhaitons que votre annonce
+      rencontre un franc le succès ! venir !
     </p>
     <p class="pb-2">
       N'hésitez pas à nous contacter si vous avez des questions ou des
@@ -135,7 +135,7 @@
       <label
         (click)="redirectUser()"
         for="modal-wish-success"
-        class="btn btn-primary"
+        class="btn btn-sm btn-primary | md:btn-md"
         >Merci</label
       >
     </div>
