@@ -26,9 +26,7 @@ export class ModalBuyTickectComponent implements OnInit {
     private authService: AuthService
   ) {}
 
-  ngOnInit() {
-    console.log();
-  }
+  ngOnInit() {}
 
   onChange(event: any) {
     this.purchasesInfo.numberTicket = event.target.value;

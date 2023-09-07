@@ -65,9 +65,12 @@ export class AnnouncesService {
   public addAnnounce(announce: Partial<IAnnounce>) {
     try {
       if (!announce.endAt || !announce.endHour) throw Error;
+
       announce.endAt =
         new Date(announce.endAt).getTime() +
-        (announce.endHour - 2) * 60 * 60 * 1000; // subtract 2 hours to align with the European time zone
+        announce.endHour -
+        new Date().getTime();
+
       const newAnnounce: Partial<IAnnounce> = {
         title: announce.title,
         category: announce.category,
@@ -84,6 +87,7 @@ export class AnnouncesService {
         authorUid: announce.authorUid,
       };
       const announceRef = collection(this.firestore, 'Announces');
+
       return addDoc(announceRef, newAnnounce);
     } catch (err) {
       console.error('Problem with the announce data');
