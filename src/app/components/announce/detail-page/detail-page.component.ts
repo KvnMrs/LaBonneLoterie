@@ -3,8 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { DocumentData } from 'firebase/firestore';
 // Models
 import { IAnnounce } from 'src/app/models/annouce/annouce.model';
+import { IUser } from 'src/app/models/user/user.model';
 // Service
 import { AnnouncesService } from 'src/app/services/announce/announces.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -16,16 +18,26 @@ export class DetailPageComponent implements OnInit {
   @ViewChild('modalBuyTicket') modalBuyTicket!: ElementRef;
   public currentAnnounce: IAnnounce | null = null;
   public authorAnnounce: DocumentData | null = null;
+  public currentUser: IUser | null = null;
   paramId: string = '';
   postedDate: any;
 
   constructor(
     private route: ActivatedRoute,
     private announcesService: AnnouncesService,
-    private userService: UserService
+    private userService: UserService,
+    private authService: AuthService
   ) {}
 
   async ngOnInit(): Promise<void> {
+    this.authService.currentUserSubject.subscribe({
+      next: (user) => {
+        this.currentUser = user as IUser;
+      },
+      error: (error) => {
+        console.error('Erreur récupération utilisateur.', error);
+      },
+    });
     try {
       this.paramId = this.route.snapshot.params['id'];
       await this.fetchAnnounceById(this.paramId);

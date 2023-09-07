@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class NavigationComponent implements OnInit, OnDestroy {
   public currentUserSubscription!: Subscription;
-  public currentUser!: IUser;
+  public currentUser: IUser | null = null;
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
