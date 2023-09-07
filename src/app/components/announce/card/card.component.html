@@ -1,5 +1,5 @@
 <div
-  class="card w-11/12 mx-auto mb-4 py-4 border-b borber-b-2 border-gray-600 rounded-none | md:card-side | lg:w-9/12 lg:ml-20"
+  class="card w-11/12 mx-auto mb-4 py-2 border-b borber-b-2 border-gray-600 rounded-none | md:py-4 md:card-side | lg:w-9/12 lg:ml-20"
 >
   <div (click)="seeDetails()" class="w-full flex flex-col gap-4 | md:flex-row">
     <!-- IMG part -->
@@ -24,7 +24,7 @@
     </div>
   </div>
 
-  <div class="flex justify-between | md:flex-col">
+  <div class="flex justify-between items-center | md:flex-col">
     <button
       (click)="onAddFavorite()"
       class="btn btn-circle btn-md btn-ghost | md:ml-auto"
@@ -36,8 +36,9 @@
       />
     </button>
     <label
+      *ngIf="currentUser"
       for="modalBuyTicket"
-      class="btn btn-primary btn-md w-max z-10 ml-auto"
+      class="btn btn-primary btn-sm w-max z-10 ml-auto | md:btn-md"
       >Achat ticket(s)</label
     >
   </div>

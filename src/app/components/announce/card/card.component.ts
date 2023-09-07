@@ -1,7 +1,9 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IAnnounce } from 'src/app/models/annouce/annouce.model';
+import { IUser } from 'src/app/models/user/user.model';
 import { AnnouncesService } from 'src/app/services/announce/announces.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-card',
@@ -10,15 +12,26 @@ import { AnnouncesService } from 'src/app/services/announce/announces.service';
 })
 export class CardComponent implements OnInit {
   @Input() data!: IAnnounce;
+  public currentUser: IUser | null = null;
 
   @ViewChild('modalBuyTicket') modalBuyTicket!: ElementRef;
 
   constructor(
     private router: Router,
-    public annoucesService: AnnouncesService
+    public annoucesService: AnnouncesService,
+    public authService: AuthService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.currentUserSubject.subscribe({
+      next: (user) => {
+        this.currentUser = user as IUser;
+      },
+      error: (error) => {
+        console.error('Erreur récupération utilisateur.', error);
+      },
+    });
+  }
 
   seeDetails() {
     this.router.navigate([`/liste/${this.data.id}`]);
@@ -33,7 +46,7 @@ export class CardComponent implements OnInit {
     console.log();
   }
 
-  buyTicket(id: string) {
+  buyTicket() {
     this.router.navigate([`/achat-ticket/${this.data.id}`]);
   }
 

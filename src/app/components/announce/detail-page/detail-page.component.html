@@ -15,8 +15,16 @@
           <div
             class="absolute flex justify-between transform -translate-y-1/2 left-2 right-2 top-1/2"
           >
-            <a href="#slide{{ i - 1 }}" class="btn btn-circle btn-sm">❮</a>
-            <a href="#slide{{ i + 1 }}" class="btn btn-circle btn-sm">❯</a>
+            <a
+              href="#slide{{ i - 1 }}"
+              class="btn btn-circle btn-sm | md:btn-md"
+              >❮</a
+            >
+            <a
+              href="#slide{{ i + 1 }}"
+              class="btn btn-circle btn-sm | md:btn-md"
+              >❯</a
+            >
           </div>
         </div>
       </div>
@@ -144,7 +152,11 @@
           <button class="ml-auto btn btn-info btn-sm btn-outline">
             Contacter
           </button>
-          <label for="modalBuyTicket" class="btn btn-primary btn-sm">
+          <label
+            *ngIf="currentUser"
+            for="modalBuyTicket"
+            class="btn btn-primary btn-sm"
+          >
             acheter
           </label>
         </div>
