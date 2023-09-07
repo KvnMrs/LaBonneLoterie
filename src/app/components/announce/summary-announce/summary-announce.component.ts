@@ -4,6 +4,8 @@ import { Location } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 import { AnnouncesService } from 'src/app/services/announce/announces.service';
+import { UserService } from 'src/app/services/user/user.service';
+import { DocumentData } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-summary-announce',
@@ -11,19 +13,31 @@ import { AnnouncesService } from 'src/app/services/announce/announces.service';
   styleUrls: ['./summary-announce.component.scss'],
 })
 export class SummaryAnnounceComponent implements OnInit {
-  newAnnounceData!: Partial<IAnnounce>;
+  newAnnounceData: Partial<IAnnounce> | null = null;
+  public fullNameAuthor: string | null = null;
   private dataSubscription!: Subscription;
 
   constructor(
     public router: Router,
     private annoucesService: AnnouncesService,
+    private userService: UserService,
     private location: Location
   ) {}
 
   ngOnInit(): void {
     this.dataSubscription = this.annoucesService.announceData$.subscribe(
-      (data) => {
+      async (data) => {
         this.newAnnounceData = data;
+        const announceAuthor = await this.userService.getUserByID(
+          this.newAnnounceData.authorUid as string
+        );
+        if (!announceAuthor) throw Error;
+        this.fullNameAuthor = `${
+          announceAuthor['firstname'] +
+          ' ' +
+          announceAuthor['lastname'].toUpperCase()
+        }`;
+        console.log('announceAuthor', announceAuthor);
       }
     );
   }
@@ -33,6 +47,7 @@ export class SummaryAnnounceComponent implements OnInit {
   }
 
   async onPublish(): Promise<void> {
+    if (!this.newAnnounceData) throw Error;
     await this.annoucesService.addAnnounce(this.newAnnounceData);
     this.newAnnounceData = {};
   }
