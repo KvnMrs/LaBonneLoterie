@@ -90,19 +90,16 @@ export class AddFormComponent implements OnInit {
   }
 
   getTimeStampFromSelectedTime(time: string) {
-    if (time) {
-      const timeParts = time.split(':');
-      const hours = parseInt(timeParts[0], 10);
-      const minutes = parseInt(timeParts[1], 10);
-      if (!isNaN(hours) && !isNaN(minutes)) {
-        const date = new Date();
-        date.setHours(hours, minutes, 0, 0);
-        const timestamp = date.getTime();
-        return timestamp;
-      } else return null;
-    } else {
-      const timestamp = 1;
+    const timeParts = time.split(':');
+    const hours = parseInt(timeParts[0], 10);
+    const minutes = parseInt(timeParts[1], 10);
+    if (!isNaN(hours) && !isNaN(minutes)) {
+      const date = new Date();
+      date.setHours(hours, minutes, 0, 0);
+      const timestamp = date.getTime();
       return timestamp;
+    } else {
+      return null;
     }
   }
 
