@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 // Services
@@ -6,7 +6,6 @@ import { AnnouncesService } from '../../../services/announce/announces.service';
 import { UploadImgService } from '../../../services/upload/upload-img.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 // Models
-import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 import { User } from 'firebase/auth';
 
 @Component({
@@ -15,6 +14,7 @@ import { User } from 'firebase/auth';
   styleUrls: ['./add-form.component.scss'],
 })
 export class AddFormComponent implements OnInit {
+  @ViewChild('fileInput') fileInput: ElementRef | null = null;
   public createAnnounceForm!: FormGroup;
   public selectedImgs: Array<File | null> = [];
   public announceData: null = null;
@@ -80,6 +80,7 @@ export class AddFormComponent implements OnInit {
     this.selectedImgs.push(this.file);
     this.file = null;
     this.createAnnounceForm.value.imgsAnnounce = '';
+    this.fileInput!.nativeElement.value = null;
   }
 
   removeShortLink(index: number): void {
