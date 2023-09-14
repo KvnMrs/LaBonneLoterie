@@ -37,6 +37,7 @@ import { AnnouncesService } from './services/announce/announces.service';
 import { AuthService } from './services/auth/auth.service';
 import { UploadImgService } from './services/upload/upload-img.service';
 import { SvgAddToFavoritesComponent } from './shared/libs/ux-ui/SVGs/addToFavorites/svg-add-to-favorites.component';
+import { SvgSearchComponent } from './shared/libs/ux-ui/SVGs/svg-search/svg-search.component';
 
 const appRoutes: Routes = [
   // { path: '', component: ListItemsComponent },
@@ -99,6 +100,7 @@ const appRoutes: Routes = [
     FooterComponent,
     TimerComponent,
     SvgAddToFavoritesComponent,
+    SvgSearchComponent,
   ],
   imports: [
     BrowserModule,
