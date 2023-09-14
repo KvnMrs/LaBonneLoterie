@@ -58,14 +58,16 @@
             class="hidden md:gap-1 md:btn md:btn-ghost md:rounded-btn"
           >
             <app-svg-search></app-svg-search>
-            <p style="font-size: 0.7rem">Rechercher</p>
+            <p style="font-size: 0.8rem">Recherche</p>
           </a>
         </li>
         <li>
           <a
+            style="flex-flow: column"
             [routerLink]="['/ajout-annonce']"
-            class="hidden md:btn md:btn-ghost md:rounded-btn"
-            >Ajouter une annonce</a
+            class="hidden md:gap-1 md:btn md:btn-ghost md:rounded-btn"
+            ><app-svg-cross-add></app-svg-cross-add>
+            <p style="font-size: 0.8rem">Ajouter une annonce</p></a
           >
         </li>
         <li tabindex="0" class="dropdown dropdown-bottom dropdown-end">
