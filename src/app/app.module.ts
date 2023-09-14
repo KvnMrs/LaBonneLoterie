@@ -28,6 +28,8 @@ import { ModalWithdrawComponent } from './components/modals/modals-profile/withd
 import { SummaryAnnounceComponent } from './components/announce/summary-announce/summary-announce.component';
 import { FooterComponent } from './components/commun/footer/footer.component';
 import { TimerComponent } from './components/announce/timer/timer/timer.component';
+import { SvgAddToFavoritesComponent } from './shared/libs/ux-ui/SVGs/add-to-favorites/svg-add-to-favorites.component';
+import { SvgSearchComponent } from './shared/libs/ux-ui/SVGs/svg-search/svg-search.component';
 // Libs
 import { HeaderComponent } from './shared/libs/ux-ui/header/header.component';
 import { InputComponent } from './shared/libs/ux-ui/forms/input/input.component';
@@ -36,8 +38,6 @@ import { BtnCtaFullComponent } from './shared/libs/ux-ui/buttons/btn-cta-full/bt
 import { AnnouncesService } from './services/announce/announces.service';
 import { AuthService } from './services/auth/auth.service';
 import { UploadImgService } from './services/upload/upload-img.service';
-import { SvgAddToFavoritesComponent } from './shared/libs/ux-ui/SVGs/addToFavorites/svg-add-to-favorites.component';
-import { SvgSearchComponent } from './shared/libs/ux-ui/SVGs/svg-search/svg-search.component';
 
 const appRoutes: Routes = [
   // { path: '', component: ListItemsComponent },
