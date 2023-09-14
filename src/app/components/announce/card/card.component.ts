@@ -13,6 +13,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class CardComponent implements OnInit {
   @Input() data!: IAnnounce;
   public currentUser: IUser | null = null;
+  public addedToFavorite = false;
 
   @ViewChild('modalBuyTicket') modalBuyTicket!: ElementRef;
 
@@ -42,7 +43,10 @@ export class CardComponent implements OnInit {
   }
 
   //TODO: create addFavorite logic/
-  onAddFavorite() {}
+  onAddFavorite() {
+    //TODO Implementation logic of update favoris user.
+    return (this.addedToFavorite = !this.addedToFavorite);
+  }
 
   buyTicket() {
     this.router.navigate([`/achat-ticket/${this.data.id}`]);
