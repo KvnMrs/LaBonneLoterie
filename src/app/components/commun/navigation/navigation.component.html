@@ -53,10 +53,13 @@
       <ul class="menu menu-horizontal px-1">
         <li>
           <a
+            style="flex-flow: column"
             [routerLink]="['/recherche']"
-            class="hidden md:btn md:btn-ghost md:rounded-btn"
-            >Rechercher</a
+            class="hidden md:gap-1 md:btn md:btn-ghost md:rounded-btn"
           >
+            <app-svg-search></app-svg-search>
+            <p style="font-size: 0.7rem">Rechercher</p>
+          </a>
         </li>
         <li>
           <a
