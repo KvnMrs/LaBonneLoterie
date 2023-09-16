@@ -1,19 +1,17 @@
 <section class="main-container">
   <lbl-header>Retrouvez vos informations:</lbl-header>
-  <div class="user-profile-container">
-    <article class="profile-card">
-      <!-- <aside class="user-info-container"> -->
-      <aside
-        class="user-picture-infos p-2 bg-slate-100 border border-slate-300 rounded-lg shadow-lg"
-      >
-        <div class="w-1/2 flex justify-center">
+  <div class="profile-container-1">
+    <article class="profile-container-2">
+      <aside class="personnal-infos-container">
+        <!-- <div class="personnal-infos"> -->
+        <div class="flex justify-center">
           <img
             src="{{ profileData['imgProfile'] || '/assets/svg/profile.svg' }}"
             alt="Generic placeholder image"
             class="w-28 h-28 rounded-full"
           />
         </div>
-        <div class="user-infos">
+        <div class="p-2 text-center">
           <p class="font-semibold text-lg">
             {{ profileData["firstname"] }} {{ profileData["lastname"] }}
           </p>
@@ -54,14 +52,16 @@
             />
           </div>
         </div>
-      </aside>
-      <!-- <div class="w-full flex justify-end">
+        <!-- </div> -->
+        <!-- Update profile BTN -->
+        <div class="w-full flex justify-end">
           <lbl-modal-update-profile
             [profileData]="profileData"
             (modalUpdateEvent)="getUpdateUserProfile($event)"
           ></lbl-modal-update-profile>
-        </div> -->
-      <!-- </aside> -->
+        </div>
+      </aside>
+
       <aside
         class="p-2 flex flex-col gap-2 items-center bg-slate-100 border border-slate-300 rounded-lg shadow-lg | md:gap-4"
       >

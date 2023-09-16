@@ -173,7 +173,7 @@ nav {
 /* MD */ md:w-11/12 md:mx-auto md:py-6 md:flex-row md:gap-4
 /* LG */ lg:gap-12
 }
-.summary-main-info-container{
+.summary-main-info-container {
   @apply w-11/12 flex flex-col gap-4
 /* MD */ md:w-1/2
 }
@@ -187,26 +187,19 @@ nav {
 // User-Profile ///////////////////////////////////////////////////////////////////////
 
 // User-profile
-.user-profile-container {
+.profile-container-1 {
   @apply mx-auto flex flex-col gap-4
 /* MD */ md:px-4
 /* LG */ lg:w-11/12
 }
-.profile-card {
-  @apply mx-auto p-4 flex flex-col gap-4
-/* MD */ md:flex-row md:gap-8
+.profile-container-2 {
+  @apply w-full mx-auto p-2 flex flex-col gap-4
+/* MD */ md:p-4 md:flex-row
 }
-.user-info-container {
-  @apply flex flex-col gap-4
-/* MD */ md:gap-6
+.personnal-infos-container {
+  @apply p-4 flex flex-col bg-slate-100 border border-slate-300 rounded-lg shadow-lg
+/* MD */ md:gap-4
 }
-.user-picture-infos {
-  @apply flex gap-4 items-center justify-center
-}
-.user-infos {
-  @apply ml-auto p-2 bg-white rounded-lg border border-slate-300
-}
-
 // Profile Menu
 .user-profile-menu-container {
   @apply mx-auto  flex flex-col gap-4 items-center self-center
