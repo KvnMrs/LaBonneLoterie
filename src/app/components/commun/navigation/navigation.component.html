@@ -72,10 +72,12 @@
             </svg>
           </a>
           <ul
-            class="p-2 border-b border-l border-r border-slate-300 bg-base-200 right-0 top-14 divide-y"
+            class="p-1 border-b border-l border-r border-slate-300 bg-base-200 right-0 top-14 divide-y"
           >
             <li>
-              <a class="flex gap-1" [routerLink]="['/ajout-annonce']"
+              <a
+                class="flex md:gap-0.5 md:btn md:btn-ghost md:rounded-btn"
+                [routerLink]="['/ajout-annonce']"
                 ><app-svg-cross-add></app-svg-cross-add>
                 <p>Ajouter une annonce</p></a
               >
@@ -133,7 +135,7 @@
           <a
             [routerLink]="['/ajout-annonce']"
             class="hidden mx-0.5 md:flex md:items-center md:gap-0.1 md:btn md:btn-primary md:rounded-btn"
-            ><app-svg-cross-add></app-svg-cross-add>
+            ><app-svg-cross-add color="white" size="20"></app-svg-cross-add>
             <p>Ajouter une annonce</p></a
           >
         </li>

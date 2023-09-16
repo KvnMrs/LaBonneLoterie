@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-svg-cross-add',
@@ -6,7 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./svg-cross-add.component.scss'],
 })
 export class SvgCrossAddComponent implements OnInit {
+  @Input() color?: string = 'black';
+  @Input() size?: string = '30';
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.color !== 'black' ? (this.color = this.color) : '';
+    this.size !== '30' ? (this.size = this.size) : '';
+    this.size?.toString();
+  }
 }
