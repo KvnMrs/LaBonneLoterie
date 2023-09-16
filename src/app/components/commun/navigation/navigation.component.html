@@ -51,7 +51,7 @@
     </div>
     <!-- Add announce link -->
     <div class="flex-none">
-      <!-- Menu Nav { DESKTOP } -->
+      <!-- Menu Nav { MOBILE } -->
       <ul class="menu menu-horizontal px-1">
         <li
           tabindex="0"
@@ -74,16 +74,49 @@
           <ul
             class="p-2 border-b border-l border-r border-slate-300 bg-base-200 right-0 top-14 divide-y"
           >
-            <li><a [routerLink]="['/recherche']">Mes recherches</a></li>
             <li>
-              <a [routerLink]="['/ajout-annonce']">Ajouter une annonce</a>
-            </li>
-            <li><a [routerLink]="['/profil']">Mon profil</a></li>
-            <li>
-              <a [routerLink]="['/']"> Favoris </a>
+              <a class="flex gap-1" [routerLink]="['/ajout-annonce']"
+                ><app-svg-cross-add></app-svg-cross-add>
+                <p>Ajouter une annonce</p></a
+              >
             </li>
             <li>
-              <a [routerLink]="['/']"> Messages </a>
+              <a
+                [routerLink]="['/recherche']"
+                class="flex md:gap-0.5 md:btn md:btn-ghost md:rounded-btn"
+              >
+                <app-svg-search></app-svg-search>
+                <p>Rechercher</p>
+              </a>
+            </li>
+            <!-- Profile link -->
+            <li>
+              <a
+                [routerLink]="['/profil']"
+                class="md:gap-0.5 md:btn md:btn-ghost md:rounded-btn"
+                ><app-svg-user></app-svg-user>
+                <p>Profil</p></a
+              >
+            </li>
+            <!-- Favorites link -->
+            <li>
+              <a
+                [routerLink]="['/']"
+                class="md:gap-0.5 md:btn md:btn-ghost md:rounded-btn"
+              >
+                <app-svg-add-to-favorites></app-svg-add-to-favorites>
+                <p>Favoris</p>
+              </a>
+            </li>
+            <!-- Message link -->
+            <li>
+              <a
+                [routerLink]="['/']"
+                class="md:gap-0.5 md:btn md:btn-ghost md:rounded-btn"
+              >
+                <app-svg-message></app-svg-message>
+                <p>Messages</p>
+              </a>
             </li>
             <li>
               <button
@@ -95,7 +128,7 @@
             </li>
           </ul>
         </li>
-        <!-- Menu Nav { MOBILE } -->
+        <!-- Menu Nav { DESKTOP } -->
         <li>
           <a
             [routerLink]="['/ajout-annonce']"
