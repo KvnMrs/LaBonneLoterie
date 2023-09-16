@@ -49,8 +49,18 @@
         >LeBonLot</a
       >
     </div>
+    <!-- Add announce link -->
     <div class="flex-none">
       <ul class="menu menu-horizontal px-1">
+        <li>
+          <a
+            [routerLink]="['/ajout-annonce']"
+            class="hidden mx-0.5 md:flex md:items-center md:gap-0.1 md:btn md:btn-primary md:rounded-btn"
+            ><app-svg-cross-add></app-svg-cross-add>
+            <p>Ajouter une annonce</p></a
+          >
+        </li>
+        <!-- Search link -->
         <li>
           <a
             style="flex-flow: column"
@@ -58,19 +68,42 @@
             class="hidden md:gap-0.5 md:btn md:btn-ghost md:rounded-btn"
           >
             <app-svg-search></app-svg-search>
-            <p style="font-size: 0.8rem">Rechercher</p>
+            <p style="font-size: 0.6rem">Rechercher</p>
           </a>
         </li>
+        <!-- Favorites link -->
         <li>
           <a
             style="flex-flow: column"
-            [routerLink]="['/ajout-annonce']"
+            [routerLink]="['/']"
             class="hidden md:gap-0.5 md:btn md:btn-ghost md:rounded-btn"
-            ><app-svg-cross-add></app-svg-cross-add>
-            <p style="font-size: 0.8rem">Ajouter une annonce</p></a
+          >
+            <app-svg-add-to-favorites></app-svg-add-to-favorites>
+            <p style="font-size: 0.6rem">Favoris</p>
+          </a>
+        </li>
+        <!-- Message link -->
+        <li>
+          <a
+            style="flex-flow: column"
+            [routerLink]="['/']"
+            class="hidden md:gap-0.5 md:btn md:btn-ghost md:rounded-btn"
+          >
+            <app-svg-message></app-svg-message>
+            <p style="font-size: 0.6rem">Messages</p>
+          </a>
+        </li>
+        <!-- Profile link -->
+        <li>
+          <a
+            style="flex-flow: column"
+            [routerLink]="['/profil']"
+            class="hidden md:gap-0.5 md:btn md:btn-ghost md:rounded-btn"
+            ><app-svg-user></app-svg-user>
+            <p style="font-size: 0.6rem">Profil</p></a
           >
         </li>
-        <li tabindex="0" class="dropdown dropdown-bottom dropdown-end">
+        <!-- <li tabindex="0" class="dropdown dropdown-bottom dropdown-end">
           <a>
             Menu
             <svg
@@ -102,7 +135,7 @@
               </button>
             </li>
           </ul>
-        </li>
+        </li> -->
       </ul>
     </div>
   </nav>
