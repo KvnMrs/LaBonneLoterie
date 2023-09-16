@@ -2,7 +2,7 @@
   <lbl-header>Retrouvez vos informations:</lbl-header>
   <div class="profile-container-1">
     <article class="profile-container-2">
-      <aside class="personnal-infos-container">
+      <aside class="profile-container-3">
         <!-- <div class="personnal-infos"> -->
         <div class="flex justify-center">
           <img
@@ -61,19 +61,20 @@
           ></lbl-modal-update-profile>
         </div>
       </aside>
-
-      <aside
-        class="p-2 flex flex-col gap-2 items-center bg-slate-100 border border-slate-300 rounded-lg shadow-lg | md:gap-4"
-      >
+      <!-- User Balance -->
+      <aside class="profile-container-3 gap-2 | md:gap-4">
         <div class="divider text-xl">Solde</div>
-        <div
-          class="w-16 h-16 rounded-full bg-slate-100 shadow-md | md:w-20 md:h-20 flex"
-        >
-          <p class="m-auto text-center text-4xl rounded-full">$</p>
+        <div class="user-balance">
+          <div class="circle-surface">
+            <p class="m-auto text-4xl rounded-full">$</p>
+          </div>
+          <p class="text-xl mb-4 | md:mb-0">
+            {{ profileData["bankAccount"] }} $
+          </p>
         </div>
-        <p class="text-xl mb-4 | md:mb-0">{{ profileData["bankAccount"] }} $</p>
+
         <!-- CTA's Group -->
-        <div class="flex justify-center gap-0.5 | md:gap-1">
+        <div class="balance-actions">
           <lbl-modal-withdraw
             [profileData]="profileData"
             (withdrawEvent)="getUpdateUserProfile($event)"
