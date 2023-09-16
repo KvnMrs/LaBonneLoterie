@@ -188,12 +188,13 @@ nav {
 
 // User-profile
 .user-profile-container {
-  @apply mt-4 mx-auto flex flex-col gap-4
-/* MD */ md:mt-8 md:px-4 md:flex-row
-/* LG */ lg:w-11/12 lg:mt-12
+  @apply mx-auto flex flex-col gap-4
+/* MD */ md:px-4
+/* LG */ lg:w-11/12
 }
 .profile-card {
-  @apply mx-auto p-4 flex flex-col gap-4 bg-slate-100 border border-slate-300 rounded-lg shadow-lg
+  @apply mx-auto p-4 flex flex-col gap-4
+/* MD */ md:flex-row md:gap-8
 }
 .user-info-container {
   @apply flex flex-col gap-4
@@ -203,9 +204,7 @@ nav {
   @apply flex gap-4 items-center justify-center
 }
 .user-infos {
-  @apply ml-auto p-2  bg-white rounded-lg border border-slate-300
-/* MD */ md:p-4
-
+  @apply ml-auto p-2 bg-white rounded-lg border border-slate-300
 }
 
 // Profile Menu

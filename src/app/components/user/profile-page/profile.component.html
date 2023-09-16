@@ -2,83 +2,90 @@
   <lbl-header>Retrouvez vos informations:</lbl-header>
   <div class="user-profile-container">
     <article class="profile-card">
-      <aside class="user-info-container">
-        <div class="user-picture-infos">
-          <div class="w-1/2 flex justify-center">
-            <img
-              src="{{ profileData['imgProfile'] || '/assets/svg/profile.svg' }}"
-              alt="Generic placeholder image"
-              class="w-28 h-28 rounded-full"
+      <!-- <aside class="user-info-container"> -->
+      <aside
+        class="user-picture-infos p-2 bg-slate-100 border border-slate-300 rounded-lg shadow-lg"
+      >
+        <div class="w-1/2 flex justify-center">
+          <img
+            src="{{ profileData['imgProfile'] || '/assets/svg/profile.svg' }}"
+            alt="Generic placeholder image"
+            class="w-28 h-28 rounded-full"
+          />
+        </div>
+        <div class="user-infos">
+          <p class="font-semibold text-lg">
+            {{ profileData["firstname"] }} {{ profileData["lastname"] }}
+          </p>
+          <p>Loire Atlantique, {{ profileData["city"] }}</p>
+          <p class="mb-1">
+            Membre depuis le
+            {{ profileData["memberSince"] | date : "dd/MM/yyyy" }}
+          </p>
+          <div class="rating rating-md mb-4 | lg:mb-0">
+            <input
+              type="radio"
+              name="rating-9"
+              class="mx-0.5 mask mask-star-2 bg-yellow-300"
+              checked
+            />
+            <input
+              type="radio"
+              name="rating-9"
+              class="mx-0.5 mask mask-star-2 bg-yellow-300"
+              checked
+            />
+            <input
+              type="radio"
+              name="rating-9"
+              class="mx-0.5 mask mask-star-2 bg-yellow-300"
+              checked
+            />
+            <input
+              type="radio"
+              name="rating-9"
+              class="mx-0.5 mask mask-star-2 bg-yellow-300"
+              checked
+            />
+            <input
+              type="radio"
+              name="rating-9"
+              class="mx-0.5 mask mask-star-2 bg-primary"
             />
           </div>
-          <div class="user-infos">
-            <p class="font-semibold text-lg">
-              {{ profileData["firstname"] }} {{ profileData["lastname"] }}
-            </p>
-            <p>Loire Atlantique, {{ profileData["city"] }}</p>
-            <p class="mb-1">
-              Membre depuis le
-              {{ profileData["memberSince"] | date : "dd/MM/yyyy" }}
-            </p>
-            <div class="rating rating-md mb-4 | lg:mb-0">
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-yellow-300"
-                checked
-              />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-yellow-300"
-                checked
-              />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-yellow-300"
-                checked
-              />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-yellow-300"
-                checked
-              />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-primary"
-              />
-            </div>
-          </div>
         </div>
-        <div class="w-full flex justify-end">
+      </aside>
+      <!-- <div class="w-full flex justify-end">
           <lbl-modal-update-profile
             [profileData]="profileData"
             (modalUpdateEvent)="getUpdateUserProfile($event)"
           ></lbl-modal-update-profile>
+        </div> -->
+      <!-- </aside> -->
+      <aside
+        class="p-2 flex flex-col gap-2 items-center bg-slate-100 border border-slate-300 rounded-lg shadow-lg | md:gap-4"
+      >
+        <div class="divider text-xl">Solde</div>
+        <div
+          class="w-16 h-16 rounded-full bg-slate-100 shadow-md | md:w-20 md:h-20 flex"
+        >
+          <p class="m-auto text-center text-4xl rounded-full">$</p>
+        </div>
+        <p class="text-xl mb-4 | md:mb-0">{{ profileData["bankAccount"] }} $</p>
+        <!-- CTA's Group -->
+        <div class="flex justify-center gap-0.5 | md:gap-1">
+          <lbl-modal-withdraw
+            [profileData]="profileData"
+            (withdrawEvent)="getUpdateUserProfile($event)"
+          ></lbl-modal-withdraw>
+          <lbl-modal-credit-profile
+            [profileData]="profileData"
+            (creditBankBalanceEvent)="getUpdateUserProfile($event)"
+          ></lbl-modal-credit-profile>
         </div>
       </aside>
-      <aside class="mb-8 flex flex-col gap-4 items-center">
-        <div class="divider text-xl">Soldes</div>
-        <div class="w-20 h-20 flex rounded-full bg-slate-100 shadow-md">
-          <p class="m-auto text-center text-5xl rounded-full">$</p>
-        </div>
-        <p class="text-2xl">{{ profileData["bankAccount"] }} $</p>
-      </aside>
-      <!-- CTA's Group -->
-      <div class="flex justify-center gap-0.5 | md:gap-1">
-        <lbl-modal-withdraw
-          [profileData]="profileData"
-          (withdrawEvent)="getUpdateUserProfile($event)"
-        ></lbl-modal-withdraw>
-        <lbl-modal-credit-profile
-          [profileData]="profileData"
-          (creditBankBalanceEvent)="getUpdateUserProfile($event)"
-        ></lbl-modal-credit-profile>
-      </div>
     </article>
+
     <article class="user-profile-menu-container">
       <div class="pair-menu-container">
         <div class="card-menu">
