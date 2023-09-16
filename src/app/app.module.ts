@@ -28,6 +28,9 @@ import { ModalWithdrawComponent } from './components/modals/modals-profile/withd
 import { SummaryAnnounceComponent } from './components/announce/summary-announce/summary-announce.component';
 import { FooterComponent } from './components/commun/footer/footer.component';
 import { TimerComponent } from './components/announce/timer/timer/timer.component';
+import { SvgAddToFavoritesComponent } from './shared/libs/ux-ui/svg/add-to-favorites/svg-add-to-favorites.component';
+import { SvgSearchComponent } from './shared/libs/ux-ui/svg/svg-search/svg-search.component';
+import { SvgCrossAddComponent } from './shared/libs/ux-ui/svg/cross-add/svg-cross-add.component';
 // Libs
 import { HeaderComponent } from './shared/libs/ux-ui/header/header.component';
 import { InputComponent } from './shared/libs/ux-ui/forms/input/input.component';
@@ -97,6 +100,9 @@ const appRoutes: Routes = [
     SummaryAnnounceComponent,
     FooterComponent,
     TimerComponent,
+    SvgAddToFavoritesComponent,
+    SvgSearchComponent,
+    SvgCrossAddComponent,
   ],
   imports: [
     BrowserModule,

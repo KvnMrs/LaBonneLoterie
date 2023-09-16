@@ -29,11 +29,9 @@
       (click)="onAddFavorite()"
       class="btn btn-circle btn-md btn-ghost | md:ml-auto"
     >
-      <img
-        class="w-6 h-6 cursor-pointer"
-        src="assets/svg/favorite.svg"
-        alt="Add to favorites"
-      />
+      <app-svg-add-to-favorites
+        [addedToFavorite]="addedToFavorite"
+      ></app-svg-add-to-favorites>
     </button>
     <label
       *ngIf="currentUser"
