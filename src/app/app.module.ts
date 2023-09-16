@@ -39,6 +39,8 @@ import { BtnCtaFullComponent } from './shared/libs/ux-ui/buttons/btn-cta-full/bt
 import { AnnouncesService } from './services/announce/announces.service';
 import { AuthService } from './services/auth/auth.service';
 import { UploadImgService } from './services/upload/upload-img.service';
+import { SvgUserComponent } from './shared/libs/ux-ui/svg/svg-user/svg-user.component';
+import { SvgMessageComponent } from './shared/libs/ux-ui/svg/svg-message/svg-message.component';
 
 const appRoutes: Routes = [
   // { path: '', component: ListItemsComponent },
@@ -103,6 +105,8 @@ const appRoutes: Routes = [
     SvgAddToFavoritesComponent,
     SvgSearchComponent,
     SvgCrossAddComponent,
+    SvgUserComponent,
+    SvgMessageComponent,
   ],
   imports: [
     BrowserModule,
