@@ -51,7 +51,51 @@
     </div>
     <!-- Add announce link -->
     <div class="flex-none">
+      <!-- Menu Nav { DESKTOP } -->
       <ul class="menu menu-horizontal px-1">
+        <li
+          tabindex="0"
+          class="dropdown dropdown-bottom dropdown-end | md:hidden"
+        >
+          <a>
+            Menu
+            <svg
+              class="fill-current"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+              />
+            </svg>
+          </a>
+          <ul
+            class="p-2 border-b border-l border-r border-slate-300 bg-base-200 right-0 top-14 divide-y"
+          >
+            <li><a [routerLink]="['/recherche']">Mes recherches</a></li>
+            <li>
+              <a [routerLink]="['/ajout-annonce']">Ajouter une annonce</a>
+            </li>
+            <li><a [routerLink]="['/profil']">Mon profil</a></li>
+            <li>
+              <a [routerLink]="['/']"> Favoris </a>
+            </li>
+            <li>
+              <a [routerLink]="['/']"> Messages </a>
+            </li>
+            <li>
+              <button
+                class="btn btn-ghost btn-outline btn-error"
+                (click)="onDisconnect()"
+              >
+                Se déconnecter
+              </button>
+            </li>
+          </ul>
+        </li>
+        <!-- Menu Nav { MOBILE } -->
         <li>
           <a
             [routerLink]="['/ajout-annonce']"
@@ -103,39 +147,6 @@
             <p style="font-size: 0.6rem">Profil</p></a
           >
         </li>
-        <!-- <li tabindex="0" class="dropdown dropdown-bottom dropdown-end">
-          <a>
-            Menu
-            <svg
-              class="fill-current"
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
-              />
-            </svg>
-          </a>
-          <ul
-            class="p-2 border-b border-l border-r border-slate-300 bg-base-200 right-0 top-14 divide-y"
-          >
-            <li><a [routerLink]="['/recherche']">Mes recherches</a></li>
-            <li>
-              <a [routerLink]="['/ajout-annonce']">Ajouter une annonce</a>
-            </li>
-            <li><a [routerLink]="['/profil']">Mon profil</a></li>
-            <li>
-              <button
-                class="btn btn-ghost btn-outline btn-error"
-                (click)="onDisconnect()"
-              >
-                Se déconnecter
-              </button>
-            </li>
-          </ul>
-        </li> -->
       </ul>
     </div>
   </nav>
