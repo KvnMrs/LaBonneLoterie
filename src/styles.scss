@@ -191,17 +191,36 @@ nav {
   @apply w-11/12 mx-auto flex flex-col gap-4
 /* MD */ lg:p-4
 }
+.profile-container-2 {
+  @apply flex flex-col gap-2
+/* MD */ md:gap-4
+}
+.profile-container-3 {
+  @apply flex flex-col gap-2
+/* MD */ md:flex-row md:gap-4
+}
+
 .circle-surface {
   @apply w-16 h-16 flex rounded-full bg-slate-100 drop-shadow-md
 /* MD */ md:w-20 md:h-20
 /* MD */ lg:w-24 lg:h-24
 }
-.profile-cards {
+.profile-card {
   @apply w-full md:w-1/2 p-4 flex flex-col-reverse gap-2 bg-white border border-slate-300 drop-shadow-md rounded-lg
 /* MD */ md:flex-row
+}
+.profile-card-content {
+  @apply w-full
+/* MD */ md:flex md:flex-col md:gap-1
+}
+.profile-card-title {
+  @apply text-xl font-semibold mb-2
+}
+.profile-card-img {
+  @apply w-full flex justify-center
+/* MD */ md:w-1/4 md:items-center
 }
 .profile-menu-cards {
   @apply  p-4 bg-white border-slate-200 drop-shadow-md rounded-lg
 /* MD */ md:w-1/4
 }
-
