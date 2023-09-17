@@ -1,126 +1,106 @@
 <section class="main-container">
   <lbl-header>Retrouvez vos informations:</lbl-header>
   <div class="profile-container-1">
-    <article class="profile-container-2">
-      <aside class="profile-container-3">
-        <div class="flex justify-center">
-          <img
-            src="{{ profileData['imgProfile'] || '/assets/svg/profile.svg' }}"
-            alt="Generic placeholder image"
-            class="w-28 h-28 rounded-full"
-          />
-        </div>
-        <!-- Personnal user infos -->
-        <div class="p-2 text-center">
-          <p class="font-semibold text-lg">
-            {{ profileData["firstname"] }} {{ profileData["lastname"] }}
-          </p>
-          <p>Loire Atlantique, {{ profileData["city"] }}</p>
-          <p class="mb-1">
-            Membre depuis le
-            {{ profileData["memberSince"] | date : "dd/MM/yyyy" }}
-          </p>
-          <div class="rating rating-md mb-4 | lg:mb-0">
-            <input
-              type="radio"
-              name="rating-9"
-              class="mx-0.5 mask mask-star-2 bg-yellow-300"
-              checked
-            />
-            <input
-              type="radio"
-              name="rating-9"
-              class="mx-0.5 mask mask-star-2 bg-yellow-300"
-              checked
-            />
-            <input
-              type="radio"
-              name="rating-9"
-              class="mx-0.5 mask mask-star-2 bg-yellow-300"
-              checked
-            />
-            <input
-              type="radio"
-              name="rating-9"
-              class="mx-0.5 mask mask-star-2 bg-yellow-300"
-              checked
-            />
-            <input
-              type="radio"
-              name="rating-9"
-              class="mx-0.5 mask mask-star-2 bg-primary"
-            />
+    <div class="flex flex-col gap-2 | md:gap-4">
+      <!-- Balance -->
+      <div class="flex flex-col gap-2 | md:flex-row md:gap-4">
+        <div class="profile-cards">
+          <div class="w-full | md:w-3/4 md:flex md:flex-col">
+            <h2 class="text-xl font-semibold mb-2">Solde</h2>
+            <p>
+              Votre solde actuel est de $<span class="font-semibold">{{
+                profileData["bankAccount"]
+              }}</span
+              >.
+            </p>
+            <div
+              class="mt-4 flex justify-center gap-0.5 | md:mt-auto md:justify-start"
+            >
+              <lbl-modal-withdraw
+                [profileData]="profileData"
+                (withdrawEvent)="getUpdateUserProfile($event)"
+              ></lbl-modal-withdraw>
+              <lbl-modal-credit-profile
+                [profileData]="profileData"
+                (creditBankBalanceEvent)="getUpdateUserProfile($event)"
+              ></lbl-modal-credit-profile>
+            </div>
+          </div>
+          <div class="w-full flex justify-center | md:w-1/4 md:items-center">
+            <div class="circle-surface">
+              <p class="m-auto text-4xl rounded-full">$</p>
+            </div>
           </div>
         </div>
-        <!-- Update profile BTN -->
-        <div class="w-full flex justify-center">
-          <button
-            (click)="onDisconnect()"
-            class="btn btn-sm btn-link hover:btn-error gap-2 text-error"
-          >
-            <app-svg-shutdown></app-svg-shutdown> Se déconnecter
-          </button>
-          <!-- <lbl-modal-update-profile
-            [profileData]="profileData"
-            (modalUpdateEvent)="getUpdateUserProfile($event)"
-          ></lbl-modal-update-profile> -->
-        </div>
-      </aside>
-      <!-- User Balance -->
-      <aside class="profile-container-3 gap-2 | md:gap-4">
-        <div class="divider text-xl">Solde</div>
-        <div class="user-balance">
-          <div class="circle-surface">
-            <p class="m-auto text-4xl rounded-full">$</p>
+        <!-- Profile -->
+        <!-- <div class="w-full md:w-1/2"> -->
+        <div class="profile-cards">
+          <div class="w-full | md:w-3/4 md:flex md:flex-col md:gap-1">
+            <h2 class="text-xl font-semibold mb-2">Profil</h2>
+            <p>{{ profileData["firstname"] }} {{ profileData["lastname"] }}</p>
+            <p>Loire Atlantique, {{ profileData["city"] }}</p>
+            <p>
+              Membre depuis le
+              {{ profileData["memberSince"] | date : "dd/MM/yyyy" }}
+            </p>
+            <span class="mt-0.5 flex">
+              <app-svg-stars></app-svg-stars>
+              <app-svg-stars></app-svg-stars><app-svg-stars></app-svg-stars
+              ><app-svg-stars></app-svg-stars><app-svg-stars> </app-svg-stars>
+              <p class="ml-1">7 avis</p>
+            </span>
           </div>
-          <p class="text-xl mb-4 | md:mb-0">
-            {{ profileData["bankAccount"] }} $
-          </p>
-        </div>
 
-        <!-- CTA's Group -->
-        <div class="balance-actions">
-          <lbl-modal-withdraw
-            [profileData]="profileData"
-            (withdrawEvent)="getUpdateUserProfile($event)"
-          ></lbl-modal-withdraw>
-          <lbl-modal-credit-profile
-            [profileData]="profileData"
-            (creditBankBalanceEvent)="getUpdateUserProfile($event)"
-          ></lbl-modal-credit-profile>
-        </div>
-      </aside>
-    </article>
-    <!-- Menu cards -->
-    <article class="user-profile-menu-container">
-      <div class="pair-menu-container">
-        <div class="card-menu">
-          <div class="gap-2">
-            <h2 class="text-xl font-medium">Menu 1</h2>
-            <p>Description du menu</p>
-          </div>
-        </div>
-        <div class="card-menu">
-          <div class="gap-2">
-            <h2 class="text-xl font-medium">Menu 1</h2>
-            <p>Description du menu</p>
+          <div class="w-full flex justify-center | md:w-1/4 md:items-center">
+            <img
+              src="{{ profileData['imgProfile'] || '/assets/svg/profile.svg' }}"
+              alt="Profile"
+              class="w-16 h-16 rounded-full | md:w-20 md:h-20"
+            />
           </div>
         </div>
       </div>
-      <div class="pair-menu-container">
-        <div class="card-menu">
-          <div class="gap-2">
-            <h2 class="text-xl font-medium">Menu 1</h2>
-            <p>Description du menu</p>
+      <!-- Menu Cards -->
+      <div class="flex flex-col gap-2 | md:flex-row md:gap-4">
+        <div class="w-full md:w-1/4">
+          <div class="bg-white p-4 rounded-lg shadow-md">
+            <h2 class="text-lg font-semibold mb-2">Paramètres</h2>
+            <p>Contenu du menu 1.</p>
           </div>
         </div>
-        <div class="card-menu">
-          <div class="gap-2">
-            <h2 class="text-xl font-medium">Menu 1</h2>
-            <p>Description du menu</p>
+        <div class="w-full md:w-1/4">
+          <div class="bg-white p-4 rounded-lg shadow-md">
+            <h2 class="text-lg font-semibold mb-2">Transactions</h2>
+            <p>Contenu du menu 2.</p>
+          </div>
+        </div>
+        <div class="w-full md:w-1/4">
+          <div class="bg-white p-4 rounded-lg shadow-md">
+            <h2 class="text-lg font-semibold mb-2">Annonces</h2>
+            <p>Contenu du menu 3.</p>
+          </div>
+        </div>
+        <div class="w-full md:w-1/4">
+          <div class="bg-white p-4 rounded-lg shadow-md">
+            <h2 class="text-lg font-semibold mb-2">Historique</h2>
+            <p>Contenu du menu 4.</p>
           </div>
         </div>
       </div>
-    </article>
+    </div>
+
+    <!-- Update profile BTN -->
+    <div class="w-full flex justify-center | md:justify-end">
+      <button
+        (click)="onDisconnect()"
+        class="btn btn-link hover:btn-error gap-2 | md:gap-4 text-error"
+      >
+        <app-svg-shutdown></app-svg-shutdown> Se déconnecter
+      </button>
+      <!-- <lbl-modal-update-profile
+          [profileData]="profileData"
+          (modalUpdateEvent)="getUpdateUserProfile($event)"
+        ></lbl-modal-update-profile> -->
+    </div>
   </div>
 </section>

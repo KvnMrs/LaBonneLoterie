@@ -35,6 +35,7 @@ import { SvgCrossAddComponent } from './shared/libs/ux-ui/svg/cross-add/svg-cros
 import { SvgUserComponent } from './shared/libs/ux-ui/svg/user/svg-user.component';
 import { SvgMessageComponent } from './shared/libs/ux-ui/svg/message/svg-message.component';
 import { SvgShutdownComponent } from './shared/libs/ux-ui/svg/shutdown/svg-shutdown.component';
+import { SvgStarsComponent } from './shared/libs/ux-ui/svg/stars/svg-stars.component';
 // Libs
 import { HeaderComponent } from './shared/libs/ux-ui/header/header.component';
 import { InputComponent } from './shared/libs/ux-ui/forms/input/input.component';
@@ -110,6 +111,7 @@ const appRoutes: Routes = [
     SvgUserComponent,
     SvgMessageComponent,
     SvgShutdownComponent,
+    SvgStarsComponent,
   ],
   imports: [
     BrowserModule,
