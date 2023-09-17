@@ -2,8 +2,34 @@
   <lbl-header>Retrouvez vos informations:</lbl-header>
   <div class="profile-container-1">
     <div class="flex flex-col gap-2 | md:gap-4">
-      <!-- Balance -->
       <div class="flex flex-col gap-2 | md:flex-row md:gap-4">
+        <!-- Profile -->
+        <div class="profile-cards">
+          <div class="w-full | md:w-3/4 md:flex md:flex-col md:gap-1">
+            <h2 class="text-xl font-semibold mb-2">Profil</h2>
+            <p>{{ profileData["firstname"] }} {{ profileData["lastname"] }}</p>
+            <p>Loire Atlantique, {{ profileData["city"] }}</p>
+            <p>
+              Membre depuis le
+              {{ profileData["memberSince"] | date : "dd/MM/yyyy" }}
+            </p>
+            <span class="mt-0.5 flex">
+              <app-svg-stars></app-svg-stars>
+              <app-svg-stars></app-svg-stars><app-svg-stars></app-svg-stars
+              ><app-svg-stars></app-svg-stars><app-svg-stars> </app-svg-stars>
+              <p class="ml-1">7 avis</p>
+            </span>
+          </div>
+
+          <div class="w-full flex justify-center | md:w-1/4 md:items-center">
+            <img
+              src="{{ profileData['imgProfile'] || '/assets/svg/profile.svg' }}"
+              alt="Profile"
+              class="circle-surface"
+            />
+          </div>
+        </div>
+        <!-- Balance -->
         <div class="profile-cards">
           <div class="w-full | md:w-3/4 md:flex md:flex-col">
             <h2 class="text-xl font-semibold mb-2">Solde</h2>
@@ -28,64 +54,37 @@
           </div>
           <div class="w-full flex justify-center | md:w-1/4 md:items-center">
             <div class="circle-surface">
-              <p class="m-auto text-4xl rounded-full">$</p>
+              <p class="m-auto text-[2.5rem] rounded-full">$</p>
             </div>
-          </div>
-        </div>
-        <!-- Profile -->
-        <!-- <div class="w-full md:w-1/2"> -->
-        <div class="profile-cards">
-          <div class="w-full | md:w-3/4 md:flex md:flex-col md:gap-1">
-            <h2 class="text-xl font-semibold mb-2">Profil</h2>
-            <p>{{ profileData["firstname"] }} {{ profileData["lastname"] }}</p>
-            <p>Loire Atlantique, {{ profileData["city"] }}</p>
-            <p>
-              Membre depuis le
-              {{ profileData["memberSince"] | date : "dd/MM/yyyy" }}
-            </p>
-            <span class="mt-0.5 flex">
-              <app-svg-stars></app-svg-stars>
-              <app-svg-stars></app-svg-stars><app-svg-stars></app-svg-stars
-              ><app-svg-stars></app-svg-stars><app-svg-stars> </app-svg-stars>
-              <p class="ml-1">7 avis</p>
-            </span>
-          </div>
-
-          <div class="w-full flex justify-center | md:w-1/4 md:items-center">
-            <img
-              src="{{ profileData['imgProfile'] || '/assets/svg/profile.svg' }}"
-              alt="Profile"
-              class="w-16 h-16 rounded-full | md:w-20 md:h-20"
-            />
           </div>
         </div>
       </div>
       <!-- Menu Cards -->
       <div class="flex flex-col gap-2 | md:flex-row md:gap-4">
-        <div class="w-full md:w-1/4">
-          <div class="bg-white p-4 rounded-lg shadow-md">
-            <h2 class="text-lg font-semibold mb-2">Paramètres</h2>
-            <p>Contenu du menu 1.</p>
-          </div>
+        <!-- <div class="w-full md:w-1/4"> -->
+        <div class="profile-menu-cards">
+          <h2 class="text-lg font-semibold mb-2">Paramètres</h2>
+          <p>Complétez et modifiez vos informations privées et préférences</p>
         </div>
-        <div class="w-full md:w-1/4">
-          <div class="bg-white p-4 rounded-lg shadow-md">
-            <h2 class="text-lg font-semibold mb-2">Transactions</h2>
-            <p>Contenu du menu 2.</p>
-          </div>
+        <!-- </div> -->
+        <!-- <div class="w-full md:w-1/4"> -->
+        <div class="profile-menu-cards">
+          <h2 class="text-lg font-semibold mb-2">Transactions</h2>
+          <p>Suivez vos achats et vos ventes</p>
         </div>
-        <div class="w-full md:w-1/4">
-          <div class="bg-white p-4 rounded-lg shadow-md">
-            <h2 class="text-lg font-semibold mb-2">Annonces</h2>
-            <p>Contenu du menu 3.</p>
-          </div>
+        <!-- </div> -->
+        <!-- <div class="w-full md:w-1/4"> -->
+        <div class="profile-menu-cards">
+          <h2 class="text-lg font-semibold mb-2">Annonces</h2>
+          <p>Gérez vos annonces déposées</p>
         </div>
-        <div class="w-full md:w-1/4">
-          <div class="bg-white p-4 rounded-lg shadow-md">
-            <h2 class="text-lg font-semibold mb-2">Historique</h2>
-            <p>Contenu du menu 4.</p>
-          </div>
+        <!-- </div> -->
+        <!-- <div class="w-full md:w-1/4"> -->
+        <div class="profile-menu-cards">
+          <h2 class="text-lg font-semibold mb-2">Historique</h2>
+          <p>Revoyez vos annonces et achat passés</p>
         </div>
+        <!-- </div> -->
       </div>
     </div>
 

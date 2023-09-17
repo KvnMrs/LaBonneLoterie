@@ -189,13 +189,19 @@ nav {
 // User-profile
 .profile-container-1 {
   @apply w-11/12 mx-auto flex flex-col gap-4
-/* MD */ lg:p-4 
+/* MD */ lg:p-4
 }
 .circle-surface {
-  @apply w-16 h-16 rounded-full bg-slate-100 drop-shadow-md
-/* MD */ md:w-20 md:h-20 flex
+  @apply w-16 h-16 flex rounded-full bg-slate-100 drop-shadow-md
+/* MD */ md:w-20 md:h-20
+/* MD */ lg:w-24 lg:h-24
 }
 .profile-cards {
-  @apply w-full md:w-1/2 p-4 flex flex-col-reverse gap-2 rounded-lg shadow-md bg-white
+  @apply w-full md:w-1/2 p-4 flex flex-col-reverse gap-2 bg-white border border-slate-300 drop-shadow-md rounded-lg
 /* MD */ md:flex-row
 }
+.profile-menu-cards {
+  @apply  p-4 bg-white border-slate-200 drop-shadow-md rounded-lg
+/* MD */ md:w-1/4
+}
+
