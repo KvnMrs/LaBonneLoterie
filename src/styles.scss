@@ -199,7 +199,6 @@ nav {
   @apply flex flex-col gap-2
 /* MD */ md:flex-row md:gap-4
 }
-
 .circle-surface {
   @apply w-16 h-16 flex rounded-full bg-slate-100 drop-shadow-md
 /* MD */ md:w-20 md:h-20
