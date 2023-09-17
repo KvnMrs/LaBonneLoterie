@@ -189,39 +189,38 @@ nav {
 // User-profile
 .profile-container-1 {
   @apply w-11/12 mx-auto flex flex-col gap-4
-/* MD */ md:p-4 md:gap-8
+/* MD */ lg:p-4
 }
 .profile-container-2 {
-  @apply w-full mx-auto flex flex-col gap-4
-/* SM */ sm:w-10/12
-/* MD */ md:flex-row place-content-center
+  @apply flex flex-col gap-2
+/* MD */ md:gap-4
 }
 .profile-container-3 {
-  @apply p-4 flex flex-col bg-slate-100 border border-slate-300 rounded-lg drop-shadow-md
-/* MD */ md:gap-4 md:justify-between 
+  @apply flex flex-col gap-2
+/* MD */ md:flex-row md:gap-4
 }
-.user-balance {
-  @apply flex flex-col gap-2 items-center
-}
+
 .circle-surface {
-  @apply w-16 h-16 rounded-full bg-slate-100 drop-shadow-md
-/* MD */ md:w-20 md:h-20 flex
+  @apply w-16 h-16 flex rounded-full bg-slate-100 drop-shadow-md
+/* MD */ md:w-20 md:h-20
+/* MD */ lg:w-24 lg:h-24
 }
-.balance-actions {
-  @apply flex justify-center gap-0.5
-/* MD */ md:gap-1
-}
-// Profile Menu
-.user-profile-menu-container {
-  @apply w-11/12 mx-auto flex flex-col gap-4 items-center self-center
-/* MD */ md:w-auto md:flex-row
-}
-.pair-menu-container {
-  @apply w-full flex flex-col gap-4
+.profile-card {
+  @apply w-full md:w-1/2 p-4 flex flex-col-reverse gap-2 bg-white border border-slate-300 drop-shadow-md rounded-lg
 /* MD */ md:flex-row
 }
-.card-menu {
-  @apply h-full py-4 px-8 flex flex-col gap-4 text-center items-center justify-center bg-slate-100 border border-slate-300 rounded-md drop-shadow-md
-/* MD */ md:p-6
-/* LG */ lg:p-8 lg:gap-8
+.profile-card-content {
+  @apply w-full
+/* MD */ md:flex md:flex-col md:gap-1
+}
+.profile-card-title {
+  @apply text-xl font-semibold mb-2
+}
+.profile-card-img {
+  @apply w-full flex justify-center
+/* MD */ md:w-1/4 md:items-center
+}
+.profile-menu-cards {
+  @apply  p-4 bg-white border-slate-200 drop-shadow-md rounded-lg
+/* MD */ md:w-1/4
 }
