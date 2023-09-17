@@ -1,84 +1,97 @@
 <section class="main-container">
   <lbl-header>Retrouvez vos informations:</lbl-header>
-  <div class="user-profile-container">
-    <article class="profile-card">
-      <aside class="user-info-container">
-        <div class="user-picture-infos">
-          <div class="w-1/2 flex justify-center">
-            <img
-              src="{{ profileData['imgProfile'] || '/assets/svg/profile.svg' }}"
-              alt="Generic placeholder image"
-              class="w-28 h-28 rounded-full"
+  <div class="profile-container-1">
+    <article class="profile-container-2">
+      <aside class="profile-container-3">
+        <div class="flex justify-center">
+          <img
+            src="{{ profileData['imgProfile'] || '/assets/svg/profile.svg' }}"
+            alt="Generic placeholder image"
+            class="w-28 h-28 rounded-full"
+          />
+        </div>
+        <!-- Personnal user infos -->
+        <div class="p-2 text-center">
+          <p class="font-semibold text-lg">
+            {{ profileData["firstname"] }} {{ profileData["lastname"] }}
+          </p>
+          <p>Loire Atlantique, {{ profileData["city"] }}</p>
+          <p class="mb-1">
+            Membre depuis le
+            {{ profileData["memberSince"] | date : "dd/MM/yyyy" }}
+          </p>
+          <div class="rating rating-md mb-4 | lg:mb-0">
+            <input
+              type="radio"
+              name="rating-9"
+              class="mx-0.5 mask mask-star-2 bg-yellow-300"
+              checked
+            />
+            <input
+              type="radio"
+              name="rating-9"
+              class="mx-0.5 mask mask-star-2 bg-yellow-300"
+              checked
+            />
+            <input
+              type="radio"
+              name="rating-9"
+              class="mx-0.5 mask mask-star-2 bg-yellow-300"
+              checked
+            />
+            <input
+              type="radio"
+              name="rating-9"
+              class="mx-0.5 mask mask-star-2 bg-yellow-300"
+              checked
+            />
+            <input
+              type="radio"
+              name="rating-9"
+              class="mx-0.5 mask mask-star-2 bg-primary"
             />
           </div>
-          <div class="user-infos">
-            <p class="font-semibold text-lg">
-              {{ profileData["firstname"] }} {{ profileData["lastname"] }}
-            </p>
-            <p>Loire Atlantique, {{ profileData["city"] }}</p>
-            <p class="mb-1">
-              Membre depuis le
-              {{ profileData["memberSince"] | date : "dd/MM/yyyy" }}
-            </p>
-            <div class="rating rating-md mb-4 | lg:mb-0">
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-yellow-300"
-                checked
-              />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-yellow-300"
-                checked
-              />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-yellow-300"
-                checked
-              />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-yellow-300"
-                checked
-              />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-primary"
-              />
-            </div>
-          </div>
         </div>
-        <div class="w-full flex justify-end">
-          <lbl-modal-update-profile
+        <!-- Update profile BTN -->
+        <div class="w-full flex justify-center">
+          <button
+            (click)="onDisconnect()"
+            class="btn btn-sm btn-link hover:btn-error gap-2 text-error"
+          >
+            <app-svg-shutdown></app-svg-shutdown> Se déconnecter
+          </button>
+          <!-- <lbl-modal-update-profile
             [profileData]="profileData"
             (modalUpdateEvent)="getUpdateUserProfile($event)"
-          ></lbl-modal-update-profile>
+          ></lbl-modal-update-profile> -->
         </div>
       </aside>
-      <aside class="mb-8 flex flex-col gap-4 items-center">
-        <div class="divider text-xl">Soldes</div>
-        <div class="w-20 h-20 flex rounded-full bg-slate-100 shadow-md">
-          <p class="m-auto text-center text-5xl rounded-full">$</p>
+      <!-- User Balance -->
+      <aside class="profile-container-3 gap-2 | md:gap-4">
+        <div class="divider text-xl">Solde</div>
+        <div class="user-balance">
+          <div class="circle-surface">
+            <p class="m-auto text-4xl rounded-full">$</p>
+          </div>
+          <p class="text-xl mb-4 | md:mb-0">
+            {{ profileData["bankAccount"] }} $
+          </p>
         </div>
-        <p class="text-2xl">{{ profileData["bankAccount"] }} $</p>
+
+        <!-- CTA's Group -->
+        <div class="balance-actions">
+          <lbl-modal-withdraw
+            [profileData]="profileData"
+            (withdrawEvent)="getUpdateUserProfile($event)"
+          ></lbl-modal-withdraw>
+          <lbl-modal-credit-profile
+            [profileData]="profileData"
+            (creditBankBalanceEvent)="getUpdateUserProfile($event)"
+          ></lbl-modal-credit-profile>
+        </div>
       </aside>
-      <!-- CTA's Group -->
-      <div class="flex justify-center gap-0.5 | md:gap-1">
-        <lbl-modal-withdraw
-          [profileData]="profileData"
-          (withdrawEvent)="getUpdateUserProfile($event)"
-        ></lbl-modal-withdraw>
-        <lbl-modal-credit-profile
-          [profileData]="profileData"
-          (creditBankBalanceEvent)="getUpdateUserProfile($event)"
-        ></lbl-modal-credit-profile>
-      </div>
     </article>
+    <!-- Menu cards -->
     <article class="user-profile-menu-container">
       <div class="pair-menu-container">
         <div class="card-menu">
@@ -86,18 +99,12 @@
             <h2 class="text-xl font-medium">Menu 1</h2>
             <p>Description du menu</p>
           </div>
-          <!-- <div>
-            <img src="/assets/svg/profile.svg" class="w-12 h-12" />
-          </div> -->
         </div>
         <div class="card-menu">
           <div class="gap-2">
             <h2 class="text-xl font-medium">Menu 1</h2>
             <p>Description du menu</p>
           </div>
-          <!-- <div>
-            <img src="/assets/svg/profile.svg" class="w-12 h-12" />
-          </div> -->
         </div>
       </div>
       <div class="pair-menu-container">
@@ -106,18 +113,12 @@
             <h2 class="text-xl font-medium">Menu 1</h2>
             <p>Description du menu</p>
           </div>
-          <!-- <div>
-            <img src="/assets/svg/profile.svg" class="w-12 h-12" />
-          </div> -->
         </div>
         <div class="card-menu">
           <div class="gap-2">
             <h2 class="text-xl font-medium">Menu 1</h2>
             <p>Description du menu</p>
           </div>
-          <!-- <div>
-            <img src="/assets/svg/profile.svg" class="w-12 h-12" />
-          </div> -->
         </div>
       </div>
     </article>

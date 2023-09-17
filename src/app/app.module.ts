@@ -28,6 +28,13 @@ import { ModalWithdrawComponent } from './components/modals/modals-profile/withd
 import { SummaryAnnounceComponent } from './components/announce/summary-announce/summary-announce.component';
 import { FooterComponent } from './components/commun/footer/footer.component';
 import { TimerComponent } from './components/announce/timer/timer/timer.component';
+// SVGs
+import { SvgAddToFavoritesComponent } from './shared/libs/ux-ui/svg/add-to-favorites/svg-add-to-favorites.component';
+import { SvgSearchComponent } from './shared/libs/ux-ui/svg/search/svg-search.component';
+import { SvgCrossAddComponent } from './shared/libs/ux-ui/svg/cross-add/svg-cross-add.component';
+import { SvgUserComponent } from './shared/libs/ux-ui/svg/user/svg-user.component';
+import { SvgMessageComponent } from './shared/libs/ux-ui/svg/message/svg-message.component';
+import { SvgShutdownComponent } from './shared/libs/ux-ui/svg/shutdown/svg-shutdown.component';
 // Libs
 import { HeaderComponent } from './shared/libs/ux-ui/header/header.component';
 import { InputComponent } from './shared/libs/ux-ui/forms/input/input.component';
@@ -97,6 +104,12 @@ const appRoutes: Routes = [
     SummaryAnnounceComponent,
     FooterComponent,
     TimerComponent,
+    SvgAddToFavoritesComponent,
+    SvgSearchComponent,
+    SvgCrossAddComponent,
+    SvgUserComponent,
+    SvgMessageComponent,
+    SvgShutdownComponent,
   ],
   imports: [
     BrowserModule,

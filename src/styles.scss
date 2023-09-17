@@ -38,7 +38,7 @@ nav {
 // Forms ///////////////////////////////////////////////////////////////////////
 
 .form-container {
-  @apply w-11/12 mx-auto p-4 flex-col border border-slate-300 shadow-md rounded-xl bg-slate-50
+  @apply w-11/12 mx-auto p-4 flex-col border border-slate-300 drop-shadow-md rounded-xl bg-slate-50
 /* SM */ sm:w-2/3
 /* MD */ md:w-3/4
 /* LG */ lg:max-w-4xl
@@ -78,7 +78,7 @@ nav {
 // Announces page ///////////////////////////////////////////////////////////////////////
 
 .filter-collapse {
-  @apply w-11/12 mx-auto bg-base-200 border border-slate-300 rounded-box shadow-md
+  @apply w-11/12 mx-auto bg-base-200 border border-slate-300 rounded-box drop-shadow-md
 /* MD */ md:w-10/12 md:mb-2
 /* LG */ lg:ml-20
 }
@@ -173,7 +173,7 @@ nav {
 /* MD */ md:w-11/12 md:mx-auto md:py-6 md:flex-row md:gap-4
 /* LG */ lg:gap-12
 }
-.summary-main-info-container{
+.summary-main-info-container {
   @apply w-11/12 flex flex-col gap-4
 /* MD */ md:w-1/2
 }
@@ -187,38 +187,41 @@ nav {
 // User-Profile ///////////////////////////////////////////////////////////////////////
 
 // User-profile
-.user-profile-container {
-  @apply mt-4 mx-auto flex flex-col gap-4
-/* MD */ md:mt-8 md:px-4 md:flex-row
-/* LG */ lg:w-11/12 lg:mt-12
+.profile-container-1 {
+  @apply w-11/12 mx-auto flex flex-col gap-4
+/* MD */ md:p-4 md:gap-8
 }
-.profile-card {
-  @apply mx-auto p-4 flex flex-col gap-4 bg-slate-100 border border-slate-300 rounded-lg shadow-lg
+.profile-container-2 {
+  @apply w-full mx-auto flex flex-col gap-4
+/* SM */ sm:w-10/12
+/* MD */ md:flex-row place-content-center
 }
-.user-info-container {
-  @apply flex flex-col gap-4
-/* MD */ md:gap-6
+.profile-container-3 {
+  @apply p-4 flex flex-col bg-slate-100 border border-slate-300 rounded-lg drop-shadow-md
+/* MD */ md:gap-4 md:justify-between 
 }
-.user-picture-infos {
-  @apply flex gap-4 items-center justify-center
+.user-balance {
+  @apply flex flex-col gap-2 items-center
 }
-.user-infos {
-  @apply ml-auto p-2  bg-white rounded-lg border border-slate-300
-/* MD */ md:p-4
-
+.circle-surface {
+  @apply w-16 h-16 rounded-full bg-slate-100 drop-shadow-md
+/* MD */ md:w-20 md:h-20 flex
 }
-
+.balance-actions {
+  @apply flex justify-center gap-0.5
+/* MD */ md:gap-1
+}
 // Profile Menu
 .user-profile-menu-container {
-  @apply mx-auto  flex flex-col gap-4 items-center self-center
-/* MD */
+  @apply w-11/12 mx-auto flex flex-col gap-4 items-center self-center
+/* MD */ md:w-auto md:flex-row
 }
 .pair-menu-container {
   @apply w-full flex flex-col gap-4
 /* MD */ md:flex-row
 }
 .card-menu {
-  @apply h-full py-4 px-8 flex flex-col gap-4 text-center items-center justify-center bg-slate-100 border border-slate-300 rounded-md shadow-md
+  @apply h-full py-4 px-8 flex flex-col gap-4 text-center items-center justify-center bg-slate-100 border border-slate-300 rounded-md drop-shadow-md
 /* MD */ md:p-6
 /* LG */ lg:p-8 lg:gap-8
 }
