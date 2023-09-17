@@ -3,7 +3,6 @@
   <div class="profile-container-1">
     <article class="profile-container-2">
       <aside class="profile-container-3">
-        <!-- <div class="personnal-infos"> -->
         <div class="flex justify-center">
           <img
             src="{{ profileData['imgProfile'] || '/assets/svg/profile.svg' }}"
@@ -11,6 +10,7 @@
             class="w-28 h-28 rounded-full"
           />
         </div>
+        <!-- Personnal user infos -->
         <div class="p-2 text-center">
           <p class="font-semibold text-lg">
             {{ profileData["firstname"] }} {{ profileData["lastname"] }}
@@ -52,9 +52,9 @@
             />
           </div>
         </div>
-        <!-- </div> -->
         <!-- Update profile BTN -->
         <div class="w-full flex justify-end">
+          <button class="btn btn-link">Se déconnecter</button>
           <lbl-modal-update-profile
             [profileData]="profileData"
             (modalUpdateEvent)="getUpdateUserProfile($event)"
@@ -86,7 +86,7 @@
         </div>
       </aside>
     </article>
-
+    <!-- Menu cards -->
     <article class="user-profile-menu-container">
       <div class="pair-menu-container">
         <div class="card-menu">
@@ -94,18 +94,12 @@
             <h2 class="text-xl font-medium">Menu 1</h2>
             <p>Description du menu</p>
           </div>
-          <!-- <div>
-            <img src="/assets/svg/profile.svg" class="w-12 h-12" />
-          </div> -->
         </div>
         <div class="card-menu">
           <div class="gap-2">
             <h2 class="text-xl font-medium">Menu 1</h2>
             <p>Description du menu</p>
           </div>
-          <!-- <div>
-            <img src="/assets/svg/profile.svg" class="w-12 h-12" />
-          </div> -->
         </div>
       </div>
       <div class="pair-menu-container">
@@ -114,18 +108,12 @@
             <h2 class="text-xl font-medium">Menu 1</h2>
             <p>Description du menu</p>
           </div>
-          <!-- <div>
-            <img src="/assets/svg/profile.svg" class="w-12 h-12" />
-          </div> -->
         </div>
         <div class="card-menu">
           <div class="gap-2">
             <h2 class="text-xl font-medium">Menu 1</h2>
             <p>Description du menu</p>
           </div>
-          <!-- <div>
-            <img src="/assets/svg/profile.svg" class="w-12 h-12" />
-          </div> -->
         </div>
       </div>
     </article>
