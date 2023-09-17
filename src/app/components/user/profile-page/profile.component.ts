@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DocumentData } from 'firebase/firestore';
 import { Subscription } from 'rxjs';
 import { IUser } from 'src/app/models/user/user.model';
@@ -16,7 +17,7 @@ export class ProfileComponent implements OnInit {
   public profileData!: DocumentData;
   modalUpdateProfile = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.profileData = this.authService.userData;
@@ -25,5 +26,11 @@ export class ProfileComponent implements OnInit {
   getUpdateUserProfile(updatedData: DocumentData): void {
     this.profileData = updatedData;
     this.authService.userData = this.profileData;
+  }
+
+  onDisconnect() {
+    this.authService
+      .signOutUser()
+      .then(() => this.router.navigate(['/connexion']));
   }
 }
