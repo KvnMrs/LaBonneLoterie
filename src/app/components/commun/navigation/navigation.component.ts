@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
 import { IUser } from '../../../models/user/user.model';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -12,7 +11,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class NavigationComponent implements OnInit, OnDestroy {
   public currentUserSubscription!: Subscription;
   public currentUser: IUser | null = null;
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.authService.currentUserSubject.subscribe({
@@ -23,12 +22,6 @@ export class NavigationComponent implements OnInit, OnDestroy {
         console.error('Erreur récupération utilisateur.', error);
       },
     });
-  }
-
-  onDisconnect() {
-    this.authService
-      .signOutUser()
-      .then(() => this.router.navigate(['/connexion']));
   }
 
   ngOnDestroy(): void {

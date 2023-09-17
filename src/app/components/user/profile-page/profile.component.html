@@ -54,11 +54,16 @@
         </div>
         <!-- Update profile BTN -->
         <div class="w-full flex justify-end">
-          <button class="btn btn-link">Se déconnecter</button>
-          <lbl-modal-update-profile
+          <button
+            (click)="onDisconnect()"
+            class="btn btn-link text-error hover:btn-error"
+          >
+            Se déconnecter
+          </button>
+          <!-- <lbl-modal-update-profile
             [profileData]="profileData"
             (modalUpdateEvent)="getUpdateUserProfile($event)"
-          ></lbl-modal-update-profile>
+          ></lbl-modal-update-profile> -->
         </div>
       </aside>
       <!-- User Balance -->
