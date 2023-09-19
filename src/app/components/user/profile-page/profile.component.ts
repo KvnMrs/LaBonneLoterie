@@ -4,6 +4,7 @@ import { DocumentData } from 'firebase/firestore';
 import { Subscription } from 'rxjs';
 import { IUser } from 'src/app/models/user/user.model';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -14,18 +15,24 @@ export class ProfileComponent implements OnInit {
   public stars = [1, 2, 3, 4, 5];
   public currentUserSubscritpion!: Subscription;
   public currentUser!: IUser;
-  public profileData!: DocumentData;
+  public userData: DocumentData | null = null;
   modalUpdateProfile = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
-    this.profileData = this.authService.userData;
+  async ngOnInit(): Promise<void> {
+    this.authService.userDataSubject.subscribe(
+      (data) => (this.userData = data)
+    );
   }
 
   getUpdateUserProfile(updatedData: DocumentData): void {
-    this.profileData = updatedData;
-    this.authService.userData = this.profileData;
+    this.userData = updatedData;
+    this.authService.userDataSubject.next(this.userData);
   }
 
   onDisconnect() {
