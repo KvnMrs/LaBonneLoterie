@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {
-  ActivatedRouteSnapshot,
-  Router,
-  RouterStateSnapshot,
-} from '@angular/router';
+import { Router } from '@angular/router';
 import { DocumentData } from '@angular/fire/firestore';
 import {
   createUserWithEmailAndPassword,
@@ -20,9 +16,10 @@ import { UserService } from '../user/user.service';
   providedIn: 'root',
 })
 export class AuthService {
-  isAuth = false;
   currentUserSubject = new BehaviorSubject<IUser | null>(null);
-  userData!: DocumentData;
+  userDataSubject = new BehaviorSubject<DocumentData | null>(null);
+  currentUser = this.auth.currentUser;
+
   constructor(
     private router: Router,
     private userService: UserService,
@@ -31,9 +28,10 @@ export class AuthService {
     this.auth.onAuthStateChanged((user) => {
       if (user) {
         this.currentUserSubject.next(user as IUser);
-        this.userService
-          .getUserByID(user.uid)
-          .then((data) => (this.userData = data as DocumentData));
+
+        this.userService.getUserByID(user.uid).then((data) => {
+          this.userDataSubject.next(data);
+        });
       } else {
         this.router.navigate(['']);
       }
@@ -85,13 +83,5 @@ export class AuthService {
       .catch((error) => {
         console.error('Erreur lors de la déconnexion', error);
       });
-  }
-
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.isAuth) return true;
-    else return this.router.navigate(['auth']);
   }
 }

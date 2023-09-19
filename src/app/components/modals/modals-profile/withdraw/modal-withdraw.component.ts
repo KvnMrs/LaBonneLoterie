@@ -14,8 +14,8 @@ import { UserService } from 'src/app/services/user/user.service';
 export class ModalWithdrawComponent implements OnInit {
   public currentUserSubscription!: Subscription;
   public withdrawBankBalanceForm!: FormGroup;
-  public currentUser!: IUser;
-  @Input() profileData!: DocumentData;
+  public currentUser: IUser | null = null;
+  @Input() userData: DocumentData | null = null;
   @Output() withdrawEvent = new EventEmitter<DocumentData>();
 
   constructor(
@@ -38,20 +38,25 @@ export class ModalWithdrawComponent implements OnInit {
   }
 
   async onWithdraw(): Promise<void> {
-    const sumToWithdraw = this.withdrawBankBalanceForm.value.bankAccount;
-    const newBalanceBank = this.profileData['bankAccount'] - sumToWithdraw;
-    await this.userService.onCreditUserAccount(
-      this.profileData['uid'],
-      newBalanceBank
-    );
-    await this.userService
-      .getUserByID(this.profileData['uid'])
-      .then(
-        (data) => (
-          (this.profileData = data as DocumentData),
-          this.withdrawEvent.emit(this.profileData as DocumentData),
-          this.withdrawBankBalanceForm.reset()
-        )
+    try {
+      if (!this.userData) throw Error;
+      const sumToWithdraw = this.withdrawBankBalanceForm.value.bankAccount;
+      const newBalanceBank = this.userData['bankAccount'] - sumToWithdraw;
+      await this.userService.onCreditUserAccount(
+        this.userData['uid'],
+        newBalanceBank
       );
+      await this.userService
+        .getUserByID(this.userData['uid'])
+        .then(
+          (data) => (
+            (this.userData = data as DocumentData),
+            this.withdrawEvent.emit(this.userData as DocumentData),
+            this.withdrawBankBalanceForm.reset()
+          )
+        );
+    } catch (error) {
+      console.log('onWithdraw Problem:', error);
+    }
   }
 }
