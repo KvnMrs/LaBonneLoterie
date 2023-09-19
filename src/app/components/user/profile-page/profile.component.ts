@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { DocumentData } from 'firebase/firestore';
 import { Subscription } from 'rxjs';
@@ -11,18 +11,14 @@ import { UserService } from 'src/app/services/user/user.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
   public stars = [1, 2, 3, 4, 5];
   public currentUserSubscritpion!: Subscription;
   public currentUser!: IUser;
   public userData: DocumentData | null = null;
   modalUpdateProfile = false;
 
-  constructor(
-    private authService: AuthService,
-    private userService: UserService,
-    private router: Router
-  ) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   async ngOnInit(): Promise<void> {
     this.authService.userDataSubject.subscribe(
@@ -39,5 +35,9 @@ export class ProfileComponent implements OnInit {
     this.authService
       .signOutUser()
       .then(() => this.router.navigate(['/connexion']));
+  }
+
+  ngOnDestroy() {
+    this.authService.userDataSubject.unsubscribe();
   }
 }
