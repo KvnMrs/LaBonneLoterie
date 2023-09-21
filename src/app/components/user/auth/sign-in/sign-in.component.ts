@@ -9,16 +9,16 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./sign-in.component.scss'],
 })
 export class SignInComponent implements OnInit {
-  public signinForm!: FormGroup;
+  public signinForm: FormGroup = new FormGroup({
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
+  });
   @Input() haveAccount!: boolean;
   @Output() notHaveAccount = new EventEmitter<boolean>();
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.initSignInForm();
-    this.signinForm = this.authService.form;
-  }
+  ngOnInit(): void {}
 
   initSignInForm(): void {
     this.signinForm = new FormGroup({

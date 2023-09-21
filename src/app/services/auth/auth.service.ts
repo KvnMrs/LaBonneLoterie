@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DocumentData } from '@angular/fire/firestore';
 import {
@@ -8,7 +7,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { IUser } from 'src/app/models/user/user.model';
 import { UserService } from '../user/user.service';
 
@@ -37,19 +36,6 @@ export class AuthService {
       }
     });
   }
-
-  form = new FormGroup({
-    uid: new FormControl(''),
-    firstname: new FormControl('', Validators.required),
-    lastname: new FormControl('', Validators.required),
-    birthday: new FormControl('', Validators.required),
-    city: new FormControl('', Validators.required),
-    phone: new FormControl(''),
-    email: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
-    confirmation_password: new FormControl('', Validators.required),
-    bankAccount: new FormControl(0, Validators.required),
-  });
 
   async signupUser(data: IUser): Promise<void> {
     return createUserWithEmailAndPassword(this.auth, data.email, data.password)

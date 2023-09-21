@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IUser } from 'src/app/models/user/user.model';
 import { AuthService } from '../../../../services/auth/auth.service';
@@ -10,15 +10,24 @@ import { AuthService } from '../../../../services/auth/auth.service';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
-  public formSignUp!: FormGroup;
+  public formSignUp: FormGroup = new FormGroup({
+    uid: new FormControl(''),
+    firstname: new FormControl('', Validators.required),
+    lastname: new FormControl('', Validators.required),
+    birthday: new FormControl('', Validators.required),
+    city: new FormControl('', Validators.required),
+    phone: new FormControl(''),
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
+    confirmation_password: new FormControl('', Validators.required),
+    bankAccount: new FormControl(0, Validators.required),
+  });
   @Input() haveAccount!: boolean;
   @Output() onAccount = new EventEmitter<boolean>();
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.formSignUp = this.authService.form;
-  }
+  ngOnInit(): void {}
 
   public onSubmitSignupForm() {
     const dataUser: IUser = this.formSignUp.value;
