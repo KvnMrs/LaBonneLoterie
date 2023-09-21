@@ -20,6 +20,14 @@
             placeholder="Prénom"
             required
           />
+          <span
+            *ngIf="
+              formSignUp.get('firstname')!.invalid &&
+              formSignUp.get('firstname')!.touched
+            "
+            class="label-text-alt mt-1 text-error font-medium font-medium"
+            >Ce champs est obligatoire.</span
+          >
         </div>
         <div class="form-input-container">
           <label class="mb-1" for="lastname">Nom:</label>
@@ -33,6 +41,14 @@
             placeholder="Nom"
             required
           />
+          <span
+            *ngIf="
+              formSignUp.get('lastname')!.invalid &&
+              formSignUp.get('lastname')!.touched
+            "
+            class="label-text-alt mt-1 text-error font-medium"
+            >Ce champs est obligatoire.</span
+          >
         </div>
         <div class="form-input-container">
           <label class="mb-1" for="birthday">Date de naissance:</label>
@@ -46,6 +62,14 @@
             placeholder="JJ/MM/AAAA"
             required
           />
+          <span
+            *ngIf="
+              formSignUp.get('birthday')!.invalid &&
+              formSignUp.get('birthday')!.touched
+            "
+            class="label-text-alt mt-1 text-error font-medium"
+            >Ce champs est obligatoire.</span
+          >
         </div>
         <div class="form-input-container">
           <label class="mb-1" for="city">Ville:</label>
@@ -59,6 +83,13 @@
             placeholder="Ville"
             required
           />
+          <span
+            *ngIf="
+              formSignUp.get('city')!.invalid && formSignUp.get('city')!.touched
+            "
+            class="label-text-alt mt-1 text-error font-medium"
+            >Ce champs est obligatoire.</span
+          >
         </div>
       </div>
       <div class="col-upload-descript-buttons">
@@ -75,6 +106,14 @@
               placeholder="E-mail"
               required
             />
+            <span
+              *ngIf="
+                formSignUp.get('email')!.invalid &&
+                formSignUp.get('email')!.touched
+              "
+              class="label-text-alt mt-1 text-error font-medium"
+              >Ce champs est obligatoire.</span
+            >
           </div>
           <div class="form-input-container">
             <label class="mb-1" for="password">Mot de passe:</label>
@@ -88,6 +127,14 @@
               placeholder="Mot de passe"
               required
             />
+            <span
+              *ngIf="
+                formSignUp.get('password')!.invalid &&
+                formSignUp.get('password')!.touched
+              "
+              class="label-text-alt mt-1 text-error font-medium"
+              >Ce champs est obligatoire.</span
+            >
           </div>
           <div class="form-input-container">
             <label class="mb-1" for="confirmation_password"
@@ -102,6 +149,14 @@
               placeholder="Confirmation mot de passe"
               required
             />
+            <span
+              *ngIf="
+                formSignUp.get('confirmation_password')!.invalid &&
+                formSignUp.get('confirmation_password')!.touched
+              "
+              class="label-text-alt mt-1 text-error font-medium"
+              >Ce champs est obligatoire.</span
+            >
           </div>
         </div>
         <div class="auth-cta-container">
