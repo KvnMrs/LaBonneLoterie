@@ -1,28 +1,22 @@
-import { AbstractControl, FormControl, ValidationErrors } from '@angular/forms';
+import { AbstractControl, ValidationErrors } from '@angular/forms';
 
 // TODO: still not working, need to see back and implemented it
 export function emailDomainValidator(
   control: AbstractControl
 ): ValidationErrors | null {
+  if (!control) return { invalidDomain: true };
   const email = control.value as string;
-  if (email) {
-    const domain = email.substring(email.lastIndexOf('@') + 1); // Récupérer le domaine de l'email
-    console.log('domain', domain);
-
-    if (
-      domain.toLowerCase() === 'gmail.com' ||
-      domain.toLowerCase() === '.fr' ||
-      domain.toLowerCase() === '.com' ||
-      domain.toLowerCase() === '.org'
-    ) {
-      return { invalidDomain: true }; // wrong domain
-    } else {
-      return null; // valid domain
-    }
+  const domain = email.substring(email.lastIndexOf('@') + 1); // Récupérer le domaine de l'email
+  if (
+    domain.toLowerCase() === 'gmail.com' ||
+    domain.toLowerCase() === '.fr' ||
+    domain.toLowerCase() === '.com' ||
+    domain.toLowerCase() === '.org'
+  ) {
+    return null; // valid domain
+  } else {
+    return { invalidDomain: true }; // wrong domain
   }
-  console.log('3');
-
-  return null;
 }
 
 export function checkMajorityValidator(

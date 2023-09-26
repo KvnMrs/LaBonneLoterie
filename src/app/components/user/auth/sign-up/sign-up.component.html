@@ -9,6 +9,7 @@
     <div class="form-sub-container">
       <div class="md:w-full | md:mb-6">
         <div class="form-input-container">
+          <!-- Firstname -->
           <label class="mb-1" for="firstname">Prénom:</label>
           <input
             class="input input-lbl"
@@ -29,6 +30,7 @@
             >Vous devez saisir votre prénom.</span
           >
         </div>
+        <!-- Lastname -->
         <div class="form-input-container">
           <label class="mb-1" for="lastname">Nom de naissance:</label>
           <input
@@ -50,6 +52,7 @@
             >Vous devez saisir votre nom de naissance.</span
           >
         </div>
+        <!-- Birthday -->
         <div class="form-input-container">
           <label class="mb-1" for="birthday">Date de naissance:</label>
           <input
@@ -79,6 +82,7 @@
             >Vous devez saisir votre jour de naissance.</span
           >
         </div>
+        <!-- City -->
         <div class="form-input-container">
           <label class="mb-1" for="city">Ville de naissance:</label>
           <input
@@ -100,6 +104,7 @@
           >
         </div>
       </div>
+      <!-- Email -->
       <div class="col-upload-descript-buttons">
         <div class="md:w-full mb-8 | md:mb-4">
           <div class="form-input-container">
@@ -116,24 +121,22 @@
             />
             <span
               *ngIf="
-                formSignUp.get('email')!.invalid &&
-                formSignUp.get('email')!.hasError('email') &&
+                formSignUp.get('email')!.hasError('invalidDomain') &&
                 formSignUp.get('email')!.touched
               "
               class="label-text-alt mt-1 text-error font-medium"
-              >Vous devez saisir votre adresse email valide.</span
+              >Veuillez verifier le nom de domaine de votre adresse email.</span
             >
             <span
               *ngIf="
-                formSignUp.get('email')!.invalid &&
                 formSignUp.get('email')!.hasError('email') &&
-                formSignUp.get('email')!.hasError('emailDomainValidator') &&
                 formSignUp.get('email')!.touched
               "
               class="label-text-alt mt-1 text-error font-medium"
               >Vous devez saisir votre adresse email valide.</span
             >
           </div>
+          <!-- Password -->
           <div class="form-input-container">
             <label class="mb-1" for="password">Mot de passe:</label>
             <input
@@ -155,6 +158,7 @@
               >Vous devez saisir un mot de passe.</span
             >
           </div>
+          <!-- Confirmation Password -->
           <div class="form-input-container">
             <label class="mb-1" for="confirmation_password"
               >Confirmation du mot de passe:</label
