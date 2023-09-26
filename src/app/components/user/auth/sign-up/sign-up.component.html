@@ -110,7 +110,6 @@
               *ngIf="
                 formSignUp.get('email')!.invalid &&
                 formSignUp.get('email')!.hasError('email') &&
-                formSignUp.get('email')!.hasError('emailDomainValidator') &&
                 formSignUp.get('email')!.touched
               "
               class="label-text-alt mt-1 text-error font-medium"

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IUser } from 'src/app/models/user/user.model';
 import { AuthService } from '../../../../services/auth/auth.service';
+import { emailDomainValidator } from 'src/app/shared/libs/forms/validators';
 
 @Component({
   selector: 'app-sign-up',
