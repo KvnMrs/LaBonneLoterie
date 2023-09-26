@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IUser } from 'src/app/models/user/user.model';
 import { AuthService } from '../../../../services/auth/auth.service';
-import { emailDomainValidator } from 'src/app/shared/libs/forms/validators';
+import { checkMajorityValidator } from 'src/app/shared/libs/forms/validators';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,7 +15,10 @@ export class SignUpComponent implements OnInit {
     uid: new FormControl(''),
     firstname: new FormControl('', Validators.required),
     lastname: new FormControl('', Validators.required),
-    birthday: new FormControl('', Validators.required),
+    birthday: new FormControl('', [
+      Validators.required,
+      checkMajorityValidator,
+    ]),
     city: new FormControl('', Validators.required),
     phone: new FormControl(''),
     email: new FormControl('', Validators.required),

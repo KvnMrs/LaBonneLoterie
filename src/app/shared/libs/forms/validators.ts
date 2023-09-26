@@ -1,6 +1,6 @@
 import { AbstractControl, FormControl, ValidationErrors } from '@angular/forms';
 
-// TODO: still not worker, need to see back and implemented it
+// TODO: still not working, need to see back and implemented it
 export function emailDomainValidator(
   control: AbstractControl
 ): ValidationErrors | null {
@@ -15,12 +15,25 @@ export function emailDomainValidator(
       domain.toLowerCase() === '.com' ||
       domain.toLowerCase() === '.org'
     ) {
-      return { invalidDomain: true }; // Le domaine n'est pas valide
+      return { invalidDomain: true }; // wrong domain
     } else {
-      return null; // Le domaine est valide
+      return null; // valid domain
     }
   }
   console.log('3');
 
   return null;
+}
+
+export function checkMajorityValidator(
+  control: AbstractControl
+): ValidationErrors | null {
+  if (!control) return { notMajor: true };
+  else {
+    const birthday = control.value;
+    const majority = 18 * 365 * 24 * 60 * 60 * 1000; // 18 years old in milliseconds
+    const birthdayInMilliseconds = new Date(birthday).getTime();
+    const result = Date.now() - birthdayInMilliseconds;
+    return result >= majority ? null : { notMajor: true };
+  }
 }

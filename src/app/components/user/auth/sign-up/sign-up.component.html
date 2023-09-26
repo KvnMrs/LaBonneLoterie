@@ -64,8 +64,16 @@
           />
           <span
             *ngIf="
-              formSignUp.get('birthday')!.invalid &&
-              formSignUp.get('birthday')!.touched
+              formSignUp.get('birthday')?.hasError('notMajor') &&
+              formSignUp.get('birthday')?.touched
+            "
+            class="label-text-alt mt-1 text-error font-medium"
+            >Vous devez être majeur.</span
+          >
+          <span
+            *ngIf="
+              formSignUp.get('birthday')?.invalid &&
+              formSignUp.get('birthday')?.touched
             "
             class="label-text-alt mt-1 text-error font-medium"
             >Vous devez saisir votre jour de naissance.</span
