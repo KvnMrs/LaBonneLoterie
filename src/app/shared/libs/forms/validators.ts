@@ -1,22 +1,25 @@
 import { AbstractControl, ValidationErrors } from '@angular/forms';
 
-// TODO: still not working, need to see back and implemented it
-export function emailDomainValidator(
+// Check validation and domain of the email adress
+export function customEmailValidator(
   control: AbstractControl
 ): ValidationErrors | null {
-  if (!control) return { invalidDomain: true };
-  const email = control.value as string;
-  const domain = email.substring(email.lastIndexOf('@') + 1); // Récupérer le domaine de l'email
-  if (
-    domain.toLowerCase() === 'gmail.com' ||
-    domain.toLowerCase() === '.fr' ||
-    domain.toLowerCase() === '.com' ||
-    domain.toLowerCase() === '.org'
-  ) {
-    return null; // valid domain
-  } else {
-    return { invalidDomain: true }; // wrong domain
+  const email: string = control.value;
+  if (!email.includes('@')) return { invalidAdress: true };
+  const domain = email.substring(email.lastIndexOf('@') + 1); // take domain
+  if (domain.length) {
+    if (
+      domain.toLowerCase() === 'gmail.com' ||
+      domain.toLowerCase() === '.fr' ||
+      domain.toLowerCase() === '.com' ||
+      domain.toLowerCase() === '.org'
+    ) {
+      return null;
+    } else {
+      return { invalidDomain: true };
+    }
   }
+  return { invalidAdress: true };
 }
 
 export function majorityCheckValidator(

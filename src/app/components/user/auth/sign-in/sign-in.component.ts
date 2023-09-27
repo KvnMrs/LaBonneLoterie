@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { emailDomainValidator } from 'src/app/shared/libs/forms/validators';
+import { customEmailValidator } from 'src/app/shared/libs/forms/validators';
 
 @Component({
   selector: 'app-sign-in',
@@ -11,7 +11,7 @@ import { emailDomainValidator } from 'src/app/shared/libs/forms/validators';
 })
 export class SignInComponent implements OnInit {
   public signinForm: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.required, emailDomainValidator]),
+    email: new FormControl('', [Validators.required, customEmailValidator]),
     password: new FormControl('', Validators.required),
   });
   @Input() haveAccount!: boolean;

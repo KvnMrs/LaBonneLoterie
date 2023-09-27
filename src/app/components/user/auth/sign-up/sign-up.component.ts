@@ -5,7 +5,7 @@ import { IUser } from 'src/app/models/user/user.model';
 import { AuthService } from '../../../../services/auth/auth.service';
 import {
   majorityCheckValidator,
-  emailDomainValidator,
+  customEmailValidator,
 } from 'src/app/shared/libs/forms/validators';
 
 @Component({
@@ -26,7 +26,7 @@ export class SignUpComponent implements OnInit {
     ]),
     city: new FormControl('', Validators.required),
     phone: new FormControl(''),
-    email: new FormControl('', [Validators.required, emailDomainValidator]),
+    email: new FormControl('', [Validators.required, customEmailValidator]),
     password: new FormControl('', Validators.required),
     confirmation_password: new FormControl('', Validators.required),
     bankAccount: new FormControl(0, Validators.required),

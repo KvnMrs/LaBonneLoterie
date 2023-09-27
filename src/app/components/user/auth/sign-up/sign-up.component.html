@@ -121,19 +121,19 @@
             />
             <span
               *ngIf="
+                formSignUp.get('email')!.hasError('invalidAdress') &&
+                formSignUp.get('email')!.touched
+              "
+              class="label-text-alt mt-1 text-error font-medium"
+              >Vous devez saisir une adresse email valide.</span
+            >
+            <span
+              *ngIf="
                 formSignUp.get('email')!.hasError('invalidDomain') &&
                 formSignUp.get('email')!.touched
               "
               class="label-text-alt mt-1 text-error font-medium"
               >Veuillez verifier le nom de domaine de votre adresse email.</span
-            >
-            <span
-              *ngIf="
-                formSignUp.get('email')!.hasError('email') &&
-                formSignUp.get('email')!.touched
-              "
-              class="label-text-alt mt-1 text-error font-medium"
-              >Vous devez saisir votre adresse email valide.</span
             >
           </div>
           <!-- Password -->
