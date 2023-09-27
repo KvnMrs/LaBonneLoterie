@@ -205,3 +205,9 @@
     </div>
   </form>
 </div>
+
+<lbl-alert-error
+  [showError]="showError"
+  [errorMessage]="errorMessage"
+  (closed)="closeAlert()"
+></lbl-alert-error>

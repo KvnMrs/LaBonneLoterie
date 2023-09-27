@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { IUser } from 'src/app/models/user/user.model';
 import { AuthService } from '../../../../services/auth/auth.service';
 import {
-  checkMajorityValidator,
+  majorityCheckValidator,
   emailDomainValidator,
 } from 'src/app/shared/libs/forms/validators';
 
@@ -14,13 +14,15 @@ import {
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
+  showError: boolean = false;
+  errorMessage: string = '';
   public formSignUp: FormGroup = new FormGroup({
     uid: new FormControl(''),
     firstname: new FormControl('', Validators.required),
     lastname: new FormControl('', Validators.required),
     birthday: new FormControl('', [
       Validators.required,
-      checkMajorityValidator,
+      majorityCheckValidator,
     ]),
     city: new FormControl('', Validators.required),
     phone: new FormControl(''),
@@ -36,14 +38,20 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public onSubmitSignupForm() {
+  public async onSubmitSignupForm(): Promise<void> {
     const dataUser: IUser = this.formSignUp.value;
-    this.authService
-      .signupUser(dataUser)
-      .then(() => {
-        this.router.navigate(['/recherche']);
-      })
-      .catch((error) => console.error('SIGNUP ERROR ==> ', error.message));
+    const trySignup = await this.authService.signupUser(dataUser);
+    if (trySignup) {
+      this.errorMessage = trySignup; // Définissez l'erreur dans le composant
+      this.showError = true;
+    } else {
+      this.showError = false;
+      this.router.navigate(['/recherche']);
+    }
+  }
+
+  closeAlert() {
+    this.showError = false;
   }
 
   onHaveAccount() {
