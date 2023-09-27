@@ -19,7 +19,7 @@ export function emailDomainValidator(
   }
 }
 
-export function checkMajorityValidator(
+export function majorityCheckValidator(
   control: AbstractControl
 ): ValidationErrors | null {
   if (!control) return { notMajor: true };
@@ -30,4 +30,17 @@ export function checkMajorityValidator(
     const result = Date.now() - birthdayInMilliseconds;
     return result >= majority ? null : { notMajor: true };
   }
+}
+
+export function passwordMatchingCheckValidator(
+  control1: AbstractControl,
+  control2: AbstractControl
+): ValidationErrors | null {
+  if (!control1 && !control2) return null;
+  else {
+    const password = control1.value;
+    const passwordConfirmation = control2.value;
+    password !== passwordConfirmation ? { notMatchingPasswords: true } : null;
+  }
+  return null;
 }

@@ -15,9 +15,10 @@ import { UserService } from '../user/user.service';
   providedIn: 'root',
 })
 export class AuthService {
-  currentUserSubject = new BehaviorSubject<IUser | null>(null);
-  userDataSubject = new BehaviorSubject<DocumentData | null>(null);
-  currentUser = this.auth.currentUser;
+  public currentUserSubject = new BehaviorSubject<IUser | null>(null);
+  public userDataSubject = new BehaviorSubject<DocumentData | null>(null);
+  public currentUser = this.auth.currentUser;
+  public errorMessage: string | null = null;
 
   constructor(
     private router: Router,
@@ -37,18 +38,28 @@ export class AuthService {
     });
   }
 
-  async signupUser(data: IUser): Promise<void> {
-    return createUserWithEmailAndPassword(this.auth, data.email, data.password)
-      .then((userCredential) => {
-        const memberSince = userCredential.user.metadata.creationTime as string;
-        data.uid = userCredential.user.uid;
-        data = { ...data, memberSince };
-        this.userService.createProfileUser(data.uid, data);
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        console.error(errorMessage);
-      });
+  async signupUser(data: IUser): Promise<string | null> {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        this.auth,
+        data.email,
+        data.password
+      );
+      const memberSince = userCredential.user.metadata.creationTime as string;
+      data.uid = userCredential.user.uid;
+      data = { ...data, memberSince };
+      await this.userService.createProfileUser(data.uid, data);
+      this.router.navigate(['/recherche']);
+      return null;
+    } catch (error: any) {
+      const errorCode = error.code;
+      let errorMessage = error.message;
+      if (errorCode === 'auth/email-already-in-use') {
+        errorMessage = 'Un compte existe déjà avec cet Email.';
+        return errorMessage;
+      }
+    }
+    return null;
   }
 
   async signinUser(data: IUser) {
