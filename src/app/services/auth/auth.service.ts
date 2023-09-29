@@ -62,14 +62,19 @@ export class AuthService {
     return null;
   }
 
-  async signinUser(data: IUser) {
-    return signInWithEmailAndPassword(
-      this.auth,
-      data.email,
-      data.password
-    ).catch((err) =>
-      console.error('Error Service Auth signinUser ->', err.message)
-    );
+  signinUser(data: IUser) {
+    try {
+      signInWithEmailAndPassword(this.auth, data.email, data.password);
+      this.router.navigate(['/recherche']);
+      return null;
+    } catch (error: any) {
+      const errorCode = error.code;
+      let errorMessage = error.message;
+      if (errorCode === 'auth/wrong-password') {
+        errorMessage = 'Le mot de passe entré est inccorect.';
+        return errorMessage;
+      }
+    }
   }
 
   async signOutUser() {

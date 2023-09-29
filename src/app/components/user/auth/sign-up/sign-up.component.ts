@@ -42,7 +42,7 @@ export class SignUpComponent implements OnInit {
     const dataUser: IUser = this.formSignUp.value;
     const trySignup = await this.authService.signupUser(dataUser);
     if (trySignup) {
-      this.errorMessage = trySignup; // Définissez l'erreur dans le composant
+      this.errorMessage = trySignup;
       this.showError = true;
     } else {
       this.showError = false;

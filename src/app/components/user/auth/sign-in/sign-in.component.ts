@@ -10,6 +10,8 @@ import { customEmailValidator } from 'src/app/shared/libs/forms/validators';
   styleUrls: ['./sign-in.component.scss'],
 })
 export class SignInComponent implements OnInit {
+  showError: boolean = false;
+  errorMessage: string = '';
   public signinForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, customEmailValidator]),
     password: new FormControl('', Validators.required),
@@ -28,18 +30,25 @@ export class SignInComponent implements OnInit {
     });
   }
 
-  public onSubmitSigninForm() {
+  public async onSubmitSigninForm() {
     const dataUser = this.signinForm.value;
-    this.authService
-      .signinUser(dataUser)
-      .then(() => this.router.navigate(['/recherche']))
-      .catch((err) =>
-        console.error('SignIn onSubmitSigninForm() error -->', err.message)
-      );
+    const trySignIn = await this.authService.signinUser(dataUser);
+    console.log('trySignIn', trySignIn);
+    if (trySignIn) {
+      this.errorMessage = trySignIn;
+      this.showError = true;
+    } else {
+      this.showError = false;
+      this.router.navigate(['/recherche']);
+    }
   }
 
   onNotHaveAccount() {
     this.haveAccount = false;
     this.notHaveAccount.emit(this.haveAccount);
+  }
+
+  closeAlert() {
+    this.showError = false;
   }
 }
