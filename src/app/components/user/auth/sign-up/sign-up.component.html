@@ -75,11 +75,19 @@
           >
           <span
             *ngIf="
+              formSignUp.get('birthday')?.hasError('notValid') &&
+              formSignUp.get('birthday')?.touched
+            "
+            class="label-text-alt mt-1 text-error font-medium"
+            >Vous devez entrez une date de naissance valide.</span
+          >
+          <span
+            *ngIf="
               formSignUp.get('birthday')?.invalid &&
               formSignUp.get('birthday')?.touched
             "
             class="label-text-alt mt-1 text-error font-medium"
-            >Vous devez saisir votre jour de naissance.</span
+            >Vous devez entrez une date de naissance valide.</span
           >
         </div>
         <!-- City -->
