@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { customEmailValidator } from 'src/app/shared/libs/forms/validators';
 
 @Component({
   selector: 'app-sign-in',
@@ -9,16 +10,18 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./sign-in.component.scss'],
 })
 export class SignInComponent implements OnInit {
-  public signinForm!: FormGroup;
+  showError: boolean = false;
+  errorMessage: string = '';
+  public signinForm: FormGroup = new FormGroup({
+    email: new FormControl('', [Validators.required, customEmailValidator]),
+    password: new FormControl('', Validators.required),
+  });
   @Input() haveAccount!: boolean;
   @Output() notHaveAccount = new EventEmitter<boolean>();
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.initSignInForm();
-    this.signinForm = this.authService.form;
-  }
+  ngOnInit(): void {}
 
   initSignInForm(): void {
     this.signinForm = new FormGroup({
@@ -27,18 +30,25 @@ export class SignInComponent implements OnInit {
     });
   }
 
-  public onSubmitSigninForm() {
+  public async onSubmitSigninForm() {
     const dataUser = this.signinForm.value;
-    this.authService
-      .signinUser(dataUser)
-      .then(() => this.router.navigate(['/recherche']))
-      .catch((err) =>
-        console.error('SignIn onSubmitSigninForm() error -->', err.message)
-      );
+    const trySignIn = await this.authService.signinUser(dataUser);
+    console.log('trySignIn', trySignIn);
+    if (trySignIn) {
+      this.errorMessage = trySignIn;
+      this.showError = true;
+    } else {
+      this.showError = false;
+      this.router.navigate(['/recherche']);
+    }
   }
 
   onNotHaveAccount() {
     this.haveAccount = false;
     this.notHaveAccount.emit(this.haveAccount);
+  }
+
+  closeAlert() {
+    this.showError = false;
   }
 }
