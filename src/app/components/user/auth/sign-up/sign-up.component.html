@@ -7,7 +7,7 @@
   >
     <h1 class="form-title">Inscription</h1>
     <div class="form-sub-container">
-      <div class="md:w-full | md:mb-6">
+      <div class="md:w-full | md:mb-auto">
         <div class="form-input-container">
           <!-- Firstname -->
           <label class="mb-1" for="firstname">Prénom:</label>
@@ -195,25 +195,25 @@
             >
           </div>
         </div>
-      </div>
-      <div class="auth-cta-container">
-        <button
-          class="btn btn-primary w-fit py-2 px-4 font-semibold text-white rounded-lg drop-shadow-md"
-          type="submit"
-          [disabled]="!formSignUp.valid"
-        >
-          S'incrire
-        </button>
-        <p class="flex flex-col gap-0.5 items-center">
-          J'ai déjà un compte,
-          <a
-            class="text-blue-600 hover:text-blue-400 underline"
-            [routerLink]="['/connexion']"
-            (click)="onHaveAccount()"
+        <div class="auth-cta-container">
+          <button
+            class="btn btn-primary w-fit py-2 px-4 font-semibold text-white rounded-lg drop-shadow-md"
+            type="submit"
+            [disabled]="!formSignUp.valid"
           >
-            me connecter
-          </a>
-        </p>
+            S'incrire
+          </button>
+          <p class="flex flex-col gap-0.5 items-center">
+            J'ai déjà un compte,
+            <a
+              class="text-blue-600 hover:text-blue-400 underline"
+              [routerLink]="['/connexion']"
+              (click)="onHaveAccount()"
+            >
+              me connecter
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   </form>
