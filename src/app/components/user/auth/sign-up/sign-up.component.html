@@ -18,7 +18,7 @@
             name="firstname"
             formControlName="firstname"
             autocomplete="username"
-            placeholder="Prénom"
+            placeholder="Prénom*"
             required
           />
           <span
@@ -40,7 +40,7 @@
             name="lastname"
             formControlName="lastname"
             autocomplete="username"
-            placeholder="Nom"
+            placeholder="Nom*"
             required
           />
           <span
@@ -62,7 +62,7 @@
             name="birthday"
             formControlName="birthday"
             autocomplete="username"
-            placeholder="JJ/MM/AAAA"
+            placeholder="JJ/MM/AAAA*"
             required
           />
           <span
@@ -100,7 +100,7 @@
             name="city"
             formControlName="city"
             autocomplete="username"
-            placeholder="Ville"
+            placeholder="Ville*"
             required
           />
           <span
@@ -124,7 +124,7 @@
               name="email"
               formControlName="email"
               autocomplete="username"
-              placeholder="E-mail"
+              placeholder="E-mail*"
               required
             />
             <span
@@ -154,9 +154,14 @@
               name="password"
               formControlName="password"
               autocomplete="current-password"
-              placeholder="Mot de passe"
+              placeholder="Mot de passe*"
               required
             />
+            <div class="label-text-alt flex flex-col mt-1">
+              <p>- 8 caractère minimum.</p>
+              <p>- 1 majuscule minimum</p>
+              <p>- 1 caractère spécial minimum ('/','\','-','@','*').</p>
+            </div>
             <span
               *ngIf="
                 formSignUp.get('password')!.invalid &&
@@ -177,7 +182,7 @@
               id="confirmation_password"
               name="confirmation_password"
               formControlName="confirmation_password"
-              placeholder="Confirmation mot de passe"
+              placeholder="Confirmation mot de passe*"
               required
             />
             <span
@@ -190,25 +195,25 @@
             >
           </div>
         </div>
-        <div class="auth-cta-container">
-          <button
-            class="btn btn-primary w-fit py-2 px-4 font-semibold text-white rounded-lg drop-shadow-md"
-            type="submit"
-            [disabled]="!formSignUp.valid"
+      </div>
+      <div class="auth-cta-container">
+        <button
+          class="btn btn-primary w-fit py-2 px-4 font-semibold text-white rounded-lg drop-shadow-md"
+          type="submit"
+          [disabled]="!formSignUp.valid"
+        >
+          S'incrire
+        </button>
+        <p class="flex flex-col gap-0.5 items-center">
+          J'ai déjà un compte,
+          <a
+            class="text-blue-600 hover:text-blue-400 underline"
+            [routerLink]="['/connexion']"
+            (click)="onHaveAccount()"
           >
-            S'incrire
-          </button>
-          <p class="flex flex-col gap-0.5 items-center">
-            J'ai déjà un compte,
-            <a
-              class="text-blue-600 hover:text-blue-400 underline"
-              [routerLink]="['/connexion']"
-              (click)="onHaveAccount()"
-            >
-              me connecter
-            </a>
-          </p>
-        </div>
+            me connecter
+          </a>
+        </p>
       </div>
     </div>
   </form>
