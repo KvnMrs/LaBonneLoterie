@@ -7,8 +7,9 @@
   >
     <h1 class="form-title">Inscription</h1>
     <div class="form-sub-container">
-      <div class="md:w-full | md:mb-6">
+      <div class="md:w-full | md:mb-auto">
         <div class="form-input-container">
+          <!-- Firstname -->
           <label class="mb-1" for="firstname">Prénom:</label>
           <input
             class="input input-lbl"
@@ -17,12 +18,21 @@
             name="firstname"
             formControlName="firstname"
             autocomplete="username"
-            placeholder="Prénom"
+            placeholder="Prénom*"
             required
           />
+          <span
+            *ngIf="
+              formSignUp.get('firstname')!.invalid &&
+              formSignUp.get('firstname')!.touched
+            "
+            class="label-text-alt mt-1 text-error font-medium"
+            >Vous devez saisir votre prénom.</span
+          >
         </div>
+        <!-- Lastname -->
         <div class="form-input-container">
-          <label class="mb-1" for="lastname">Nom:</label>
+          <label class="mb-1" for="lastname">Nom de naissance:</label>
           <input
             class="input input-lbl"
             type="text"
@@ -30,10 +40,19 @@
             name="lastname"
             formControlName="lastname"
             autocomplete="username"
-            placeholder="Nom"
+            placeholder="Nom*"
             required
           />
+          <span
+            *ngIf="
+              formSignUp.get('lastname')!.invalid &&
+              formSignUp.get('lastname')!.touched
+            "
+            class="label-text-alt mt-1 text-error font-medium"
+            >Vous devez saisir votre nom de naissance.</span
+          >
         </div>
+        <!-- Birthday -->
         <div class="form-input-container">
           <label class="mb-1" for="birthday">Date de naissance:</label>
           <input
@@ -43,12 +62,37 @@
             name="birthday"
             formControlName="birthday"
             autocomplete="username"
-            placeholder="JJ/MM/AAAA"
+            placeholder="JJ/MM/AAAA*"
             required
           />
+          <span
+            *ngIf="
+              formSignUp.get('birthday')?.hasError('notMajor') &&
+              formSignUp.get('birthday')?.touched
+            "
+            class="label-text-alt mt-1 text-error font-medium"
+            >Vous devez être majeur.</span
+          >
+          <span
+            *ngIf="
+              formSignUp.get('birthday')?.hasError('notValid') &&
+              formSignUp.get('birthday')?.touched
+            "
+            class="label-text-alt mt-1 text-error font-medium"
+            >Vous devez entrez une date de naissance valide.</span
+          >
+          <span
+            *ngIf="
+              formSignUp.get('birthday')?.invalid &&
+              formSignUp.get('birthday')?.touched
+            "
+            class="label-text-alt mt-1 text-error font-medium"
+            >Vous devez entrez une date de naissance valide.</span
+          >
         </div>
+        <!-- City -->
         <div class="form-input-container">
-          <label class="mb-1" for="city">Ville:</label>
+          <label class="mb-1" for="city">Ville de naissance:</label>
           <input
             class="input input-lbl"
             type="text"
@@ -56,11 +100,19 @@
             name="city"
             formControlName="city"
             autocomplete="username"
-            placeholder="Ville"
+            placeholder="Ville*"
             required
           />
+          <span
+            *ngIf="
+              formSignUp.get('city')!.invalid && formSignUp.get('city')!.touched
+            "
+            class="label-text-alt mt-1 text-error font-medium"
+            >Vous devez saisir votre ville de naissance</span
+          >
         </div>
       </div>
+      <!-- Email -->
       <div class="col-upload-descript-buttons">
         <div class="md:w-full mb-8 | md:mb-4">
           <div class="form-input-container">
@@ -72,10 +124,27 @@
               name="email"
               formControlName="email"
               autocomplete="username"
-              placeholder="E-mail"
+              placeholder="E-mail*"
               required
             />
+            <span
+              *ngIf="
+                formSignUp.get('email')!.hasError('invalidAdress') &&
+                formSignUp.get('email')!.touched
+              "
+              class="label-text-alt mt-1 text-error font-medium"
+              >Vous devez saisir une adresse email valide.</span
+            >
+            <span
+              *ngIf="
+                formSignUp.get('email')!.hasError('invalidDomain') &&
+                formSignUp.get('email')!.touched
+              "
+              class="label-text-alt mt-1 text-error font-medium"
+              >Veuillez verifier le nom de domaine de votre adresse email.</span
+            >
           </div>
+          <!-- Password -->
           <div class="form-input-container">
             <label class="mb-1" for="password">Mot de passe:</label>
             <input
@@ -85,13 +154,27 @@
               name="password"
               formControlName="password"
               autocomplete="current-password"
-              placeholder="Mot de passe"
+              placeholder="Mot de passe*"
               required
             />
+            <div class="label-text-alt flex flex-col mt-1">
+              <p>- 8 caractère minimum.</p>
+              <p>- 1 majuscule minimum</p>
+              <p>- 1 caractère spécial minimum ('/','\','-','@','*').</p>
+            </div>
+            <span
+              *ngIf="
+                formSignUp.get('password')!.invalid &&
+                formSignUp.get('password')!.touched
+              "
+              class="label-text-alt mt-1 text-error font-medium"
+              >Vous devez saisir un mot de passe.</span
+            >
           </div>
+          <!-- Confirmation Password -->
           <div class="form-input-container">
             <label class="mb-1" for="confirmation_password"
-              >Confirmation:</label
+              >Confirmation du mot de passe:</label
             >
             <input
               class="input input-lbl"
@@ -99,14 +182,22 @@
               id="confirmation_password"
               name="confirmation_password"
               formControlName="confirmation_password"
-              placeholder="Confirmation mot de passe"
+              placeholder="Confirmation mot de passe*"
               required
             />
+            <span
+              *ngIf="
+                formSignUp.get('confirmation_password')!.invalid &&
+                formSignUp.get('confirmation_password')!.touched
+              "
+              class="label-text-alt mt-1 text-error font-medium"
+              >Ce champs est obligatoire.</span
+            >
           </div>
         </div>
         <div class="auth-cta-container">
           <button
-            class="w-fit py-2 px-4 rounded-lg font-semibold text-white drop-shadow-md bg-lbl"
+            class="btn btn-primary w-fit py-2 px-4 font-semibold text-white rounded-lg drop-shadow-md"
             type="submit"
             [disabled]="!formSignUp.valid"
           >
@@ -127,3 +218,9 @@
     </div>
   </form>
 </div>
+
+<lbl-alert-error
+  [showError]="showError"
+  [errorMessage]="errorMessage"
+  (closed)="closeAlert()"
+></lbl-alert-error>
