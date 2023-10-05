@@ -22,7 +22,7 @@ export class UserService {
   async getUserByID(id: string) {
     const userRef = doc(this.firestore, `Users`, id);
     const DOC_SNAP: DocumentSnapshot<DocumentData> = await getDoc(userRef);
-    return DOC_SNAP.data();
+    return DOC_SNAP.data() as IUser;
   }
 
   async upadteUserProfile(userData: IUser) {

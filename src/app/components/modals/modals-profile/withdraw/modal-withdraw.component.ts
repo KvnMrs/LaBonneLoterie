@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { User } from 'firebase/auth';
 import { DocumentData } from 'firebase/firestore';
 import { Subscription } from 'rxjs';
 import { IUser } from 'src/app/models/user/user.model';
@@ -12,11 +13,11 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./modal-withdraw.component.scss'],
 })
 export class ModalWithdrawComponent implements OnInit {
-  public currentUserSubscription!: Subscription;
-  public withdrawBankBalanceForm!: FormGroup;
-  public currentUser!: IUser;
-  @Input() profileData!: DocumentData;
-  @Output() withdrawEvent = new EventEmitter<DocumentData>();
+  public currentUserSubscription: Subscription | null = null;
+  public withdrawBankBalanceForm: FormGroup | null = null;
+  public currentUser: User | null = null;
+  @Input() userData: IUser | null = null;
+  @Output() withdrawEvent = new EventEmitter<IUser>();
 
   constructor(
     private authService: AuthService,
@@ -29,7 +30,8 @@ export class ModalWithdrawComponent implements OnInit {
     });
     this.authService.currentUserSubject.subscribe({
       next: (user) => {
-        this.currentUser = user as IUser;
+        if (!user) return console.error('user', user);
+        this.currentUser = user;
       },
       error: (error) => {
         console.error('Erreur récupération utilisateur.', error);
@@ -38,19 +40,26 @@ export class ModalWithdrawComponent implements OnInit {
   }
 
   async onWithdraw(): Promise<void> {
-    const sumToWithdraw = this.withdrawBankBalanceForm.value.bankAccount;
-    const newBalanceBank = this.profileData['bankAccount'] - sumToWithdraw;
+    if (!this.withdrawBankBalanceForm || !this.userData)
+      return console.error(
+        'this.withdrawBankBalanceForm || this.userData ',
+        this.withdrawBankBalanceForm,
+        this.userData
+      );
+    const sumToWithdraw: number =
+      this.withdrawBankBalanceForm.value.bankAccount;
+    const newBalanceBank = this.userData.bankAccount - sumToWithdraw;
     await this.userService.onCreditUserAccount(
-      this.profileData['uid'],
+      this.userData.uid,
       newBalanceBank
     );
     await this.userService
-      .getUserByID(this.profileData['uid'])
+      .getUserByID(this.userData.uid)
       .then(
         (data) => (
-          (this.profileData = data as DocumentData),
-          this.withdrawEvent.emit(this.profileData as DocumentData),
-          this.withdrawBankBalanceForm.reset()
+          (this.userData = data),
+          this.withdrawEvent.emit(this.userData),
+          this.withdrawBankBalanceForm!.reset()
         )
       );
   }

@@ -22,7 +22,7 @@ import { UserService } from '../user/user.service';
 export class AuthService {
   isAuth = false;
   currentUserSubject = new BehaviorSubject<IUser | null>(null);
-  userData!: DocumentData;
+  userData: IUser | null = null;
   constructor(
     private router: Router,
     private userService: UserService,
@@ -33,7 +33,7 @@ export class AuthService {
         this.currentUserSubject.next(user as IUser);
         this.userService
           .getUserByID(user.uid)
-          .then((data) => (this.userData = data as DocumentData));
+          .then((data) => (this.userData = data));
       } else {
         this.router.navigate(['']);
       }
