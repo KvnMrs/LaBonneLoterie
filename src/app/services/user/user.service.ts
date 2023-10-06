@@ -15,11 +15,11 @@ import { IUser } from 'src/app/models/user/user.model';
 export class UserService {
   constructor(private firestore: Firestore) {}
 
-  createProfileUser(uid: string, user: IUser) {
-    return setDoc(doc(this.firestore, 'Users', uid), user);
+  createProfileUser(uid: string, userData: IUser) {
+    return setDoc(doc(this.firestore, 'Users', uid), userData);
   }
 
-  async getUserByID(id: string) {
+  async getUserByID(id: string): Promise<IUser | null> {
     const userRef = doc(this.firestore, `Users`, id);
     const DOC_SNAP: DocumentSnapshot<DocumentData> = await getDoc(userRef);
     return DOC_SNAP.data() as IUser;

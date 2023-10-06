@@ -44,6 +44,7 @@ import { BtnCtaFullComponent } from './shared/libs/ux-ui/buttons/btn-cta-full/bt
 import { AnnouncesService } from './services/announce/announces.service';
 import { AuthService } from './services/auth/auth.service';
 import { UploadImgService } from './services/upload/upload-img.service';
+import { LblErrorComponent } from './shared/libs/ux-ui/alert/error/lbl-error.component';
 
 const appRoutes: Routes = [
   // { path: '', component: ListItemsComponent },
@@ -112,6 +113,7 @@ const appRoutes: Routes = [
     SvgMessageComponent,
     SvgShutdownComponent,
     SvgStarsComponent,
+    LblErrorComponent,
   ],
   imports: [
     BrowserModule,

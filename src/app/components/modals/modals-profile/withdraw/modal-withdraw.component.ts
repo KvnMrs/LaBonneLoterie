@@ -58,9 +58,21 @@ export class ModalWithdrawComponent implements OnInit {
       .then(
         (data) => (
           (this.userData = data),
-          this.withdrawEvent.emit(this.userData),
+          this.withdrawEvent.emit(this.userData as IUser),
           this.withdrawBankBalanceForm!.reset()
         )
       );
+    await this.userService
+      .getUserByID(this.userData['uid'])
+      .then(
+        (data) => (
+          (this.userData = data),
+          this.withdrawEvent.emit(this.userData as IUser),
+          this.withdrawBankBalanceForm.reset()
+        )
+      );
+  }
+  catch(error: any) {
+    console.log('onWithdraw Problem:', error);
   }
 }

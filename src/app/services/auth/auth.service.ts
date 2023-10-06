@@ -1,18 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {
-  ActivatedRouteSnapshot,
-  Router,
-  RouterStateSnapshot,
-} from '@angular/router';
+import { Router } from '@angular/router';
 import { DocumentData } from '@angular/fire/firestore';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { IUser } from 'src/app/models/user/user.model';
 import { UserService } from '../user/user.service';
 
@@ -37,41 +32,43 @@ export class AuthService {
     });
   }
 
-  form = new FormGroup({
-    uid: new FormControl(''),
-    firstname: new FormControl('', Validators.required),
-    lastname: new FormControl('', Validators.required),
-    birthday: new FormControl('', Validators.required),
-    city: new FormControl('', Validators.required),
-    phone: new FormControl(''),
-    email: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
-    confirmation_password: new FormControl('', Validators.required),
-    bankAccount: new FormControl(0, Validators.required),
-  });
-
-  async signupUser(data: IUser): Promise<void> {
-    return createUserWithEmailAndPassword(this.auth, data.email, data.password)
-      .then((userCredential) => {
-        const memberSince = userCredential.user.metadata.creationTime as string;
-        data.uid = userCredential.user.uid;
-        data = { ...data, memberSince };
-        this.userService.createProfileUser(data.uid, data);
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        console.error(errorMessage);
-      });
+  async signupUser(data: IUser): Promise<string | null> {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        this.auth,
+        data.email,
+        data.password
+      );
+      const memberSince = userCredential.user.metadata.creationTime as string;
+      data.uid = userCredential.user.uid;
+      data = { ...data, memberSince };
+      await this.userService.createProfileUser(data.uid, data);
+      this.router.navigate(['/recherche']);
+      return null;
+    } catch (error: any) {
+      const errorCode = error.code;
+      let errorMessage = error.message;
+      if (errorCode === 'auth/email-already-in-use') {
+        errorMessage = 'Un compte existe déjà avec cet Email.';
+        return errorMessage;
+      }
+    }
+    return null;
   }
 
-  async signinUser(data: IUser) {
-    return signInWithEmailAndPassword(
-      this.auth,
-      data.email,
-      data.password
-    ).catch((err) =>
-      console.error('Error Service Auth signinUser ->', err.message)
-    );
+  signinUser(data: IUser) {
+    try {
+      signInWithEmailAndPassword(this.auth, data.email, data.password);
+      this.router.navigate(['/recherche']);
+      return null;
+    } catch (error: any) {
+      const errorCode = error.code;
+      let errorMessage = error.message;
+      if (errorCode === 'auth/wrong-password') {
+        errorMessage = 'Le mot de passe entré est inccorect.';
+        return errorMessage;
+      }
+    }
   }
 
   async signOutUser() {
@@ -82,13 +79,5 @@ export class AuthService {
       .catch((error) => {
         console.error('Erreur lors de la déconnexion', error);
       });
-  }
-
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.isAuth) return true;
-    else return this.router.navigate(['auth']);
   }
 }

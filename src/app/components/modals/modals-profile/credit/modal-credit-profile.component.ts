@@ -47,7 +47,7 @@ export class ModalCreditProfileComponent implements OnInit {
       .then(
         (data) => (
           (this.userData = data),
-          this.creditBankBalanceEvent.emit(this.userData),
+          this.creditBankBalanceEvent.emit(this.userData as IUser),
           this.creditBankBalanceForm.reset()
         )
       );
