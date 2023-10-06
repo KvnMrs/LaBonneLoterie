@@ -26,7 +26,7 @@
           name="email"
           formControlName="email"
           autocomplete="email"
-          placeholder="E-mail"
+          [placeholder]="userData.email"
           required
         />
       </div>
@@ -75,13 +75,8 @@
         <div class="flex justify-center">
           <img
             id="previewImage"
-            src="{{
-              userData['imgProfile']
-                ? userData['imgProfile']
-                : 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp'
-            }}"
-            alt="Generic placeholder image"
-            class="w-28 h-28 rounded-full"
+            src="{{ userData['imgProfile'] || '/assets/svg/profile.svg' }}"
+            class="circle-surface"
           />
         </div>
         <label
@@ -97,6 +92,7 @@
       <label
         type="submit"
         for="modal-update-profile"
+        [ngClass]="{ disabled: !updateProfileForm.touched }"
         class="btn btn-info"
         (click)="onUpdateUserProfile()"
       >
