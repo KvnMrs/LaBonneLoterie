@@ -6,6 +6,7 @@
 <!-- Put this part before </body> tag -->
 <input type="checkbox" id="modal-credit-profile" class="modal-toggle" />
 <form
+  *ngIf="userData"
   class="modal"
   (ngSubmit)="onCreditBankBalance()"
   [formGroup]="creditBankBalanceForm"

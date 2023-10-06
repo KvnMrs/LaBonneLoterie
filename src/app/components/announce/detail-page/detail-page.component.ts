@@ -30,7 +30,7 @@ export class DetailPageComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.authService.currentUserSubject.subscribe({
+    this.authService.userDataSubject.subscribe({
       next: (user) => {
         this.currentUser = user as IUser;
       },
