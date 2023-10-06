@@ -87,7 +87,7 @@ export class ModalUpdateProfileComponent implements OnInit {
       .then(
         (data) => (
           (this.userData = data),
-          this.modalUpdateEvent.emit(this.userData),
+          this.modalUpdateEvent.emit(this.userData as IUser),
           this.updateProfileForm.reset()
         )
       );
