@@ -14,7 +14,7 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class ModalWithdrawComponent implements OnInit {
   public currentUserSubscription: Subscription | null = null;
-  public withdrawBankBalanceForm: FormGroup | null = null;
+  public withdrawBankBalanceForm!: FormGroup;
   public currentUser: User | null = null;
   @Input() userData: IUser | null = null;
   @Output() withdrawEvent = new EventEmitter<IUser>();
@@ -28,7 +28,7 @@ export class ModalWithdrawComponent implements OnInit {
     this.withdrawBankBalanceForm = new FormGroup({
       bankAccount: new FormControl(0, Validators.required),
     });
-    this.authService.currentUserSubject.subscribe({
+    this.authService.userDataSubject.subscribe({
       next: (user) => {
         if (!user) return console.error('user', user);
         this.currentUser = user;

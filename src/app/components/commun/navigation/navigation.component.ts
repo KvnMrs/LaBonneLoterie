@@ -14,7 +14,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.authService.currentUserSubject.subscribe({
+    this.authService.userDataSubject.subscribe({
       next: (user) => {
         this.currentUser = user as IUser;
       },

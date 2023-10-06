@@ -12,9 +12,8 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class ModalUpdateProfileComponent implements OnInit {
   public updateProfileForm!: FormGroup;
-  @Input() profileData!: DocumentData;
-  @Input() modalUpdateProfile!: boolean;
-  @Output() modalUpdateEvent = new EventEmitter<DocumentData>();
+  @Input() userData: IUser | null = null;
+  @Output() modalUpdateEvent = new EventEmitter<IUser>();
   loading: boolean = false;
   file!: File;
 
@@ -24,25 +23,20 @@ export class ModalUpdateProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.userData);
     this.initUpdateProfileForm();
   }
 
   initUpdateProfileForm() {
     this.updateProfileForm = new FormGroup({
-      email: new FormControl(this.profileData['email'], [
+      email: new FormControl(this.userData?.email, [
         Validators.required,
         Validators.email,
       ]),
-      firstname: new FormControl(
-        this.profileData['firstname'],
-        Validators.required
-      ),
-      lastname: new FormControl(
-        this.profileData['lastname'],
-        Validators.required
-      ),
-      city: new FormControl(this.profileData['city'], Validators.required),
-      phone: new FormControl(this.profileData['phone'], Validators.required),
+      firstname: new FormControl(this.userData?.firstname, Validators.required),
+      lastname: new FormControl(this.userData?.lastname, Validators.required),
+      city: new FormControl(this.userData?.city, Validators.required),
+      phone: new FormControl(this.userData?.phone, Validators.required),
     });
   }
 
@@ -76,22 +70,24 @@ export class ModalUpdateProfileComponent implements OnInit {
   }
 
   async onUpdateUserProfile(): Promise<void> {
+    if (!this.userData) return console.error('this.userData', this.userData);
+    const uid = this.userData.uid;
     const profileImgURL = await this.onUpload();
-    const uid = this.profileData['uid'];
-    const memberSince = this.profileData['memberSince'];
-    this.profileData['imgProfile'] = profileImgURL;
+    if (profileImgURL) {
+      this.userData.imgProfile = profileImgURL;
+    }
     const dataToUpdate = {
-      uid,
-      ...this.profileData,
+      ...this.userData,
       ...this.updateProfileForm.value,
     };
     await this.userService.upadteUserProfile(dataToUpdate);
+    if (!uid) return console.error('uid:', uid);
     await this.userService
       .getUserByID(uid)
       .then(
         (data) => (
-          (this.profileData = { memberSince, ...(data as DocumentData) }),
-          this.modalUpdateEvent.emit(this.profileData as DocumentData),
+          (this.userData = data),
+          this.modalUpdateEvent.emit(this.userData),
           this.updateProfileForm.reset()
         )
       );

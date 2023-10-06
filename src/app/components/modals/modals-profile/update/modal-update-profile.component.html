@@ -1,13 +1,9 @@
 <!-- The button to open modal -->
-<label
-  for="modal-update-profile"
-  class="btn btn-sm btn-outline rounded-lg | md:btn-md"
-  >Modifier profil</label
->
 
 <!-- Put this part before </body> tag -->
 <input type="checkbox" id="modal-update-profile" class="modal-toggle" />
 <form
+  *ngIf="userData"
   class="modal"
   (ngSubmit)="onUpdateUserProfile()"
   [formGroup]="updateProfileForm"
@@ -80,8 +76,8 @@
           <img
             id="previewImage"
             src="{{
-              profileData['imgProfile']
-                ? profileData['imgProfile']
+              userData['imgProfile']
+                ? userData['imgProfile']
                 : 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp'
             }}"
             alt="Generic placeholder image"

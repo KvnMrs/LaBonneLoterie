@@ -1,17 +1,17 @@
 <section class="main-container">
   <lbl-header>Retrouvez vos informations:</lbl-header>
-  <div class="profile-container-1">
+  <div *ngIf="userData" class="profile-container-1">
     <div class="profile-container-2">
       <div class="profile-container-3">
         <!-- Profile -->
         <div class="profile-card">
           <div class="profile-card-content">
             <h2 class="profile-card-title">Profil</h2>
-            <p>{{ profileData["firstname"] }} {{ profileData["lastname"] }}</p>
-            <p>Loire Atlantique, {{ profileData["city"] }}</p>
+            <p>{{ userData["firstname"] }} {{ userData["lastname"] }}</p>
+            <p>Loire Atlantique, {{ userData["city"] }}</p>
             <p>
               Membre depuis le
-              {{ profileData["memberSince"] | date : "dd/MM/yyyy" }}
+              {{ userData["memberSince"] | date : "dd/MM/yyyy" }}
             </p>
             <span class="mt-0.5 flex">
               <app-svg-stars></app-svg-stars>
@@ -19,10 +19,17 @@
               ><app-svg-stars></app-svg-stars><app-svg-stars> </app-svg-stars>
               <p class="ml-1">7 avis</p>
             </span>
+            <div class="mt-4 flex justify-center gap-0.5 | md:justify-start">
+              <label
+                for="modal-update-profile"
+                class="btn btn-sm btn-outline rounded-lg | md:btn-md"
+                >Modifier profil</label
+              >
+            </div>
           </div>
           <div class="profile-card-img">
             <img
-              src="{{ profileData['imgProfile'] || '/assets/svg/profile.svg' }}"
+              src="{{ userData['imgProfile'] || '/assets/svg/profile.svg' }}"
               alt="Profile"
               class="circle-surface"
             />
@@ -34,7 +41,7 @@
             <h2 class="profile-card-title">Solde</h2>
             <p>
               Votre solde actuel est de $<span class="font-semibold">{{
-                profileData["bankAccount"]
+                userData["bankAccount"]
               }}</span
               >.
             </p>
@@ -42,11 +49,11 @@
               class="mt-4 flex justify-center gap-0.5 | md:mt-auto md:justify-start"
             >
               <lbl-modal-withdraw
-                [profileData]="profileData"
+                [userData]="userData"
                 (withdrawEvent)="getUpdateUserProfile($event)"
               ></lbl-modal-withdraw>
               <lbl-modal-credit-profile
-                [profileData]="profileData"
+                [userData]="userData"
                 (creditBankBalanceEvent)="getUpdateUserProfile($event)"
               ></lbl-modal-credit-profile>
             </div>
@@ -91,3 +98,8 @@
     </div>
   </div>
 </section>
+
+<lbl-modal-update-profile
+  *ngIf="userData"
+  [userData]="userData"
+></lbl-modal-update-profile>

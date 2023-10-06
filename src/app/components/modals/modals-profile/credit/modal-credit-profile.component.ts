@@ -27,7 +27,7 @@ export class ModalCreditProfileComponent implements OnInit {
     this.creditBankBalanceForm = new FormGroup({
       bankAccount: new FormControl(0, Validators.required),
     });
-    this.authService.currentUserSubject.subscribe({
+    this.authService.userDataSubject.subscribe({
       next: (user) => {
         this.currentUser = user as IUser;
       },
