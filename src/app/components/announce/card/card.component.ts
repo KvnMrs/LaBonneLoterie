@@ -24,7 +24,7 @@ export class CardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.authService.currentUserSubject.subscribe({
+    this.authService.userDataSubject.subscribe({
       next: (user) => {
         this.currentUser = user as IUser;
       },

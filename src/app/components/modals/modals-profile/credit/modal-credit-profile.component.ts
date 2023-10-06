@@ -15,8 +15,8 @@ export class ModalCreditProfileComponent implements OnInit {
   public currentUserSubscription!: Subscription;
   public creditBankBalanceForm!: FormGroup;
   public currentUser!: IUser;
-  @Input() userData!: DocumentData;
-  @Output() creditBankBalanceEvent = new EventEmitter<DocumentData>();
+  @Input() userData: IUser | null = null;
+  @Output() creditBankBalanceEvent = new EventEmitter<IUser>();
 
   constructor(
     private authService: AuthService,
@@ -27,7 +27,7 @@ export class ModalCreditProfileComponent implements OnInit {
     this.creditBankBalanceForm = new FormGroup({
       bankAccount: new FormControl(0, Validators.required),
     });
-    this.authService.currentUserSubject.subscribe({
+    this.authService.userDataSubject.subscribe({
       next: (user) => {
         this.currentUser = user as IUser;
       },
@@ -38,19 +38,16 @@ export class ModalCreditProfileComponent implements OnInit {
   }
 
   async onCreditBankBalance(): Promise<void> {
+    if (!this.userData) return console.error('userData', this.userData);
     const sumToCredit =
-      this.creditBankBalanceForm.value.bankAccount +
-      this.userData['bankAccount'];
-    await this.userService.onCreditUserAccount(
-      this.userData['uid'],
-      sumToCredit
-    );
+      this.creditBankBalanceForm.value.bankAccount + this.userData.bankAccount;
+    await this.userService.onCreditUserAccount(this.userData.uid, sumToCredit);
     this.userService
-      .getUserByID(this.userData['uid'])
+      .getUserByID(this.userData.uid)
       .then(
         (data) => (
-          (this.userData = data as DocumentData),
-          this.creditBankBalanceEvent.emit(this.userData as DocumentData),
+          (this.userData = data),
+          this.creditBankBalanceEvent.emit(this.userData as IUser),
           this.creditBankBalanceForm.reset()
         )
       );

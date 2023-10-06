@@ -6,7 +6,6 @@ export interface IUser extends User {
   lastname: string;
   city: string;
   phone: string;
-  imgUrl: string;
   imgProfile: string;
   email: string;
   password: string;

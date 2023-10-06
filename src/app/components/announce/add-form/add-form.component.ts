@@ -42,7 +42,7 @@ export class AddFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.initCreateAnnounceForm();
-    this.authService.currentUserSubject.subscribe({
+    this.authService.userDataSubject.subscribe({
       next: (user) => {
         this.currentUser = user;
       },

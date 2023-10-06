@@ -15,25 +15,19 @@ import { UserService } from '../user/user.service';
   providedIn: 'root',
 })
 export class AuthService {
-  public currentUserSubject = new BehaviorSubject<IUser | null>(null);
-  public userDataSubject = new BehaviorSubject<DocumentData | null>(null);
-  public currentUser = this.auth.currentUser;
-  public errorMessage: string | null = null;
-
+  isAuth = false;
+  userDataSubject = new BehaviorSubject<IUser | null>(null);
   constructor(
     private router: Router,
     private userService: UserService,
     public auth: Auth
   ) {
-    this.auth.onAuthStateChanged((user) => {
+    this.auth.onAuthStateChanged(async (user) => {
       if (user) {
-        this.currentUserSubject.next(user as IUser);
-
-        this.userService.getUserByID(user.uid).then((data) => {
-          this.userDataSubject.next(data);
-        });
+        const data = await this.userService.getUserByID(user.uid);
+        return this.userDataSubject.next(data);
       } else {
-        this.router.navigate(['']);
+        return this.userDataSubject.next(null);
       }
     });
   }
@@ -80,7 +74,7 @@ export class AuthService {
   async signOutUser() {
     return signOut(this.auth)
       .then(() => {
-        this.currentUserSubject.next(null);
+        this.userDataSubject.next(null);
       })
       .catch((error) => {
         console.error('Erreur lors de la déconnexion', error);

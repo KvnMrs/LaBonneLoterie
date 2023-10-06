@@ -19,10 +19,10 @@ export class UserService {
     return setDoc(doc(this.firestore, 'Users', uid), userData);
   }
 
-  async getUserByID(id: string): Promise<DocumentData | null> {
+  async getUserByID(id: string): Promise<IUser | null> {
     const userRef = doc(this.firestore, `Users`, id);
     const DOC_SNAP: DocumentSnapshot<DocumentData> = await getDoc(userRef);
-    return DOC_SNAP.data() || null;
+    return DOC_SNAP.data() as IUser;
   }
 
   async upadteUserProfile(userData: IUser) {
