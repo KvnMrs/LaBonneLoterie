@@ -2,3 +2,10 @@ label.label input[type="file"] {
   position: absolute;
   top: -1000px;
 }
+
+.disabled {
+  
+  opacity: 0.5; 
+  pointer-events: none ; 
+  cursor: not-allowed ; 
+}
