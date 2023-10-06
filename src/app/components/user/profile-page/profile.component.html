@@ -48,14 +48,16 @@
             <div
               class="mt-4 flex justify-center gap-0.5 | md:mt-auto md:justify-start"
             >
-              <lbl-modal-withdraw
-                [userData]="userData"
-                (withdrawEvent)="getUpdateUserProfile($event)"
-              ></lbl-modal-withdraw>
-              <lbl-modal-credit-profile
-                [userData]="userData"
-                (creditBankBalanceEvent)="getUpdateUserProfile($event)"
-              ></lbl-modal-credit-profile>
+              <label
+                for="modal-withdraw"
+                class="btn btn-sm btn-outline btn-info bg-slate-50 | md:btn-md"
+                >Retirer</label
+              >
+              <label
+                for="modal-credit-profile"
+                class="btn btn-sm btn-primary | md:btn-md"
+                >Créditer</label
+              >
             </div>
           </div>
           <div class="profile-card-img">
@@ -102,4 +104,13 @@
 <lbl-modal-update-profile
   *ngIf="userData"
   [userData]="userData"
+  (modalUpdateEvent)="getUpdateUserProfile($event)"
 ></lbl-modal-update-profile>
+<lbl-modal-withdraw
+  [userData]="userData"
+  (withdrawEvent)="getUpdateUserProfile($event)"
+></lbl-modal-withdraw>
+<lbl-modal-credit-profile
+  [userData]="userData"
+  (creditBankBalanceEvent)="getUpdateUserProfile($event)"
+></lbl-modal-credit-profile>
