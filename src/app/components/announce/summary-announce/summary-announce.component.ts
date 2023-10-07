@@ -19,13 +19,13 @@ export class SummaryAnnounceComponent implements OnInit {
 
   constructor(
     public router: Router,
-    private annoucesService: AnnouncesService,
+    private announcesService: AnnouncesService,
     private userService: UserService,
     private location: Location
   ) {}
 
   ngOnInit(): void {
-    this.dataSubscription = this.annoucesService.announceData$.subscribe(
+    this.dataSubscription = this.announcesService.announceData$.subscribe(
       async (data) => {
         this.newAnnounceData = data;
         const announceAuthor = await this.userService.getUserByID(
@@ -47,7 +47,7 @@ export class SummaryAnnounceComponent implements OnInit {
 
   async onPublish(): Promise<void> {
     if (!this.newAnnounceData) throw Error;
-    await this.annoucesService.addAnnounce(this.newAnnounceData);
+    await this.announcesService.addAnnounce(this.newAnnounceData);
     this.newAnnounceData = {};
   }
 
