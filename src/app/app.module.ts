@@ -45,6 +45,7 @@ import { AnnouncesService } from './services/announce/announces.service';
 import { AuthService } from './services/auth/auth.service';
 import { UploadImgService } from './services/upload/upload-img.service';
 import { LblErrorComponent } from './shared/libs/ux-ui/alert/error/lbl-error.component';
+import { FavoritesComponent } from './components/user/favorites/favorites.component';
 
 const appRoutes: Routes = [
   // { path: '', component: ListItemsComponent },
@@ -114,6 +115,7 @@ const appRoutes: Routes = [
     SvgShutdownComponent,
     SvgStarsComponent,
     LblErrorComponent,
+    FavoritesComponent,
   ],
   imports: [
     BrowserModule,
