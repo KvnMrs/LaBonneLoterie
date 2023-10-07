@@ -19,7 +19,7 @@ export class CardComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public annoucesService: AnnouncesService,
+    public announcesService: AnnouncesService,
     public authService: AuthService
   ) {}
 
@@ -39,7 +39,7 @@ export class CardComponent implements OnInit {
   }
 
   deleteAnnouce(id: string) {
-    this.annoucesService.deleteAnnounce(id);
+    this.announcesService.deleteAnnounce(id);
   }
 
   //TODO: create addFavorite logic/

@@ -86,6 +86,10 @@ const appRoutes: Routes = [
     path: 'favoris',
     /* canActivate: [AuthGuardService], */ component: FavoritesComponent,
   },
+  {
+    path: 'favoris/:id',
+    /* canActivate: [AuthGuardService], */ component: DetailPageComponent,
+  },
 ];
 @NgModule({
   declarations: [
