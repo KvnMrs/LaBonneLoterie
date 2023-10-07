@@ -82,6 +82,10 @@ const appRoutes: Routes = [
     path: 'achat-ticket/:id',
     /* canActivate: [AuthGuardService], */ component: ModalBuyTickectComponent,
   },
+  {
+    path: 'favoris',
+    /* canActivate: [AuthGuardService], */ component: FavoritesComponent,
+  },
 ];
 @NgModule({
   declarations: [
