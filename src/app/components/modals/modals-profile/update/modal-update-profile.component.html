@@ -40,7 +40,7 @@
           id="firstname"
           name="firstname"
           formControlName="firstname"
-          autocomplete="username"
+          autocomplete="firstname"
           placeholder="Prénom"
           required
         />
@@ -53,7 +53,7 @@
           id="lastname"
           name="lastname"
           formControlName="lastname"
-          autocomplete="username"
+          autocomplete="lastname"
           placeholder="Nom"
           required
         />
@@ -66,7 +66,7 @@
           id="city"
           name="city"
           formControlName="city"
-          autocomplete="username"
+          autocomplete="city"
           placeholder="Ville"
           required
         />
@@ -92,7 +92,9 @@
       <label
         type="submit"
         for="modal-update-profile"
-        [ngClass]="{ disabled: !updateProfileForm.touched }"
+        [ngClass]="{
+          disabled: this.file == null && !updateProfileForm.touched
+        }"
         class="btn btn-info"
         (click)="onUpdateUserProfile()"
       >
