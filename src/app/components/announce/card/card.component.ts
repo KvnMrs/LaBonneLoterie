@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
-  @Input() data!: IAnnounce;
+  @Input() data: IAnnounce | null = null;
   public currentUser: IUser | null = null;
   public addedToFavorite = false;
 
@@ -35,6 +35,7 @@ export class CardComponent implements OnInit {
   }
 
   seeDetails() {
+    if (!this.data) return console.error('annonce details:', this.data!.id);
     this.router.navigate([`/liste/${this.data.id}`]);
   }
 
@@ -42,13 +43,14 @@ export class CardComponent implements OnInit {
     this.announcesService.deleteAnnounce(id);
   }
 
-  //TODO: create addFavorite logic/
-  onAddFavorite() {
-    //TODO Implementation logic of update favoris user.
+  onAddFavorite(id: string) {
+    console.log();
+
     return (this.addedToFavorite = !this.addedToFavorite);
   }
 
   buyTicket() {
+    if (!this.data) return console.error('annonce details:', this.data!.id);
     this.router.navigate([`/achat-ticket/${this.data.id}`]);
   }
 
