@@ -15,7 +15,7 @@ export class ModalUpdateProfileComponent implements OnInit {
   @Input() userData: IUser | null = null;
   @Output() modalUpdateEvent = new EventEmitter<IUser>();
   loading: boolean = false;
-  file!: File;
+  file: File | null = null;
 
   constructor(
     private uploadImgService: UploadImgService,
@@ -42,12 +42,10 @@ export class ModalUpdateProfileComponent implements OnInit {
 
   onChange(event: any) {
     this.file = event.target.files[0];
-
+    if (!this.file) return console.log('this.file', this.file);
     const reader = new FileReader();
-
     reader.onload = function (event) {
       const imageUrl = event.target!.result as string;
-
       const previewImage = document.getElementById(
         'previewImage'
       ) as HTMLImageElement;
@@ -65,6 +63,7 @@ export class ModalUpdateProfileComponent implements OnInit {
       const createImgURL = await this.uploadImgService.uploadProfileImg(
         this.file
       );
+      this.file = null;
       return createImgURL;
     }
   }
