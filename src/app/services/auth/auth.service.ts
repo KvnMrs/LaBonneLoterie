@@ -15,7 +15,7 @@ import { UserService } from '../user/user.service';
   providedIn: 'root',
 })
 export class AuthService {
-  currentUser: User | null = this.auth.currentUser;
+  currentUserSubject = new BehaviorSubject<User | null>(null);
   userDataSubject = new BehaviorSubject<IUser | null>(null);
   constructor(
     private router: Router,
@@ -25,6 +25,7 @@ export class AuthService {
     this.auth.onAuthStateChanged(async (user) => {
       if (user) {
         const data = await this.userService.getUserByID(user.uid);
+        this.currentUserSubject.next(user);
         return this.userDataSubject.next(data);
       } else {
         return this.userDataSubject.next(null);

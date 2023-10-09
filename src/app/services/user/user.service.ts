@@ -64,16 +64,16 @@ export class UserService {
       });
     } else {
       await setDoc(favoritesDocRef, {
-        annonces: [announceId],
+        announces: [announceId],
       });
     }
   }
 
-  getFavorites(userId: string): Observable<string[]> {
+  getFavorites(userId: string) {
     const favoritesCollectionRef = collection(this.firestore, 'Favorites');
     const favorisDocRef = doc(favoritesCollectionRef, userId);
     return from(getDoc(favorisDocRef)).pipe(
-      map((doc) => doc.data() as string[])
+      map((doc) => doc.data()!['annonces'])
     );
   }
 }

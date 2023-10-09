@@ -16,6 +16,5 @@ export interface IUser extends User {
   bankAccount: number;
 }
 export interface IFavorite {
-  user_uid: string;
-  announce: IAnnounce;
+  announce: IAnnounce[];
 }
