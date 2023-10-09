@@ -10,8 +10,7 @@ import {
   setDoc,
   updateDoc,
 } from '@angular/fire/firestore';
-import { User } from 'firebase/auth';
-import { IAnnounce } from 'src/app/models/annouce/annouce.model';
+import { from, map, Observable } from 'rxjs';
 import { IUser } from 'src/app/models/user/user.model';
 
 @Injectable({
@@ -57,16 +56,24 @@ export class UserService {
 
   async addToFavorites(announceId: string, userId: string): Promise<void> {
     const favoritesCollectionRef = collection(this.firestore, 'Favorites');
-    const favorisDocRef = doc(favoritesCollectionRef, userId);
-    const favorisDoc = await getDoc(favorisDocRef);
-    if (favorisDoc.exists()) {
-      await updateDoc(favorisDocRef, {
+    const favoritesDocRef = doc(favoritesCollectionRef, userId);
+    const favoritesDoc = await getDoc(favoritesDocRef);
+    if (favoritesDoc.exists()) {
+      await updateDoc(favoritesDocRef, {
         annonces: arrayUnion(announceId),
       });
     } else {
-      await setDoc(favorisDocRef, {
+      await setDoc(favoritesDocRef, {
         annonces: [announceId],
       });
     }
+  }
+
+  getFavorites(userId: string): Observable<string[]> {
+    const favoritesCollectionRef = collection(this.firestore, 'Favorites');
+    const favorisDocRef = doc(favoritesCollectionRef, userId);
+    return from(getDoc(favorisDocRef)).pipe(
+      map((doc) => doc.data() as string[])
+    );
   }
 }
