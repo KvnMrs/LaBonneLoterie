@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import {
+  arrayUnion,
+  collection,
   doc,
   DocumentData,
   DocumentSnapshot,
   Firestore,
   getDoc,
   setDoc,
+  updateDoc,
 } from '@angular/fire/firestore';
+import { User } from 'firebase/auth';
+import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 import { IUser } from 'src/app/models/user/user.model';
 
 @Injectable({
@@ -27,7 +32,7 @@ export class UserService {
 
   async upadteUserProfile(userData: IUser) {
     const userRef = doc(this.firestore, `Users`, userData.uid);
-    return setDoc(userRef, { ...userData });
+    return setDoc(userRef, { ...userData }, { merge: true });
   }
 
   async onCreditUserAccount(uid: string, sum: number) {
@@ -48,5 +53,20 @@ export class UserService {
           error
         );
       });
+  }
+
+  async addToFavorites(announceId: string, userId: string): Promise<void> {
+    const favoritesCollectionRef = collection(this.firestore, 'Favorites');
+    const favorisDocRef = doc(favoritesCollectionRef, userId);
+    const favorisDoc = await getDoc(favorisDocRef);
+    if (favorisDoc.exists()) {
+      await updateDoc(favorisDocRef, {
+        annonces: arrayUnion(announceId),
+      });
+    } else {
+      await setDoc(favorisDocRef, {
+        annonces: [announceId],
+      });
+    }
   }
 }

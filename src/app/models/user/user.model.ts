@@ -1,4 +1,5 @@
 import { User } from 'firebase/auth';
+import { IAnnounce } from '../annouce/annouce.model';
 
 export interface IUser extends User {
   uid: string;
@@ -13,4 +14,8 @@ export interface IUser extends User {
   announcesUser: Array<string>;
   rate: number;
   bankAccount: number;
+}
+export interface IFavorite {
+  user_uid: string;
+  announce: IAnnounce;
 }
