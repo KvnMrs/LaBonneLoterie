@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { DocumentData } from '@angular/fire/firestore';
 import {
+  User,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
@@ -15,7 +15,7 @@ import { UserService } from '../user/user.service';
   providedIn: 'root',
 })
 export class AuthService {
-  isAuth = false;
+  currentUser: User | null = this.auth.currentUser;
   userDataSubject = new BehaviorSubject<IUser | null>(null);
   constructor(
     private router: Router,
