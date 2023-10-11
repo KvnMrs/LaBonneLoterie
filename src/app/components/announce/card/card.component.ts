@@ -53,7 +53,7 @@ export class CardComponent implements OnInit {
   }
 
   buyTicket() {
-    if (!this.data) return console.error('annonce details:', this.data!.id);
+    if (!this.data) return console.error('announce details:', this.data!.id);
     this.router.navigate([`/achat-ticket/${this.data.id}`]);
   }
 

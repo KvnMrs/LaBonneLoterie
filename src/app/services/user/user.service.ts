@@ -10,7 +10,7 @@ import {
   setDoc,
   updateDoc,
 } from '@angular/fire/firestore';
-import { from, map, Observable } from 'rxjs';
+import { from, map, Observable, switchMap } from 'rxjs';
 import { IUser } from 'src/app/models/user/user.model';
 
 @Injectable({
@@ -69,11 +69,23 @@ export class UserService {
     }
   }
 
-  getFavorites(userId: string) {
+  getFavorites(userId: string): Observable<string[]> {
     const favoritesCollectionRef = collection(this.firestore, 'Favorites');
     const favorisDocRef = doc(favoritesCollectionRef, userId);
     return from(getDoc(favorisDocRef)).pipe(
-      map((doc) => doc.data()!['annonces'])
+      map((doc) => doc.data()!['annonces'] as string[])
     );
+  }
+
+  async removeFavorite(announceId: string, userId: string) {
+    const favoritesCollectionRef = collection(this.firestore, 'Favorites');
+    const favoritesDocRef = doc(favoritesCollectionRef, userId);
+    const favoritesDoc = await getDoc(favoritesDocRef);
+    if (favoritesDoc.exists()) {
+      const favoritesArray = favoritesDoc.data()['annonces'] || [];
+      const indexToRemove = favoritesArray.indexOf(announceId);
+      favoritesArray.splice(indexToRemove, 1);
+      return updateDoc(favoritesDocRef, { annonces: favoritesArray });
+    }
   }
 }

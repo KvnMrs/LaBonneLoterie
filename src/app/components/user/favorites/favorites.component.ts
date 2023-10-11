@@ -33,12 +33,10 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   }
 
   fetchFavorites(userId: string) {
-    console.log('ok');
     this.favoriteAnnouncesSubscription = this.userService
       .getFavorites(userId)
-      .subscribe((res) => {
+      .subscribe((res: string[]) => {
         if (Array.isArray(res)) {
-          // Assurez-vous que res est un tableau avant d'appeler map
           const arrayAnnouncesId = res;
           arrayAnnouncesId.map(async (id) =>
             this.favoriteAnnounces.push(
@@ -46,14 +44,15 @@ export class FavoritesComponent implements OnInit, OnDestroy {
             )
           );
         } else {
-          // Gérez le cas où res n'est pas un tableau, par exemple en affichant une erreur ou en effectuant une autre action appropriée.
-          console.error("res n'est pas un tableau :", res);
+          console.error('res:', res);
         }
       });
   }
 
-  removeFromFavorites(announce: IAnnounce) {
-    console.log(announce);
+  removeFromFavorites(announceId: string) {
+    if (this.currentUser) {
+      this.userService.removeFavorite(announceId, this.currentUser.uid);
+    }
   }
 
   seeDetails(id: string) {
