@@ -3,14 +3,12 @@ import {
   arrayUnion,
   collection,
   doc,
-  DocumentData,
-  DocumentSnapshot,
   Firestore,
   getDoc,
   setDoc,
   updateDoc,
 } from '@angular/fire/firestore';
-import { from, map, Observable, switchMap } from 'rxjs';
+import { from, map, Observable } from 'rxjs';
 import { IUser } from 'src/app/models/user/user.model';
 
 @Injectable({
@@ -25,8 +23,9 @@ export class UserService {
 
   async getUserByID(id: string): Promise<IUser | null> {
     const userRef = doc(this.firestore, `Users`, id);
-    const DOC_SNAP: DocumentSnapshot<DocumentData> = await getDoc(userRef);
-    return DOC_SNAP.data() as IUser;
+    const docSnap = await getDoc(userRef);
+    const data = docSnap.data();
+    return data as IUser;
   }
 
   async upadteUserProfile(userData: IUser) {

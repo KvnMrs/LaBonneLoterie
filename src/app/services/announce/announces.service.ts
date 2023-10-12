@@ -57,8 +57,9 @@ export class AnnouncesService {
   // getAnnounceById
   public async getAnnounceByID(id: string): Promise<IAnnounce> {
     const announceRef = doc(this.firestore, `Announces`, id);
-    const DOC_SNAP: DocumentSnapshot<DocumentData> = await getDoc(announceRef);
-    return DOC_SNAP.data() as IAnnounce;
+    const docSnap = await getDoc(announceRef);
+    const data = docSnap.data();
+    return data as IAnnounce;
   }
 
   // addAnnounce
