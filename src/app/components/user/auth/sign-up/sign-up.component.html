@@ -158,18 +158,23 @@
               required
             />
             <div class="label-text-alt flex flex-col mt-1">
-              <p>- 8 caractère minimum.</p>
+              <p
+                [ngClass]="{ 'text-error font-medium': formSignUp.get('password')!.errors?.['minlength'] }"
+              >
+                - 8 caractère minimum.
+              </p>
               <p>- 1 majuscule minimum</p>
               <p>- 1 caractère spécial minimum ('/','\','-','@','*').</p>
             </div>
-            <span
+            <!-- <span
               *ngIf="
                 formSignUp.get('password')!.invalid &&
                 formSignUp.get('password')!.touched
               "
               class="label-text-alt mt-1 text-error font-medium"
-              >Vous devez saisir un mot de passe.</span
-            >
+              >
+              <p>Vous devez saisir un mot de passe.</p></span
+            > -->
           </div>
           <!-- Confirmation Password -->
           <div class="form-input-container">
