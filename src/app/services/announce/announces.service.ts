@@ -5,15 +5,12 @@ import {
   collectionData,
   deleteDoc,
   doc,
-  DocumentData,
-  DocumentSnapshot,
   Firestore,
   getDoc,
 } from '@angular/fire/firestore';
 import { getDocs, query, setDoc, where } from 'firebase/firestore';
 import { BehaviorSubject, interval, map, Observable } from 'rxjs';
 import { IAnnounce } from '../../models/annouce/annouce.model';
-import { AuthService } from '../auth/auth.service';
 import { User } from 'firebase/auth';
 
 @Injectable({
@@ -44,7 +41,7 @@ export class AnnouncesService {
   >(null);
   public announcesData$: Observable<IAnnounce> =
     this.announcesDataSubject.asObservable();
-  constructor(private firestore: Firestore, private authService: AuthService) {}
+  constructor(private firestore: Firestore) {}
 
   // getAllAnnounce
   public getAnnounces(): Observable<IAnnounce[]> {
@@ -66,7 +63,6 @@ export class AnnouncesService {
   public addAnnounce(announce: Partial<IAnnounce>) {
     try {
       if (!announce.endAt || !announce.endHour) throw Error;
-
       announce.endAt =
         new Date(announce.endAt).getTime() +
         announce.endHour -

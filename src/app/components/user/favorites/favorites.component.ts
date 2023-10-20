@@ -36,6 +36,7 @@ export class FavoritesComponent implements OnInit, OnDestroy {
     this.favoriteAnnouncesSubscription = this.userService
       .getFavorites(userId)
       .subscribe((res: string[]) => {
+        this.favoriteAnnounces = [];
         if (Array.isArray(res)) {
           const arrayAnnouncesId = res;
           arrayAnnouncesId.map(async (id) =>
@@ -52,6 +53,10 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   removeFromFavorites(announceId: string) {
     if (this.currentUser) {
       this.userService.removeFavorite(announceId, this.currentUser.uid);
+      const index = this.favoriteAnnounces.findIndex(
+        (announce) => announce.id === announceId
+      );
+      this.favoriteAnnounces.splice(index, 1);
     }
   }
 
