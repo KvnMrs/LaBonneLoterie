@@ -14,7 +14,6 @@ import { UserService } from 'src/app/services/user/user.service';
 export class FavoritesComponent implements OnInit, OnDestroy {
   public favoriteAnnounces: IAnnounce[] = [];
   public currentUser: User | null = null;
-  favoriteAnnouncesSubscription: any;
 
   constructor(
     private router: Router,
@@ -33,21 +32,14 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   }
 
   fetchFavorites(userId: string) {
-    this.favoriteAnnouncesSubscription = this.userService
-      .getFavorites(userId)
-      .subscribe((res: string[]) => {
-        this.favoriteAnnounces = [];
-        if (Array.isArray(res)) {
-          const arrayAnnouncesId = res;
-          arrayAnnouncesId.map(async (id) =>
-            this.favoriteAnnounces.push(
-              await this.announcesService.getAnnounceByID(id)
-            )
-          );
-        } else {
-          console.error('res:', res);
-        }
-      });
+    this.userService.getFavorites(userId).subscribe(async (res) => {
+      if (Array.isArray(res)) {
+        await this.announcesService.getAnnounceByIds('0GNPYi0FwIx7vmBrFn8g');
+        console.log('1', this.favoriteAnnounces);
+      } else {
+        console.error('res:', res);
+      }
+    });
   }
 
   removeFromFavorites(announceId: string) {
@@ -68,7 +60,5 @@ export class FavoritesComponent implements OnInit, OnDestroy {
     this.announcesService.deleteAnnounce(id);
   }
 
-  ngOnDestroy(): void {
-    this.favoriteAnnouncesSubscription.unsubscribe();
-  }
+  ngOnDestroy(): void {}
 }

@@ -68,11 +68,14 @@ export class UserService {
     }
   }
 
-  getFavorites(userId: string): Observable<string[]> {
+  getFavorites(userId: string): Observable<string[] | null> {
     const favoritesCollectionRef = collection(this.firestore, 'Favorites');
     const favorisDocRef = doc(favoritesCollectionRef, userId);
     return from(getDoc(favorisDocRef)).pipe(
-      map((doc) => doc.data()!['annonces'] as string[])
+      map((doc) => {
+        if (doc.exists()) return doc.data()['announces'] as string[];
+        else return null;
+      })
     );
   }
 

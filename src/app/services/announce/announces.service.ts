@@ -8,7 +8,13 @@ import {
   Firestore,
   getDoc,
 } from '@angular/fire/firestore';
-import { getDocs, query, setDoc, where } from 'firebase/firestore';
+import {
+  DocumentData,
+  getDocs,
+  query,
+  setDoc,
+  where,
+} from 'firebase/firestore';
 import { BehaviorSubject, interval, map, Observable } from 'rxjs';
 import { IAnnounce } from '../../models/annouce/annouce.model';
 import { User } from 'firebase/auth';
@@ -57,6 +63,25 @@ export class AnnouncesService {
     const docSnap = await getDoc(announceRef);
     const data = docSnap.data();
     return data as IAnnounce;
+  }
+
+  public async getAnnounceByIds(ids: string) {
+    if (!ids) return [];
+    else {
+      console.log(ids);
+      // let favorites: DocumentData[] = [];
+      const announceRef = collection(this.firestore, `Announces`);
+      const q = query(announceRef, where('id', '==', ids));
+      const docsSnap = await getDocs(q);
+      const data = docsSnap.docs;
+      console.log('data', data);
+
+      // console.log(docsSnap);
+      return data;
+    }
+
+    // const data = docSnap.data();
+    // return data as IAnnounce;
   }
 
   // addAnnounce
