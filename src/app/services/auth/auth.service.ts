@@ -56,19 +56,27 @@ export class AuthService {
     return null;
   }
 
-  signinUser(data: IUser) {
+  async signinUser(data: IUser): Promise<string | null> {
     try {
-      signInWithEmailAndPassword(this.auth, data.email, data.password);
+      await signInWithEmailAndPassword(this.auth, data.email, data.password);
       this.router.navigate(['/recherche']);
       return null;
     } catch (error: any) {
       const errorCode = error.code;
       let errorMessage = error.message;
       if (errorCode === 'auth/wrong-password') {
-        errorMessage = 'Le mot de passe entré est inccorect.';
+        errorMessage = 'Le mot de passe est inccorect.';
+        return errorMessage;
+      }
+      if (
+        errorCode === 'auth/invalid-email' ||
+        errorCode === 'auth/user-not-found'
+      ) {
+        errorMessage = "Ce compte n'existe pas.";
         return errorMessage;
       }
     }
+    return null;
   }
 
   async signOutUser() {
