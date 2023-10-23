@@ -33,13 +33,11 @@ export class SignInComponent implements OnInit {
   public async onSubmitSigninForm() {
     const dataUser = this.signinForm.value;
     const trySignIn = await this.authService.signinUser(dataUser);
-    console.log('trySignIn', trySignIn);
-    if (trySignIn) {
+    if (!trySignIn) {
+      this.showError = false;
+    } else {
       this.errorMessage = trySignIn;
       this.showError = true;
-    } else {
-      this.showError = false;
-      this.router.navigate(['/recherche']);
     }
   }
 

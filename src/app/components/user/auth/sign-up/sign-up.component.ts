@@ -27,7 +27,10 @@ export class SignUpComponent implements OnInit {
     city: new FormControl('', Validators.required),
     phone: new FormControl(''),
     email: new FormControl('', [Validators.required, customEmailValidator]),
-    password: new FormControl('', Validators.required),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8),
+    ]),
     confirmation_password: new FormControl('', Validators.required),
     bankAccount: new FormControl(0, Validators.required),
   });

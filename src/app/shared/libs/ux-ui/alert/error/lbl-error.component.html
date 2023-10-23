@@ -1,7 +1,9 @@
 <div
   *ngIf="showError"
-  class="fixed left-1/4 alert alert-error bottom-2 z-40 | md:w-1/2"
+  class="alert alert-error fixed bottom-1 z-50 flex flex-row justify-center | md:w-1/2 md:left-1/4"
 >
+  <span class="font-semibold">{{ errorMessage }}</span>
+
   <button type="button" (click)="closeAlert()" class="btn-circle btn-sm">
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17,5 +19,4 @@
       />
     </svg>
   </button>
-  <span class="font-semibold">{{ errorMessage }}</span>
 </div>
