@@ -42,10 +42,11 @@ export class ModalUpdateProfileComponent implements OnInit {
 
   onChange(event: any) {
     this.file = event.target.files[0];
-    if (!this.file) return console.log('this.file', this.file);
+    if (!this.file) return console.error('this.file', this.file);
     const reader = new FileReader();
     reader.onload = function (event) {
-      const imageUrl = event.target!.result as string;
+      if (!event.target) return console.error('event.target', event.target);
+      const imageUrl = event.target.result as string;
       const previewImage = document.getElementById(
         'previewImage'
       ) as HTMLImageElement;

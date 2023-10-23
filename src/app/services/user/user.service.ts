@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import {
+  arrayUnion,
+  collection,
   doc,
-  DocumentData,
-  DocumentSnapshot,
   Firestore,
   getDoc,
   setDoc,
+  updateDoc,
 } from '@angular/fire/firestore';
+import { from, map, Observable } from 'rxjs';
 import { IUser } from 'src/app/models/user/user.model';
 
 @Injectable({
@@ -21,13 +23,14 @@ export class UserService {
 
   async getUserByID(id: string): Promise<IUser | null> {
     const userRef = doc(this.firestore, `Users`, id);
-    const DOC_SNAP: DocumentSnapshot<DocumentData> = await getDoc(userRef);
-    return DOC_SNAP.data() as IUser;
+    const docSnap = await getDoc(userRef);
+    const data = docSnap.data();
+    return data as IUser;
   }
 
   async upadteUserProfile(userData: IUser) {
     const userRef = doc(this.firestore, `Users`, userData.uid);
-    return setDoc(userRef, { ...userData });
+    return setDoc(userRef, { ...userData }, { merge: true });
   }
 
   async onCreditUserAccount(uid: string, sum: number) {
@@ -48,5 +51,43 @@ export class UserService {
           error
         );
       });
+  }
+
+  async addToFavorites(announceId: string, userId: string): Promise<void> {
+    const favoritesCollectionRef = collection(this.firestore, 'Favorites');
+    const favoritesDocRef = doc(favoritesCollectionRef, userId);
+    const favoritesDoc = await getDoc(favoritesDocRef);
+    if (favoritesDoc.exists()) {
+      await updateDoc(favoritesDocRef, {
+        annonces: arrayUnion(announceId),
+      });
+    } else {
+      await setDoc(favoritesDocRef, {
+        announces: [announceId],
+      });
+    }
+  }
+
+  getFavorites(userId: string): Observable<string[] | null> {
+    const favoritesCollectionRef = collection(this.firestore, 'Favorites');
+    const favorisDocRef = doc(favoritesCollectionRef, userId);
+    return from(getDoc(favorisDocRef)).pipe(
+      map((doc) => {
+        if (doc.exists()) return doc.data()['announces'] as string[];
+        else return null;
+      })
+    );
+  }
+
+  async removeFavorite(announceId: string, userId: string) {
+    const favoritesCollectionRef = collection(this.firestore, 'Favorites');
+    const favoritesDocRef = doc(favoritesCollectionRef, userId);
+    const favoritesDoc = await getDoc(favoritesDocRef);
+    if (favoritesDoc.exists()) {
+      const favoritesArray = favoritesDoc.data()['annonces'] || [];
+      const indexToRemove = favoritesArray.indexOf(announceId);
+      favoritesArray.splice(indexToRemove, 1);
+      return updateDoc(favoritesDocRef, { annonces: favoritesArray });
+    }
   }
 }

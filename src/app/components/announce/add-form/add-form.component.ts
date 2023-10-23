@@ -34,7 +34,7 @@ export class AddFormComponent implements OnInit {
   ];
 
   constructor(
-    private annoucesService: AnnouncesService,
+    private announcesService: AnnouncesService,
     private uploadImgService: UploadImgService,
     private authService: AuthService,
     private router: Router
@@ -130,7 +130,7 @@ export class AddFormComponent implements OnInit {
           imgsAnnounce: imgsAnnounceUrl,
           authorUid: this.currentUser.uid,
         };
-        this.annoucesService.emitAnnounceData(announceData); // emit announceData for summary page.
+        this.announcesService.emitAnnounceData(announceData); // emit announceData for summary page.
         // this.createAnnounceForm.reset();
         this.router.navigate(['/recapitulatif-annonce']);
         this.showErrorMessage = false;

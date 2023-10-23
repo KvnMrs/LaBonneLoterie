@@ -4,6 +4,7 @@ import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 import { IUser } from 'src/app/models/user/user.model';
 import { AnnouncesService } from 'src/app/services/announce/announces.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-card',
@@ -11,7 +12,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
-  @Input() data!: IAnnounce;
+  @Input() data: IAnnounce | null = null;
   public currentUser: IUser | null = null;
   public addedToFavorite = false;
 
@@ -19,14 +20,15 @@ export class CardComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public annoucesService: AnnouncesService,
-    public authService: AuthService
+    public announcesService: AnnouncesService,
+    public authService: AuthService,
+    public userService: UserService
   ) {}
 
   ngOnInit(): void {
     this.authService.userDataSubject.subscribe({
       next: (user) => {
-        this.currentUser = user as IUser;
+        this.currentUser = user;
       },
       error: (error) => {
         console.error('Erreur récupération utilisateur.', error);
@@ -35,20 +37,23 @@ export class CardComponent implements OnInit {
   }
 
   seeDetails() {
+    if (!this.data) return console.error('annonce details:', this.data!.id);
     this.router.navigate([`/liste/${this.data.id}`]);
   }
 
   deleteAnnouce(id: string) {
-    this.annoucesService.deleteAnnounce(id);
+    this.announcesService.deleteAnnounce(id);
   }
 
-  //TODO: create addFavorite logic/
-  onAddFavorite() {
-    //TODO Implementation logic of update favoris user.
-    return (this.addedToFavorite = !this.addedToFavorite);
+  onAddFavorite(announceId: string) {
+    if (!this.currentUser)
+      return console.error('this.currentUser', this.currentUser);
+    else
+      return this.userService.addToFavorites(announceId, this.currentUser.uid);
   }
 
   buyTicket() {
+    if (!this.data) return console.error('announce details:', this.data!.id);
     this.router.navigate([`/achat-ticket/${this.data.id}`]);
   }
 

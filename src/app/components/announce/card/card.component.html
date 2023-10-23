@@ -1,13 +1,14 @@
 <div
+  *ngIf="data"
   class="card w-11/12 mx-auto mb-4 py-2 border-b borber-b-2 border-gray-600 rounded-none | md:py-4 md:card-side | lg:w-9/12 lg:ml-20"
 >
   <div (click)="seeDetails()" class="w-full flex flex-col gap-4 | md:flex-row">
     <!-- IMG part -->
-    <figure class="h-56 | sm:w-10/12 |md:max-h-72 | md:w-fit md:min-w-[33%]">
+    <figure class="sm:w-10/12 | md:w-fit md:min-w-[33%]">
       <img
-        class="object-fill max-h-full w-full"
+        class="object-fill h-56 rounded-md"
         [src]="data.imgsAnnounce![0]"
-        alt="car!"
+        [alt]="data.title"
       />
     </figure>
     <div class="card-body py-2 px-0 cursor-pointer | md:w-9/12 md:py-0 md:pl-4">
@@ -26,7 +27,7 @@
 
   <div class="flex justify-between items-center | md:flex-col">
     <button
-      (click)="onAddFavorite()"
+      (click)="onAddFavorite(data.id)"
       class="btn btn-circle btn-md btn-ghost | md:ml-auto"
     >
       <app-svg-add-to-favorites
@@ -43,7 +44,10 @@
 </div>
 
 <!-- Buy ticket(s) modal -->
-<app-modal-buy-ticket [currentAnnounce]="data"></app-modal-buy-ticket>
+<app-modal-buy-ticket
+  *ngIf="data"
+  [currentAnnounce]="data"
+></app-modal-buy-ticket>
 
 <!-- Good luck modal -->
 <app-modal-wish-good-luck></app-modal-wish-good-luck>

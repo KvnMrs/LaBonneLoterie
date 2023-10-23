@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { DocumentData } from '@angular/fire/firestore';
 import {
+  User,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
@@ -15,7 +15,7 @@ import { UserService } from '../user/user.service';
   providedIn: 'root',
 })
 export class AuthService {
-  isAuth = false;
+  currentUserSubject = new BehaviorSubject<User | null>(null);
   userDataSubject = new BehaviorSubject<IUser | null>(null);
   constructor(
     private router: Router,
@@ -25,6 +25,7 @@ export class AuthService {
     this.auth.onAuthStateChanged(async (user) => {
       if (user) {
         const data = await this.userService.getUserByID(user.uid);
+        this.currentUserSubject.next(user);
         return this.userDataSubject.next(data);
       } else {
         return this.userDataSubject.next(null);
