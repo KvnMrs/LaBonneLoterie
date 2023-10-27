@@ -15,7 +15,9 @@
       Achat de ticket(s) pour '{{ currentAnnounce.title }}'.
     </h3>
     <div class="w-full flex flex-col gap-2">
-      <label for="buyTickets">Selectionner un nombre de ticket(s):</label>
+      <label for="numberTicketSelected"
+        >Selectionner un nombre de ticket(s):</label
+      >
       <input
         (change)="onChange($event)"
         id="numberTicketSelected"
