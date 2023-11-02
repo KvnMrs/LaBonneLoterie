@@ -59,7 +59,7 @@ export class UserService {
     const favoritesDoc = await getDoc(favoritesDocRef);
     if (favoritesDoc.exists()) {
       await updateDoc(favoritesDocRef, {
-        annonces: arrayUnion(announceId),
+        announces: arrayUnion(announceId),
       });
     } else {
       await setDoc(favoritesDocRef, {

@@ -34,8 +34,9 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   fetchFavorites(userId: string) {
     this.userService.getFavorites(userId).subscribe(async (res) => {
       if (Array.isArray(res)) {
-        await this.announcesService.getAnnounceByIds('0GNPYi0FwIx7vmBrFn8g');
-        console.log('1', this.favoriteAnnounces);
+        this.favoriteAnnounces = await this.announcesService.getAnnounceByIds(
+          res
+        );
       } else {
         console.error('res:', res);
       }
