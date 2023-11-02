@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
 import { User } from 'firebase/auth';
 import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 import { AnnouncesService } from 'src/app/services/announce/announces.service';
@@ -16,7 +15,6 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   public currentUser: User | null = null;
 
   constructor(
-    private router: Router,
     public userService: UserService,
     public announcesService: AnnouncesService,
     public authService: AuthService
@@ -51,10 +49,6 @@ export class FavoritesComponent implements OnInit, OnDestroy {
       );
       this.favoriteAnnounces.splice(index, 1);
     }
-  }
-
-  seeDetails(id: string) {
-    this.router.navigate([`/liste/${id}`]);
   }
 
   deleteAnnouce(id: string) {
