@@ -7,7 +7,7 @@
     <figure class="sm:w-10/12 | md:w-fit md:min-w-[33%]">
       <img
         class="object-fill h-56 rounded-md"
-        [src]="data.imgsAnnounce![0]"
+        [src]="data.imgsAnnounce[0]"
         [alt]="data.title"
       />
     </figure>
@@ -27,7 +27,7 @@
 
   <div class="flex justify-between items-center | md:flex-col">
     <button
-      (click)="onAddFavorite(data.id)"
+      (click)="onAddFavorite(data)"
       class="btn btn-circle btn-md btn-ghost | md:ml-auto"
     >
       <app-svg-add-to-favorites

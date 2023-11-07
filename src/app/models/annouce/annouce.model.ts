@@ -4,7 +4,7 @@ export interface IAnnounce {
   category: string;
   tags?: Array<string>;
   description: string;
-  imgsAnnounce: Array<string> | null;
+  imgsAnnounce: Array<string>;
   estimate: number;
   ticketPrice: number;
   minTickets?: number;

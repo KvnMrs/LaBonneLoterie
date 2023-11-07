@@ -99,7 +99,6 @@ export class AnnouncesService {
         authorUid: announce.authorUid,
       };
       const announceRef = collection(this.firestore, 'Announces');
-
       return addDoc(announceRef, newAnnounce);
     } catch (err) {
       console.error('Problem with the announce data');

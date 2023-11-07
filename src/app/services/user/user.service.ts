@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import {
-  arrayUnion,
   collection,
+  collectionData,
   doc,
+  DocumentData,
   Firestore,
   getDoc,
   setDoc,
   updateDoc,
 } from '@angular/fire/firestore';
-import { from, map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 import { IUser } from 'src/app/models/user/user.model';
 
 @Injectable({
@@ -53,30 +55,20 @@ export class UserService {
       });
   }
 
-  async addToFavorites(announceId: string, userId: string): Promise<void> {
-    const favoritesCollectionRef = collection(this.firestore, 'Favorites');
-    const favoritesDocRef = doc(favoritesCollectionRef, userId);
-    const favoritesDoc = await getDoc(favoritesDocRef);
-    if (favoritesDoc.exists()) {
-      await updateDoc(favoritesDocRef, {
-        announces: arrayUnion(announceId),
-      });
-    } else {
-      await setDoc(favoritesDocRef, {
-        announces: [announceId],
-      });
-    }
+  // Create Favorites Subcollection: Users/userId//favorites/announceId
+  async addToFavorites(announce: IAnnounce, userId: string): Promise<void> {
+    const usersCollectionRef = collection(this.firestore, 'Users');
+    const usersDocRef = doc(usersCollectionRef, userId);
+    const favoritesCollectionRef = collection(usersDocRef, 'Favorites');
+    const favoritesDocRef = doc(favoritesCollectionRef, announce.id);
+    return await setDoc(favoritesDocRef, announce);
   }
 
-  getFavorites(userId: string): Observable<string[] | null> {
-    const favoritesCollectionRef = collection(this.firestore, 'Favorites');
-    const favorisDocRef = doc(favoritesCollectionRef, userId);
-    return from(getDoc(favorisDocRef)).pipe(
-      map((doc) => {
-        if (doc.exists()) return doc.data()['announces'] as string[];
-        else return null;
-      })
-    );
+  getFavorites(userId: string): Observable<DocumentData> {
+    const usersCollectionRef = collection(this.firestore, 'Users');
+    const usersDocRef = doc(usersCollectionRef, userId);
+    const favoritesCollectionRef = collection(usersDocRef, 'Favorites');
+    return collectionData(favoritesCollectionRef);
   }
 
   async removeFavorite(announceId: string, userId: string) {

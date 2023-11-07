@@ -45,11 +45,10 @@ export class CardComponent implements OnInit {
     this.announcesService.deleteAnnounce(id);
   }
 
-  onAddFavorite(announceId: string) {
+  onAddFavorite(announce: IAnnounce) {
     if (!this.currentUser)
       return console.error('this.currentUser', this.currentUser);
-    else
-      return this.userService.addToFavorites(announceId, this.currentUser.uid);
+    else return this.userService.addToFavorites(announce, this.currentUser.uid);
   }
 
   buyTicket() {
