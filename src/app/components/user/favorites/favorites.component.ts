@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
 import { User } from 'firebase/auth';
 import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 import { AnnouncesService } from 'src/app/services/announce/announces.service';
@@ -12,11 +11,11 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./favorites.component.scss'],
 })
 export class FavoritesComponent implements OnInit, OnDestroy {
-  public favoriteAnnounces: IAnnounce[] = [];
+  public favoritesAnnounce: IAnnounce[] = [];
+  public favoritesAnnounceIds: string[] = [];
   public currentUser: User | null = null;
 
   constructor(
-    private router: Router,
     public userService: UserService,
     public announcesService: AnnouncesService,
     public authService: AuthService
@@ -33,9 +32,11 @@ export class FavoritesComponent implements OnInit, OnDestroy {
 
   fetchFavorites(userId: string) {
     this.userService.getFavorites(userId).subscribe(async (res) => {
-      if (Array.isArray(res)) {
-        await this.announcesService.getAnnounceByIds('0GNPYi0FwIx7vmBrFn8g');
-        console.log('1', this.favoriteAnnounces);
+      if (res) {
+        this.favoritesAnnounceIds = res['announces_id'];
+        this.favoritesAnnounce = await this.announcesService.getAnnounceByIds(
+          this.favoritesAnnounceIds
+        );
       } else {
         console.error('res:', res);
       }
@@ -45,15 +46,11 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   removeFromFavorites(announceId: string) {
     if (this.currentUser) {
       this.userService.removeFavorite(announceId, this.currentUser.uid);
-      const index = this.favoriteAnnounces.findIndex(
+      const index = this.favoritesAnnounce.findIndex(
         (announce) => announce.id === announceId
       );
-      this.favoriteAnnounces.splice(index, 1);
+      this.favoritesAnnounce.splice(index, 1);
     }
-  }
-
-  seeDetails(id: string) {
-    this.router.navigate([`/liste/${id}`]);
   }
 
   deleteAnnouce(id: string) {

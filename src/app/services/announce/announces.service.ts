@@ -8,13 +8,7 @@ import {
   Firestore,
   getDoc,
 } from '@angular/fire/firestore';
-import {
-  DocumentData,
-  getDocs,
-  query,
-  setDoc,
-  where,
-} from 'firebase/firestore';
+import { documentId, getDocs, query, setDoc, where } from 'firebase/firestore';
 import { BehaviorSubject, interval, map, Observable } from 'rxjs';
 import { IAnnounce } from '../../models/annouce/annouce.model';
 import { User } from 'firebase/auth';
@@ -65,23 +59,20 @@ export class AnnouncesService {
     return data as IAnnounce;
   }
 
-  public async getAnnounceByIds(ids: string) {
-    if (!ids) return [];
+  public async getAnnounceByIds(ids: string[]) {
+    const favorites: IAnnounce[] = [];
+    if (!ids) return favorites;
     else {
-      console.log(ids);
-      // let favorites: DocumentData[] = [];
       const announceRef = collection(this.firestore, `Announces`);
-      const q = query(announceRef, where('id', '==', ids));
+      const q = query(announceRef, where(documentId(), 'in', ids));
       const docsSnap = await getDocs(q);
-      const data = docsSnap.docs;
-      console.log('data', data);
-
-      // console.log(docsSnap);
-      return data;
+      docsSnap.forEach((doc) => {
+        let announce = doc.data() as IAnnounce;
+        announce.id = doc.id;
+        favorites.push(announce);
+      });
+      return favorites;
     }
-
-    // const data = docSnap.data();
-    // return data as IAnnounce;
   }
 
   // addAnnounce
@@ -109,7 +100,6 @@ export class AnnouncesService {
         authorUid: announce.authorUid,
       };
       const announceRef = collection(this.firestore, 'Announces');
-
       return addDoc(announceRef, newAnnounce);
     } catch (err) {
       console.error('Problem with the announce data');

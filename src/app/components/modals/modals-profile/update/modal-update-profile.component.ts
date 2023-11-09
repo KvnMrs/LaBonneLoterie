@@ -23,7 +23,6 @@ export class ModalUpdateProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.userData);
     this.initUpdateProfileForm();
   }
 

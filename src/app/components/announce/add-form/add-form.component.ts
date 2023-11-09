@@ -131,7 +131,6 @@ export class AddFormComponent implements OnInit {
           authorUid: this.currentUser.uid,
         };
         this.announcesService.emitAnnounceData(announceData); // emit announceData for summary page.
-        // this.createAnnounceForm.reset();
         this.router.navigate(['/recapitulatif-annonce']);
         this.showErrorMessage = false;
       } catch (error) {

@@ -73,6 +73,6 @@ export class ModalWithdrawComponent implements OnInit {
       );
   }
   catch(error: any) {
-    console.log('onWithdraw Problem:', error);
+    console.error('onWithdraw Problem:', error);
   }
 }

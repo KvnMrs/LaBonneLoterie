@@ -3,12 +3,14 @@ import {
   arrayUnion,
   collection,
   doc,
+  docData,
+  DocumentData,
   Firestore,
   getDoc,
   setDoc,
   updateDoc,
 } from '@angular/fire/firestore';
-import { from, map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { IUser } from 'src/app/models/user/user.model';
 
 @Injectable({
@@ -53,41 +55,43 @@ export class UserService {
       });
   }
 
+  // Create Favorites Subcollection: Users/userId//favorites/announceId
   async addToFavorites(announceId: string, userId: string): Promise<void> {
-    const favoritesCollectionRef = collection(this.firestore, 'Favorites');
-    const favoritesDocRef = doc(favoritesCollectionRef, userId);
+    const usersCollectionRef = collection(this.firestore, 'Users');
+    const usersDocRef = doc(usersCollectionRef, userId);
+    const favoritesCollectionRef = collection(usersDocRef, 'Favorites');
+    const favoritesDocRef = doc(favoritesCollectionRef, 'announces');
     const favoritesDoc = await getDoc(favoritesDocRef);
     if (favoritesDoc.exists()) {
       await updateDoc(favoritesDocRef, {
-        annonces: arrayUnion(announceId),
+        announces_id: arrayUnion(announceId),
       });
     } else {
       await setDoc(favoritesDocRef, {
-        announces: [announceId],
+        announces_id: [announceId],
       });
     }
   }
 
-  getFavorites(userId: string): Observable<string[] | null> {
-    const favoritesCollectionRef = collection(this.firestore, 'Favorites');
-    const favorisDocRef = doc(favoritesCollectionRef, userId);
-    return from(getDoc(favorisDocRef)).pipe(
-      map((doc) => {
-        if (doc.exists()) return doc.data()['announces'] as string[];
-        else return null;
-      })
-    );
+  getFavorites(userId: string): Observable<DocumentData> {
+    const usersCollectionRef = collection(this.firestore, 'Users');
+    const usersDocRef = doc(usersCollectionRef, userId);
+    const favoritesCollectionRef = collection(usersDocRef, 'Favorites');
+    const favoritesDocRef = doc(favoritesCollectionRef, 'announces');
+    return docData(favoritesDocRef);
   }
 
   async removeFavorite(announceId: string, userId: string) {
-    const favoritesCollectionRef = collection(this.firestore, 'Favorites');
-    const favoritesDocRef = doc(favoritesCollectionRef, userId);
+    const usersCollectionRef = collection(this.firestore, 'Users');
+    const usersDocRef = doc(usersCollectionRef, userId);
+    const favoritesCollectionRef = collection(usersDocRef, 'Favorites');
+    const favoritesDocRef = doc(favoritesCollectionRef, 'announces');
     const favoritesDoc = await getDoc(favoritesDocRef);
     if (favoritesDoc.exists()) {
-      const favoritesArray = favoritesDoc.data()['annonces'] || [];
+      const favoritesArray = favoritesDoc.data()['announces_id'] || [];
       const indexToRemove = favoritesArray.indexOf(announceId);
       favoritesArray.splice(indexToRemove, 1);
-      return updateDoc(favoritesDocRef, { annonces: favoritesArray });
+      return updateDoc(favoritesDocRef, { announces_id: favoritesArray });
     }
   }
 }
