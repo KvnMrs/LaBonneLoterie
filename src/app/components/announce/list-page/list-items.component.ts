@@ -23,6 +23,7 @@ export class ListItemsComponent implements OnInit {
   ];
 
   constructor(private announcesService: AnnouncesService) {}
+
   ngOnInit(): void {
     this.fetchAnnounces();
     this.initSearchForm();

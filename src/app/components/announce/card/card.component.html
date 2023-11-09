@@ -1,5 +1,5 @@
 <div
-  *ngIf="data"
+  *ngIf="data && currentUser"
   class="card w-11/12 mx-auto mb-4 py-2 border-b borber-b-2 border-gray-600 rounded-none | md:py-4 md:card-side | lg:w-9/12 lg:ml-20"
 >
   <div (click)="seeDetails()" class="w-full flex flex-col gap-4 | md:flex-row">
@@ -27,7 +27,7 @@
 
   <div class="flex justify-between items-center | md:flex-col">
     <button
-      (click)="onAddFavorite(data.id)"
+      (click)="toggleFavorites(data.id, currentUser.uid)"
       class="btn btn-circle btn-md btn-ghost | md:ml-auto"
     >
       <app-svg-add-to-favorites

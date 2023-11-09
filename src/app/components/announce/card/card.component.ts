@@ -35,13 +35,13 @@ export class CardComponent implements OnInit {
         }
       },
       error: (error) => {
-        console.error('Erreur récupération utilisateur.', error);
+        console.error('Error user.', error);
       },
     });
   }
 
   seeDetails() {
-    if (!this.data) return console.error('annonce details:', this.data!.id);
+    if (!this.data) return console.error('announce details:', this.data!.id);
     this.router.navigate([`/liste/${this.data.id}`]);
   }
 
@@ -67,6 +67,22 @@ export class CardComponent implements OnInit {
         return this.favorites;
       }
     });
+  }
+
+  async removeFromFavorites(announceId: string, userId: string) {
+    await this.userService.removeFavorite(announceId, userId);
+    const index = this.favorites.findIndex((id) => id === announceId);
+    this.favorites.splice(index, 1);
+  }
+
+  toggleFavorites(announceId: string, userId: string) {
+    if (!this.addedToFavorite) {
+      this.onAddFavorite(announceId);
+      this.addedToFavorite = true;
+    } else {
+      this.removeFromFavorites(announceId, userId);
+      this.addedToFavorite = false;
+    }
   }
 
   buyTicket() {

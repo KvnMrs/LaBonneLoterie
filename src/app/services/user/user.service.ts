@@ -82,14 +82,16 @@ export class UserService {
   }
 
   async removeFavorite(announceId: string, userId: string) {
-    const favoritesCollectionRef = collection(this.firestore, 'Favorites');
-    const favoritesDocRef = doc(favoritesCollectionRef, userId);
+    const usersCollectionRef = collection(this.firestore, 'Users');
+    const usersDocRef = doc(usersCollectionRef, userId);
+    const favoritesCollectionRef = collection(usersDocRef, 'Favorites');
+    const favoritesDocRef = doc(favoritesCollectionRef, 'announces');
     const favoritesDoc = await getDoc(favoritesDocRef);
     if (favoritesDoc.exists()) {
-      const favoritesArray = favoritesDoc.data()['annonces'] || [];
+      const favoritesArray = favoritesDoc.data()['announces_id'] || [];
       const indexToRemove = favoritesArray.indexOf(announceId);
       favoritesArray.splice(indexToRemove, 1);
-      return updateDoc(favoritesDocRef, { annonces: favoritesArray });
+      return updateDoc(favoritesDocRef, { announces_id: favoritesArray });
     }
   }
 }
