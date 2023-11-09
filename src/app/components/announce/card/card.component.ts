@@ -13,6 +13,7 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class CardComponent implements OnInit {
   @Input() data: IAnnounce | null = null;
+  favorites: string[] = [];
   public currentUser: IUser | null = null;
   public addedToFavorite = false;
 
@@ -29,6 +30,9 @@ export class CardComponent implements OnInit {
     this.authService.userDataSubject.subscribe({
       next: (user) => {
         this.currentUser = user;
+        if (this.currentUser) {
+          this.fetchFavorites(this.currentUser.uid);
+        }
       },
       error: (error) => {
         console.error('Erreur récupération utilisateur.', error);
@@ -45,10 +49,24 @@ export class CardComponent implements OnInit {
     this.announcesService.deleteAnnounce(id);
   }
 
-  onAddFavorite(announce: IAnnounce) {
+  onAddFavorite(announceId: string) {
     if (!this.currentUser)
       return console.error('this.currentUser', this.currentUser);
-    else return this.userService.addToFavorites(announce, this.currentUser.uid);
+    else
+      return this.userService.addToFavorites(announceId, this.currentUser.uid);
+  }
+
+  fetchFavorites(userId: string) {
+    this.userService.getFavorites(userId).subscribe(async (res) => {
+      if (res && this.data) {
+        this.favorites = res['announces_id'];
+        return this.favorites.includes(this.data.id)
+          ? (this.addedToFavorite = true)
+          : (this.addedToFavorite = false);
+      } else {
+        return this.favorites;
+      }
+    });
   }
 
   buyTicket() {

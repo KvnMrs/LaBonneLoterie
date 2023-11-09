@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {
+  arrayUnion,
   collection,
-  collectionData,
   doc,
+  docData,
   DocumentData,
   Firestore,
   getDoc,
@@ -10,7 +11,6 @@ import {
   updateDoc,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 import { IUser } from 'src/app/models/user/user.model';
 
 @Injectable({
@@ -56,19 +56,29 @@ export class UserService {
   }
 
   // Create Favorites Subcollection: Users/userId//favorites/announceId
-  async addToFavorites(announce: IAnnounce, userId: string): Promise<void> {
+  async addToFavorites(announceId: string, userId: string): Promise<void> {
     const usersCollectionRef = collection(this.firestore, 'Users');
     const usersDocRef = doc(usersCollectionRef, userId);
     const favoritesCollectionRef = collection(usersDocRef, 'Favorites');
-    const favoritesDocRef = doc(favoritesCollectionRef, announce.id);
-    return await setDoc(favoritesDocRef, announce);
+    const favoritesDocRef = doc(favoritesCollectionRef, 'announces');
+    const favoritesDoc = await getDoc(favoritesDocRef);
+    if (favoritesDoc.exists()) {
+      await updateDoc(favoritesDocRef, {
+        announces_id: arrayUnion(announceId),
+      });
+    } else {
+      await setDoc(favoritesDocRef, {
+        announces_id: [announceId],
+      });
+    }
   }
 
   getFavorites(userId: string): Observable<DocumentData> {
     const usersCollectionRef = collection(this.firestore, 'Users');
     const usersDocRef = doc(usersCollectionRef, userId);
     const favoritesCollectionRef = collection(usersDocRef, 'Favorites');
-    return collectionData(favoritesCollectionRef);
+    const favoritesDocRef = doc(favoritesCollectionRef, 'announces');
+    return docData(favoritesDocRef);
   }
 
   async removeFavorite(announceId: string, userId: string) {
