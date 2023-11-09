@@ -11,7 +11,8 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./favorites.component.scss'],
 })
 export class FavoritesComponent implements OnInit, OnDestroy {
-  public favoriteAnnounces: IAnnounce[] = [];
+  public favoritesAnnounce: IAnnounce[] = [];
+  public favoritesAnnounceIds: string[] = [];
   public currentUser: User | null = null;
 
   constructor(
@@ -31,8 +32,11 @@ export class FavoritesComponent implements OnInit, OnDestroy {
 
   fetchFavorites(userId: string) {
     this.userService.getFavorites(userId).subscribe(async (res) => {
-      if (Array.isArray(res)) {
-        this.favoriteAnnounces = res;
+      if (res) {
+        this.favoritesAnnounceIds = res['announces_id'];
+        this.favoritesAnnounce = await this.announcesService.getAnnounceByIds(
+          this.favoritesAnnounceIds
+        );
       } else {
         console.error('res:', res);
       }
@@ -42,10 +46,10 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   removeFromFavorites(announceId: string) {
     if (this.currentUser) {
       this.userService.removeFavorite(announceId, this.currentUser.uid);
-      const index = this.favoriteAnnounces.findIndex(
+      const index = this.favoritesAnnounce.findIndex(
         (announce) => announce.id === announceId
       );
-      this.favoriteAnnounces.splice(index, 1);
+      this.favoritesAnnounce.splice(index, 1);
     }
   }
 

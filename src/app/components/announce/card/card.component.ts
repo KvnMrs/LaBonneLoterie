@@ -13,9 +13,9 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class CardComponent implements OnInit {
   @Input() data: IAnnounce | null = null;
-  favorites: string[] = [];
+  @Input() addedToFavorite = false;
+  public favorites: string[] = [];
   public currentUser: IUser | null = null;
-  public addedToFavorite = false;
 
   @ViewChild('modalBuyTicket') modalBuyTicket!: ElementRef;
 
@@ -77,11 +77,11 @@ export class CardComponent implements OnInit {
 
   toggleFavorites(announceId: string, userId: string) {
     if (!this.addedToFavorite) {
-      this.onAddFavorite(announceId);
       this.addedToFavorite = true;
+      this.onAddFavorite(announceId);
     } else {
-      this.removeFromFavorites(announceId, userId);
       this.addedToFavorite = false;
+      this.removeFromFavorites(announceId, userId);
     }
   }
 

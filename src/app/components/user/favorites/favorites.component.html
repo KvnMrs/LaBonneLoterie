@@ -3,11 +3,12 @@
 
   <div class="cards-container">
     <app-card
-      *ngFor="let announce of favoriteAnnounces; let i = index"
+      *ngFor="let announce of favoritesAnnounce; let i = index"
       [data]="announce"
+      [addedToFavorite]="true"
     ></app-card>
 
-    <div *ngIf="favoriteAnnounces.length === 0" class="text-center">
+    <div *ngIf="favoritesAnnounce.length === 0" class="text-center">
       Aucune annonce favorite pour le moment.
     </div>
   </div>
