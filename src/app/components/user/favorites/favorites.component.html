@@ -5,7 +5,6 @@
     <app-card
       *ngFor="let announce of favoritesAnnounce; let i = index"
       [data]="announce"
-      [addedToFavorite]="true"
     ></app-card>
 
     <div *ngIf="favoritesAnnounce.length === 0" class="text-center">

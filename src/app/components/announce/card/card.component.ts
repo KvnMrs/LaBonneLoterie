@@ -1,5 +1,13 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 import { IUser } from 'src/app/models/user/user.model';
 import { AnnouncesService } from 'src/app/services/announce/announces.service';
@@ -11,9 +19,10 @@ import { UserService } from 'src/app/services/user/user.service';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })
-export class CardComponent implements OnInit {
+export class CardComponent implements OnInit, OnDestroy {
   @Input() data: IAnnounce | null = null;
-  @Input() addedToFavorite = false;
+  addedToFavorite = false;
+  public favorites$: Subscription = new Subscription();
   public favorites: string[] = [];
   public currentUser: IUser | null = null;
 
@@ -57,16 +66,18 @@ export class CardComponent implements OnInit {
   }
 
   fetchFavorites(userId: string) {
-    this.userService.getFavorites(userId).subscribe(async (res) => {
-      if (res && this.data) {
-        this.favorites = res['announces_id'];
-        return this.favorites.includes(this.data.id)
-          ? (this.addedToFavorite = true)
-          : (this.addedToFavorite = false);
-      } else {
-        return this.favorites;
-      }
-    });
+    this.favorites$ = this.userService
+      .getFavorites(userId)
+      .subscribe(async (res) => {
+        if (res && this.data) {
+          this.favorites = res['announces_id'];
+          return this.favorites.includes(this.data.id)
+            ? (this.addedToFavorite = true)
+            : (this.addedToFavorite = false);
+        } else {
+          return this.favorites;
+        }
+      });
   }
 
   async removeFromFavorites(announceId: string, userId: string) {
@@ -92,5 +103,9 @@ export class CardComponent implements OnInit {
 
   closeModal() {
     this.modalBuyTicket.nativeElement.checked = false;
+  }
+
+  ngOnDestroy(): void {
+    this.favorites$.unsubscribe();
   }
 }

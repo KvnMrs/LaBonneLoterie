@@ -67,7 +67,8 @@ export class AnnouncesService {
       const q = query(announceRef, where(documentId(), 'in', ids));
       const docsSnap = await getDocs(q);
       docsSnap.forEach((doc) => {
-        const announce = doc.data() as IAnnounce;
+        let announce = doc.data() as IAnnounce;
+        announce.id = doc.id;
         favorites.push(announce);
       });
       return favorites;
