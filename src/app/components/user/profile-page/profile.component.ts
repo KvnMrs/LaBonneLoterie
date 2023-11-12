@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IUser } from 'src/app/models/user/user.model';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,29 +11,30 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class ProfileComponent implements OnInit, OnDestroy {
   public stars = [1, 2, 3, 4, 5];
-  public currentUserSubscritpion!: Subscription;
-  public currentUser!: IUser;
+  public currentUser$: Subscription = new Subscription();
+  public currentUser: IUser | null = null;
   public userData: IUser | null = null;
   modalUpdateProfile = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.authService.userDataSubject.subscribe((user) => {
+    this.currentUser$ = this.authService.userDataSubject.subscribe((user) => {
       this.userData = user;
     });
   }
 
   getUpdateUserProfile(updatedData: IUser): void {
-    this.authService.userDataSubject.next(updatedData);
-    this.userData = updatedData;
+    return this.authService.userDataSubject.next(updatedData);
   }
 
-  onDisconnect() {
-    this.authService
+  async onDisconnect() {
+    return await this.authService
       .signOutUser()
       .then(() => this.router.navigate(['/connexion']));
   }
 
-  ngOnDestroy() {}
+  ngOnDestroy() {
+    this.currentUser$.unsubscribe();
+  }
 }
