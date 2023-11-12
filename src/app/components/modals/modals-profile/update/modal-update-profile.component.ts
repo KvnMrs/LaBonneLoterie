@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { DocumentData } from 'firebase/firestore';
 import { IUser } from 'src/app/models/user/user.model';
 import { UploadImgService } from 'src/app/services/upload/upload-img.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -27,16 +26,21 @@ export class ModalUpdateProfileComponent implements OnInit {
   }
 
   initUpdateProfileForm() {
-    this.updateProfileForm = new FormGroup({
-      email: new FormControl(this.userData?.email, [
-        Validators.required,
-        Validators.email,
-      ]),
-      firstname: new FormControl(this.userData?.firstname, Validators.required),
-      lastname: new FormControl(this.userData?.lastname, Validators.required),
-      city: new FormControl(this.userData?.city, Validators.required),
-      phone: new FormControl(this.userData?.phone, Validators.required),
-    });
+    if (!this.userData) return;
+    else
+      return (this.updateProfileForm = new FormGroup({
+        email: new FormControl(this.userData.email, [
+          Validators.required,
+          Validators.email,
+        ]),
+        firstname: new FormControl(
+          this.userData.firstname,
+          Validators.required
+        ),
+        lastname: new FormControl(this.userData.lastname, Validators.required),
+        city: new FormControl(this.userData.city, Validators.required),
+        phone: new FormControl(this.userData.phone, Validators.required),
+      }));
   }
 
   onChange(event: any) {
@@ -86,8 +90,7 @@ export class ModalUpdateProfileComponent implements OnInit {
       .then(
         (data) => (
           (this.userData = data),
-          this.modalUpdateEvent.emit(this.userData as IUser),
-          this.updateProfileForm.reset()
+          this.modalUpdateEvent.emit(this.userData as IUser)
         )
       );
   }

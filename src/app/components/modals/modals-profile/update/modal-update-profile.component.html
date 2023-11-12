@@ -1,6 +1,3 @@
-<!-- The button to open modal -->
-
-<!-- Put this part before </body> tag -->
 <input type="checkbox" id="modal-update-profile" class="modal-toggle" />
 <form
   *ngIf="userData"
@@ -75,7 +72,7 @@
         <div class="flex justify-center">
           <img
             id="previewImage"
-            src="{{ userData['imgProfile'] || '/assets/svg/profile.svg' }}"
+            src="{{ userData.imgProfile || '/assets/svg/profile.svg' }}"
             class="circle-surface"
           />
         </div>
@@ -92,9 +89,6 @@
       <label
         type="submit"
         for="modal-update-profile"
-        [ngClass]="{
-          disabled: this.file == null && !updateProfileForm.touched
-        }"
         class="btn btn-info"
         (click)="onUpdateUserProfile()"
       >
@@ -103,9 +97,3 @@
     </div>
   </div>
 </form>
-
-<!-- <div class="container">
-  <div>
-    <input type="file" (change)="onChange($event)" />
-  </div>
-</div> -->
