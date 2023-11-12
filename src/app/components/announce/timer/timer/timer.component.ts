@@ -10,7 +10,7 @@ import { AnnouncesService } from 'src/app/services/announce/announces.service';
 export class TimerComponent implements OnInit {
   @Input() hideText? = false;
   @Input() endDate = 0;
-  timer$!: Subscription;
+  timer$: Subscription = new Subscription();
   private timeDiff$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   timerValue: {
     days: number;

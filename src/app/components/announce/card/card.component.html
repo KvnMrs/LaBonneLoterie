@@ -13,7 +13,8 @@
     </figure>
     <div class="card-body py-2 px-0 cursor-pointer | md:w-9/12 md:py-0 md:pl-4">
       <div class="flex flex-col gap-2 mb-4">
-        <div class="flex justify-between">
+        <!-- Timer { MOBILE } -->
+        <div class="flex justify-between | md:hidden">
           <app-timer [endDate]="data.endAt" [hideText]="true"></app-timer>
         </div>
         <h4 class="card-title text-xl">{{ data.title }}</h4>
@@ -26,6 +27,12 @@
   </div>
 
   <div class="flex justify-between items-center | md:flex-col">
+    <!-- Timer { DESKTOP } -->
+    <app-timer
+      class="hidden | md:flex"
+      [endDate]="data.endAt"
+      [hideText]="true"
+    ></app-timer>
     <button
       (click)="toggleFavorites(data.id, currentUser.uid)"
       class="btn btn-circle btn-md btn-ghost | md:ml-auto"
@@ -34,20 +41,8 @@
         [addedToFavorite]="addedToFavorite"
       ></app-svg-add-to-favorites>
     </button>
-    <label
-      *ngIf="currentUser"
-      for="modalBuyTicket"
-      class="btn btn-primary btn-sm w-max z-10 ml-auto | md:btn-md"
-      >Achat ticket(s)</label
-    >
   </div>
 </div>
-
-<!-- Buy ticket(s) modal -->
-<app-modal-buy-ticket
-  *ngIf="data"
-  [currentAnnounce]="data"
-></app-modal-buy-ticket>
 
 <!-- Good luck modal -->
 <app-modal-wish-good-luck></app-modal-wish-good-luck>
