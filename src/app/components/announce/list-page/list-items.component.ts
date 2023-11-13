@@ -35,7 +35,6 @@ export class ListItemsComponent implements OnInit, OnDestroy {
     return (this.announces$ = this.announcesService
       .getAnnounces()
       .subscribe((res: IAnnounce[]) => {
-        console.log(res);
         this.announces = res;
       }));
   }
