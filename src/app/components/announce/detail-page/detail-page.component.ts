@@ -1,6 +1,13 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DocumentData } from 'firebase/firestore';
+import { Subscription } from 'rxjs';
 // Models
 import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 import { IUser } from 'src/app/models/user/user.model';
@@ -14,13 +21,14 @@ import { UserService } from 'src/app/services/user/user.service';
   templateUrl: './detail-page.component.html',
   styleUrls: ['./detail-page.component.scss'],
 })
-export class DetailPageComponent implements OnInit {
-  @ViewChild('modalBuyTicket') modalBuyTicket!: ElementRef;
+export class DetailPageComponent implements OnInit, OnDestroy {
+  @ViewChild('modalBuyTicket') modalBuyTicket: ElementRef | null = null;
   public currentAnnounce: IAnnounce | null = null;
-  public authorAnnounce: DocumentData | null = null;
+  public authorAnnounce: IUser | null = null;
+  public currentUser$: Subscription = new Subscription();
   public currentUser: IUser | null = null;
   paramId: string = '';
-  postedDate: any;
+  postedDate: number | Date = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,18 +38,18 @@ export class DetailPageComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.authService.userDataSubject.subscribe({
+    this.currentUser$ = this.authService.userDataSubject.subscribe({
       next: (user) => {
-        this.currentUser = user as IUser;
+        this.currentUser = user;
       },
       error: (error) => {
-        console.error('Erreur récupération utilisateur.', error);
+        console.error('Error occured: ', error);
       },
     });
     try {
       this.paramId = this.route.snapshot.params['id'];
       await this.fetchAnnounceById(this.paramId);
-      if (!this.currentAnnounce) throw Error;
+      if (!this.currentAnnounce) throw Error();
       this.postedDate = this.currentAnnounce.createdAt;
       this.currentAnnounce.createdAt = new Date(this.currentAnnounce.createdAt);
       await this.userService
@@ -52,7 +60,7 @@ export class DetailPageComponent implements OnInit {
         });
     } catch (error) {
       // TODO: error management - show an error message and redirect user
-      console.error("Une erreur s'est produite :", error);
+      console.error('Error occured: ', error);
     }
   }
 
@@ -63,6 +71,12 @@ export class DetailPageComponent implements OnInit {
   }
 
   closeModal() {
-    this.modalBuyTicket.nativeElement.checked = false;
+    if (this.modalBuyTicket) {
+      this.modalBuyTicket.nativeElement.checked = false;
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.currentUser$.unsubscribe();
   }
 }
