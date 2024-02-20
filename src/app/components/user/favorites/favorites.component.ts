@@ -54,7 +54,7 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   }
 
   deleteAnnouce(id: string) {
-    this.announcesService.deleteAnnounce(id);
+    this.announcesService.deleteAnnounceById(id);
   }
 
   ngOnDestroy(): void {}

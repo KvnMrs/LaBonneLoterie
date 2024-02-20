@@ -108,7 +108,7 @@ export class AnnouncesService {
   }
 
   // deleteAnnounceById
-  deleteAnnounce(id: string) {
+  deleteAnnounceById(id: string) {
     const announceDocRef = doc(this.firestore, `Announces/${id}`);
     return deleteDoc(announceDocRef);
   }
