@@ -36,6 +36,7 @@ import { SvgUserComponent } from './shared/libs/ux-ui/svg/user/svg-user.componen
 import { SvgMessageComponent } from './shared/libs/ux-ui/svg/message/svg-message.component';
 import { SvgShutdownComponent } from './shared/libs/ux-ui/svg/shutdown/svg-shutdown.component';
 import { SvgStarsComponent } from './shared/libs/ux-ui/svg/stars/svg-stars.component';
+import { EyeClosedComponent } from './shared/libs/ux-ui/svg/eye-closed/eye-closed.component';
 // Libs
 import { HeaderComponent } from './shared/libs/ux-ui/header/header.component';
 import { InputComponent } from './shared/libs/ux-ui/forms/input/input.component';
@@ -124,6 +125,7 @@ const appRoutes: Routes = [
     SvgStarsComponent,
     LblErrorComponent,
     FavoritesComponent,
+    EyeClosedComponent,
   ],
   imports: [
     BrowserModule,
