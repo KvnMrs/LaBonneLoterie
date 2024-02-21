@@ -36,6 +36,7 @@ import { SvgUserComponent } from './shared/libs/ux-ui/svg/user/svg-user.componen
 import { SvgMessageComponent } from './shared/libs/ux-ui/svg/message/svg-message.component';
 import { SvgShutdownComponent } from './shared/libs/ux-ui/svg/shutdown/svg-shutdown.component';
 import { SvgStarsComponent } from './shared/libs/ux-ui/svg/stars/svg-stars.component';
+import { EyeClosedComponent } from './shared/libs/ux-ui/svg/eye-closed/eye-closed.component';
 // Libs
 import { HeaderComponent } from './shared/libs/ux-ui/header/header.component';
 import { InputComponent } from './shared/libs/ux-ui/forms/input/input.component';
@@ -46,6 +47,7 @@ import { AuthService } from './services/auth/auth.service';
 import { UploadImgService } from './services/upload/upload-img.service';
 import { LblErrorComponent } from './shared/libs/ux-ui/alert/error/lbl-error.component';
 import { FavoritesComponent } from './components/user/favorites/favorites.component';
+import { HeartCrossComponent } from './shared/libs/ux-ui/svg/heart-cross/heart-cross.component';
 
 const appRoutes: Routes = [
   // { path: '', component: ListItemsComponent },
@@ -124,6 +126,8 @@ const appRoutes: Routes = [
     SvgStarsComponent,
     LblErrorComponent,
     FavoritesComponent,
+    EyeClosedComponent,
+    HeartCrossComponent,
   ],
   imports: [
     BrowserModule,

@@ -64,11 +64,28 @@
       </div>
     </form>
   </div>
-  <!-- collapse filters -->
-  <div class="cards-container">
-    <app-card
-      *ngFor="let announce of announces; let i = index"
-      [data]="announce"
-    ></app-card>
+  <div *ngIf="!announces.length; else cards" class="m-auto flex flex-col items-center">
+    <app-eye-closed></app-eye-closed>
+    <p class="mb-4 text-center text-lg font-bold">Aucune annonce en vue, soyez le premier !</p>
+    <button
+    type="button"
+    >  
+      <a
+        class="flex gap-2 btn btn-ghost rounded-btn hover:btn-primary | md:btn-outline"
+        [routerLink]="['/ajout-annonce']"
+        ><app-svg-cross-add></app-svg-cross-add>
+        <p>Ajouter une annonce</p></a
+      >
+    </button>
   </div>
+
+  <!-- cards announce -->
+  <ng-template #cards>
+    <div class="cards-container" >
+      <app-card
+        *ngFor="let announce of announces; let i = index"
+        [data]="announce"
+      ></app-card>
+    </div>
+  </ng-template>
 </div>

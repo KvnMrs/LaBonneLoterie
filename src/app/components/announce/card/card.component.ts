@@ -55,7 +55,7 @@ export class CardComponent implements OnInit, OnDestroy {
   }
 
   deleteAnnouce(id: string) {
-    this.announcesService.deleteAnnounce(id);
+    this.announcesService.deleteAnnounceById(id);
   }
 
   onAddFavorite(announceId: string) {

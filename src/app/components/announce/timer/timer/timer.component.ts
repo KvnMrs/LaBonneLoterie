@@ -9,6 +9,7 @@ import { AnnouncesService } from 'src/app/services/announce/announces.service';
 })
 export class TimerComponent implements OnInit {
   @Input() hideText? = false;
+  @Input() announceId = "";
   @Input() endDate = 0;
   timer$: Subscription = new Subscription();
   private timeDiff$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
@@ -30,6 +31,7 @@ export class TimerComponent implements OnInit {
     this.timer$ = this.announceService
       .createTimerObservable(this.endDate)
       .subscribe((v) => {
+        v <= 0 ? this.announceService.deleteAnnounceById(this.announceId) : 
         this.timeDiff$.next(v);
       });
     this.timeDiff$
