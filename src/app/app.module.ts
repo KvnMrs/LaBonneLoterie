@@ -47,6 +47,7 @@ import { AuthService } from './services/auth/auth.service';
 import { UploadImgService } from './services/upload/upload-img.service';
 import { LblErrorComponent } from './shared/libs/ux-ui/alert/error/lbl-error.component';
 import { FavoritesComponent } from './components/user/favorites/favorites.component';
+import { HeartCrossComponent } from './shared/libs/ux-ui/svg/heart-cross/heart-cross.component';
 
 const appRoutes: Routes = [
   // { path: '', component: ListItemsComponent },
@@ -126,6 +127,7 @@ const appRoutes: Routes = [
     LblErrorComponent,
     FavoritesComponent,
     EyeClosedComponent,
+    HeartCrossComponent,
   ],
   imports: [
     BrowserModule,
