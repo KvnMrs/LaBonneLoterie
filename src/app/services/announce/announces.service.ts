@@ -9,9 +9,10 @@ import {
   getDoc,
 } from '@angular/fire/firestore';
 import { documentId, getDocs, query, setDoc, where } from 'firebase/firestore';
+import { User } from 'firebase/auth';
 import { BehaviorSubject, interval, map, Observable } from 'rxjs';
 import { IAnnounce } from '../../models/annouce/annouce.model';
-import { User } from 'firebase/auth';
+import { AnnouncesStatus } from 'src/app/shared/libs/enums/announces.enum';
 
 @Injectable({
   providedIn: 'root',
@@ -32,6 +33,7 @@ export class AnnouncesService {
     authorUid: '',
     endAt: 0,
     endHour: 0,
+    status: '',
   });
   public announceData$: Observable<Partial<IAnnounce>> =
     this.announceDataSubject.asObservable();
@@ -98,6 +100,7 @@ export class AnnouncesService {
         createdAt: Date.now(),
         endAt: announce.endAt,
         authorUid: announce.authorUid,
+        status: AnnouncesStatus.Valid
       };
       const announceRef = collection(this.firestore, 'Announces');
       return addDoc(announceRef, newAnnounce);

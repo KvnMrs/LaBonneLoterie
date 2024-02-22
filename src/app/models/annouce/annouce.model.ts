@@ -14,4 +14,5 @@ export interface IAnnounce {
   endHour: number;
   endAt: number;
   authorUid: string;
+  status: string
 }
