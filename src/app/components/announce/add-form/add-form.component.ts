@@ -99,14 +99,14 @@ export class AddFormComponent implements OnInit {
       const timestamp = date.getTime();
       return timestamp;
     } else {
-      return null;
+      return 0;
     }
   }
 
   async onSubmit() {
     let imgsAnnounceUrl: Array<string> = [];
     let announceData = this.createAnnounceForm.value;
-    announceData.endHour = this.getTimeStampFromSelectedTime(
+    announceData.endAt = new Date(announceData.endAt).getTime() + this.getTimeStampFromSelectedTime(
       announceData.endHour
     );
     if (!announceData) return;

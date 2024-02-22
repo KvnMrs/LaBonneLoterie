@@ -80,13 +80,8 @@ export class AnnouncesService {
   // addAnnounce
   public addAnnounce(announce: Partial<IAnnounce>) {
     try {
-      if (!announce.endAt || !announce.endHour) throw Error;
-      announce.endAt =
-        new Date(announce.endAt).getTime() +
-        announce.endHour -
-        new Date().getTime();
-
-      const newAnnounce: Partial<IAnnounce> = {
+      if (!announce.endAt) throw Error;
+       const newAnnounce: Partial<IAnnounce> = {
         title: announce.title,
         category: announce.category,
         tags: announce.tags,
