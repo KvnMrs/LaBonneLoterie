@@ -8,7 +8,7 @@ import {
   Firestore,
   getDoc,
 } from '@angular/fire/firestore';
-import { documentId, getDocs, query, setDoc, where } from 'firebase/firestore';
+import { documentId, getDocs, query, setDoc, updateDoc, where } from 'firebase/firestore';
 import { User } from 'firebase/auth';
 import { BehaviorSubject, interval, map, Observable } from 'rxjs';
 import { IAnnounce } from '../../models/annouce/annouce.model';
@@ -111,22 +111,30 @@ export class AnnouncesService {
     return deleteDoc(announceDocRef);
   }
 
-  async buyTicket(announce: any, buyer: Partial<User>, otherInfos: any) {
-    // Create purchase relation.
-    const relation = { announce, buyer, otherInfos };
-    const purchasesRef = collection(this.firestore, 'purchases');
-    await addDoc(purchasesRef, relation);
-    // Update 'currentTickets' value of the announce.
-    const announceRef = doc(this.firestore, `Announces`, announce.id);
-    const announceCurrrentData = await this.getAnnounceByID(announce.id).then(
-      (res) => res
-    );
-    const actualisationTickets =
-      announceCurrrentData?.['currentTickets'] + otherInfos.numberTicketBuyed;
-
-    announceCurrrentData['currentTickets'] = actualisationTickets;
-    return setDoc(announceRef, announceCurrrentData);
-  }
+  async buyTicket(announceId: string, buyer: Partial<User>, data: { numberTicketBuyed: number; date: Date; }) {
+    try {
+        if (!buyer.uid) {
+            throw new Error('Invalid buyer');
+        }
+        const userId : string = buyer.uid;
+        const announceRef = doc(this.firestore, `Announces`, announceId);
+        const purchaseCollectionRef = collection(announceRef, 'PurchaseTickets');
+        const purchaseRef = doc(purchaseCollectionRef, userId);
+        await setDoc(purchaseRef, { [new Date().toLocaleString()]: data.numberTicketBuyed }, {merge : true});
+        // Update 'currentTickets' value of the announce.
+        const announceCurrrentData = await this.getAnnounceByID(announceId).then(
+          (res) => res
+        );
+        const actualisationTickets =
+        announceCurrrentData?.['currentTickets'] + data.numberTicketBuyed;
+        announceCurrrentData['currentTickets'] = actualisationTickets;
+        return setDoc(announceRef, announceCurrrentData);
+  } catch (error) {
+    console.error('Error buyTicket : ', error);
+    throw error;
+}
+}
+  
 
   emitAnnounceData(data: Partial<IAnnounce>) {
     this.announceDataSubject.next(data);
