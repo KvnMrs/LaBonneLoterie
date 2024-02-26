@@ -48,10 +48,8 @@ export class DetailPageComponent implements OnInit, OnDestroy {
     });
     try {
       this.paramId = this.route.snapshot.params['id'];
-      await this.fetchAnnounceById(this.paramId);
-      if (!this.currentAnnounce) throw Error();
-      this.postedDate = this.currentAnnounce.createdAt;
-      this.currentAnnounce.createdAt = new Date(this.currentAnnounce.createdAt);
+      this.currentAnnounce = await this.fetchAnnounceById(this.paramId);
+      this.currentAnnounce.id = this.paramId
       await this.userService
         .getUserByID(this.currentAnnounce.authorUid)
         .then((data) => {

@@ -4,7 +4,7 @@
   id="modalBuyTicket"
   class="modal-toggle"
 />
-<form class="modal" [formGroup]="buyTicketForm">
+<form *ngIf="currentAnnounce" class="modal" [formGroup]="buyTicketForm">
   <div class="modal-box flex flex-col gap-4">
     <label
       for="modalBuyTicket"
