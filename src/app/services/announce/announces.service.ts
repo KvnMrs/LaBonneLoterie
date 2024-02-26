@@ -111,7 +111,7 @@ export class AnnouncesService {
     return deleteDoc(announceDocRef);
   }
 
-  async buyTicket(announceId: string, buyer: Partial<User>, data: { numberTicketBuyed: number; date: Date; }) {
+  async buyTickets(announceId: string, buyer: Partial<User>, data: { userId?: string; ticketsBuyed?: number; buyedAt?: string; }) {
     try {
         if (!buyer.uid) {
             throw new Error('Invalid buyer');
@@ -119,14 +119,17 @@ export class AnnouncesService {
         const userId : string = buyer.uid;
         const announceRef = doc(this.firestore, `Announces`, announceId);
         const purchaseCollectionRef = collection(announceRef, 'PurchaseTickets');
-        const purchaseRef = doc(purchaseCollectionRef, userId);
-        await setDoc(purchaseRef, { [new Date().toLocaleString()]: data.numberTicketBuyed }, {merge : true});
+        const purchaseRef = doc(purchaseCollectionRef);
+        await setDoc(purchaseRef, {data}, {merge : true});
         // Update 'currentTickets' value of the announce.
         const announceCurrrentData = await this.getAnnounceByID(announceId).then(
           (res) => res
         );
+        if (!data.ticketsBuyed) {
+          throw new Error('Invalid ticketsBuyed');
+      }
         const actualisationTickets =
-        announceCurrrentData?.['currentTickets'] + data.numberTicketBuyed;
+        announceCurrrentData?.['currentTickets'] + data.ticketsBuyed;
         announceCurrrentData['currentTickets'] = actualisationTickets;
         return setDoc(announceRef, announceCurrrentData);
   } catch (error) {

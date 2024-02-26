@@ -41,11 +41,12 @@ export class ModalBuyTickectComponent implements OnInit {
       const currentUser = this.authService.auth.currentUser;
       if (!currentUser) throw Error('Error with the current user');
       const buyer : Partial<User> = { uid: currentUser.uid, email: currentUser.email };
-      const data = {
-        numberTicketBuyed: this.buyTicketForm.value.numberTicketSelected,
-        date: new Date(),
+      const purchaseTickets = {
+        userId: currentUser.uid,
+        ticketsBuyed: this.buyTicketForm.value.numberTicketSelected,
+        buyedAt : new Date().toLocaleString(),
       };
-      await this.announcesService.buyTicket(this.currentAnnounce.id, buyer, data);
+      await this.announcesService.buyTickets(this.currentAnnounce.id, buyer, purchaseTickets);
       this.buyTicketForm.reset();
     } catch (err) {
       // TODO: error management - show an error message buy ticket failed
