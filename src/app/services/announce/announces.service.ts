@@ -8,9 +8,8 @@ import {
   Firestore,
   getDoc,
 } from '@angular/fire/firestore';
-import { documentId, getDocs, query, setDoc, updateDoc, where } from 'firebase/firestore';
-import { User } from 'firebase/auth';
-import { BehaviorSubject, interval, map, Observable } from 'rxjs';
+import { arrayUnion, documentId, getDocs, query, runTransaction, serverTimestamp, setDoc, updateDoc, where } from 'firebase/firestore';
+import { BehaviorSubject, interval, map, merge, Observable } from 'rxjs';
 import { IAnnounce } from '../../models/annouce/annouce.model';
 import { AnnouncesStatus } from 'src/app/shared/libs/enums/announces.enum';
 
@@ -91,7 +90,8 @@ export class AnnouncesService {
         ticketPrice: announce.ticketPrice,
         minTickets: announce.minTickets,
         maxTickets: announce.maxTickets,
-        currentTickets: announce.currentTickets,
+        ticketsBuyed: [],
+        currentTickets: announce.maxTickets,
         createdAt: Date.now(),
         endAt: announce.endAt,
         authorUid: announce.authorUid,
@@ -111,31 +111,44 @@ export class AnnouncesService {
     return deleteDoc(announceDocRef);
   }
 
-  async buyTickets(announceId: string, userId: string, data: { userId?: string; ticketsBuyed?: number; buyedAt?: string; }) {
+
+  async buyTickets(announceId: string, userId: string, ticketsBuyed: number) {
     try {
         if (!userId) {
             throw new Error('Invalid buyer');
         }
-        const announceRef = doc(this.firestore, `Announces`, announceId);
+        const ticketIds: string[] = [];
+        for (let i = 0; i < ticketsBuyed; i++) {
+            ticketIds.push(this.genererId());
+        }
+        const announceRef = doc(this.firestore, 'Announces', announceId);
         const purchaseCollectionRef = collection(announceRef, 'PurchaseTickets');
-        const purchaseRef = doc(purchaseCollectionRef, userId);
-        await setDoc(purchaseRef, {data}, {merge : true});
-        // Update 'currentTickets' value of the announce.
-        const announceCurrrentData = await this.getAnnounceByID(announceId).then(
-          (res) => res
-        );
-        if (!data.ticketsBuyed) {
-          throw new Error('Invalid ticketsBuyed');
-      }
-        const actualisationTickets =
-        announceCurrrentData?.['currentTickets'] + data.ticketsBuyed;
-        announceCurrrentData['currentTickets'] = actualisationTickets;
-        return setDoc(announceRef, announceCurrrentData);
-  } catch (error) {
-    console.error('Error buyTicket : ', error);
-    throw error;
+        await runTransaction(this.firestore, async (transaction) => {
+            const purchaseRef = doc(purchaseCollectionRef);
+            const announceDoc = await transaction.get(announceRef);
+            const currentTickets = announceDoc.data()?.['currentTickets']
+            const ticketsBuyed = announceDoc.data()?.['ticketsBuyed']
+            const updatedCurrentTickets = currentTickets - ticketsBuyed!;
+            ticketIds.forEach(id => ticketsBuyed.push(id))
+            transaction.update(announceRef, { currentTickets: updatedCurrentTickets, ticketsBuyed: ticketsBuyed });
+            await setDoc(purchaseRef, { date: serverTimestamp(), tickets: ticketIds });
+        });
+    } catch (error) {
+        console.error('Error buy ticket: : ', error);
+        throw error;
+    }
 }
-}
+
+
+  genererId(): string {
+    const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let id = '';
+    for (let i = 0; i < 10; i++) {
+        const randomIndex = Math.floor(Math.random() * caracteres.length);
+        id += caracteres.charAt(randomIndex);
+    }
+    return id;
+  }
   
 
   emitAnnounceData(data: Partial<IAnnounce>) {

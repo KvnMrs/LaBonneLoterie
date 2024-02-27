@@ -9,6 +9,7 @@ export interface IAnnounce {
   ticketPrice: number;
   minTickets?: number;
   maxTickets?: number;
+  ticketsBuyed: Array<string>;
   currentTickets: number;
   createdAt: number | Date;
   endHour: number;
