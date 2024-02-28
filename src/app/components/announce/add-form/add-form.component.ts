@@ -7,6 +7,7 @@ import { UploadImgService } from '../../../services/upload/upload-img.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 // Models
 import { User } from 'firebase/auth';
+import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 
 @Component({
   selector: 'app-add-item',
@@ -64,7 +65,7 @@ export class AddFormComponent implements OnInit {
       minTickets: new FormControl(0, Validators.required),
       maxTickets: new FormControl(0, Validators.required),
       currentTickets: new FormControl(0, Validators.required),
-      endAt: new FormControl(new Date(), Validators.required),
+      endDate: new FormControl(new Date(), Validators.required),
       endHour: new FormControl(0, Validators.required),
     });
   }
@@ -105,10 +106,7 @@ export class AddFormComponent implements OnInit {
 
   async onSubmit() {
     let imgsAnnounceUrl: Array<string> = [];
-    let announceData = this.createAnnounceForm.value;
-    announceData.endAt = new Date(announceData.endAt).getTime() + this.getTimeStampFromSelectedTime(
-      announceData.endHour
-    );
+    let announceData : IAnnounce  = this.createAnnounceForm.value;
     if (!announceData) return;
     if (announceData.title === '' || announceData.description === '') {
       this.showErrorMessage = true;

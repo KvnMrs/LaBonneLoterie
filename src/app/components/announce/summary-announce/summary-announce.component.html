@@ -81,13 +81,9 @@
           <div class="flex justify-between">
             <p>Date du tirage:</p>
             <p class="text-lg font-semibold">
-              {{ newAnnounceData.endAt | date }}
+              {{ newAnnounceData.endDate | date }}
             </p>
           </div>
-          <!-- <app-timer
-            *ngIf="newAnnounceData.endAt"
-            [endDate]="newAnnounceData.endAt"
-          ></app-timer> -->
         </div>
       </div>
       <!-- CTA's Group -->
