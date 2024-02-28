@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { User } from '@firebase/auth';
 import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 // Services
 import { AnnouncesService } from 'src/app/services/announce/announces.service';

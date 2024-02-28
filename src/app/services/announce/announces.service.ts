@@ -8,8 +8,8 @@ import {
   Firestore,
   getDoc,
 } from '@angular/fire/firestore';
-import { arrayUnion, documentId, getDocs, query, runTransaction, serverTimestamp, setDoc, updateDoc, where } from 'firebase/firestore';
-import { BehaviorSubject, interval, map, merge, Observable } from 'rxjs';
+import { documentId, getDocs, query, runTransaction, serverTimestamp, setDoc, Timestamp, where } from 'firebase/firestore';
+import { BehaviorSubject, interval, map, Observable } from 'rxjs';
 import { IAnnounce } from '../../models/annouce/annouce.model';
 import { AnnouncesStatus } from 'src/app/shared/libs/enums/announces.enum';
 
@@ -30,7 +30,7 @@ export class AnnouncesService {
     currentTickets: 0,
     createdAt: Date.now(),
     authorUid: '',
-    endAt: 0,
+    endAt: Timestamp.fromDate(new Date()) ,
     endHour: 0,
     status: '',
   });
@@ -79,7 +79,8 @@ export class AnnouncesService {
   // addAnnounce
   public addAnnounce(announce: Partial<IAnnounce>) {
     try {
-      if (!announce.endAt) throw Error;
+      if (!announce.endDate) throw Error;
+    const endDateTimestamp = Timestamp.fromDate(new Date(announce.endDate))
        const newAnnounce: Partial<IAnnounce> = {
         title: announce.title,
         category: announce.category,
@@ -93,7 +94,7 @@ export class AnnouncesService {
         ticketsBuyed: [],
         currentTickets: announce.maxTickets,
         createdAt: Date.now(),
-        endAt: announce.endAt,
+        endAt: endDateTimestamp,
         authorUid: announce.authorUid,
         status: AnnouncesStatus.Valid
       };
@@ -206,7 +207,7 @@ export class AnnouncesService {
   }
 
   createTimerObservable(endDate: number): Observable<number> {
-    let time = interval(1000).pipe(map(() => endDate - Date.now()));
+    let time = interval(1000).pipe(map(() => endDate - new Date().getTime()));
     return time;
   }
 }

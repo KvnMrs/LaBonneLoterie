@@ -1,3 +1,5 @@
+import { Timestamp } from "firebase/firestore";
+
 export interface IAnnounce {
   id: string;
   title: string;
@@ -13,7 +15,8 @@ export interface IAnnounce {
   currentTickets: number;
   createdAt: number | Date;
   endHour: number;
-  endAt: number;
+  endDate : Date
+  endAt: Timestamp;
   authorUid: string;
   status: string
 }
