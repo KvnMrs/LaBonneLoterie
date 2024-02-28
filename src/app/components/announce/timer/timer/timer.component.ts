@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { BehaviorSubject, Subscription, map } from 'rxjs';
+import { Timestamp } from 'firebase/firestore';
+import { BehaviorSubject, Observable, Subscription, map } from 'rxjs';
 import { AnnouncesService } from 'src/app/services/announce/announces.service';
 
 @Component({
@@ -9,16 +10,9 @@ import { AnnouncesService } from 'src/app/services/announce/announces.service';
 })
 export class TimerComponent implements OnInit {
   @Input() hideText? = false;
-  @Input() announceId = "";
-  @Input() endDate = 0;
-  timer$: Subscription = new Subscription();
-  private timeDiff$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-  timerValue: {
-    days: number;
-    hours: number;
-    minutes: number;
-    seconds: number;
-  } = {
+  @Input() endDate: number | undefined ;
+  timer$: Observable<number> | undefined;
+  timerValue = {
     days: 0,
     hours: 0,
     minutes: 0,
@@ -28,52 +22,12 @@ export class TimerComponent implements OnInit {
   constructor(private announceService: AnnouncesService) {}
 
   ngOnInit(): void {
-    this.timer$ = this.announceService
-      .createTimerObservable(this.endDate)
-      .subscribe((v) => {
-        v <= 0 ? this.announceService.deleteAnnounceById(this.announceId) : 
-        this.timeDiff$.next(v);
-      });
-    this.timeDiff$
-      .pipe(map((diff) => this.calculateTimeValues(diff)))
-      .subscribe((values) => {
-        this.timerValue = values;
-      });
+    this.announceService.announceData$.subscribe(announce => {
+      const endDate = announce.endAt?.toDate().getTime(); // Convertis Timestamp en millisecondes
+      if (endDate) {
+        this.timer$ = this.announceService.createTimerObservable(endDate);
+      }
+    });
   }
-
-  calculateTimeValues(diffInMillis: number): {
-    days: number;
-    hours: number;
-    minutes: number;
-    seconds: number;
-  } {
-    const days = Math.floor(diffInMillis / (1000 * 60 * 60 * 24));
-    const hours = Math.floor(
-      (diffInMillis % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    const minutes = Math.floor((diffInMillis % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diffInMillis % (1000 * 60)) / 1000);
-
-    return { days, hours, minutes, seconds };
-  }
-
-  get getDays(): number {
-    return this.timerValue.days;
-  }
-
-  get getHours(): number {
-    return this.timerValue.hours;
-  }
-
-  get getMinutes(): number {
-    return this.timerValue.minutes;
-  }
-
-  get getSeconds(): number {
-    return this.timerValue.seconds;
-  }
-
-  ngOnDestroy() {
-    this.timer$.unsubscribe();
-  }
+  
 }
