@@ -28,7 +28,7 @@
             name="category"
             formControlName="category"
           >
-            <option [ngValue]="null">Catégorie</option>
+            <option value="" selected hidden>Catégorie</option>
             <option *ngFor="let category of announceCategories" [value]="category">
               {{ category }}
             </option>
