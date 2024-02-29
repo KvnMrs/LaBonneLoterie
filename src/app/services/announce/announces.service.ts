@@ -192,7 +192,7 @@ export class AnnouncesService {
   }
 
   createTimerObservable(endDate: number): Observable<number> {
-    const time = interval(1000).pipe(map(() => endDate - new Date().getTime()));
+    const time = interval(1000).pipe(map(() => endDate - new Date().getTime() / 1000));
     return time;
   }
 }
