@@ -29,8 +29,8 @@
             formControlName="category"
           >
             <option [ngValue]="null">Catégorie</option>
-            <option *ngFor="let category of categorys" [value]="category.name">
-              {{ category.name }}
+            <option *ngFor="let category of announceCategories" [value]="category">
+              {{ category }}
             </option>
           </select>
         </div>

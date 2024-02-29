@@ -11,7 +11,7 @@ import {
 import { documentId, getDocs, query, runTransaction, serverTimestamp, setDoc, Timestamp, where } from 'firebase/firestore';
 import { BehaviorSubject, interval, map, Observable } from 'rxjs';
 import { IAnnounce } from '../../models/annouce/annouce.model';
-import { AnnouncesStatus } from 'src/app/shared/libs/enums/announces.enum';
+import { AnnounceStatus } from 'src/app/shared/libs/enums/announces.enum';
 
 @Injectable({
   providedIn: 'root',
@@ -96,7 +96,7 @@ export class AnnouncesService {
         createdAt: Date.now(),
         endAt: endDateTimestamp,
         authorUid: announce.authorUid,
-        status: AnnouncesStatus.Valid
+        status: AnnounceStatus.Valid
       };
       const announceRef = collection(this.firestore, 'Announces');
       return addDoc(announceRef, newAnnounce);

@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 // Models
 import { User } from 'firebase/auth';
 import { IAnnounce } from 'src/app/models/annouce/annouce.model';
+import { AnnounceCategories } from 'src/app/shared/libs/enums/announces.enum';
 
 @Component({
   selector: 'app-add-item',
@@ -16,6 +17,7 @@ import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 })
 export class AddFormComponent implements OnInit {
   @ViewChild('fileInput') fileInput: ElementRef | null = null;
+  public announceCategories = Object.values(AnnounceCategories);
   public createAnnounceForm!: FormGroup;
   public selectedImgs: Array<File | null> = [];
   public announceData: null = null;
@@ -23,16 +25,6 @@ export class AddFormComponent implements OnInit {
   public showErrorMessage = false;
   private currentUser: User | null = null;
 
-  public categorys = [
-    { id: 1, name: 'Vêtement' },
-    { id: 2, name: 'Véhicule' },
-    { id: 3, name: 'Multimédia' },
-    { id: 4, name: 'Décoration' },
-    { id: 5, name: 'Electroménager' },
-    { id: 6, name: 'Jardin' },
-    { id: 7, name: 'Sport' },
-    { id: 8, name: 'Loisir' },
-  ];
 
   constructor(
     private announcesService: AnnouncesService,
