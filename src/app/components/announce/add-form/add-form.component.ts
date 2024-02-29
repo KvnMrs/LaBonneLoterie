@@ -82,29 +82,14 @@ export class AddFormComponent implements OnInit {
     }
   }
 
-  getTimeStampFromSelectedTime(time: string) {
-    const timeParts = time.split(':');
-    const hours = parseInt(timeParts[0], 10);
-    const minutes = parseInt(timeParts[1], 10);
-    if (!isNaN(hours) && !isNaN(minutes)) {
-      const date = new Date();
-      date.setHours(hours, minutes, 0, 0);
-      const timestamp = date.getTime();
-      return timestamp;
-    } else {
-      return 0;
-    }
-  }
-
   async onSubmit() {
-    let imgsAnnounceUrl: Array<string> = [];
-    let announceData : IAnnounce  = this.createAnnounceForm.value;
-    if (!announceData) return;
-    if (announceData.title === '' || announceData.description === '') {
-      this.showErrorMessage = true;
-      return;
+    if (this.createAnnounceForm.invalid || !this.currentUser) {
+      console.error('Error with form or user:')
+      throw Error() 
     } else {
       try {
+        const imgsAnnounceUrl: Array<string> = [];
+        const announceData : IAnnounce  = this.createAnnounceForm.value;
         // Download urls of selected imgs.
         await Promise.all(
           this.selectedImgs.map(async (file) => {
@@ -112,14 +97,10 @@ export class AddFormComponent implements OnInit {
             imgsAnnounceUrl.push(urlImg);
           })
         );
-
         if (!this.currentUser) throw Error;
         // Define new values from the futur new announce document
-        announceData = {
-          ...announceData,
-          imgsAnnounce: imgsAnnounceUrl,
-          authorUid: this.currentUser.uid,
-        };
+        announceData.imgsAnnounce = imgsAnnounceUrl 
+        announceData.authorUid = this.currentUser.uid 
         this.announcesService.emitAnnounceData(announceData); // emit announceData for summary page.
         this.router.navigate(['/recapitulatif-annonce']);
         this.showErrorMessage = false;
