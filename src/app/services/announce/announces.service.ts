@@ -17,25 +17,8 @@ import { AnnounceStatus } from 'src/app/shared/libs/enums/announces.enum';
   providedIn: 'root',
 })
 export class AnnouncesService {
-  public announceDataSubject = new BehaviorSubject<Partial<IAnnounce>>({
-    title: '',
-    category: '',
-    tags: [],
-    description: '',
-    imgsAnnounce: [],
-    estimate: 0,
-    ticketPrice: 0,
-    minTickets: 0,
-    maxTickets: 0,
-    currentTickets: 0,
-    createdAt: Date.now(),
-    authorUid: '',
-    endAt: Timestamp.fromDate(new Date()) ,
-    endHour: 0,
-    status: '',
-  });
-  public announceData$: Observable<Partial<IAnnounce>> =
-    this.announceDataSubject.asObservable();
+  private announceDataSubject = new BehaviorSubject<IAnnounce | null>(null);
+  announceData$ = this.announceDataSubject.asObservable();
 
   private announcesDataSubject: BehaviorSubject<any> = new BehaviorSubject<
     IAnnounce[] | null
@@ -77,32 +60,34 @@ export class AnnouncesService {
   }
 
   // addAnnounce
-  public addAnnounce(announce: Partial<IAnnounce>) {
-    try {
-      if (!announce.endDate) throw Error;
-    const endDateTimestamp = Timestamp.fromDate(new Date(announce.endDate))
-       const newAnnounce: Partial<IAnnounce> = {
-        title: announce.title,
-        category: announce.category,
-        tags: announce.tags,
-        description: announce.description,
-        imgsAnnounce: announce.imgsAnnounce,
-        estimate: announce.estimate,
-        ticketPrice: announce.ticketPrice,
-        minTickets: announce.minTickets,
-        maxTickets: announce.maxTickets,
-        ticketsBuyed: [],
-        currentTickets: announce.maxTickets,
-        createdAt: Date.now(),
-        endAt: endDateTimestamp,
-        authorUid: announce.authorUid,
-        status: AnnounceStatus.Valid
-      };
-      const announceRef = collection(this.firestore, 'Announces');
-      return addDoc(announceRef, newAnnounce);
-    } catch (err) {
-      console.error('Problem with the announce data');
-      return;
+  public addAnnounce(announce: IAnnounce) {
+    if (!announce.endDate) throw Error;
+    else {
+      try {
+      const endDateTimestamp = Timestamp.fromDate(new Date(announce.endDate))
+         const newAnnounce: Partial<IAnnounce> = {
+          title: announce.title,
+          category: announce.category,
+          tags: announce.tags,
+          description: announce.description,
+          imgsAnnounce: announce.imgsAnnounce,
+          estimate: announce.estimate,
+          ticketPrice: announce.ticketPrice,
+          minTickets: announce.minTickets,
+          maxTickets: announce.maxTickets,
+          ticketsBuyed: [],
+          currentTickets: announce.maxTickets,
+          createdAt: Date.now(),
+          endAt: endDateTimestamp,
+          authorUid: announce.authorUid,
+          status: AnnounceStatus.Valid
+        };
+        const announceRef = collection(this.firestore, 'Announces');
+        return addDoc(announceRef, newAnnounce);
+      } catch (err) {
+        console.error('Problem with the announce data');
+        return;
+      }
     }
   }
 
@@ -152,7 +137,7 @@ export class AnnouncesService {
   }
   
 
-  emitAnnounceData(data: Partial<IAnnounce>) {
+  emitAnnounceData(data: IAnnounce | null) {
     this.announceDataSubject.next(data);
   }
 
@@ -207,7 +192,7 @@ export class AnnouncesService {
   }
 
   createTimerObservable(endDate: number): Observable<number> {
-    let time = interval(1000).pipe(map(() => endDate - new Date().getTime()));
+    const time = interval(1000).pipe(map(() => endDate - new Date().getTime()));
     return time;
   }
 }

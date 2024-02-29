@@ -83,7 +83,7 @@ export class AddFormComponent implements OnInit {
   }
 
   async onSubmit() {
-    if (this.createAnnounceForm.invalid || !this.currentUser) {
+    if (this.createAnnounceForm.invalid || !this.currentUser || !this.selectedImgs[0]) {
       console.error('Error with form or user:')
       throw Error() 
     } else {

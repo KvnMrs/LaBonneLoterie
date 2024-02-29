@@ -22,12 +22,12 @@ export class TimerComponent implements OnInit {
   constructor(private announceService: AnnouncesService) {}
 
   ngOnInit(): void {
-    this.announceService.announceData$.subscribe(announce => {
-      const endDate = announce.endAt?.toDate().getTime(); // Convertis Timestamp en millisecondes
-      if (endDate) {
-        this.timer$ = this.announceService.createTimerObservable(endDate);
+      if (this.endDate) {
+        this.timer$ = this.announceService.createTimerObservable(this.endDate);
       }
-    });
+  }
+
+  ngOnDestroy(): void {
   }
   
 }

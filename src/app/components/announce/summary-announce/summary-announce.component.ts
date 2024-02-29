@@ -5,7 +5,6 @@ import { Subscription } from 'rxjs';
 import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 import { AnnouncesService } from 'src/app/services/announce/announces.service';
 import { UserService } from 'src/app/services/user/user.service';
-import { DocumentData } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-summary-announce',
@@ -13,7 +12,7 @@ import { DocumentData } from '@angular/fire/firestore';
   styleUrls: ['./summary-announce.component.scss'],
 })
 export class SummaryAnnounceComponent implements OnInit {
-  newAnnounceData: Partial<IAnnounce> | null = null;
+  newAnnounceData: IAnnounce | null = null;
   public fullNameAuthor: string | null = null;
   private dataSubscription!: Subscription;
 
@@ -27,9 +26,10 @@ export class SummaryAnnounceComponent implements OnInit {
   ngOnInit(): void {
     this.dataSubscription = this.announcesService.announceData$.subscribe(
       async (data) => {
+        if (!data) return console.error('Error with announce data.')
         this.newAnnounceData = data;
         const announceAuthor = await this.userService.getUserByID(
-          this.newAnnounceData.authorUid as string
+          this.newAnnounceData.authorUid
         );
         if (!announceAuthor) throw Error;
         this.fullNameAuthor = `${
@@ -48,14 +48,14 @@ export class SummaryAnnounceComponent implements OnInit {
   async onPublish(): Promise<void> {
     if (!this.newAnnounceData) throw Error;
     await this.announcesService.addAnnounce(this.newAnnounceData);
-    this.newAnnounceData = {};
+    this.newAnnounceData = null;
   }
 
   goBack(): void {
     this.location.back();
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.dataSubscription.unsubscribe();
   }
 }
