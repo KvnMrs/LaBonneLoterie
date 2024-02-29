@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 // Services
@@ -127,5 +127,9 @@ export class AddFormComponent implements OnInit {
         console.error('Error occurred:', error);
       }
     }
+  }
+
+  ngOnDestroy(): void {
+    this.authService.userDataSubject.unsubscribe();
   }
 }
