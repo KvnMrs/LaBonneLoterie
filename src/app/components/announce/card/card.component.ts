@@ -24,6 +24,7 @@ export class CardComponent implements OnInit, OnDestroy {
   addedToFavorite = false;
   public favorites$: Subscription = new Subscription();
   public favorites: string[] = [];
+  public currentUser$: Subscription = new Subscription();
   public currentUser: IUser | null = null;
 
   @ViewChild('modalBuyTicket') modalBuyTicket!: ElementRef;
@@ -36,7 +37,7 @@ export class CardComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.authService.userDataSubject.subscribe({
+    this.currentUser$ = this.authService.userDataSubject.subscribe({
       next: (user) => {
         this.currentUser = user;
         if (this.currentUser) {
@@ -107,5 +108,6 @@ export class CardComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.favorites$.unsubscribe();
+    this.currentUser$.unsubscribe()
   }
 }

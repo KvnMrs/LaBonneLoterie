@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 // Services
@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { User } from 'firebase/auth';
 import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 import { AnnounceCategories } from 'src/app/shared/libs/enums/announces.enum';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add-item',
@@ -23,8 +24,8 @@ export class AddFormComponent implements OnInit {
   public announceData: null = null;
   public file: File | null = null;
   public showErrorMessage = false;
+  private currentUser$: Subscription = new Subscription;
   private currentUser: User | null = null;
-
 
   constructor(
     private announcesService: AnnouncesService,
@@ -35,7 +36,7 @@ export class AddFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.initCreateAnnounceForm();
-    this.authService.userDataSubject.subscribe({
+    this.currentUser$ = this.authService.userDataSubject.subscribe({
       next: (user) => {
         this.currentUser = user;
       },
@@ -111,6 +112,6 @@ export class AddFormComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this.authService.userDataSubject.unsubscribe();
+    this.currentUser$.unsubscribe();
   }
 }

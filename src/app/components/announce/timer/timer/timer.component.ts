@@ -1,33 +1,31 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Timestamp } from 'firebase/firestore';
-import { BehaviorSubject, Observable, Subscription, map } from 'rxjs';
-import { AnnouncesService } from 'src/app/services/announce/announces.service';
+import { Timestamp } from "firebase/firestore";
+import { Observable, timer } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-timer',
   templateUrl: './timer.component.html',
-  styleUrls: ['./timer.component.scss'],
+  styleUrls: ['./timer.component.scss']
 })
 export class TimerComponent implements OnInit {
-  @Input() hideText? = false;
-  @Input() endDate: number | undefined ;
-  timer$: Observable<number> | undefined;
-  timerValue = {
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  };
-
-  constructor(private announceService: AnnouncesService) {}
+  @Input() hideText: boolean = false;
+  @Input()
+  endDate: Timestamp = new Timestamp(0, 0);
+  timeLeft$!: Observable<Date>;
+  timeLeft: Date = new Date()
 
   ngOnInit(): void {
-      if (this.endDate) {
-        this.timer$ = this.announceService.createTimerObservable(this.endDate);
-      }
+    this.timeLeft$ = timer(0, 1000).pipe(
+      map(() => {
+        const now = new Date().getTime();
+        const timeLeft = this.endDate.seconds   *1000 - now
+        return new Date(timeLeft);     
+      }),
+    );
+
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
   }
-  
 }
