@@ -19,7 +19,7 @@ export class TimerComponent implements OnInit {
     this.timeLeft$ = timer(0, 1000).pipe(
       map(() => {
         const now = new Date().getTime();
-        const timeLeft = this.endDate.seconds   *1000 - now
+        const timeLeft = this.endDate.seconds * 1000 - now
         return new Date(timeLeft);     
       }),
     );
