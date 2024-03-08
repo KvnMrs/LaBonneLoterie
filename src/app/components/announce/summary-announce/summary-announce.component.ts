@@ -5,7 +5,6 @@ import { Subscription } from 'rxjs';
 import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 import { AnnouncesService } from 'src/app/services/announce/announces.service';
 import { UserService } from 'src/app/services/user/user.service';
-import { DocumentData } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-summary-announce',
@@ -13,12 +12,12 @@ import { DocumentData } from '@angular/fire/firestore';
   styleUrls: ['./summary-announce.component.scss'],
 })
 export class SummaryAnnounceComponent implements OnInit {
-  newAnnounceData: Partial<IAnnounce> | null = null;
-  public fullNameAuthor: string | null = null;
-  private dataSubscription!: Subscription;
+  private dataSubscription: Subscription;
+  newAnnounceData: Partial<IAnnounce>;
+  fullNameAuthor: string;
 
   constructor(
-    public router: Router,
+    private router: Router,
     private announcesService: AnnouncesService,
     private userService: UserService,
     private location: Location
@@ -55,7 +54,7 @@ export class SummaryAnnounceComponent implements OnInit {
     this.location.back();
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.dataSubscription.unsubscribe();
   }
 }

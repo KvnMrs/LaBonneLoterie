@@ -9,8 +9,8 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent implements OnInit, OnDestroy {
-  public currentUserSubscription!: Subscription;
-  public currentUser: IUser | null = null;
+  currentUserSubscription: Subscription;
+  currentUser: IUser | null = null;
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {

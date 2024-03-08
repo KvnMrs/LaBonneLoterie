@@ -80,7 +80,7 @@ export class AuthService {
     return null;
   }
 
-  async signOutUser() {
+  async signOutUser(): Promise<void> {
     return signOut(this.auth)
       .then(() => {
         this.userDataSubject.next(null);

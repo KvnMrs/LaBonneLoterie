@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { DocumentData } from 'firebase/firestore';
 import { Subscription } from 'rxjs';
 import { IUser } from 'src/app/models/user/user.model';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -12,11 +11,12 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./modal-credit-profile.component.scss'],
 })
 export class ModalCreditProfileComponent implements OnInit {
-  public currentUserSubscription!: Subscription;
-  public creditBankBalanceForm!: FormGroup;
-  public currentUser!: IUser;
   @Input() userData: IUser | null = null;
   @Output() creditBankBalanceEvent = new EventEmitter<IUser>();
+  currentUserSubscription: Subscription;
+  creditBankBalanceForm: FormGroup;
+  currentUser: IUser;
+
 
   constructor(
     private authService: AuthService,
