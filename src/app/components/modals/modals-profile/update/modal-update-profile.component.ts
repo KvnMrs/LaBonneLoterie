@@ -10,9 +10,9 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./modal-update-profile.component.scss'],
 })
 export class ModalUpdateProfileComponent implements OnInit {
-  public updateProfileForm!: FormGroup;
   @Input() userData: IUser | null = null;
   @Output() modalUpdateEvent = new EventEmitter<IUser>();
+  updateProfileForm: FormGroup;
   loading: boolean = false;
   file: File | null = null;
 
@@ -25,8 +25,8 @@ export class ModalUpdateProfileComponent implements OnInit {
     this.initUpdateProfileForm();
   }
 
-  initUpdateProfileForm() {
-    if (!this.userData) return;
+  initUpdateProfileForm(): FormGroup  {
+    if (!this.userData) throw new Error('UserData is not available.');
     else
       return (this.updateProfileForm = new FormGroup({
         email: new FormControl(this.userData.email, [

@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AnnouncesService } from '../../../services/announce/announces.service';
 import { IAnnounce } from '../../../models/annouce/annouce.model';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-list-items',
@@ -10,12 +10,11 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./list-items.component.scss'],
 })
 export class ListItemsComponent implements OnInit, OnDestroy {
-  announces$: Subscription = new Subscription();
-  public announces: IAnnounce[] = [];
-  public searchForm!: FormGroup;
-  public showResetBtn = false;
-
-  public categorys = [
+  announces$: Subscription;
+  announces: IAnnounce[] = [];
+  searchForm: FormGroup;
+  showResetBtn = false;
+  categorys = [
     { id: 1, name: 'Vêtement' },
     { id: 2, name: 'Véhicule' },
     { id: 3, name: 'Multimédia' },
@@ -31,7 +30,7 @@ export class ListItemsComponent implements OnInit, OnDestroy {
     this.initSearchForm();
   }
 
-  fetchAnnounces() {
+  fetchAnnounces(): Subscription {
     return (this.announces$ = this.announcesService
       .getAnnounces()
       .subscribe((res: IAnnounce[]) => {
@@ -39,8 +38,8 @@ export class ListItemsComponent implements OnInit, OnDestroy {
       }));
   }
 
-  initSearchForm() {
-    this.searchForm = new FormGroup({
+  initSearchForm()  {
+     this.searchForm = new FormGroup({
       search: new FormControl(''),
       category: new FormControl(null),
       minPrice: new FormControl(),
@@ -55,7 +54,7 @@ export class ListItemsComponent implements OnInit, OnDestroy {
     this.showResetBtn = true;
   }
 
-  onResetSearch() {
+  onResetSearch(): void {
     this.fetchAnnounces();
     this.searchForm.reset();
     this.showResetBtn = false;

@@ -9,16 +9,11 @@ import { AnnouncesService } from 'src/app/services/announce/announces.service';
 })
 export class TimerComponent implements OnInit {
   @Input() hideText? = false;
-  @Input() announceId = "";
-  @Input() endDate = 0;
-  timer$: Subscription = new Subscription();
-  private timeDiff$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-  timerValue: {
-    days: number;
-    hours: number;
-    minutes: number;
-    seconds: number;
-  } = {
+  @Input() announceId: string;
+  @Input() endDate: number;
+  private timeDiff$: BehaviorSubject<number>;
+  private timer$: Subscription;;
+  timerValue = {
     days: 0,
     hours: 0,
     minutes: 0,
@@ -73,7 +68,7 @@ export class TimerComponent implements OnInit {
     return this.timerValue.seconds;
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.timer$.unsubscribe();
   }
 }

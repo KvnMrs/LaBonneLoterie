@@ -7,6 +7,7 @@ import { UploadImgService } from '../../../services/upload/upload-img.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 // Models
 import { User } from 'firebase/auth';
+import { IAnnounce } from 'src/app/models/annouce/annouce.model';
 
 @Component({
   selector: 'app-add-item',
@@ -14,13 +15,13 @@ import { User } from 'firebase/auth';
   styleUrls: ['./add-form.component.scss'],
 })
 export class AddFormComponent implements OnInit {
-  @ViewChild('fileInput') fileInput: ElementRef | null = null;
-  public createAnnounceForm!: FormGroup;
-  public selectedImgs: Array<File | null> = [];
-  public announceData: null = null;
-  public file: File | null = null;
-  public showErrorMessage = false;
+  @ViewChild('fileInput') fileInput: ElementRef;
   private currentUser: User | null = null;
+  createAnnounceForm: FormGroup;
+  selectedImgs: Array<File | null>;
+  file: File | null = null;
+  announceData: IAnnounce;
+  showErrorMessage = false;
 
   public categorys = [
     { id: 1, name: 'Vêtement' },
@@ -52,8 +53,8 @@ export class AddFormComponent implements OnInit {
     });
   }
 
-  initCreateAnnounceForm() {
-    this.createAnnounceForm = new FormGroup({
+  initCreateAnnounceForm(): FormGroup {
+    return this.createAnnounceForm = new FormGroup({
       title: new FormControl('', Validators.required),
       category: new FormControl('', Validators.required),
       tags: new FormControl([], Validators.required),
@@ -70,7 +71,7 @@ export class AddFormComponent implements OnInit {
   }
 
   // On file Select
-  onChange(event: any) {
+  onChange(event: any): void {
     this.file = event.target.files[0];
     this.uploadImgService.showImgBeforeUpload(this.file!);
   }
@@ -80,7 +81,7 @@ export class AddFormComponent implements OnInit {
     this.selectedImgs.push(this.file);
     this.file = null;
     this.createAnnounceForm.value.imgsAnnounce = '';
-    this.fileInput!.nativeElement.value = null;
+    this.fileInput.nativeElement.value = null;
   }
 
   removeShortLink(index: number): void {
@@ -89,7 +90,7 @@ export class AddFormComponent implements OnInit {
     }
   }
 
-  getTimeStampFromSelectedTime(time: string) {
+  getTimeStampFromSelectedTime(time: string){
     const timeParts = time.split(':');
     const hours = parseInt(timeParts[0], 10);
     const minutes = parseInt(timeParts[1], 10);

@@ -20,19 +20,19 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit, OnDestroy {
-  @Input() data: IAnnounce | null = null;
+  @ViewChild('modalBuyTicket') modalBuyTicket: ElementRef;
+  @Input() data: IAnnounce;
+  currentUser: IUser | null = null;
+  favorites$: Subscription;
+  favorites: string[];
   addedToFavorite = false;
-  public favorites$: Subscription = new Subscription();
-  public favorites: string[] = [];
-  public currentUser: IUser | null = null;
 
-  @ViewChild('modalBuyTicket') modalBuyTicket!: ElementRef;
 
   constructor(
     private router: Router,
-    public announcesService: AnnouncesService,
-    public authService: AuthService,
-    public userService: UserService
+    private announcesService: AnnouncesService,
+    private authService: AuthService,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -49,23 +49,25 @@ export class CardComponent implements OnInit, OnDestroy {
     });
   }
 
-  seeDetails() {
-    if (!this.data) return console.error('announce details:', this.data!.id);
+  seeDetails(): void {
+    if (!this.data) return console.error('announce details:', this.data);
     this.router.navigate([`/liste/${this.data.id}`]);
   }
 
-  deleteAnnouce(id: string) {
-    this.announcesService.deleteAnnounceById(id);
+  deleteAnnouce(id: string): Promise<void> {
+    return this.announcesService.deleteAnnounceById(id);
   }
 
-  onAddFavorite(announceId: string) {
-    if (!this.currentUser)
-      return console.error('this.currentUser', this.currentUser);
+  onAddFavorite(announceId: string): Promise<void> | null  {
+    if (!this.currentUser) {
+      console.error('this.currentUser', this.currentUser);
+      return null
+    }
     else
       return this.userService.addToFavorites(announceId, this.currentUser.uid);
   }
 
-  fetchFavorites(userId: string) {
+  fetchFavorites(userId: string): IAnnounce[] | null  {
     this.favorites$ = this.userService
       .getFavorites(userId)
       .subscribe(async (res) => {
@@ -78,30 +80,31 @@ export class CardComponent implements OnInit, OnDestroy {
           return this.favorites;
         }
       });
+      return null
   }
 
-  async removeFromFavorites(announceId: string, userId: string) {
+  async removeFromFavorites(announceId: string, userId: string): Promise<void> {
     await this.userService.removeFavorite(announceId, userId);
     const index = this.favorites.findIndex((id) => id === announceId);
     this.favorites.splice(index, 1);
   }
 
-  toggleFavorites(announceId: string, userId: string) {
+  toggleFavorites(announceId: string, userId: string): Promise<void> | null {
     if (!this.addedToFavorite) {
       this.addedToFavorite = true;
-      this.onAddFavorite(announceId);
+      return this.onAddFavorite(announceId);
     } else {
       this.addedToFavorite = false;
-      this.removeFromFavorites(announceId, userId);
+      return this.removeFromFavorites(announceId, userId);
     }
   }
 
-  buyTicket() {
-    if (!this.data) return console.error('announce details:', this.data!.id);
+  buyTicket(): void {
+    if (!this.data) return console.error('announce details:', this.data);
     this.router.navigate([`/achat-ticket/${this.data.id}`]);
   }
 
-  closeModal() {
+  closeModal(): void {
     this.modalBuyTicket.nativeElement.checked = false;
   }
 

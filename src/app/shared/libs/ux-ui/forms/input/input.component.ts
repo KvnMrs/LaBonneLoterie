@@ -6,14 +6,14 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./input.component.scss'],
 })
 export class InputComponent implements OnInit {
-  @Input() for: string = '';
-  @Input() label: string = '';
-  @Input() type: string = '';
-  @Input() id: string = '';
-  @Input() name: string = '';
-  @Input() formControlName: string = '';
-  @Input() autocomplete: string = '';
-  @Input() placeholder: string = '';
+  @Input() for: string;
+  @Input() label: string;
+  @Input() type: string;
+  @Input() id: string;
+  @Input() name: string;
+  @Input() formControlName: string;
+  @Input() autocomplete: string;
+  @Input() placeholder: string;
   @Input() required: boolean = false;
   @Output() formControlNameValue = new EventEmitter<string>();
 
@@ -21,7 +21,7 @@ export class InputComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  emitFormControlName() {
+  emitFormControlName(): void {
     this.formControlNameValue.emit(this.formControlName);
   }
 }

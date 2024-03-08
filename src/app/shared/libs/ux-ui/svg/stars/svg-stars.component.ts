@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./svg-stars.component.scss'],
 })
 export class SvgStarsComponent implements OnInit {
+
   constructor() {}
 
   ngOnInit(): void {}

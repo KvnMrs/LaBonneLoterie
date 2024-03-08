@@ -6,7 +6,6 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DocumentData } from 'firebase/firestore';
 import { Subscription } from 'rxjs';
 // Models
 import { IAnnounce } from 'src/app/models/annouce/annouce.model';
@@ -22,13 +21,13 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./detail-page.component.scss'],
 })
 export class DetailPageComponent implements OnInit, OnDestroy {
-  @ViewChild('modalBuyTicket') modalBuyTicket: ElementRef | null = null;
-  public currentAnnounce: IAnnounce | null = null;
-  public authorAnnounce: IUser | null = null;
-  public currentUser$: Subscription = new Subscription();
-  public currentUser: IUser | null = null;
-  paramId: string = '';
-  postedDate: number | Date = 0;
+  @ViewChild('modalBuyTicket') modalBuyTicket: ElementRef;
+  currentAnnounce: IAnnounce;
+  currentUser$: Subscription;
+  currentUser: IUser | null = null;
+  authorAnnounce: IUser;
+  paramId: string;
+  postedDate: number | Date;
 
   constructor(
     private route: ActivatedRoute,
@@ -70,7 +69,7 @@ export class DetailPageComponent implements OnInit, OnDestroy {
     ));
   }
 
-  closeModal() {
+  closeModal(): void {
     if (this.modalBuyTicket) {
       this.modalBuyTicket.nativeElement.checked = false;
     }

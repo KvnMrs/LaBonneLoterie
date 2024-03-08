@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./svg-search.component.scss'],
 })
 export class SvgSearchComponent implements OnInit {
+
   constructor() {}
 
   ngOnInit(): void {}
