@@ -9,7 +9,7 @@ import {
   getDoc,
 } from '@angular/fire/firestore';
 import { documentId, getDocs, query, runTransaction, serverTimestamp, setDoc, Timestamp, where } from 'firebase/firestore';
-import { BehaviorSubject, interval, map, Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { IAnnounce } from '../../models/annouce/annouce.model';
 import { AnnounceStatus } from 'src/app/shared/libs/enums/announces.enum';
 
@@ -93,6 +93,7 @@ export class AnnouncesService {
 
   // deleteAnnounceById
   deleteAnnounceById(id: string) {
+    console.log('1')
     const announceDocRef = doc(this.firestore, `Announces/${id}`);
     return deleteDoc(announceDocRef);
   }
@@ -189,10 +190,5 @@ export class AnnouncesService {
       });
     }
     return resultSearch;
-  }
-
-  createTimerObservable(endDate: number): Observable<number> {
-    const time = interval(1000).pipe(map(() => endDate - new Date().getTime() / 1000));
-    return time;
   }
 }
