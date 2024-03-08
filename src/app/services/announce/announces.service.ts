@@ -8,7 +8,7 @@ import {
   Firestore,
   getDoc,
 } from '@angular/fire/firestore';
-import { documentId, getDocs, query, setDoc, where } from 'firebase/firestore';
+import { DocumentData, documentId, DocumentReference, getDocs, query, setDoc, where } from 'firebase/firestore';
 import { BehaviorSubject, interval, map, Observable } from 'rxjs';
 import { IAnnounce } from '../../models/annouce/annouce.model';
 import { User } from 'firebase/auth';
@@ -17,7 +17,9 @@ import { User } from 'firebase/auth';
   providedIn: 'root',
 })
 export class AnnouncesService {
-  public announceDataSubject = new BehaviorSubject<Partial<IAnnounce>>({
+  private announcesDataSubject: BehaviorSubject<any> = new BehaviorSubject<
+  IAnnounce[] | null>(null);
+  private announceDataSubject = new BehaviorSubject<Partial<IAnnounce>>({
     title: '',
     category: '',
     tags: [],
@@ -33,14 +35,11 @@ export class AnnouncesService {
     endAt: 0,
     endHour: 0,
   });
-  public announceData$: Observable<Partial<IAnnounce>> =
+  announceData$: Observable<Partial<IAnnounce>> =
     this.announceDataSubject.asObservable();
-
-  private announcesDataSubject: BehaviorSubject<any> = new BehaviorSubject<
-    IAnnounce[] | null
-  >(null);
-  public announcesData$: Observable<IAnnounce> =
+  announcesData$: Observable<IAnnounce> =
     this.announcesDataSubject.asObservable();
+
   constructor(private firestore: Firestore) {}
 
   // getAllAnnounce
@@ -59,7 +58,7 @@ export class AnnouncesService {
     return data as IAnnounce;
   }
 
-  public async getAnnounceByIds(ids: string[]) {
+  public async getAnnounceByIds(ids: string[]): Promise<IAnnounce[]> {
     const favorites: IAnnounce[] = [];
     if (!ids) return favorites;
     else {
@@ -76,7 +75,7 @@ export class AnnouncesService {
   }
 
   // addAnnounce
-  public addAnnounce(announce: Partial<IAnnounce>) {
+  public addAnnounce(announce: Partial<IAnnounce>): Promise<DocumentReference<DocumentData>> | null   {
     try {
       if (!announce.endAt || !announce.endHour) throw Error;
       announce.endAt =
@@ -103,17 +102,17 @@ export class AnnouncesService {
       return addDoc(announceRef, newAnnounce);
     } catch (err) {
       console.error('Problem with the announce data');
-      return;
+      return null
     }
   }
 
   // deleteAnnounceById
-  deleteAnnounceById(id: string) {
+  deleteAnnounceById(id: string): Promise<void> {
     const announceDocRef = doc(this.firestore, `Announces/${id}`);
     return deleteDoc(announceDocRef);
   }
 
-  async buyTicket(announce: any, buyer: Partial<User>, otherInfos: any) {
+  async buyTicket(announce: any, buyer: Partial<User>, otherInfos: { numberTicketBuyed: number; date?: Date; }): Promise<void> {
     // Create purchase relation.
     const relation = { announce, buyer, otherInfos };
     const purchasesRef = collection(this.firestore, 'purchases');
@@ -130,11 +129,11 @@ export class AnnouncesService {
     return setDoc(announceRef, announceCurrrentData);
   }
 
-  emitAnnounceData(data: Partial<IAnnounce>) {
-    this.announceDataSubject.next(data);
+  emitAnnounceData(data: Partial<IAnnounce>): void {
+    return this.announceDataSubject.next(data);
   }
 
-  async filterAnnounces(search: any): Promise<IAnnounce[]> {
+  async filterAnnounces(search: { search: string; category: string; minPrice: number; maxPrice: number; }): Promise<IAnnounce[]> {
     let resultSearch: IAnnounce[] = [];
     // TODO: filter title a nnounce by word
     if (search.search) {

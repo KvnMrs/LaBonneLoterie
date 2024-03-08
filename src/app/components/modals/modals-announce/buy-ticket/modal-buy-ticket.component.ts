@@ -42,7 +42,7 @@ export class ModalBuyTickectComponent implements OnInit {
       const currentUser = this.authService.auth.currentUser;
       if (!currentUser) throw Error();
       const buyer = { id: currentUser.uid, email: currentUser.email };
-      const announce = {
+      const announce: Partial<IAnnounce> = {
         id: this.currentAnnounce.id,
         ticketPrice: this.currentAnnounce.ticketPrice,
       };
