@@ -15,8 +15,8 @@ import { UserService } from '../user/user.service';
   providedIn: 'root',
 })
 export class AuthService {
-  currentUserSubject: BehaviorSubject<User | null>;
-  userDataSubject: BehaviorSubject<IUser | null>;
+  currentUserSubject = new BehaviorSubject<User | null>(null);
+  userDataSubject = new BehaviorSubject<IUser | null>(null);
 
   constructor(
     private router: Router,
