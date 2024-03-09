@@ -10,14 +10,14 @@ import { customEmailValidator } from 'src/app/shared/libs/forms/validators';
   styleUrls: ['./sign-in.component.scss'],
 })
 export class SignInComponent implements OnInit {
-  showError: boolean = false;
+  @Input() haveAccount!: boolean;
+  @Output() notHaveAccount = new EventEmitter<boolean>();
+  showError: boolean;
   errorMessage: string = '';
-  public signinForm: FormGroup = new FormGroup({
+  signinForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, customEmailValidator]),
     password: new FormControl('', Validators.required),
   });
-  @Input() haveAccount!: boolean;
-  @Output() notHaveAccount = new EventEmitter<boolean>();
 
   constructor(private authService: AuthService, private router: Router) {}
 

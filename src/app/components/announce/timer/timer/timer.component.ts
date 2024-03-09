@@ -11,7 +11,7 @@ export class TimerComponent implements OnInit {
   @Input() hideText? = false;
   @Input() announceId: string
   @Input() endDate: number
-  timer$: Subscription = new Subscription();
+  timer$: Subscription;
   private timeDiff$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   timerValue = {
     days: 0,
@@ -75,7 +75,7 @@ export class TimerComponent implements OnInit {
     return this.timerValue.seconds;
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.timer$.unsubscribe();
   }
 }

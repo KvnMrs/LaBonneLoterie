@@ -12,9 +12,9 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./summary-announce.component.scss'],
 })
 export class SummaryAnnounceComponent implements OnInit {
-  newAnnounceData: IAnnounce | null = null;
-  public fullNameAuthor: string | null = null;
-  private dataSubscription!: Subscription;
+  private dataSubscription: Subscription;
+  newAnnounceData: IAnnounce | null;
+  fullNameAuthor: string;
 
   constructor(
     public router: Router,

@@ -19,7 +19,7 @@ import { IUser } from 'src/app/models/user/user.model';
 export class UserService {
   constructor(private firestore: Firestore) {}
 
-  createProfileUser(uid: string, userData: IUser) {
+  createProfileUser(uid: string, userData: IUser): Promise<void> {
     return setDoc(doc(this.firestore, 'Users', uid), userData);
   }
 
@@ -30,12 +30,12 @@ export class UserService {
     return data as IUser;
   }
 
-  async upadteUserProfile(userData: IUser) {
+  async upadteUserProfile(userData: IUser): Promise<void> {
     const userRef = doc(this.firestore, `Users`, userData.uid);
     return setDoc(userRef, { ...userData }, { merge: true });
   }
 
-  async onCreditUserAccount(uid: string, sum: number) {
+  async onCreditUserAccount(uid: string, sum: number): Promise<void> {
     const userRef = doc(this.firestore, `Users`, uid);
     await getDoc(userRef)
       .then((docSnapshot) => {
@@ -81,7 +81,7 @@ export class UserService {
     return docData(favoritesDocRef);
   }
 
-  async removeFavorite(announceId: string, userId: string) {
+  async removeFavorite(announceId: string, userId: string): Promise<void> {
     const usersCollectionRef = collection(this.firestore, 'Users');
     const usersDocRef = doc(usersCollectionRef, userId);
     const favoritesCollectionRef = collection(usersDocRef, 'Favorites');

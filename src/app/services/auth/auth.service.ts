@@ -17,6 +17,7 @@ import { UserService } from '../user/user.service';
 export class AuthService {
   currentUserSubject = new BehaviorSubject<User | null>(null);
   userDataSubject = new BehaviorSubject<IUser | null>(null);
+
   constructor(
     private router: Router,
     private userService: UserService,
@@ -80,7 +81,7 @@ export class AuthService {
     return null;
   }
 
-  async signOutUser() {
+  async signOutUser(): Promise<void> {
     return signOut(this.auth)
       .then(() => {
         this.userDataSubject.next(null);

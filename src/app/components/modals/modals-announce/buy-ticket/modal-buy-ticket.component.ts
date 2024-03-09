@@ -11,15 +11,16 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./modal-buy-ticket.component.scss'],
 })
 export class ModalBuyTickectComponent implements OnInit {
-  @Input() currentAnnounce: IAnnounce | null = null;
-  id: string = ' ';
-  public buyTicketForm: FormGroup = new FormGroup({
+  @Input() currentAnnounce: IAnnounce;
+  id: string;
+  buyTicketForm: FormGroup = new FormGroup({
     numberTicketSelected: new FormControl(0, Validators.required),
   });
   purchasesInfo = {
     numberTicket: 0,
     totalPrice: 0,
   };
+  
   constructor(
     private announcesService: AnnouncesService,
     private authService: AuthService

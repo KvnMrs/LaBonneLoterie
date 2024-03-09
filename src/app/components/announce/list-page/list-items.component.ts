@@ -10,12 +10,11 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./list-items.component.scss'],
 })
 export class ListItemsComponent implements OnInit, OnDestroy {
-  announces$: Subscription = new Subscription();
-  public announces: IAnnounce[] = [];
-  public searchForm!: FormGroup;
-  public showResetBtn = false;
-
-  public categorys = [
+  announces$: Subscription;
+  announces: IAnnounce[] = [];
+  searchForm!: FormGroup;
+  showResetBtn = false;
+  categorys = [
     { id: 1, name: 'Vêtement' },
     { id: 2, name: 'Véhicule' },
     { id: 3, name: 'Multimédia' },
