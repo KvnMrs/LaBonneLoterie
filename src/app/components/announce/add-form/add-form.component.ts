@@ -17,15 +17,15 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./add-form.component.scss'],
 })
 export class AddFormComponent implements OnInit {
-  @ViewChild('fileInput') fileInput: ElementRef | null = null;
-  public announceCategories = Object.values(AnnounceCategories);
-  public createAnnounceForm!: FormGroup;
-  public selectedImgs: Array<File | null> = [];
-  public announceData: null = null;
-  public file: File | null = null;
-  public showErrorMessage = false;
-  private currentUser$: Subscription = new Subscription;
+  @ViewChild('fileInput') fileInput: ElementRef;
+  private currentUser$: Subscription;
   private currentUser: User | null = null;
+  announceCategories = Object.values(AnnounceCategories);
+  createAnnounceForm: FormGroup;
+  selectedImgs: Array<File | null> = [];
+  announceData: IAnnounce;
+  file: File | null = null;
+  showErrorMessage = false;
 
   constructor(
     private announcesService: AnnouncesService,

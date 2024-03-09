@@ -14,9 +14,11 @@ import {
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
+  @Input() haveAccount: boolean;
+  @Output() onAccount : EventEmitter<boolean>;
   showError: boolean = false;
-  errorMessage: string = '';
-  public formSignUp: FormGroup = new FormGroup({
+  errorMessage: string;
+  formSignUp: FormGroup = new FormGroup({
     uid: new FormControl(''),
     firstname: new FormControl('', Validators.required),
     lastname: new FormControl('', Validators.required),
@@ -34,8 +36,6 @@ export class SignUpComponent implements OnInit {
     confirmation_password: new FormControl('', Validators.required),
     bankAccount: new FormControl(0, Validators.required),
   });
-  @Input() haveAccount!: boolean;
-  @Output() onAccount = new EventEmitter<boolean>();
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -53,11 +53,11 @@ export class SignUpComponent implements OnInit {
     }
   }
 
-  closeAlert() {
+  closeAlert(): void {
     this.showError = false;
   }
 
-  onHaveAccount() {
+  onHaveAccount(): void {
     this.onAccount.emit(this.haveAccount);
   }
 }

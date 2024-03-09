@@ -20,12 +20,12 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit, OnDestroy {
-  @Input() data: IAnnounce | null = null;
+  @Input() data: IAnnounce;
+  favorites$: Subscription;
+  favorites: string[] = [];
+  currentUser$: Subscription;
+  currentUser: IUser | null = null;
   addedToFavorite = false;
-  public favorites$: Subscription = new Subscription();
-  public favorites: string[] = [];
-  public currentUser$: Subscription = new Subscription();
-  public currentUser: IUser | null = null;
 
   @ViewChild('modalBuyTicket') modalBuyTicket!: ElementRef;
 
@@ -51,7 +51,7 @@ export class CardComponent implements OnInit, OnDestroy {
   }
 
   seeDetails() {
-    if (!this.data) return console.error('announce details:', this.data!.id);
+    if (!this.data) return console.error('announce details:', this.data);
     this.router.navigate([`/liste/${this.data.id}`]);
   }
 
@@ -98,7 +98,7 @@ export class CardComponent implements OnInit, OnDestroy {
   }
 
   buyTicket() {
-    if (!this.data) return console.error('announce details:', this.data!.id);
+    if (!this.data) return console.error('announce details:', this.data);
     this.router.navigate([`/achat-ticket/${this.data.id}`]);
   }
 
