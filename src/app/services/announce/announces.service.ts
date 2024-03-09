@@ -8,7 +8,7 @@ import {
   Firestore,
   getDoc,
 } from '@angular/fire/firestore';
-import { documentId, getDocs, query, runTransaction, serverTimestamp, setDoc, Timestamp, where } from 'firebase/firestore';
+import { DocumentData, documentId, DocumentReference, getDocs, query, runTransaction, serverTimestamp, setDoc, Timestamp, where } from 'firebase/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IAnnounce } from '../../models/annouce/annouce.model';
 import { AnnounceStatus } from 'src/app/shared/libs/enums/announces.enum';
@@ -18,16 +18,15 @@ import { AnnounceStatus } from 'src/app/shared/libs/enums/announces.enum';
 })
 export class AnnouncesService {
   private announceDataSubject = new BehaviorSubject<IAnnounce | null>(null);
-  announceData$ = this.announceDataSubject.asObservable();
-
-  private announcesDataSubject: BehaviorSubject<any> = new BehaviorSubject<
+  private announcesDataSubject: BehaviorSubject<IAnnounce[] | null> = new BehaviorSubject<
     IAnnounce[] | null
   >(null);
-  public announcesData$: Observable<IAnnounce> =
+  announceData$ = this.announceDataSubject.asObservable();
+  announcesData$: Observable<IAnnounce[] | null> =
     this.announcesDataSubject.asObservable();
+
   constructor(private firestore: Firestore) {}
 
-  // getAllAnnounce
   public getAnnounces(): Observable<IAnnounce[]> {
     const announceRef = collection(this.firestore, 'Announces');
     return collectionData(announceRef, { idField: 'id' }) as Observable<
@@ -35,7 +34,6 @@ export class AnnouncesService {
     >;
   }
 
-  // getAnnounceById
   public async getAnnounceByID(id: string): Promise<IAnnounce> {
     const announceRef = doc(this.firestore, `Announces`, id);
     const docSnap = await getDoc(announceRef);
@@ -43,7 +41,7 @@ export class AnnouncesService {
     return data as IAnnounce;
   }
 
-  public async getAnnounceByIds(ids: string[]) {
+  public async getAnnounceByIds(ids: string[]): Promise<IAnnounce[]>  {
     const favorites: IAnnounce[] = [];
     if (!ids) return favorites;
     else {
@@ -59,8 +57,7 @@ export class AnnouncesService {
     }
   }
 
-  // addAnnounce
-  public addAnnounce(announce: IAnnounce) {
+  public addAnnounce(announce: IAnnounce) : Promise<DocumentReference<DocumentData>> | null {
     if (!announce.endDate) throw Error;
     else {
       try {
@@ -86,20 +83,19 @@ export class AnnouncesService {
         return addDoc(announceRef, newAnnounce);
       } catch (err) {
         console.error('Problem with the announce data');
-        return;
+        return null
       }
     }
   }
 
-  // deleteAnnounceById
-  deleteAnnounceById(id: string) {
+  deleteAnnounceById(id: string): Promise<void> {
     console.log('1')
     const announceDocRef = doc(this.firestore, `Announces/${id}`);
     return deleteDoc(announceDocRef);
   }
 
 
-  async buyTickets(announceId: string, userId: string, ticketsBuyed: number) {
+  async buyTickets(announceId: string, userId: string, ticketsBuyed: number): Promise<void> {
     try {
         if (!userId) {
             throw new Error('Invalid buyer');

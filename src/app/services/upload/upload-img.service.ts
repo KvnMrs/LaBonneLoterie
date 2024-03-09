@@ -5,15 +5,15 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from '@angular/fire/storage';
-import { UserService } from '../user/user.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UploadImgService {
-  constructor(public storage: Storage, private userService: UserService) {}
 
-  async uploadAnnounceImg(file: File) {
+  constructor(public storage: Storage) {}
+
+  async uploadAnnounceImg(file: File): Promise<string> {
     const imgRef = ref(this.storage, `announcesImg/${file.name}`);
     await uploadBytesResumable(imgRef, file);
     const imgUrl = await getDownloadURL(
@@ -22,7 +22,7 @@ export class UploadImgService {
     return imgUrl;
   }
 
-  async uploadProfileImg(file: File) {
+  async uploadProfileImg(file: File): Promise<string> {
     const imgRef = ref(this.storage, `profileImg/${file.name}`);
     await uploadBytesResumable(imgRef, file);
     const imgUrl = await getDownloadURL(
@@ -31,7 +31,7 @@ export class UploadImgService {
     return imgUrl;
   }
 
-  showImgBeforeUpload(event: File) {
+  showImgBeforeUpload(event: File): void {
     const reader = new FileReader();
 
     reader.onload = function (event) {
