@@ -39,7 +39,7 @@ export class TimerComponent implements OnInit {
   }
 
   createTimerObservable(endDate: number): Observable<number> {
-    const time = interval(1000).pipe(map(() => endDate + new Date().getTime()));
+    const time = interval(1000).pipe(map(() => endDate * 1000 - new Date().getTime()));
     return time;
   }
 
