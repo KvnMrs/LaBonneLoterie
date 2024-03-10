@@ -90,7 +90,7 @@ export class AddFormComponent implements OnInit {
     } else {
       try {
         const imgsAnnounceUrl: Array<string> = [];
-        const announceData : IAnnounce  = this.createAnnounceForm.value;
+        this.announceData  = this.createAnnounceForm.value;
         // Download urls of selected imgs.
         await Promise.all(
           this.selectedImgs.map(async (file) => {
@@ -98,11 +98,10 @@ export class AddFormComponent implements OnInit {
             imgsAnnounceUrl.push(urlImg);
           })
         );
-        if (!this.currentUser) throw Error;
-        // Define new values from the futur new announce document
-        announceData.imgsAnnounce = imgsAnnounceUrl 
-        announceData.authorUid = this.currentUser.uid 
-        this.announcesService.emitAnnounceData(announceData); // emit announceData for summary page.
+        this.announceData.imgsAnnounce = imgsAnnounceUrl 
+        this.announceData.authorUid = this.currentUser.uid   
+        this.announceData.endDate = new Date(this.announceData.endDate + 'T' + this.announceData.endHour)
+        this.announcesService.emitAnnounceData(this.announceData); // emit announceData for summary page.
         this.router.navigate(['/recapitulatif-annonce']);
         this.showErrorMessage = false;
       } catch (error) {
