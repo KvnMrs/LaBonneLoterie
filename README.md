@@ -7,8 +7,6 @@ Instead of selling the item at a fixed price, the sale takes the form of a lotte
 The seller decides on a number of available tickets, a unit price, and a draw date.
 The buyer can buy tickets and take part in the lottery draw at the end of the timer.
 
-Translated with www.DeepL.com/Translator (free version)
-
 ## Stacks:
 
 - Front-End: Angular, TailwindCss, RxJS.
