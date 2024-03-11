@@ -114,14 +114,17 @@ export class AnnouncesService {
             const updatedCurrentTickets = currentTickets - ticketsBuyed!;
             ticketIds.forEach(id => ticketsBuyed.push(id))
             transaction.update(announceRef, { currentTickets: updatedCurrentTickets, ticketsBuyed: ticketsBuyed });
-            await setDoc(purchaseRef, { date: serverTimestamp(), tickets: ticketIds });
+            await setDoc(purchaseRef, {
+              date: serverTimestamp(),
+              tickets: ticketIds,
+              buyerId: userId,
+            });
         });
     } catch (error) {
         console.error('Error buy ticket: : ', error);
         throw error;
     }
 }
-
 
   genererId(): string {
     const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -140,7 +143,7 @@ export class AnnouncesService {
 
   async filterAnnounces(search: any): Promise<IAnnounce[]> {
     let resultSearch: IAnnounce[] = [];
-    // TODO: filter title a nnounce by word
+    // TODO: filter title announce by word
     if (search.search) {
       const q = query(
         collection(this.firestore, 'Announces'),
