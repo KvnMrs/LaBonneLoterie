@@ -63,22 +63,21 @@ export class AnnouncesService {
       try {
       const endDateTimestamp = Timestamp.fromDate(new Date(announce.endDate))
          const newAnnounce: Partial<IAnnounce> = {
-          title: announce.title,
-          category: announce.category,
-          tags: announce.tags,
-          description: announce.description,
-          imgsAnnounce: announce.imgsAnnounce,
-          estimate: announce.estimate,
-          ticketPrice: announce.ticketPrice,
-          minTickets: announce.minTickets,
-          maxTickets: announce.maxTickets,
-          ticketsBuyed: [],
-          currentTickets: announce.maxTickets,
-          createdAt: Date.now(),
-          endAt: endDateTimestamp,
-          authorUid: announce.authorUid,
-          status: AnnounceStatus.Valid
-        };
+           title: announce.title,
+           category: announce.category,
+           tags: announce.tags,
+           description: announce.description,
+           imgsAnnounce: announce.imgsAnnounce,
+           estimate: announce.estimate,
+           ticketPrice: announce.ticketPrice,
+           minTickets: announce.minTickets,
+           maxTickets: announce.maxTickets,
+           currentTickets: announce.maxTickets,
+           createdAt: Date.now(),
+           endAt: endDateTimestamp,
+           authorUid: announce.authorUid,
+           status: AnnounceStatus.Valid,
+         };
         const announceRef = collection(this.firestore, 'Announces');
         return addDoc(announceRef, newAnnounce);
       } catch (err) {
@@ -110,10 +109,10 @@ export class AnnouncesService {
             const purchaseRef = doc(purchaseCollectionRef);
             const announceDoc = await transaction.get(announceRef);
             const currentTickets = announceDoc.data()?.['currentTickets']
-            const ticketsBuyed = announceDoc.data()?.['ticketsBuyed']
-            const updatedCurrentTickets = currentTickets - ticketsBuyed!;
-            ticketIds.forEach(id => ticketsBuyed.push(id))
-            transaction.update(announceRef, { currentTickets: updatedCurrentTickets, ticketsBuyed: ticketsBuyed });
+            const updatedCurrentTickets = currentTickets - ticketsBuyed;
+            transaction.update(announceRef, {
+              currentTickets: updatedCurrentTickets,
+            });
             await setDoc(purchaseRef, {
               date: serverTimestamp(),
               tickets: ticketIds,
