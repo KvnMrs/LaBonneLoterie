@@ -46,10 +46,11 @@ export class AnnouncesService {
   constructor(private firestore: Firestore) {}
 
   public getAnnounces(): Observable<IAnnounce[]> {
-    const announceRef = collection(this.firestore, 'Announces');
-    return collectionData(announceRef, { idField: 'id' }) as Observable<
-      IAnnounce[]
-    >;
+    const q = query(
+      collection(this.firestore, 'Announces'),
+      where('endAt', '>', new Date())
+    );
+    return collectionData(q, { idField: 'id' }) as Observable<IAnnounce[]>;
   }
 
   public async getAnnounceByID(id: string): Promise<IAnnounce> {
@@ -235,7 +236,6 @@ export class AnnouncesService {
     const ticketsBuyed = await this.getAllTicketsBuyed(announceId);
     const randomIndex = Math.floor(Math.random() * ticketsBuyed.length);
     const winnerTicket = ticketsBuyed[randomIndex];
-    console.log(winnerTicket);
     return winnerTicket;
   }
 }
