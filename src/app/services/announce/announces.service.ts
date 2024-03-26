@@ -110,10 +110,6 @@ export class AnnouncesService {
 
   async deleteAnnounceById(id: string): Promise<void> {
     const announceDocRef = doc(this.firestore, `Announces/${id}`);
-    const purchaseDocRef = collection(
-      this.firestore,
-      `Announces/${id}/PurchaseTickets`
-    );
     await deleteDoc(announceDocRef);
   }
 
@@ -217,7 +213,7 @@ export class AnnouncesService {
     return resultSearch;
   }
 
-  async getAllTicketsBuyed(announceId: string): Promise<string[]> {
+  async getAllTicketsBuyed(announceId: string): Promise<void> {
     const allTicketsInGame: string[] = [];
     const purchaseDocsRef = collection(
       this.firestore,
@@ -230,12 +226,8 @@ export class AnnouncesService {
         allTicketsInGame.push(ticket)
       );
     });
-    return allTicketsInGame;
-  }
-  async getWinnerTicket(announceId: string): Promise<string> {
     const ticketsBuyed = await this.getAllTicketsBuyed(announceId);
-    const randomIndex = Math.floor(Math.random() * ticketsBuyed.length);
-    const winnerTicket = ticketsBuyed[randomIndex];
-    return winnerTicket;
+    const announceRef = doc(this.firestore, 'Announces', announceId);
+    return setDoc(announceRef, { ticketsBuyed: ticketsBuyed }, { merge: true });
   }
 }
