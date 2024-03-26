@@ -11,12 +11,11 @@ export interface IAnnounce {
   ticketPrice: number;
   minTickets?: number;
   maxTickets?: number;
-  ticketsBuyed: Array<string>;
   currentTickets: number;
   createdAt: number | Date;
   endHour: number;
-  endDate : Date
+  endDate: Date;
   endAt: Timestamp;
   authorUid: string;
-  status: string
+  status: string;
 }

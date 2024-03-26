@@ -1,7 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AnnouncesService } from '../../../services/announce/announces.service';
-import { IAnnounce } from '../../../models/annouce/annouce.model';
 import { FormControl, FormGroup } from '@angular/forms';
+// Services
+import { AnnouncesService } from '../../../services/announce/announces.service';
+// Models
+import { IAnnounce } from '../../../models/annouce/annouce.model';
+import { AnnounceCategories } from 'src/app/shared/libs/enums/announces.enum';
+// Rxjs
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -12,16 +16,9 @@ import { Subscription } from 'rxjs';
 export class ListItemsComponent implements OnInit, OnDestroy {
   announces$: Subscription;
   announces: IAnnounce[] = [];
-  searchForm!: FormGroup;
+  searchForm: FormGroup;
+  categories = Object.values(AnnounceCategories);
   showResetBtn = false;
-  categorys = [
-    { id: 1, name: 'Vêtement' },
-    { id: 2, name: 'Véhicule' },
-    { id: 3, name: 'Multimédia' },
-    { id: 4, name: 'Décoration' },
-    { id: 5, name: 'Electroménager' },
-    { id: 6, name: 'Jardin' },
-  ];
 
   constructor(private announcesService: AnnouncesService) {}
 
@@ -47,14 +44,14 @@ export class ListItemsComponent implements OnInit, OnDestroy {
     });
   }
 
-  async onSearch(): Promise<void> {
-    this.announces = await this.announcesService.filterAnnounces(
-      this.searchForm.value
-    );
+  async onSearch(): Promise<IAnnounce[]> {
     this.showResetBtn = true;
+    return (this.announces = await this.announcesService.filterAnnounces(
+      this.searchForm.value
+    ));
   }
 
-  onResetSearch() {
+  onResetSearch(): void {
     this.fetchAnnounces();
     this.searchForm.reset();
     this.showResetBtn = false;

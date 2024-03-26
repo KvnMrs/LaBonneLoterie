@@ -9,8 +9,8 @@ import { AnnouncesService } from 'src/app/services/announce/announces.service';
 })
 export class TimerComponent implements OnInit {
   @Input() hideText? = false;
-  @Input() announceId: string
-  @Input() endDate: number
+  @Input() announceId: string;
+  @Input() endDate: number;
   timer$: Subscription;
   private timeDiff$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   timerValue = {
@@ -23,23 +23,29 @@ export class TimerComponent implements OnInit {
   constructor(private announceService: AnnouncesService) {}
 
   ngOnInit(): void {
-    if (this.endDate > 0) {
-    this.timer$ = this.createTimerObservable(this.endDate)
-      .subscribe((v: number) => {
-        this.timeDiff$.next(v);
-      });
+    this.timer$ = this.createTimerObservable(this.endDate).subscribe(
+      async (v: number) => {
+        if (v <= 0) {
+          const winner = await this.announceService.getWinnerTicket(
+            this.announceId
+          );
+          this.timer$.unsubscribe();
+        } else {
+          this.timeDiff$.next(v);
+        }
+      }
+    );
     this.timeDiff$
       .pipe(map((diff) => this.calculateTimeValues(diff)))
       .subscribe((values) => {
         this.timerValue = values;
       });
-    } else {
-      this.announceService.deleteAnnounceById(this.announceId)
-    }
   }
 
   createTimerObservable(endDate: number): Observable<number> {
-    const time = interval(1000).pipe(map(() => endDate * 1000 - new Date().getTime()));
+    const time = interval(1000).pipe(
+      map(() => endDate * 1000 - new Date().getTime())
+    );
     return time;
   }
 

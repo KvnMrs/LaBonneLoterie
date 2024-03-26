@@ -24,8 +24,8 @@
         class="select-lbl w-2/3 | sm:w-auto"
       >
         <option [ngValue]="null">Dans quelle catégorie?</option>
-        <option *ngFor="let category of categorys" [value]="category.name">
-          {{ category.name }}
+        <option *ngFor="let category of categories" [value]="category">
+          {{ category }}
         </option>
       </select>
       <input
