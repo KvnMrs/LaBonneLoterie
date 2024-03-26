@@ -8,7 +8,6 @@ exports.checkAnnounceEndAt = onDocumentUpdated(
   "/Announces/{documentId}",
   (event) => {
     if (event.data.after.data()["winner"]) return null;
-    console.log("11111111111", event);
     const ticketsBuyed = event.data.after.data()["ticketsBuyed"];
     const randomIndex = Math.floor(Math.random() * ticketsBuyed.length);
     const winnerTicket = ticketsBuyed[randomIndex];
