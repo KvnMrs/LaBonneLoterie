@@ -100,8 +100,8 @@
             "prerender": false,
             "ssr": false,
             "browserTarget": "LeBonLot:build:production",
-            "firebaseProject": "lebonlot-ca78b",
-            "firebaseHostingSite": "lebonlot-ca78b"
+            "firebaseProject": "lebonlott",
+            "firebaseHostingSite": "lebonlott"
           }
         }
       }
