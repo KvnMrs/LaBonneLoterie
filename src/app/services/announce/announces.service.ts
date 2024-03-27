@@ -213,7 +213,8 @@ export class AnnouncesService {
     return resultSearch;
   }
 
-  async getAllTicketsBuyed(announceId: string): Promise<void> {
+  // This function declench a clouf function that get a winer ticket
+  async getWinnerTicket(announceId: string): Promise<void> {
     const allTicketsInGame: string[] = [];
     const purchaseDocsRef = collection(
       this.firestore,
@@ -226,8 +227,11 @@ export class AnnouncesService {
         allTicketsInGame.push(ticket)
       );
     });
-    const ticketsBuyed = await this.getAllTicketsBuyed(announceId);
     const announceRef = doc(this.firestore, 'Announces', announceId);
-    return setDoc(announceRef, { ticketsBuyed: ticketsBuyed }, { merge: true });
+    return setDoc(
+      announceRef,
+      { ticketsBuyed: allTicketsInGame },
+      { merge: true }
+    );
   }
 }
