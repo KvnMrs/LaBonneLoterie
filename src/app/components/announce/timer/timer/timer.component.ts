@@ -26,9 +26,7 @@ export class TimerComponent implements OnInit {
     this.timer$ = this.createTimerObservable(this.endDate).subscribe(
       async (v: number) => {
         if (v <= 0) {
-          const winner = await this.announceService.getWinnerTicket(
-            this.announceId
-          );
+         await this.announceService.getWinnerTicket(this.announceId);
           this.timer$.unsubscribe();
         } else {
           this.timeDiff$.next(v);

@@ -1,19 +1,19 @@
 export const environment = {
   firebase: {
-    projectId: 'lebonlot-ca78b',
-    appId: '1:347163866252:web:1d634942d41be7b25c37a9',
-    storageBucket: 'lebonlot-ca78b.appspot.com',
-    apiKey: 'AIzaSyCtCPS2SkIYn4Pen6coY-DCnYaLIFG--lE',
-    authDomain: 'lebonlot-ca78b.firebaseapp.com',
-    messagingSenderId: '347163866252',
+    projectId: 'lebonlott',
+    appId: '1:36030491244:web:5c6c0afe868089c4e8c649',
+    storageBucket: 'lebonlott.appspot.com',
+    apiKey: 'AIzaSyA857ZqnoIg4Ry-aNVfQK2bzb5RTbHnP2I',
+    authDomain: 'lebonlott.firebaseapp.com',
+    messagingSenderId: '36030491244',
   },
-  firebaseConfig : {
-    apiKey: "AIzaSyCtCPS2SkIYn4Pen6coY-DCnYaLIFG--lE",
-    authDomain: "lebonlot-ca78b.firebaseapp.com",
-    projectId: "lebonlot-ca78b",
-    storageBucket: "lebonlot-ca78b.appspot.com",
-    messagingSenderId: "347163866252",
-    appId: "1:347163866252:web:1d634942d41be7b25c37a9"
-    },
-  production: true
+  firebaseConfig: {
+    apiKey: 'AIzaSyA857ZqnoIg4Ry-aNVfQK2bzb5RTbHnP2I',
+    authDomain: 'lebonlott.firebaseapp.com',
+    projectId: 'lebonlott',
+    storageBucket: 'lebonlott.appspot.com',
+    messagingSenderId: '36030491244',
+    appId: '1:36030491244:web:5c6c0afe868089c4e8c649',
+  },
+  production: true,
 };
