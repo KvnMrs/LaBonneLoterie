@@ -2,63 +2,27 @@
   <lbl-header>Découvrez les nouvelles offres !</lbl-header>
   <div class="collapse collapse-arrow filter-collapse">
     <input type="checkbox" />
-    <div class="collapse-title text-lg font-medium">Rechercher</div>
-    <form
-      [formGroup]="searchForm"
-      (ngSubmit)="onSearch()"
-      class="collapse-content filters-container"
-    >
-      <input
-        type="text"
-        id="search"
-        name="search"
-        formControlName="search"
-        placeholder="Que recherchez-vous?"
-        class="input-lbl w-2/3 | sm:w-auto"
-      />
-      <select
-        type="text"
-        id="category"
-        name="category"
-        formControlName="category"
-        class="select-lbl w-2/3 | sm:w-auto"
-      >
+    <div class="collapse-title text-lg font-medium bg-[#444444] text-white">Rechercher</div>
+    <form [formGroup]="searchForm" (ngSubmit)="onSearch()" class="collapse-content filters-container bg-[#444444]">
+      <input type="text" id="search" name="search" formControlName="search" placeholder="Que recherchez-vous?"
+        class="input-lbl w-2/3 | sm:w-auto" />
+      <select type="text" id="category" name="category" formControlName="category" class="select-lbl w-2/3 | sm:w-auto">
         <option [ngValue]="null">Dans quelle catégorie?</option>
         <option *ngFor="let category of categories" [value]="category">
           {{ category }}
         </option>
       </select>
-      <input
-        type="number"
-        id="minPrice"
-        name="minPrice"
-        formControlName="minPrice"
-        placeholder="Prix min?"
-        class="input-lbl w-2/3 | sm:w-auto"
-      />
-      <input
-        type="number"
-        id="maxPrice"
-        name="maxPrice"
-        formControlName="maxPrice"
-        placeholder="Prix max?"
-        class="input-lbl w-2/3 | sm:w-auto"
-      />
+      <input type="number" id="minPrice" name="minPrice" formControlName="minPrice" placeholder="Prix min?"
+        class="input-lbl w-2/3 | sm:w-auto" />
+      <input type="number" id="maxPrice" name="maxPrice" formControlName="maxPrice" placeholder="Prix max?"
+        class="input-lbl w-2/3 | sm:w-auto" />
       <div class="btn-group mt-4 ml-auto gap-1 | lg:mt-0">
-        <button
-          type="button"
-          (click)="onResetSearch()"
-          [disabled]="!showResetBtn"
-          class="btn btn-outline btn-info btn-sm ml-auto | md:btn-md"
-        >
+        <button type="button" (click)="onResetSearch()" [disabled]="!showResetBtn"
+          class="btn btn-outline btn-info btn-sm ml-auto | md:btn-md">
           Retirer le filtre
         </button>
-        <button
-          type="button"
-          (click)="onSearch()"
-          class="flex gap-1 btn btn-info btn-sm ml-auto | md:btn-md"
-        >
-          <app-svg-search></app-svg-search>
+        <button type="button" (click)="onSearch()" class="flex gap-1 btn btn-info btn-sm ml-auto | md:btn-md">
+          <app-svg-search color="black"></app-svg-search>
           <p>Rechercher</p>
         </button>
       </div>
@@ -67,25 +31,18 @@
   <div *ngIf="!announces.length; else cards" class="m-auto flex flex-col items-center">
     <app-eye-closed></app-eye-closed>
     <p class="mb-4 text-center text-lg font-bold">Aucune annonce en vue, soyez le premier !</p>
-    <button
-    type="button"
-    >  
-      <a
-        class="flex gap-2 btn btn-ghost rounded-btn hover:btn-primary | md:btn-outline"
-        [routerLink]="['/ajout-annonce']"
-        ><app-svg-cross-add></app-svg-cross-add>
-        <p>Ajouter une annonce</p></a
-      >
+    <button type="button">
+      <a class="flex gap-2 btn btn-ghost rounded-btn hover:btn-primary | md:btn-outline"
+        [routerLink]="['/ajout-annonce']"><app-svg-cross-add></app-svg-cross-add>
+        <p>Ajouter une annonce</p>
+      </a>
     </button>
   </div>
 
   <!-- cards announce -->
   <ng-template #cards>
-    <div class="cards-container" >
-      <app-card
-        *ngFor="let announce of announces; let i = index"
-        [data]="announce"
-      ></app-card>
+    <div class="cards-container">
+      <app-card *ngFor="let announce of announces; let i = index" [data]="announce"></app-card>
     </div>
   </ng-template>
 </div>

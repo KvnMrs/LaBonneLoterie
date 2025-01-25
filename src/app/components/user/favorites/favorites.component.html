@@ -2,24 +2,16 @@
   <lbl-header>Retrouvez vos annonces favorites:</lbl-header>
   <div *ngIf="!favoritesAnnounce.length; else cards" class="m-auto flex flex-col items-center">
     <app-heart-cross></app-heart-cross>
-    <p class="mb-4 text-center text-lg font-bold">Aucun favoris enregistré pour le moment !</p>
-    <button
-    type="button"
-    >  
-      <a
-        class="flex gap-2 btn btn-ghost rounded-btn hover:btn-primary | md:btn-outline"
-        [routerLink]="['/recherche']"
-        >
-        <p>Voir les annonces</p></a
-      >
+    <p class="mb-4 text-center text-lg font-bold text-white">Aucun favoris enregistré pour le moment !</p>
+    <button type="button">
+      <a class="flex gap-2 btn btn-ghost rounded-btn btn-primary | md:btn-outline " [routerLink]="['/recherche']">
+        <p class="text-white">Voir les annonces</p>
+      </a>
     </button>
   </div>
   <ng-template #cards>
     <div class="cards-container">
-      <app-card
-        *ngFor="let announce of favoritesAnnounce; let i = index"
-        [data]="announce"
-      ></app-card>
+      <app-card *ngFor="let announce of favoritesAnnounce; let i = index" [data]="announce"></app-card>
     </div>
   </ng-template>
 </section>

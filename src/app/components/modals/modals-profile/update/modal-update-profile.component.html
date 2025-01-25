@@ -1,84 +1,37 @@
 <input type="checkbox" id="modal-update-profile" class="modal-toggle" />
-<form
-  *ngIf="userData"
-  class="modal"
-  (ngSubmit)="onUpdateUserProfile()"
-  [formGroup]="updateProfileForm"
->
-  <div class="modal-box relative">
-    <label
-      for="modal-update-profile"
-      class="btn btn-sm btn-circle absolute right-3 top-3"
-      >✕</label
-    >
-    <h3 class="mb-6 text-xl font-bold">Modifier votre profil:</h3>
+<form *ngIf="userData" class="modal" (ngSubmit)="onUpdateUserProfile()" [formGroup]="updateProfileForm">
+  <div class="modal-box relative bg-[#212121] border border-slate-100 lg:mt-16">
+    <label for="modal-update-profile" class="btn btn-sm btn-circle absolute right-3 top-3">✕</label>
+    <h3 class="mb-6 text-xl font-bold text-white">Modifier votre profil:</h3>
 
     <div class="mb-6 flex flex-col gap-3 | lg:mb-8">
       <div class="flex gap-3">
-        <label class="self-center font-medium w-1/4" for="email">E-mail:</label>
-        <input
-          class="input-lbl"
-          type="email"
-          id="email"
-          name="email"
-          formControlName="email"
-          autocomplete="email"
-          [placeholder]="userData.email"
-          required
-        />
+        <label class="self-center font-medium w-1/4 text-white" for="email">E-mail:</label>
+        <input class="input-lbl" type="email" id="email" name="email" formControlName="email" autocomplete="email"
+          [placeholder]="userData.email" required />
       </div>
       <div class="flex gap-3">
-        <label class="self-center font-medium w-1/4" for="firstname"
-          >Prénom:</label
-        >
-        <input
-          class="input-lbl"
-          type="text"
-          id="firstname"
-          name="firstname"
-          formControlName="firstname"
-          autocomplete="firstname"
-          placeholder="Prénom"
-          required
-        />
+        <label class="self-center font-medium w-1/4 text-white" for="firstname">Prénom:</label>
+        <input class="input-lbl" type="text" id="firstname" name="firstname" formControlName="firstname"
+          autocomplete="firstname" placeholder="Prénom" required />
       </div>
       <div class="flex gap-3">
-        <label class="self-center font-medium w-1/4" for="lastname">Nom:</label>
-        <input
-          class="input-lbl"
-          type="text"
-          id="lastname"
-          name="lastname"
-          formControlName="lastname"
-          autocomplete="lastname"
-          placeholder="Nom"
-          required
-        />
+        <label class="self-center font-medium w-1/4 text-white" for="lastname">Nom:</label>
+        <input class="input-lbl" type="text" id="lastname" name="lastname" formControlName="lastname"
+          autocomplete="lastname" placeholder="Nom" required />
       </div>
       <div class="flex gap-3 mb-3">
-        <label class="self-center font-medium w-1/4" for="city">Ville:</label>
-        <input
-          class="input-lbl"
-          type="text"
-          id="city"
-          name="city"
-          formControlName="city"
-          autocomplete="city"
-          placeholder="Ville"
-          required
-        />
+        <label class="self-center font-medium w-1/4 text-white" for="city">Ville:</label>
+        <input class="input-lbl" type="text" id="city" name="city" formControlName="city" autocomplete="city"
+          placeholder="Ville" required />
       </div>
       <div class="flex flex-col gap-3">
         <div class="flex justify-center">
-          <img
-            id="previewImage"
-            src="{{ userData.imgProfile || '/assets/svg/profile.svg' }}"
-            class="circle-surface"
-          />
+          <img id="previewImage" src="{{ userData.imgProfile || '/assets/svg/profile.svg' }}"
+            class="w-1/4 rounded-full" />
         </div>
         <label
-          class="label btn btn-primary btn-outline justify-center hover:btn-primary transition duration-200 ease-in"
-        >
+          class="label btn btn-primary btn-outline justify-center hover:btn-primary transition duration-200 ease-in">
           <input type="file" (change)="onChange($event)" required />
           <span class="mr-1 font-bold">+</span><span> Importer une photo</span>
         </label>
@@ -86,12 +39,7 @@
     </div>
     <div class="flex justify-end modal-action">
       <label for="modal-update-profile" class="btn ml-auto"> Annuler </label>
-      <label
-        type="submit"
-        for="modal-update-profile"
-        class="btn btn-info"
-        (click)="onUpdateUserProfile()"
-      >
+      <label type="submit" for="modal-update-profile" class="btn btn-info" (click)="onUpdateUserProfile()">
         Enregistrer
       </label>
     </div>

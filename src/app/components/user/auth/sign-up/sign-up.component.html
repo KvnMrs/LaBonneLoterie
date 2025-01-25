@@ -1,166 +1,81 @@
 <div class="main-container">
   <lbl-header>Rejoignez-nous !</lbl-header>
-  <form
-    (ngSubmit)="onSubmitSignupForm()"
-    [formGroup]="formSignUp"
-    class="form-container md:mt-12"
-  >
+  <form (ngSubmit)="onSubmitSignupForm()" [formGroup]="formSignUp" class="form-container md:mt-12">
     <h1 class="form-title">Inscription</h1>
     <div class="form-sub-container">
       <div class="md:w-full | md:mb-auto">
         <div class="form-input-container">
           <!-- Firstname -->
-          <label class="mb-1" for="firstname">Prénom:</label>
-          <input
-            class="input input-lbl"
-            type="text"
-            id="firstname"
-            name="firstname"
-            formControlName="firstname"
-            autocomplete="username"
-            placeholder="Prénom*"
-            required
-          />
-          <span
-            *ngIf="
+          <label class="mb-1 text-white" for="firstname">Prénom:</label>
+          <input class="input input-lbl" type="text" id="firstname" name="firstname" formControlName="firstname"
+            autocomplete="username" placeholder="Prénom*" required />
+          <span *ngIf="
               formSignUp.get('firstname')!.invalid &&
               formSignUp.get('firstname')!.touched
-            "
-            class="label-text-alt mt-1 text-error font-medium"
-            >Vous devez saisir votre prénom.</span
-          >
+            " class="label-text-alt mt-1 text-error font-medium">Vous devez saisir votre prénom.</span>
         </div>
         <!-- Lastname -->
         <div class="form-input-container">
-          <label class="mb-1" for="lastname">Nom de naissance:</label>
-          <input
-            class="input input-lbl"
-            type="text"
-            id="lastname"
-            name="lastname"
-            formControlName="lastname"
-            autocomplete="username"
-            placeholder="Nom*"
-            required
-          />
-          <span
-            *ngIf="
+          <label class="mb-1 text-white" for="lastname">Nom de naissance:</label>
+          <input class="input input-lbl" type="text" id="lastname" name="lastname" formControlName="lastname"
+            autocomplete="username" placeholder="Nom*" required />
+          <span *ngIf="
               formSignUp.get('lastname')!.invalid &&
               formSignUp.get('lastname')!.touched
-            "
-            class="label-text-alt mt-1 text-error font-medium"
-            >Vous devez saisir votre nom de naissance.</span
-          >
+            " class="label-text-alt mt-1 text-error font-medium">Vous devez saisir votre nom de naissance.</span>
         </div>
         <!-- Birthday -->
         <div class="form-input-container">
-          <label class="mb-1" for="birthday">Date de naissance:</label>
-          <input
-            class="input input-lbl"
-            type="date"
-            id="birthday"
-            name="birthday"
-            formControlName="birthday"
-            autocomplete="username"
-            placeholder="JJ/MM/AAAA*"
-            required
-          />
-          <span
-            *ngIf="
+          <label class="mb-1 text-white" for="birthday">Date de naissance:</label>
+          <input class="input input-lbl" type="date" id="birthday" name="birthday" formControlName="birthday"
+            autocomplete="username" placeholder="JJ/MM/AAAA*" required />
+          <span *ngIf="
               formSignUp.get('birthday')?.hasError('notMajor') &&
               formSignUp.get('birthday')?.touched
-            "
-            class="label-text-alt mt-1 text-error font-medium"
-            >Vous devez être majeur.</span
-          >
-          <span
-            *ngIf="
+            " class="label-text-alt mt-1 text-error font-medium">Vous devez être majeur.</span>
+          <span *ngIf="
               formSignUp.get('birthday')?.hasError('notValid') &&
               formSignUp.get('birthday')?.touched
-            "
-            class="label-text-alt mt-1 text-error font-medium"
-            >Vous devez entrez une date de naissance valide.</span
-          >
-          <span
-            *ngIf="
+            " class="label-text-alt mt-1 text-error font-medium">Vous devez entrez une date de naissance valide.</span>
+          <span *ngIf="
               formSignUp.get('birthday')?.invalid &&
               formSignUp.get('birthday')?.touched
-            "
-            class="label-text-alt mt-1 text-error font-medium"
-            >Vous devez entrez une date de naissance valide.</span
-          >
+            " class="label-text-alt mt-1 text-error font-medium">Vous devez entrez une date de naissance valide.</span>
         </div>
         <!-- City -->
         <div class="form-input-container">
-          <label class="mb-1" for="city">Ville de naissance:</label>
-          <input
-            class="input input-lbl"
-            type="text"
-            id="city"
-            name="city"
-            formControlName="city"
-            autocomplete="username"
-            placeholder="Ville*"
-            required
-          />
-          <span
-            *ngIf="
+          <label class="mb-1 text-white" for="city">Ville de naissance:</label>
+          <input class="input input-lbl" type="text" id="city" name="city" formControlName="city"
+            autocomplete="username" placeholder="Ville*" required />
+          <span *ngIf="
               formSignUp.get('city')!.invalid && formSignUp.get('city')!.touched
-            "
-            class="label-text-alt mt-1 text-error font-medium"
-            >Vous devez saisir votre ville de naissance</span
-          >
+            " class="label-text-alt mt-1 text-error font-medium">Vous devez saisir votre ville de naissance</span>
         </div>
       </div>
       <!-- Email -->
       <div class="col-upload-descript-buttons">
         <div class="md:w-full mb-8 | md:mb-4">
           <div class="form-input-container">
-            <label class="mb-1" for="email">E-mail:</label>
-            <input
-              class="input input-lbl"
-              type="text"
-              id="email"
-              name="email"
-              formControlName="email"
-              autocomplete="username"
-              placeholder="E-mail*"
-              required
-            />
-            <span
-              *ngIf="
+            <label class="mb-1 text-white" for="email">E-mail:</label>
+            <input class="input input-lbl" type="text" id="email" name="email" formControlName="email"
+              autocomplete="username" placeholder="E-mail*" required />
+            <span *ngIf="
                 formSignUp.get('email')!.hasError('invalidAdress') &&
                 formSignUp.get('email')!.touched
-              "
-              class="label-text-alt mt-1 text-error font-medium"
-              >Vous devez saisir une adresse email valide.</span
-            >
-            <span
-              *ngIf="
+              " class="label-text-alt mt-1 text-error font-medium">Vous devez saisir une adresse email valide.</span>
+            <span *ngIf="
                 formSignUp.get('email')!.hasError('invalidDomain') &&
                 formSignUp.get('email')!.touched
-              "
-              class="label-text-alt mt-1 text-error font-medium"
-              >Veuillez verifier le nom de domaine de votre adresse email.</span
-            >
+              " class="label-text-alt mt-1 text-error font-medium">Veuillez verifier le nom de domaine de votre adresse
+              email.</span>
           </div>
           <!-- Password -->
           <div class="form-input-container">
-            <label class="mb-1" for="password">Mot de passe:</label>
-            <input
-              class="input input-lbl"
-              type="password"
-              id="password"
-              name="password"
-              formControlName="password"
-              autocomplete="current-password"
-              placeholder="Mot de passe*"
-              required
-            />
+            <label class="mb-1 text-white" for="password">Mot de passe:</label>
+            <input class="input input-lbl" type="password" id="password" name="password" formControlName="password"
+              autocomplete="current-password" placeholder="Mot de passe*" required />
             <div class="label-text-alt flex flex-col mt-1">
-              <p
-                [ngClass]="{ 'text-error font-medium': formSignUp.get('password')!.errors?.['minlength'] }"
-              >
+              <p [ngClass]="{ 'text-error font-medium': formSignUp.get('password')!.errors?.['minlength'] }">
                 - 8 caractère minimum.
               </p>
               <!-- <p>- 1 majuscule minimum</p> -->
@@ -169,43 +84,24 @@
           </div>
           <!-- Confirmation Password -->
           <div class="form-input-container">
-            <label class="mb-1" for="confirmation_password"
-              >Confirmation du mot de passe:</label
-            >
-            <input
-              class="input input-lbl"
-              type="password"
-              id="confirmation_password"
-              name="confirmation_password"
-              formControlName="confirmation_password"
-              placeholder="Confirmation mot de passe*"
-              required
-            />
-            <span
-              *ngIf="
+            <label class="mb-1 text-white" for="confirmation_password">Confirmation du mot de passe:</label>
+            <input class="input input-lbl" type="password" id="confirmation_password" name="confirmation_password"
+              formControlName="confirmation_password" placeholder="Confirmation mot de passe*" required />
+            <span *ngIf="
                 formSignUp.get('confirmation_password')!.invalid &&
                 formSignUp.get('confirmation_password')!.touched
-              "
-              class="label-text-alt mt-1 text-error font-medium"
-              >Ce champs est obligatoire.</span
-            >
+              " class="label-text-alt mt-1 text-error font-medium">Ce champs est obligatoire.</span>
           </div>
         </div>
         <div class="auth-cta-container">
-          <button
-            class="btn btn-primary w-fit py-2 px-4 font-semibold text-white rounded-lg drop-shadow-md"
-            type="submit"
-            [disabled]="!formSignUp.valid"
-          >
+          <button class="btn btn-primary w-fit py-2 px-4 font-semibold text-white rounded-lg drop-shadow-md"
+            type="submit">
             S'incrire
           </button>
           <p class="flex flex-col gap-0.5 items-center">
             J'ai déjà un compte,
-            <a
-              class="text-blue-600 hover:text-blue-400 underline"
-              [routerLink]="['/connexion']"
-              (click)="onHaveAccount()"
-            >
+            <a class="text-blue-600 hover:text-blue-400 underline" [routerLink]="['/connexion']"
+              (click)="onHaveAccount()">
               me connecter
             </a>
           </p>
@@ -215,8 +111,4 @@
   </form>
 </div>
 
-<lbl-alert-error
-  [showError]="showError"
-  [errorMessage]="errorMessage"
-  (closed)="closeAlert()"
-></lbl-alert-error>
+<lbl-alert-error [showError]="showError" [errorMessage]="errorMessage" (closed)="closeAlert()"></lbl-alert-error>

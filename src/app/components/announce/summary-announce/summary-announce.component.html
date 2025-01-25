@@ -3,15 +3,10 @@
   <article *ngIf="newAnnounceData" class="summary-container">
     <!-- Carousel-->
     <div class="carousel-container md:w-1/2">
-      <div
-        *ngFor="let imgUrl of newAnnounceData.imgsAnnounce; let i = index"
-        id="slide{{ i + 1 }}"
-        class="carousel-item relative w-full"
-      >
+      <div *ngFor="let imgUrl of newAnnounceData.imgsAnnounce; let i = index" id="slide{{ i + 1 }}"
+        class="carousel-item relative w-full">
         <img [src]="imgUrl" class="w-full" />
-        <div
-          class="absolute flex justify-between transform -translate-y-1/2 left-2 right-2 top-1/2"
-        >
+        <div class="absolute flex justify-between transform -translate-y-1/2 left-2 right-2 top-1/2">
           <a href="#slide{{ i - 1 }}" class="btn btn-circle btn-sm">❮</a>
           <a href="#slide{{ i + 1 }}" class="btn btn-circle btn-sm">❯</a>
         </div>
@@ -49,7 +44,7 @@
         <!-- Description -->
         <div>
           <h3 class="card-title mb-2">Description:</h3>
-          <p class="text-gray-800 leading-normal">
+          <p class="leading-normal">
             {{ newAnnounceData.description }}
           </p>
         </div>
@@ -88,19 +83,10 @@
       </div>
       <!-- CTA's Group -->
       <div class="btn-group flex gap-0.5 justify-end mt-auto | md:gap-1">
-        <button
-          (click)="goBack()"
-          type="button"
-          class="btn btn-sm btn-outline btn-info | md:btn-md"
-        >
+        <button (click)="goBack()" type="button" class="btn btn-sm btn-outline btn-primary bg-slate-100 | md:btn-md">
           Retour
         </button>
-        <label
-          (click)="onPublish()"
-          for="modal-wish-success"
-          class="btn btn-sm btn-primary | md:btn-md"
-          >Valider</label
-        >
+        <label (click)="onPublish()" for="modal-wish-success" class="btn btn-sm btn-primary | md:btn-md">Valider</label>
       </div>
     </div>
     <!-- </aside> -->
@@ -111,11 +97,7 @@
 <input type="checkbox" id="modal-wish-success" class="modal-toggle" />
 <div class="modal">
   <div class="modal-box flex flex-col gap-4">
-    <label
-      for="modal-wish-success"
-      class="btn btn-sm btn-circle absolute right-4 top-4"
-      >✕</label
-    >
+    <label for="modal-wish-success" class="btn btn-sm btn-circle absolute right-4 top-4">✕</label>
     <h3 class="pb-4 font-bold text-3xl text-primary text-lbl">
       Le bon succès 🍀
     </h3>
@@ -128,12 +110,7 @@
       préoccupations concernant votre annonce. Nous sommes là pour vous aider.
     </p>
     <div class="modal-action">
-      <label
-        (click)="redirectUser()"
-        for="modal-wish-success"
-        class="btn btn-sm btn-primary | md:btn-md"
-        >Merci</label
-      >
+      <label (click)="redirectUser()" for="modal-wish-success" class="btn btn-sm btn-primary | md:btn-md">Merci</label>
     </div>
   </div>
 </div>

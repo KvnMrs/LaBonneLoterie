@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-svg-search',
@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./svg-search.component.scss'],
 })
 export class SvgSearchComponent implements OnInit {
-  constructor() {}
+  @Input() color = "white"
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

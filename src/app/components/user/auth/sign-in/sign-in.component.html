@@ -1,78 +1,42 @@
 <div class="main-container">
   <lbl-header>Heureux de vous revoir !</lbl-header>
-  <form
-    (ngSubmit)="onSubmitSigninForm()"
-    [formGroup]="signinForm"
-    class="form-container mt-4 |md:mt-8 | lg:w-2/6 lg:mt-16"
-  >
+  <form (ngSubmit)="onSubmitSigninForm()" [formGroup]="signinForm"
+    class="form-container mt-4 |md:mt-8 | lg:w-2/6 lg:mt-16">
     <h1 class="form-title">Connexion</h1>
     <div class="form-sub-container md:flex-col">
       <div class="md:w-full mb-8 | md:mb-4">
         <div class="form-input-container">
-          <label class="mb-1" for="email">E-mail:</label>
-          <input
-            class="input input-lbl"
-            type="text"
-            id="email"
-            name="email"
-            formControlName="email"
-            autocomplete="username"
-            placeholder="E-mail"
-            required
-          />
-          <span
-            *ngIf="
+          <label class="mb-1 text-white" for="email">E-mail:</label>
+          <input class="input input-lbl" type="text" id="email" name="email" formControlName="email"
+            autocomplete="username" placeholder="E-mail" required />
+          <span *ngIf="
               signinForm.get('email')!.hasError('invalidAdress') &&
               signinForm.get('email')!.touched
-            "
-            class="label-text-alt mt-1 text-error font-medium"
-            >Vous devez saisir une adresse email valide.</span
-          >
-          <span
-            *ngIf="
+            " class="label-text-alt mt-1 text-error font-medium">Vous devez saisir une adresse email valide.</span>
+          <span *ngIf="
               signinForm.get('email')!.hasError('invalidDomain') &&
               signinForm.get('email')!.touched
-            "
-            class="label-text-alt mt-1 text-error font-medium"
-            >Veuillez verifier le nom de domaine de votre adresse email.</span
-          >
+            " class="label-text-alt mt-1 text-error font-medium">Veuillez verifier le nom de domaine de votre adresse
+            email.</span>
         </div>
         <div class="form-input-container">
-          <label class="mb-1" for="password">Mot de passe:</label>
-          <input
-            class="input input-lbl"
-            type="password"
-            id="password"
-            name="password"
-            formControlName="password"
-            autocomplete="current-password"
-            placeholder="Mot de passe"
-            required
-          />
-          <span
-            *ngIf="
+          <label class="mb-1 text-white" for="password">Mot de passe:</label>
+          <input class="input input-lbl" type="password" id="password" name="password" formControlName="password"
+            autocomplete="current-password" placeholder="Mot de passe" required />
+          <span *ngIf="
               signinForm.get('password')!.invalid &&
               signinForm.get('password')!.touched
-            "
-            class="label-text-alt mt-1 text-error font-medium"
-            >Ce champs est obligatoire.</span
-          >
+            " class="label-text-alt mt-1 text-error font-medium">Ce champs est obligatoire.</span>
         </div>
       </div>
       <div class="auth-cta-container">
-        <button
-          class="btn btn-primary w-fit py-2 px-4 font-semibold text-white rounded-lg drop-shadow-md"
-          type="submit"
-          [disabled]="!signinForm.valid"
-        >
+        <button class="btn btn-primary w-fit py-2 px-4 font-semibold text-white rounded-lg drop-shadow-md"
+          type="submit">
           Se connecter
         </button>
         <p class="flex flex-col gap-0.5 items-center">
           Envie de nous rejoindre ?
-          <a
-            class="text-blue-600 hover:text-blue-400 underline"
-            [routerLink]="['/inscription']"
-          >
+          <a class="text-blue-600 hover:text-blue-400 underline" [routerLink]="['/inscription']">
             Créer un compte
           </a>
         </p>
@@ -81,8 +45,4 @@
   </form>
 </div>
 
-<lbl-alert-error
-  [showError]="showError"
-  [errorMessage]="errorMessage"
-  (closed)="closeAlert()"
-></lbl-alert-error>
+<lbl-alert-error [showError]="showError" [errorMessage]="errorMessage" (closed)="closeAlert()"></lbl-alert-error>

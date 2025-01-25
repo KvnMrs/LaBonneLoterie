@@ -2,30 +2,30 @@
   <div *ngIf="!hideText" class="announce-titles-divider">
     <h3 class="section-title">Temps restant</h3>
   </div>
-  <div class="grid grid-flow-col gap-2">
+  <div class="grid grid-flow-col gap-2 bg-[#212121]  ">
     <div class="announce-timer-boxes">
       <span class="announce-timer-times">
         <span class="w-full" style="--value: {{ getDays }}"></span>
       </span>
-      <p class="text-neutral">jours</p>
+      <p class="text-white">jours</p>
     </div>
     <div class="announce-timer-boxes">
       <span class="announce-timer-times">
         <span class="w-full" style="--value: {{ getHours }}"></span>
       </span>
-      <p class="text-neutral">heures</p>
+      <p class="text-white">heures</p>
     </div>
     <div class="announce-timer-boxes">
       <span class="announce-timer-times">
         <span class="w-full" style="--value: {{ getMinutes }}"></span>
       </span>
-      <p class="text-neutral">min</p>
+      <p class="text-white">min</p>
     </div>
     <div class="announce-timer-boxes">
       <span class="announce-timer-times">
         <span class="w-full" style="--value: {{ getSeconds }}"></span>
       </span>
-      <p class="text-neutral">sec</p>
+      <p class="text-white">sec</p>
     </div>
   </div>
 </div>

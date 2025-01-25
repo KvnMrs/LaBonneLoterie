@@ -6,9 +6,9 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./svg-cross-add.component.scss'],
 })
 export class SvgCrossAddComponent implements OnInit {
-  @Input() color?: string = 'black';
+  @Input() color?: string = 'white';
   @Input() size?: string = '30';
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
     this.color !== 'black' ? (this.color = this.color) : '';
