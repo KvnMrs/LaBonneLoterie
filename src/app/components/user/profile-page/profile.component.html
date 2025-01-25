@@ -15,24 +15,19 @@
             </p>
             <span class="mt-0.5 flex">
               <app-svg-stars></app-svg-stars>
-              <app-svg-stars></app-svg-stars><app-svg-stars></app-svg-stars
-              ><app-svg-stars></app-svg-stars><app-svg-stars> </app-svg-stars>
+              <app-svg-stars></app-svg-stars><app-svg-stars></app-svg-stars><app-svg-stars></app-svg-stars><app-svg-stars>
+              </app-svg-stars>
               <p class="ml-1">7 avis</p>
             </span>
             <div class="mt-4 flex justify-center gap-0.5 | md:justify-start">
-              <label
-                for="modal-update-profile"
-                class="btn btn-sm btn-outline rounded-lg | md:btn-md"
-                >Modifier profil</label
-              >
+              <label for="modal-update-profile"
+                class="btn btn-sm btn-outline btn-primary rounded-lg | md:btn-md bg-slate-50">Modifier
+                profil</label>
             </div>
           </div>
           <div class="profile-card-img">
-            <img
-              src="{{ userData['imgProfile'] || '/assets/svg/profile.svg' }}"
-              alt="Profile"
-              class="circle-surface"
-            />
+            <img class="w-16 h-16 flex rounded-full | md:w-20 md:h-20"
+              src="{{ userData['imgProfile'] || '/assets/svg/profile.svg' }}" alt="Profile" />
           </div>
         </div>
         <!-- Balance -->
@@ -42,22 +37,12 @@
             <p>
               Votre solde actuel est de $<span class="font-semibold">{{
                 userData["bankAccount"]
-              }}</span
-              >.
+                }}</span>.
             </p>
-            <div
-              class="mt-4 flex justify-center gap-0.5 | md:mt-auto md:justify-start"
-            >
-              <label
-                for="modal-withdraw"
-                class="btn btn-sm btn-outline btn-info bg-slate-50 | md:btn-md"
-                >Retirer</label
-              >
-              <label
-                for="modal-credit-profile"
-                class="btn btn-sm btn-primary | md:btn-md"
-                >Créditer</label
-              >
+            <div class="mt-4 flex justify-center gap-0.5 | md:mt-auto md:justify-start">
+              <label for="modal-withdraw"
+                class="btn btn-sm btn-outline btn-primary bg-slate-50 | md:btn-md">Retirer</label>
+              <label for="modal-credit-profile" class="btn btn-sm btn-primary | md:btn-md">Créditer</label>
             </div>
           </div>
           <div class="profile-card-img">
@@ -91,26 +76,15 @@
 
     <!-- Update profile BTN -->
     <div class="w-full flex justify-center | md:justify-end">
-      <button
-        (click)="onDisconnect()"
-        class="btn btn-link hover:btn-error gap-2 | md:gap-4 text-error"
-      >
+      <button (click)="onDisconnect()" class="btn btn-link hover:btn-error gap-2 | md:gap-4 text-error">
         <app-svg-shutdown></app-svg-shutdown> Se déconnecter
       </button>
     </div>
   </div>
 </section>
 
-<lbl-modal-update-profile
-  *ngIf="userData"
-  [userData]="userData"
-  (modalUpdateEvent)="getUpdateUserProfile($event)"
-></lbl-modal-update-profile>
-<lbl-modal-withdraw
-  [userData]="userData"
-  (withdrawEvent)="getUpdateUserProfile($event)"
-></lbl-modal-withdraw>
-<lbl-modal-credit-profile
-  [userData]="userData"
-  (creditBankBalanceEvent)="getUpdateUserProfile($event)"
-></lbl-modal-credit-profile>
+<lbl-modal-update-profile *ngIf="userData" [userData]="userData"
+  (modalUpdateEvent)="getUpdateUserProfile($event)"></lbl-modal-update-profile>
+<lbl-modal-withdraw [userData]="userData" (withdrawEvent)="getUpdateUserProfile($event)"></lbl-modal-withdraw>
+<lbl-modal-credit-profile [userData]="userData"
+  (creditBankBalanceEvent)="getUpdateUserProfile($event)"></lbl-modal-credit-profile>

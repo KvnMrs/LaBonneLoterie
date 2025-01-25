@@ -7,61 +7,81 @@
 .text-lbl {
   color: #712CF9;
 }
+
 .text-nav:hover {
   color: #0D6EFD;
 }
 
 .main-container {
-  @apply px-2 py-4 flex flex-col min-h-screen
-/* MD */ md:px-4 md:py-6
-/* LG */ lg:px-6 lg:py-8
+  @apply px-2 py-4 flex flex-col min-h-screen bg-[#121212]
+  /* MD */
+  md:px-4 md:py-6
+  /* LG */
+  lg:px-6 lg:py-8
 }
 
 .inline-size-lbl {
- inline-size: auto;
+  inline-size: auto;
 }
 
 // NavBar ///////////////////////////////////////////////////////////////////////
 
 nav {
   @apply sticky top-0 flex border-b border-slate-300 bg-base-200
-/* SM */ sm:gap-0 sm:justify-between
+  /* SM */
+  sm:gap-0 sm:justify-between
 }
+
 .logo-letters {
   @apply text-2xl font-semibold text-lbl
-/* MD */ md:text-2xl
+  /* MD */
+  md:text-2xl
 }
 
 // Forms ///////////////////////////////////////////////////////////////////////
 
 .form-container {
-  @apply w-11/12 mx-auto p-4 flex-col border border-slate-300 drop-shadow-md rounded-xl bg-slate-50
-/* SM */ sm:w-2/3
-/* MD */ md:w-3/4
-/* LG */ lg:max-w-4xl
+  @apply w-11/12 mx-auto p-4 flex-col border border-slate-300 drop-shadow-md rounded-xl bg-[#212121]
+  /* SM */
+  sm:w-2/3
+  /* MD */
+  md:w-3/4
+  /* LG */
+  lg:max-w-4xl
 }
+
 .form-title {
-  @apply mb-4 text-xl font-medium
-/* MD */ md:text-2xl
+  @apply mb-4 text-xl font-medium text-white
+  /* MD */
+  md:text-2xl
 }
+
 .form-sub-container {
   @apply mx-auto items-center
-/* MD */ md:w-11/12 md:flex
+  /* MD */
+  md:w-11/12 md:flex
 }
+
 .col-upload-descript-buttons {
   @apply
-/* MD */ md:w-full md:mb-auto md:flex md:flex-col
+  /* MD */
+  md:w-full md:mb-auto md:flex md:flex-col
 }
+
 .form-input-container {
   @apply m-4 flex flex-col
-/* SM */ sm:w-10/12 sm:mx-auto
+  /* SM */
+  sm:w-10/12 sm:mx-auto
 }
+
 .input-lbl {
   @apply input input-bordered p-2 rounded-md border-slate-400
 }
+
 .textarea-lbl {
   @apply textarea textarea-bordered p-2 rounded-md border-slate-400
 }
+
 .select-lbl {
   @apply select select-bordered pl-2 rounded-md border-slate-400
 }
@@ -69,114 +89,161 @@ nav {
 // Sign-up & Log-in ///////////////////////////////////////////////////////////////////////
 
 .auth-cta-container {
-  @apply flex flex-col gap-2 items-center 
+  @apply flex flex-col gap-2 items-center text-white
 }
 
 // Announces page ///////////////////////////////////////////////////////////////////////
 
 .filter-collapse {
   @apply w-11/12 mx-auto bg-base-200 border border-slate-300 rounded-box drop-shadow-md
-/* MD */ md:w-10/12 md:mb-2
-/* LG */ lg:ml-20
+  /* MD */
+  md:w-10/12 md:mb-2
+  /* LG */
+  lg:ml-20
 }
+
 .filters-container {
   @apply inline-flex inline-size-lbl flex-wrap gap-2
 }
+
 .cards-container {
   @apply py-4 flex flex-col gap-2
-/* MD */ md:py-8
+  /* MD */
+  md:py-8
 }
 
 // Announce-details page ///////////////////////////////////////////////////////////////////////
 
 .details-container-1 {
   @apply py-4 mx-auto justify-center
-/* SM */ sm:w-10/12 sm:mb-6 sm:py-6
-/* MD */ md:w-full md:flex md:justify-around
-/* LG */ lg:w-10/12
+  /* SM */
+  sm:w-10/12 sm:mb-6 sm:py-6
+  /* MD */
+  md:w-full md:flex md:justify-around
+  /* LG */
+  lg:w-10/12
 }
+
 .details-container-2 {
   @apply flex flex-col
 }
+
 .carousel-container {
   @apply h-72 carousel rounded-box
-/* SM */ sm:h-96
-/* SM */ md:w-11/12
-/* SM */ lg:w-10/12
+  /* SM */
+  sm:h-96
+  /* SM */
+  md:w-11/12
+  /* SM */
+  lg:w-10/12
 }
+
 .announce-info-container {
-  @apply pt-4 px-2 
-/* LG */ lg:w-11/12 lg:px-0
+  @apply pt-4 px-2
+  /* LG */
+  lg:w-11/12 lg:px-0
 }
+
 .category-price-line {
   @apply w-full mb-2 flex justify-between
 }
+
 .announce-badges {
   @apply p-3 badge badge-outline
 }
+
 .announce-user-stats-container {
   @apply p-4 mb-4 rounded flex flex-col justify-center
-/* LG */ lg:px-4 lg:flex lg:flex-col lg:justify-center
+  /* LG */
+  lg:px-4 lg:flex lg:flex-col lg:justify-center
 }
+
 .announce-user-profile {
-  @apply mb-4 flex gap-4 items-center justify-center 
-/* MD */ md:mb-0 md:flex-col
+  @apply mb-4 flex gap-4 items-center justify-center
+  /* MD */
+  md:mb-0 md:flex-col
 }
+
 .announce-user-picture {
-  @apply  mx-auto rounded-full object-cover
-/* SM */ sm:w-4/12
-/* MD */ md:w-28 md:h-28
+  @apply mx-auto rounded-full object-cover
+  /* SM */
+  sm:w-4/12
+  /* MD */
+  md:w-28 md:h-28
 }
+
 .announce-user-info {
   @apply gap-1 flex flex-col items-center justify-between rounded-lg
-/* MD */ md:mb-4
-/* LG */ lg:w-8/12
+  /* MD */
+  md:mb-4
+  /* LG */
+  lg:w-8/12
 }
+
 .announce-user-links {
   @apply mb-4 px-2 flex justify-center items-center gap-4
-/* MD */ md:hidden
+  /* MD */
+  md:hidden
 }
+
 .announce-statistics-info {
   @apply mb-4 p-2 flex flex-col gap-1 rounded-lg
-/* SM */ sm:gap-2
-/* MD */ md:gap-3
-/* LG */ lg:px-0
+  /* SM */
+  sm:gap-2
+  /* MD */
+  md:gap-3
+  /* LG */
+  lg:px-0
 }
+
 .announce-titles-divider {
   @apply divider mb-8 divide-black w-full
 }
+
 .section-title {
   @apply text-2xl font-mono font-medium text-gray-800
 }
+
 .announce-statistics-lines {
   @apply w-full flex justify-between
 }
+
 .announce-timer-container {
   @apply mx-auto flex flex-col items-center justify-around text-center bg-white
-/* SM */ sm:place-content-center sm:rounded-lg
+  /* SM */
+  sm:place-content-center sm:rounded-lg
 }
+
 .announce-timer-boxes {
   @apply flex flex-col rounded-box text-neutral-content
 }
+
 .announce-timer-times {
   @apply countdown p-2 text-3xl font-mono bg-neutral rounded-xl
-/* SM */ sm:text-2xl
+  /* SM */
+  sm:text-2xl
 }
 
 // Summary-Announce page ///////////////////////////////////////////////////////////////////////
 
 .summary-container {
   @apply py-3 flex flex-col gap-2 items-center
-/* MD */ md:w-11/12 md:mx-auto md:py-6 md:flex-row md:gap-4
-/* LG */ lg:gap-12
+  /* MD */
+  md:w-11/12 md:mx-auto md:py-6 md:flex-row md:gap-4
+  /* LG */
+  lg:gap-12
 }
+
 .summary-main-info-container {
-  @apply w-11/12 flex flex-col gap-4
-/* MD */ md:w-1/2
+  @apply w-11/12 p-2 flex flex-col gap-4 text-white bg-[#444444] border border-slate-100 rounded-md
+  /* MD */
+  md:w-1/2 md:p-4
 }
+
 .summary-main-info {
   @apply flex gap-4 items-center
 }
+
 .summary-description {
   @apply flex flex-col gap-2
 }
@@ -186,37 +253,52 @@ nav {
 // User-profile
 .profile-container-1 {
   @apply w-11/12 mx-auto flex flex-col gap-4
-/* MD */ lg:p-4
+  /* LG */
+  lg:p-4
 }
+
 .profile-container-2 {
   @apply flex flex-col gap-2
-/* MD */ md:gap-4
+  /* MD */
+  md:gap-4
 }
+
 .profile-container-3 {
   @apply flex flex-col gap-2
-/* MD */ md:flex-row md:gap-4
+  /* MD */
+  md:flex-row md:gap-4
 }
+
 .circle-surface {
-  @apply w-16 h-16 flex rounded-full bg-slate-100 drop-shadow-md
-/* MD */ md:w-20 md:h-20
-/* MD */ lg:w-24 lg:h-24
+  @apply w-16 h-16 flex rounded-full bg-slate-100 drop-shadow-md text-black
+  /* MD */
+  md:w-20 md:h-20
 }
+
 .profile-card {
-  @apply w-full md:w-1/2 p-4 flex flex-col-reverse gap-2 bg-white border border-slate-300 drop-shadow-md rounded-lg
-/* MD */ md:flex-row
+  @apply w-full md:w-1/2 p-4 flex flex-col-reverse gap-2 bg-[#444444] border border-slate-300 drop-shadow-md rounded-lg text-white
+  /* MD */
+  md:flex-row
 }
+
 .profile-card-content {
   @apply w-full
-/* MD */ md:flex md:flex-col md:gap-1
+  /* MD */
+  md:flex md:flex-col md:gap-1
 }
+
 .profile-card-title {
   @apply text-xl font-semibold mb-2
 }
+
 .profile-card-img {
   @apply w-full flex justify-center
-/* MD */ md:w-1/4 md:items-center
+  /* MD */
+  lg:w-1/2 md:items-center
 }
+
 .profile-menu-cards {
-  @apply  p-4 bg-white border-slate-200 drop-shadow-md rounded-lg
-/* MD */ md:w-1/4
+  @apply p-4 bg-[#444444] border-slate-200 drop-shadow-md rounded-lg text-white
+  /* MD */
+  md:w-1/4
 }

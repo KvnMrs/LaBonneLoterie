@@ -1,15 +1,9 @@
-<div
-  *ngIf="data"
-  class="card w-11/12 mx-auto mb-4 py-2 border-b borber-b-2 border-gray-600 rounded-none | md:py-4 md:card-side | lg:w-9/12 lg:ml-20"
->
+<div *ngIf="data"
+  class="card w-11/12 mx-auto mb-4 p-2 border-b borber-b-2 border-gray-600 bg-[#212121] text-white | md:py-4 md:card-side | lg:w-9/12 lg:ml-20">
   <div (click)="seeDetails()" class="w-full flex flex-col gap-4 | md:flex-row">
     <!-- IMG part -->
     <figure class="sm:w-10/12 | md:w-fit md:min-w-[33%]">
-      <img
-        class="object-fill h-56 rounded-md"
-        [src]="data.imgsAnnounce[0]"
-        [alt]="data.title"
-      />
+      <img class="object-fill h-56 rounded-md" [src]="data.imgsAnnounce[0]" [alt]="data.title" />
     </figure>
     <div class="card-body py-2 px-0 cursor-pointer | md:w-9/12 md:py-0 md:pl-4">
       <div class="flex flex-col gap-2 mb-4">
@@ -28,20 +22,11 @@
 
   <div class="flex justify-between items-center | md:flex-col">
     <!-- Timer { DESKTOP } -->
-    <app-timer
-      class="hidden | md:flex"
-      [announceId]="data.id"
-      [endDate]="data.endAt.seconds"
-      [hideText]="true"
-    ></app-timer>
-    <button
-      *ngIf="currentUser"
-      (click)="toggleFavorites(data.id, currentUser.uid)"
-      class="btn btn-circle btn-md btn-ghost | md:ml-auto"
-    >
-      <app-svg-add-to-favorites
-        [addedToFavorite]="addedToFavorite"
-      ></app-svg-add-to-favorites>
+    <app-timer class="hidden | md:flex" [announceId]="data.id" [endDate]="data.endAt.seconds"
+      [hideText]="true"></app-timer>
+    <button *ngIf="currentUser" (click)="toggleFavorites(data.id, currentUser.uid)"
+      class="btn btn-circle btn-md btn-ghost | md:ml-auto">
+      <app-svg-add-to-favorites [addedToFavorite]="addedToFavorite"></app-svg-add-to-favorites>
     </button>
   </div>
 </div>

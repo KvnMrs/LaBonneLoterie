@@ -1,33 +1,17 @@
 <div class="main-container">
   <lbl-header>Publier votre annonce !</lbl-header>
-  <form
-    [formGroup]="createAnnounceForm"
-    class="form-container"
-    (ngSubmit)="onSubmit()"
-  >
+  <form [formGroup]="createAnnounceForm" class="form-container" (ngSubmit)="onSubmit()">
     <h1 class="form-title">Votre annonce</h1>
     <div class="form-sub-container">
       <div class="self-start md:w-full">
         <div class="form-input-container">
-          <label class="mb-1" for="title">Titre:</label>
-          <input
-            class="input input-lbl"
-            type="text"
-            id="title"
-            name="title"
-            formControlName="title"
-            placeholder="Titre"
-            required
-          />
+          <label class="mb-1 text-white" for="title">Titre:</label>
+          <input class="input input-lbl" type="text" id="title" name="title" formControlName="title" placeholder="Titre"
+            required />
         </div>
         <div class="form-input-container">
-          <label class="mb-1" for="category">Catégorie:</label>
-          <select
-            class="select-lbl"
-            id="category"
-            name="category"
-            formControlName="category"
-          >
+          <label class="mb-1 text-white" for="category">Catégorie:</label>
+          <select class="select-lbl" id="category" name="category" formControlName="category">
             <option value="" selected hidden>Catégorie</option>
             <option *ngFor="let category of announceCategories" [value]="category">
               {{ category }}
@@ -35,162 +19,75 @@
           </select>
         </div>
         <div class="form-input-container">
-          <label class="mb-1" for="tags">Ajouter un tag:</label>
-          <input
-            class="input input-lbl"
-            type="text"
-            id="tags"
-            name="tags"
-            formControlName="tags"
-            placeholder="Tag"
-            required
-          />
+          <label class="mb-1 text-white" for="tags">Ajouter un tag:</label>
+          <input class="input input-lbl" type="text" id="tags" name="tags" formControlName="tags" placeholder="Tag"
+            required />
         </div>
         <div class="form-input-container">
-          <label class="mb-1" for="estimate">Estimation du lot:</label>
-          <input
-            class="input input-lbl"
-            type="number"
-            id="estimate"
-            name="estimate"
-            formControlName="estimate"
-            placeholder="0 $"
-            required
-          />
+          <label class="mb-1 text-white" for="estimate">Estimation du lot:</label>
+          <input class="input input-lbl" type="number" id="estimate" name="estimate" formControlName="estimate"
+            placeholder="0 $" required />
         </div>
         <div class="form-input-container">
-          <label class="mb-1" for="ticketPrice">Prix ticket:</label>
-          <input
-            class="input-lbl"
-            type="number"
-            id="ticketPrice"
-            name="ticketPrice"
-            formControlName="ticketPrice"
-            placeholder="Prix pour un ticket"
-            required
-          />
+          <label class="mb-1 text-white" for="ticketPrice">Prix ticket:</label>
+          <input class="input-lbl" type="number" id="ticketPrice" name="ticketPrice" formControlName="ticketPrice"
+            placeholder="Prix pour un ticket" required />
         </div>
         <div class="form-input-container">
-          <label class="mb-1" for="maxTickets"
-            >Nombre de tickets à vendre:</label
-          >
-          <input
-            class="input-lbl"
-            type="number"
-            id="maxTickets"
-            name="maxTickets"
-            formControlName="maxTickets"
-            placeholder="Max"
-            required
-          />
+          <label class="mb-1 text-white" for="maxTickets">Nombre de tickets à vendre:</label>
+          <input class="input-lbl" type="number" id="maxTickets" name="maxTickets" formControlName="maxTickets"
+            placeholder="Max" required />
         </div>
         <div class="form-input-container">
-          <label class="mb-1" for="minTickets"
-            >Nombre de tickets minimum:</label
-          >
-          <input
-            class="input input-lbl"
-            type="number"
-            id="minTickets"
-            name="minTickets"
-            formControlName="minTickets"
-            placeholder="Min"
-            required
-          />
+          <label class="mb-1 text-white" for="minTickets">Nombre de tickets minimum:</label>
+          <input class="input input-lbl" type="number" id="minTickets" name="minTickets" formControlName="minTickets"
+            placeholder="Min" required />
         </div>
       </div>
       <div class="col-upload-descript-buttons">
         <div class="md:w-full mt-0 mb-8">
           <div class="form-input-container">
-            <label class="mb-1" for="endDate">Date du tirage:</label>
-            <input
-              class="input input-lbl"
-              type="date"
-              id="endDate"
-              name="endDate"
-              formControlName="endDate"
-              required
-            />
+            <label class="mb-1 text-white" for="endDate">Date du tirage:</label>
+            <input class="input input-lbl" type="date" id="endDate" name="endDate" formControlName="endDate" required />
           </div>
           <div class="form-input-container">
-            <label class="mb-1" for="endHour">Heure du tirage:</label>
-            <input
-              class="input input-lbl"
-              type="time"
-              id="endHour"
-              name="endHour"
-              formControlName="endHour"
-              placeholder=""
-              required
-            />
+            <label class="mb-1 text-white" for="endHour">Heure du tirage:</label>
+            <input class="input input-lbl" type="time" id="endHour" name="endHour" formControlName="endHour"
+              placeholder="" required />
           </div>
           <div class="form-input-container">
-            <label class="mb-1" for="imgsAnnounce"
-              >Télécharger un fichier:</label
-            >
+            <label class="mb-1 text-white" for="imgsAnnounce">Télécharger un fichier:</label>
             <div class="mb-4">
-              <input
-                type="file"
-                id="imgsAnnounce"
-                name="imgsAnnounce"
-                formControlName="imgsAnnounce"
+              <input type="file" id="imgsAnnounce" name="imgsAnnounce" formControlName="imgsAnnounce"
                 (change)="onChange($event)"
                 class="file-input rounded-r-none file-input-bordered file-input-info file-input-sm w-full | md:file-input-md"
-                required
-                #fileInput
-              />
+                required #fileInput />
             </div>
             <div class="mb-4 self-center gap-1">
-              <img
-                id="previewImage"
-                src="{{ this.file }}"
-                alt=""
-                class="{{
+              <img id="previewImage" src="{{ this.file }}" alt="" class="{{
                   this.file ? 'w-28 h-28 rounded-md lg:w-40 lg:h-40' : 'hidden'
-                }}"
-              />
-              <p class="font-semibold">{{ this.file ? this.file.name : "" }}</p>
+                }}" />
+              <p class="font-semibold text-white">{{ this.file ? this.file.name : "" }}</p>
             </div>
-            <button
-              [disabled]="!this.file"
-              class="btn btn-success btn-sm | md:w-2/3 md:mx-auto"
-              type="button"
-              (click)="onPrepareUploadImg()"
-            >
+            <button [disabled]="!this.file" class="btn btn-success btn-sm | md:w-2/3 md:mx-auto" type="button"
+              (click)="onPrepareUploadImg()">
               importer
             </button>
-            <div
-              *ngFor="let selectedImg of selectedImgs; let i = index"
-              class="flex"
-            >
-              <button
-                type="button"
-                class="btn btn-sm btn-ghost btn-circle"
-                (click)="removeShortLink(i)"
-              >
+            <div *ngFor="let selectedImg of selectedImgs; let i = index" class="flex">
+              <button type="button" class="btn btn-sm btn-ghost btn-circle text-white" (click)="removeShortLink(i)">
                 x
               </button>
-              <p class="text-lg">{{ selectedImg!.name }}</p>
+              <p class="text-lg text-white">{{ selectedImg!.name }}</p>
             </div>
           </div>
           <div class="form-input-container">
-            <label class="label" for="description">Description:</label>
-            <textarea
-              class="textarea-lbl"
-              type="text"
-              id="description"
-              name="description"
-              formControlName="description"
-              placeholder="250 charatères maximum..."
-            ></textarea>
+            <label class="mb-1 text-white" for="description">Description:</label>
+            <textarea class="textarea-lbl" type="text" id="description" name="description" formControlName="description"
+              placeholder="250 charatères maximum..."></textarea>
           </div>
         </div>
         <div class="flex justify-end | md:mr-6">
-          <button
-            (click)="onSubmit()"
-            type="button"
-            class="btn btn-sm btn-stroke btn-primary | md:btn-md"
-          >
+          <button (click)="onSubmit()" type="button" class="btn btn-sm btn-stroke btn-primary | md:btn-md">
             Vérifier votre annonce
           </button>
         </div>

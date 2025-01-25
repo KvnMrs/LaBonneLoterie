@@ -1,121 +1,68 @@
-<nav
-  *ngIf="!currentUser; else LoginNav"
-  role="navigation"
-  aria-label="main menu"
-  class="navbar z-50 mb-4 flex-col | sm:px-4 sm:flex-row"
->
+<nav *ngIf="!currentUser; else LoginNav" role="navigation" aria-label="main menu"
+  class="navbar z-50 flex-col bg-[#212121] | sm:px-4 sm:flex-row">
   <div class="flex">
-    <a
-      [routerLink]="['/recherche']"
-      class="btn btn-ghost normal-case logo-letters"
-      >LeBonLot</a
-    >
+    <a [routerLink]="['/recherche']" class="btn btn-ghost normal-case logo-letters">LeBonLot</a>
   </div>
   <ul class="gap-1">
     <li>
-      <a
-        [routerLink]="['/recherche']"
-        class="hidden md:btn md:btn-ghost md:rounded-btn"
-        >Voir les annonces</a
-      >
+      <a [routerLink]="['/recherche']" class="hidden md:btn md:btn-primary  md:rounded-btn">Voir les
+        annonces</a>
     </li>
     <li>
-      <a
-        [routerLink]="['/inscription']"
-        class="btn btn-sm btn-outline btn-primary | md:btn-md"
-        >S'inscrire</a
-      >
+      <a [routerLink]="['/inscription']" class="btn btn-sm btn-outline btn-primary | md:btn-md">S'inscrire</a>
     </li>
     <li>
-      <a
-        [routerLink]="['/connexion']"
-        class="btn btn-sm btn-outline btn-primary | md:btn-md"
-        >Se connecter</a
-      >
+      <a [routerLink]="['/connexion']" class="btn btn-sm btn-outline btn-primary | md:btn-md">Se connecter</a>
     </li>
   </ul>
 </nav>
 
 <ng-template #LoginNav>
-  <nav
-    role="navigation"
-    aria-label="Menu principal"
-    class="navbar z-50 | sm:px-4"
-  >
+  <nav role="navigation" aria-label="Menu principal" class="navbar z-50 bg-[#212121] | sm:px-4">
     <div class="flex-1">
-      <a
-        [routerLink]="['/recherche']"
-        class="btn btn-ghost normal-case logo-letters"
-        >LeBonLot</a
-      >
+      <a [routerLink]="['/recherche']" class="btn btn-ghost normal-case logo-letters">LeBonLot</a>
     </div>
     <!-- Add announce link -->
     <div class="flex-none">
       <!-- Menu Nav { MOBILE } -->
       <ul class="menu menu-horizontal px-1">
-        <li
-          tabindex="0"
-          class="dropdown dropdown-bottom dropdown-end | md:hidden"
-        >
-          <a>
+        <li tabindex="0" class="dropdown dropdown-bottom dropdown-end | md:hidden">
+          <a class="text-white">
             Menu
-            <svg
-              class="fill-current"
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
-              />
+            <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+              <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
             </svg>
           </a>
-          <ul
-            class="p-1 border-b border-l border-r border-slate-300 bg-base-200 right-0 top-14 divide-y"
-          >
+          <ul class="p-1 border-b border-l border-r border-slate-300 bg-[#212121] text-white -right-3 top-14 divide-y">
             <li>
-              <a
-                class="flex md:gap-0.5 md:btn md:btn-ghost md:rounded-btn"
-                [routerLink]="['/ajout-annonce']"
-                ><app-svg-cross-add></app-svg-cross-add>
-                <p>Ajouter une annonce</p></a
-              >
+              <a class="flex md:gap-0.5 md:btn md:btn-ghost md:rounded-btn"
+                [routerLink]="['/ajout-annonce']"><app-svg-cross-add></app-svg-cross-add>
+                <p>Ajouter une annonce</p>
+              </a>
             </li>
             <li>
-              <a
-                [routerLink]="['/recherche']"
-                class="flex md:gap-0.5 md:btn md:btn-ghost md:rounded-btn"
-              >
+              <a [routerLink]="['/recherche']" class="flex md:gap-0.5 md:btn md:btn-ghost md:rounded-btn">
                 <app-svg-search></app-svg-search>
                 <p>Rechercher</p>
               </a>
             </li>
             <!-- Profile link -->
             <li>
-              <a
-                [routerLink]="['/profil']"
-                class="md:gap-0.5 md:btn md:btn-ghost md:rounded-btn"
-                ><app-svg-user></app-svg-user>
-                <p>Profil</p></a
-              >
+              <a [routerLink]="['/profil']"
+                class="md:gap-0.5 md:btn md:btn-ghost md:rounded-btn"><app-svg-user></app-svg-user>
+                <p>Profil</p>
+              </a>
             </li>
             <!-- Favorites link -->
             <li>
-              <a
-                [routerLink]="['/favoris']"
-                class="md:gap-0.5 md:btn md:btn-ghost md:rounded-btn"
-              >
+              <a [routerLink]="['/favoris']" class="md:gap-0.5 md:btn md:btn-ghost md:rounded-btn">
                 <app-svg-add-to-favorites></app-svg-add-to-favorites>
                 <p>Favoris</p>
               </a>
             </li>
             <!-- Message link -->
             <li>
-              <a
-                [routerLink]="['/']"
-                class="md:gap-0.5 md:btn md:btn-ghost md:rounded-btn"
-              >
+              <a [routerLink]="['/']" class="md:gap-0.5 md:btn md:btn-ghost md:rounded-btn">
                 <app-svg-message></app-svg-message>
                 <p>Messages</p>
               </a>
@@ -124,55 +71,42 @@
         </li>
         <!-- Menu Nav { DESKTOP } -->
         <li>
-          <a
-            [routerLink]="['/ajout-annonce']"
-            class="hidden mx-0.5 md:flex md:items-center md:gap-0.1 md:btn md:btn-primary md:rounded-btn"
-            ><app-svg-cross-add color="white" size="20"></app-svg-cross-add>
-            <p>Ajouter une annonce</p></a
-          >
+          <a [routerLink]="['/ajout-annonce']"
+            class="hidden mx-0.5 md:flex md:items-center md:gap-0.1 md:btn md:btn-primary md:rounded-btn"><app-svg-cross-add
+              color="white" size="20"></app-svg-cross-add>
+            <p>Ajouter une annonce</p>
+          </a>
         </li>
         <!-- Search link -->
         <li>
-          <a
-            style="flex-flow: column"
-            [routerLink]="['/recherche']"
-            class="hidden md:gap-0.5 md:btn md:btn-ghost md:rounded-btn"
-          >
+          <a style="flex-flow: column" [routerLink]="['/recherche']"
+            class="hidden md:gap-0.5 md:btn md:btn-ghost md:rounded-btn md:text-white">
             <app-svg-search></app-svg-search>
             <p style="font-size: 0.6rem">Rechercher</p>
           </a>
         </li>
         <!-- Favorites link -->
         <li>
-          <a
-            style="flex-flow: column"
-            [routerLink]="['/favoris']"
-            class="hidden md:gap-0.5 md:btn md:btn-ghost md:rounded-btn"
-          >
+          <a style="flex-flow: column" [routerLink]="['/favoris']"
+            class="hidden md:gap-0.5 md:btn md:btn-ghost md:rounded-btn md:text-white">
             <app-svg-add-to-favorites></app-svg-add-to-favorites>
             <p style="font-size: 0.6rem">Favoris</p>
           </a>
         </li>
         <!-- Message link -->
         <li>
-          <a
-            style="flex-flow: column"
-            [routerLink]="['/']"
-            class="hidden md:gap-0.5 md:btn md:btn-ghost md:rounded-btn"
-          >
+          <a style="flex-flow: column" [routerLink]="['/']"
+            class="hidden md:gap-0.5 md:btn md:btn-ghost md:rounded-btn md:text-white">
             <app-svg-message></app-svg-message>
             <p style="font-size: 0.6rem">Messages</p>
           </a>
         </li>
         <!-- Profile link -->
         <li>
-          <a
-            style="flex-flow: column"
-            [routerLink]="['/profil']"
-            class="hidden md:gap-0.5 md:btn md:btn-ghost md:rounded-btn"
-            ><app-svg-user></app-svg-user>
-            <p style="font-size: 0.6rem">Profil</p></a
-          >
+          <a style="flex-flow: column" [routerLink]="['/profil']"
+            class="hidden md:gap-0.5 md:btn md:btn-ghost md:rounded-btn md:text-white"><app-svg-user></app-svg-user>
+            <p style="font-size: 0.6rem">Profil</p>
+          </a>
         </li>
       </ul>
     </div>
