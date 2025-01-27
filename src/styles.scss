@@ -107,7 +107,7 @@ nav {
 // Announce-details page ///////////////////////////////////////////////////////////////////////
 
 .details-container-1 {
-  @apply flex flex-col py-4 mx-auto justify-center gap-4
+  @apply py-4 mx-auto flex flex-col gap-4 justify-center
   /* SM */
   sm:w-10/12 sm:mb-6 sm:py-6
   /* MD */
@@ -117,8 +117,7 @@ nav {
 }
 
 .details-container-2 {
-  @apply flex flex-col gap-4
-  /* MD */
+  @apply flex flex-col gap-4 text-white
   md:self-start
 }
 
@@ -190,8 +189,8 @@ nav {
   lg:px-0
 }
 
-.announce-titles-divider {
-  @apply divider mb-8 divide-black w-full
+.announce-titles {
+  @apply justify-items-center mb-8 w-full
 }
 
 .section-title {
@@ -298,7 +297,10 @@ nav {
 }
 
 // Modals ///////////////////////////////////////////////////////////////////////
-
 .modal-container {
-  @apply modal-box flex flex-col gap-4 bg-[#212121] text-white border border-slate-300
+  @apply modal-box flex flex-col gap-4 bg-[#212121] text-white border border-slate-100
+}
+
+.modal-title {
+  @apply mb-6 text-xl font-bold text-primary
 }
