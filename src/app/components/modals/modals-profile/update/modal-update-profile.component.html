@@ -1,8 +1,8 @@
 <input type="checkbox" id="modal-update-profile" class="modal-toggle" />
 <form *ngIf="userData" class="modal" (ngSubmit)="onUpdateUserProfile()" [formGroup]="updateProfileForm">
-  <div class="modal-box relative bg-[#212121] border border-slate-100 lg:mt-16">
+  <div class="modal-container lg:mt-16">
     <label for="modal-update-profile" class="btn btn-sm btn-circle absolute right-3 top-3">✕</label>
-    <h3 class="mb-6 text-xl font-bold text-white">Modifier votre profil:</h3>
+    <h3 class="modal-title">Modifier votre profil:</h3>
 
     <div class="mb-6 flex flex-col gap-3 | lg:mb-8">
       <div class="flex gap-3">

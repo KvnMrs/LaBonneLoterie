@@ -4,14 +4,6 @@
 
 // Global ///////////////////////////////////////////////////////////////////////
 
-.text-lbl {
-  color: #712CF9;
-}
-
-.text-nav:hover {
-  color: #0D6EFD;
-}
-
 .main-container {
   @apply px-2 py-4 flex flex-col min-h-screen bg-[#121212]
   /* MD */
@@ -33,7 +25,7 @@ nav {
 }
 
 .logo-letters {
-  @apply text-2xl font-semibold text-lbl
+  @apply text-2xl font-semibold text-primary
   /* MD */
   md:text-2xl
 }
@@ -75,7 +67,7 @@ nav {
 }
 
 .input-lbl {
-  @apply input input-bordered p-2 rounded-md border-slate-400
+  @apply input input-bordered p-2 rounded-md border-slate-400 text-black
 }
 
 .textarea-lbl {
@@ -301,4 +293,13 @@ nav {
   @apply p-4 bg-[#444444] border-slate-200 drop-shadow-md rounded-lg text-white
   /* MD */
   md:w-1/4
+}
+
+// User-Profile ///////////////////////////////////////////////////////////////////////
+.modal-container {
+  @apply modal-box flex flex-col gap-4 bg-[#212121] text-white border border-slate-100
+}
+
+.modal-title {
+  @apply mb-6 text-xl font-bold text-primary
 }
