@@ -4,14 +4,6 @@
 
 // Global ///////////////////////////////////////////////////////////////////////
 
-.text-lbl {
-  color: #712CF9;
-}
-
-.text-nav:hover {
-  color: #0D6EFD;
-}
-
 .main-container {
   @apply px-2 py-4 flex flex-col min-h-screen bg-[#121212]
   /* MD */
@@ -33,7 +25,7 @@ nav {
 }
 
 .logo-letters {
-  @apply text-2xl font-semibold text-lbl
+  @apply text-2xl font-semibold text-primary
   /* MD */
   md:text-2xl
 }
@@ -75,7 +67,7 @@ nav {
 }
 
 .input-lbl {
-  @apply input input-bordered p-2 rounded-md border-slate-400
+  @apply input input-bordered p-2 rounded-md border-slate-400 text-black
 }
 
 .textarea-lbl {
@@ -115,17 +107,19 @@ nav {
 // Announce-details page ///////////////////////////////////////////////////////////////////////
 
 .details-container-1 {
-  @apply py-4 mx-auto justify-center
+  @apply flex flex-col py-4 mx-auto justify-center gap-4
   /* SM */
   sm:w-10/12 sm:mb-6 sm:py-6
   /* MD */
-  md:w-full md:flex md:justify-around
+  md:w-full md:flex-row md:justify-around
   /* LG */
   lg:w-10/12
 }
 
 .details-container-2 {
-  @apply flex flex-col
+  @apply flex flex-col gap-4
+  /* MD */
+  md:self-start
 }
 
 .carousel-container {
@@ -139,7 +133,7 @@ nav {
 }
 
 .announce-info-container {
-  @apply pt-4 px-2
+  @apply py-4 px-2
   /* LG */
   lg:w-11/12 lg:px-0
 }
@@ -153,7 +147,7 @@ nav {
 }
 
 .announce-user-stats-container {
-  @apply p-4 mb-4 rounded flex flex-col justify-center
+  @apply p-4 rounded-md flex flex-col justify-center bg-[#212121] border border-slate-100
   /* LG */
   lg:px-4 lg:flex lg:flex-col lg:justify-center
 }
@@ -201,7 +195,7 @@ nav {
 }
 
 .section-title {
-  @apply text-2xl font-mono font-medium text-gray-800
+  @apply text-2xl font-mono font-medium
 }
 
 .announce-statistics-lines {
@@ -209,7 +203,7 @@ nav {
 }
 
 .announce-timer-container {
-  @apply mx-auto flex flex-col items-center justify-around text-center bg-white
+  @apply mx-auto flex flex-col items-center justify-around text-center
   /* SM */
   sm:place-content-center sm:rounded-lg
 }
@@ -301,4 +295,10 @@ nav {
   @apply p-4 bg-[#444444] border-slate-200 drop-shadow-md rounded-lg text-white
   /* MD */
   md:w-1/4
+}
+
+// Modals ///////////////////////////////////////////////////////////////////////
+
+.modal-container {
+  @apply modal-box flex flex-col gap-4 bg-[#212121] text-white border border-slate-300
 }
