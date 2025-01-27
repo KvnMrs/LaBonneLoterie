@@ -6,25 +6,12 @@
     <div class="details-container-2 | md:w-1/2">
       <!-- carousel-->
       <div class="carousel-container">
-        <div
-          *ngFor="let imgUrl of currentAnnounce.imgsAnnounce; let i = index"
-          id="slide{{ i + 1 }}"
-          class="carousel-item relative w-full"
-        >
+        <div *ngFor="let imgUrl of currentAnnounce.imgsAnnounce; let i = index" id="slide{{ i + 1 }}"
+          class="carousel-item relative w-full">
           <img [src]="imgUrl" class="w-full" />
-          <div
-            class="absolute flex justify-between transform -translate-y-1/2 left-2 right-2 top-1/2"
-          >
-            <a
-              href="#slide{{ i - 1 }}"
-              class="btn btn-circle btn-sm | md:btn-md"
-              >❮</a
-            >
-            <a
-              href="#slide{{ i + 1 }}"
-              class="btn btn-circle btn-sm | md:btn-md"
-              >❯</a
-            >
+          <div class="absolute flex justify-between transform -translate-y-1/2 left-2 right-2 top-1/2">
+            <a href="#slide{{ i - 1 }}" class="btn btn-circle btn-sm | md:btn-md">❮</a>
+            <a href="#slide{{ i + 1 }}" class="btn btn-circle btn-sm | md:btn-md">❯</a>
           </div>
         </div>
       </div>
@@ -35,7 +22,7 @@
           <h2 class="text-2xl">{{ currentAnnounce.category }}</h2>
           <span class="text-2xl font-semibold">{{
             currentAnnounce.ticketPrice | currency : "EUR"
-          }}</span>
+            }}</span>
         </div>
         <div class="mb-3">
           <h3 class="text-xl mb-2">{{ currentAnnounce.title }}</h3>
@@ -54,7 +41,7 @@
         <!-- Description -->
         <div>
           <h3 class="card-title mb-2">Description:</h3>
-          <p class="text-gray-800 leading-normal">
+          <p class="leading-normal">
             {{ currentAnnounce.description }}
           </p>
         </div>
@@ -66,7 +53,7 @@
       <div class="announce-user-stats-container">
         <!-- Statistics -->
         <div class="announce-statistics-info">
-          <div class="announce-titles-divider">
+          <div class="announce-titles">
             <h3 class="section-title">Statistiques</h3>
           </div>
           <div class="announce-statistics-lines">
@@ -98,71 +85,36 @@
         <app-timer [announceId]="currentAnnounce.id" [endDate]="currentAnnounce.endAt.seconds"></app-timer>
       </div>
       <!-- User -->
-      <div
-        class="announce-user-stats-container border border-slate-300 | sm:mx-auto | md:w-10/12"
-      >
+      <div class="announce-user-stats-container | sm:mx-auto | md:w-full">
         <div class="announce-user-profile">
-          <img
-            class="w-24 mask mask-squircle"
-            [src]="authorAnnounce.imgProfile"
-          />
+          <img class="w-24 mask mask-squircle" [src]="authorAnnounce.imgProfile" />
           <div class="announce-user-info">
-            <p class="self-center text-gray-800 font-bold text-xl">
+            <p class="self-center font-bold text-xl">
               {{ authorAnnounce.firstname }}
               {{ authorAnnounce.lastname }}
             </p>
             <div class="rating rating-md | md:mb-4 | lg:mb-0">
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-yellow-300"
-                checked
-              />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-yellow-300"
-                checked
-              />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-yellow-300"
-                checked
-              />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-yellow-300"
-                checked
-              />
-              <input
-                type="radio"
-                name="rating-9"
-                class="mx-0.5 mask mask-star-2 bg-primary"
-              />
+              <input type="radio" name="rating-9" class="mx-0.5 mask mask-star-2 bg-yellow-300" checked />
+              <input type="radio" name="rating-9" class="mx-0.5 mask mask-star-2 bg-yellow-300" checked />
+              <input type="radio" name="rating-9" class="mx-0.5 mask mask-star-2 bg-yellow-300" checked />
+              <input type="radio" name="rating-9" class="mx-0.5 mask mask-star-2 bg-yellow-300" checked />
+              <input type="radio" name="rating-9" class="mx-0.5 mask mask-star-2 bg-primary" />
             </div>
-            <a class="link text-blue-500 | md:hidden | lg:flex"
-              >Voir les 29 annonces</a
-            >
+            <a class="link text-blue-500 | md:hidden | lg:flex">Voir les 29 annonces</a>
           </div>
         </div>
         <!-- User CTA { MOBILE }  -->
         <div class="btn-group flex justify-center gap-0.5 | md:hidden">
-          <button class="ml-auto btn btn-info btn-sm btn-outline">
+          <button class="ml-auto btn btn-primary btn-sm btn-outline bg-slate-50">
             Contacter
           </button>
-          <label
-            *ngIf="currentUser"
-            for="modalBuyTicket"
-            class="btn btn-primary btn-sm"
-          >
+          <label *ngIf="currentUser" for="modalBuyTicket" class="btn btn-primary btn-sm">
             acheter
           </label>
         </div>
         <!-- User CTA { DESKTOP }  -->
         <div class="hidden | md:btn-group md:flex md:justify-center gap-0.5">
-          <button class="ml-auto btn btn-info btn-sm btn-outline">
+          <button class="ml-auto btn btn-primary btn-sm btn-outline bg-slate-50">
             Contacter
           </button>
           <label for="modalBuyTicket" class="btn btn-primary btn-sm">
@@ -175,10 +127,7 @@
 </div>
 
 <!-- Buy ticket modal -->
-<app-modal-buy-ticket
-  *ngIf="currentAnnounce"
-  [currentAnnounce]="currentAnnounce"
-></app-modal-buy-ticket>
+<app-modal-buy-ticket *ngIf="currentAnnounce" [currentAnnounce]="currentAnnounce"></app-modal-buy-ticket>
 
 <!-- Good luck modal -->
 <app-modal-wish-good-luck></app-modal-wish-good-luck>
