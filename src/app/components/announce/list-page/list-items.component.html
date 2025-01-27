@@ -30,9 +30,9 @@
   </div>
   <div *ngIf="!announces.length; else cards" class="m-auto flex flex-col items-center">
     <app-eye-closed></app-eye-closed>
-    <p class="mb-4 text-center text-lg font-bold">Aucune annonce en vue, soyez le premier !</p>
+    <p class="mb-4 text-center text-lg font-bold text-white">Aucune annonce en vue, soyez le premier !</p>
     <button type="button">
-      <a class="flex gap-2 btn btn-ghost rounded-btn hover:btn-primary | md:btn-outline"
+      <a class="flex gap-2 btn rounded-btn btn-primary"
         [routerLink]="['/ajout-annonce']"><app-svg-cross-add></app-svg-cross-add>
         <p>Ajouter une annonce</p>
       </a>

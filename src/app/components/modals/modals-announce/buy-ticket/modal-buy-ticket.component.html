@@ -10,31 +10,6 @@
       <input (change)="onChange($event)" id="numberTicketSelected" formControlName="numberTicketSelected" type="number"
         class="input-lbl w-1/3 border-2 bg-base-200" />
     </div>
-    <!-- <table class="w-full py-4">
-      <tbody>
-        <tr class="flex justify-between">
-          <th colspan="2" scope="row" class="font-normal">
-            Nombre de tickets sélectionnés:
-          </th>
-          <td class="font-medium">{{ purchasesInfo.numberTicket }}</td>
-        </tr>
-        <tr class="flex justify-between">
-          <th colspan="2" scope="row" class="font-normal">Nombre de chances</th>
-          <td class="font-medium">
-            {{ purchasesInfo.numberTicket }}/{{
-              currentAnnounce.currentTickets
-            }}5
-          </td>
-        </tr>
-        <div class="divider"></div>
-        <tr class="flex justify-between">
-          <th colspan="2" scope="row" class="font-normal">Prix total:</th>
-          <td class="font-medium">
-            {{ purchasesInfo.totalPrice | currency : "EUR" }}
-          </td>
-        </tr>
-      </tbody>
-    </table> -->
     <div class="modal-action mt-0">
       <label for="modalBuyTicket" class="btn btn-sm btn-outline btn-primary bg-slate-100 | md:btn-md">Annuler</label>
       <label for="modalBuyTicket" class="btn btn-sm btn-primary | md:btn-md" (click)="onBuyTickets()">Valider</label>

@@ -118,6 +118,7 @@ nav {
 
 .details-container-2 {
   @apply flex flex-col gap-4 text-white
+  md:self-start
 }
 
 .carousel-container {
@@ -131,7 +132,7 @@ nav {
 }
 
 .announce-info-container {
-  @apply pt-4 px-2
+  @apply py-4 px-2
   /* LG */
   lg:w-11/12 lg:px-0
 }
@@ -145,7 +146,7 @@ nav {
 }
 
 .announce-user-stats-container {
-  @apply p-4 mb-4 rounded-md flex flex-col justify-center bg-[#212121] border border-slate-300
+  @apply p-4 rounded-md flex flex-col justify-center bg-[#212121] border border-slate-100
   /* LG */
   lg:px-4 lg:flex lg:flex-col lg:justify-center
 }
@@ -295,7 +296,7 @@ nav {
   md:w-1/4
 }
 
-// User-Profile ///////////////////////////////////////////////////////////////////////
+// Modals ///////////////////////////////////////////////////////////////////////
 .modal-container {
   @apply modal-box flex flex-col gap-4 bg-[#212121] text-white border border-slate-100
 }
