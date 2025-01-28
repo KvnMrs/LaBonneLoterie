@@ -21,22 +21,22 @@ export class SummaryAnnounceComponent implements OnInit {
     private announcesService: AnnouncesService,
     private userService: UserService,
     private location: Location
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.dataSubscription = this.announcesService.announceData$.subscribe(
       async (data) => {
         if (!data) return console.error('Error with announce data.')
         this.newAnnounceData = data;
+        console.log(this.newAnnounceData.imgsAnnounce.length)
         const announceAuthor = await this.userService.getUserByID(
           this.newAnnounceData.authorUid
         );
         if (!announceAuthor) throw Error;
-        this.fullNameAuthor = `${
-          announceAuthor['firstname'] +
+        this.fullNameAuthor = `${announceAuthor['firstname'] +
           ' ' +
           announceAuthor['lastname'].toUpperCase()
-        }`;
+          }`;
       }
     );
   }

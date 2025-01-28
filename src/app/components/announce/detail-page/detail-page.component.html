@@ -3,16 +3,11 @@
   <!-- Details container -->
   <div class="details-container-1">
     <!-- Left part -->
-    <div class="details-container-2 gap-4 | md:w-1/2">
+    <div class="details-container-2 gap-4">
       <!-- carousel-->
-      <div class="carousel-container">
-        <div *ngFor="let imgUrl of currentAnnounce.imgsAnnounce; let i = index" id="slide{{ i + 1 }}"
-          class="carousel-item relative w-full">
-          <img [src]="imgUrl" class="w-full" />
-          <div class="absolute flex justify-between transform -translate-y-1/2 left-2 right-2 top-1/2">
-            <a href="#slide{{ i - 1 }}" class="btn btn-circle btn-sm | md:btn-md">❮</a>
-            <a href="#slide{{ i + 1 }}" class="btn btn-circle btn-sm | md:btn-md">❯</a>
-          </div>
+      <div class="carousel carousel-center bg-neutral rounded-box max-w-md w-fit space-x-4 p-4">
+        <div *ngFor="let imgUrl of currentAnnounce.imgsAnnounce;" class="carousel-item">
+          <img [src]="imgUrl" class="rounded-box h-80 " />
         </div>
       </div>
 
@@ -37,7 +32,7 @@
           <div class="announce-badges mx-1">Tag2</div>
           <div class="announce-badges mx-1">Tag3</div>
         </div>
-        <div class="divider lg:mb-8"></div>
+        <div class="divider bg-white h-0.5 mt-8"></div>
         <!-- Description -->
         <div>
           <h3 class="card-title mb-2">Description:</h3>
@@ -85,7 +80,7 @@
         <app-timer [announceId]="currentAnnounce.id" [endDate]="currentAnnounce.endAt.seconds"></app-timer>
       </div>
       <!-- User -->
-      <div *ngIf="authorAnnounce" class="announce-user-stats-container | sm:mx-auto | md:w-full">
+      <div *ngIf="authorAnnounce" class="announce-user-stats-container">
         <div class="announce-user-profile">
           <img class="w-24 mask mask-squircle" [src]="authorAnnounce.imgProfile" />
           <div class="announce-user-info">
