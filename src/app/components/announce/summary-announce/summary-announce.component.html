@@ -1,46 +1,44 @@
 <section class="main-container">
   <lbl-header>Vérifions ensemble !</lbl-header>
-  <article *ngIf="newAnnounceData" class="summary-container">
+  <article *ngIf="newAnnounceData" class="details-container-1">
     <!-- Carousel-->
-    <div class="carousel-container md:w-1/2">
-      <div *ngFor="let imgUrl of newAnnounceData.imgsAnnounce; let i = index" id="slide{{ i + 1 }}"
-        class="carousel-item relative w-full">
-        <img [src]="imgUrl" class="w-full" />
-        <div class="absolute flex justify-between transform -translate-y-1/2 left-2 right-2 top-1/2">
-          <a href="#slide{{ i - 1 }}" class="btn btn-circle btn-sm">❮</a>
-          <a href="#slide{{ i + 1 }}" class="btn btn-circle btn-sm">❯</a>
+    <div class="details-container-2 gap-4">
+      <!-- carousel-->
+      <div *ngIf="newAnnounceData.imgsAnnounce.length == 1"
+        class="carousel carousel-center bg-neutral rounded-box max-w-md w-full justify-center space-x-4 p-4">
+        <div *ngFor="let imgUrl of newAnnounceData.imgsAnnounce;" class="carousel-item">
+          <img [src]="imgUrl" class="rounded-box h-80 " />
         </div>
       </div>
-    </div>
-    <!-- Main info -->
-    <div class="summary-main-info-container">
-      <!-- Announce infos -->
-      <div class="announce-info-container mb-4">
-        <div class="flex flex-col">
-          <div class="flex gap-2 items-center">
-            <h2 class="text-lg">Titre:</h2>
-            <h3 class="text-lg font-semibold">{{ newAnnounceData.title }}</h3>
-          </div>
-          <div class="flex gap-2 items-center">
-            <h2 class="text-lg">Catégorie:</h2>
-            <h3 class="text-lg font-semibold">
-              {{ newAnnounceData.category }}
-            </h3>
-          </div>
-          <div class="mb-2 flex gap-2 items-center">
-            <h2 class="text-lg">Estimation:</h2>
-            <h3 class="text-lg font-semibold">
-              {{ newAnnounceData.estimate }} $
-            </h3>
-          </div>
-          <div class="flex">
-            <div class="announce-badges mr-1">Tag1</div>
-            <div class="announce-badges mx-1">Tag2</div>
-            <div class="announce-badges mx-1">Tag3</div>
-          </div>
+      <div *ngIf="newAnnounceData.imgsAnnounce.length > 1"
+        class="carousel carousel-center bg-neutral rounded-box max-w-md w-full space-x-4 p-4">
+        <div *ngFor="let imgUrl of newAnnounceData.imgsAnnounce;" class="carousel-item">
+          <img [src]="imgUrl" class="rounded-box h-80 " />
         </div>
+      </div>
 
-        <div class="divider lg:mb-8"></div>
+      <!-- Announce infos -->
+      <div class="announce-info-container bg-[#444444] border border-slate-100 rounded-md">
+        <div class="category-price-line">
+          <h2 class="text-2xl">{{ newAnnounceData.category }}</h2>
+          <span class="text-2xl font-semibold">{{
+            newAnnounceData.ticketPrice | currency : "EUR"
+            }}</span>
+        </div>
+        <div class="mb-3">
+          <h3 class="text-xl mb-2">{{ newAnnounceData.title }}</h3>
+          <p>
+            Posté le
+            {{ newAnnounceData.createdAt | date : "dd/MM/yyyy" }}
+          </p>
+        </div>
+        <!-- Badges -->
+        <div class="flex mb-3">
+          <div class="announce-badges mr-1">Tag1</div>
+          <div class="announce-badges mx-1">Tag2</div>
+          <div class="announce-badges mx-1">Tag3</div>
+        </div>
+        <div class="divider bg-white h-0.5 mt-8"></div>
         <!-- Description -->
         <div>
           <h3 class="card-title mb-2">Description:</h3>
@@ -48,7 +46,12 @@
             {{ newAnnounceData.description }}
           </p>
         </div>
-        <div class="divider lg:mb-8"></div>
+      </div>
+    </div>
+    <!-- Main info -->
+    <div class="summary-main-info-container">
+      <!-- Announce infos -->
+      <div class="announce-info-container">
         <div>
           <h3 class="card-title mb-2">Tickets:</h3>
           <div class="flex justify-between">
@@ -70,7 +73,7 @@
             </p>
           </div>
         </div>
-        <div class="divider lg:mb-8"></div>
+        <div class="divider bg-white h-0.5 lg:mb-8"></div>
         <div>
           <h3 class="card-title mb-2">Tirage:</h3>
           <div class="flex justify-between">
