@@ -1,14 +1,18 @@
 {
   "functions": {
-    "source": "functions"
+    "source": ""
   },
   "firestore": {
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
-    "public": "dist/la-bonne-loterie",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "public": "dist/lebonlot",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
     "rewrites": [
       {
         "source": "**",
