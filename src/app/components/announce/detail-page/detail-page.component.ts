@@ -23,7 +23,7 @@ import { UserService } from 'src/app/services/user/user.service';
 export class DetailPageComponent implements OnInit, OnDestroy {
   @ViewChild('modalBuyTicket') modalBuyTicket: ElementRef;
   currentAnnounce: IAnnounce;
-  authorAnnounce: IUser;
+  authorAnnounce: IUser | null = null;
   currentUser$: Subscription;
   currentUser: IUser | null = null;
   paramId: string;
@@ -34,7 +34,7 @@ export class DetailPageComponent implements OnInit, OnDestroy {
     private announcesService: AnnouncesService,
     private userService: UserService,
     private authService: AuthService
-  ) {}
+  ) { }
 
   async ngOnInit(): Promise<void> {
     this.currentUser$ = this.authService.userDataSubject.subscribe({
@@ -45,20 +45,12 @@ export class DetailPageComponent implements OnInit, OnDestroy {
         console.error('Error occured: ', error);
       },
     });
-    try {
-      this.paramId = this.route.snapshot.params['id'];
-      this.currentAnnounce = await this.fetchAnnounceById(this.paramId);
-      this.currentAnnounce.id = this.paramId
-      await this.userService
-        .getUserByID(this.currentAnnounce.authorUid)
-        .then((data) => {
-          if (!data) return;
-          this.authorAnnounce = data;
-        });
-    } catch (error) {
-      // TODO: error management - show an error message and redirect user
-      console.error('Error occured: ', error);
-    }
+    this.paramId = this.route.snapshot.params['id'];
+    this.currentAnnounce = await this.fetchAnnounceById(this.paramId);
+    this.currentAnnounce.id = this.paramId
+    this.authorAnnounce = await this.userService
+      .getUserByID(this.currentAnnounce.authorUid)
+    console.log(this.currentAnnounce.imgsAnnounce)
   }
 
   async fetchAnnounceById(id: string): Promise<IAnnounce> {
